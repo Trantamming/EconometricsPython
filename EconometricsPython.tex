@@ -1,0 +1,32 @@
+\documentclass{book}
+
+% Nhúng phần cấu hình chung
+\input{preamble}
+
+\begin{document}
+
+% Trang bìa
+\include{frontmatter/titlepage}
+
+% Lời nói đầu (Không đánh số chương)
+\frontmatter
+\include{frontmatter/preface}
+\tableofcontents
+\newpage
+
+% Nội dung chính
+\mainmatter
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+% ...
+
+% Phụ lục
+\appendix
+\include{appendices/appendixA}
+
+% Tài liệu tham khảo
+\bibliographystyle{econometrica}
+\bibliography{bibliography}
+
+\end{document}

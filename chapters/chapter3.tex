@@ -1,0 +1,422 @@
+\chapter{Luật phân bố xác suất}
+\section{Giới thiệu}
+Xác suất là một công cụ quan trọng trong toán học và thống kê để mô tả sự không chắc chắn của các hiện tượng ngẫu nhiên. Trong chương này, chúng ta sẽ trình bày các luật phân bố xác suất, bao gồm phân bố rời rạc và liên tục, cùng với các định lý quan trọng.
+
+\section{Các Định Nghĩa Cơ Bản}
+
+\subsection{Biến ngẫu nhiên}
+\textbf{Định nghĩa:} Một biến ngẫu nhiên là một hàm số ánh xạ từ không gian mẫu (tập hợp tất cả các kết quả có thể của một thí nghiệm ngẫu nhiên) vào tập số thực $\mathbb{R}$. Nói cách khác, biến ngẫu nhiên là một đại lượng số học có thể nhận các giá trị khác nhau do yếu tố ngẫu nhiên.
+
+\textbf{Ví dụ minh họa:} Giả sử tung một con xúc xắc.
+
+\begin{itemize}
+    \item Không gian mẫu: $S = \{1,2,3,4,5,6\}$.
+    \item Định nghĩa biến ngẫu nhiên $X$ là ``số chấm xuất hiện trên mặt ngửa của xúc xắc''.
+    \item Khi đó, $X$ có thể nhận các giá trị $1,2,3,4,5,6$, mỗi giá trị này tương ứng với một khả năng xảy ra.
+\end{itemize}
+
+\subsection{Hàm phân bố xác suất (CDF - Cumulative Distribution Function)}
+\textbf{Định nghĩa:} Hàm phân bố xác suất của một biến ngẫu nhiên $X$ được định nghĩa là:
+\[ F_X(x) = P(X \leq x), \forall x \in \mathbb{R}. \]
+Hàm phân bố xác suất giúp mô tả cách xác suất được phân bố trên tập giá trị của biến ngẫu nhiên.
+
+\textbf{Ví dụ minh họa (Biến ngẫu nhiên rời rạc):} Xét biến ngẫu nhiên $X$ là số chấm trên mặt ngửa của một xúc xắc 6 mặt cân bằng. Khi đó, ta có:
+
+\[
+F_X(x) = \begin{cases}
+    0, & x < 1 \\
+    \frac{1}{6}, & 1 \leq x < 2 \\
+    \frac{2}{6}, & 2 \leq x < 3 \\
+    \frac{3}{6}, & 3 \leq x < 4 \\
+    \frac{4}{6}, & 4 \leq x < 5 \\
+    \frac{5}{6}, & 5 \leq x < 6 \\
+    1, & x \geq 6
+\end{cases}
+\]
+
+\subsection{Hàm mật độ xác suất (PDF - Probability Density Function)}
+\textbf{Định nghĩa:} Nếu $X$ là một biến ngẫu nhiên liên tục, thì xác suất để $X$ nằm trong khoảng $[a,b]$ được xác định bằng tích phân:
+\[ P(a \leq X \leq b) = \int_{a}^{b} f_X(x) \,dx. \]
+\textbf{Ví dụ minh họa:} Xét biến ngẫu nhiên $X$ có phân bố chuẩn (Gaussian) với kỳ vọng $\mu=0$ và phương sai $\sigma^2=1$:
+\[ f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}. \]
+Xác suất $X$ nằm trong khoảng từ $-1$ đến $1$:
+\[ P(-1 \leq X \leq 1) = \int_{-1}^{1} f_X(x) \,dx \approx 0.6826. \]
+
+\subsection{Hàm khối xác suất (PMF - Probability Mass Function)}
+\textbf{Định nghĩa:} Nếu $X$ là một biến ngẫu nhiên rời rạc, thì xác suất để $X$ nhận giá trị $x_i$ được xác định bằng hàm khối xác suất:
+\[ P(X = x_i) = p_X(x_i), \quad \sum_{i} p_X(x_i) = 1. \]
+\textbf{Ví dụ minh họa:} Xét biến ngẫu nhiên $X$ biểu diễn số lần xuất hiện mặt ngửa khi tung 2 đồng xu cân bằng. Khi đó, $X$ có thể nhận các giá trị 0, 1, hoặc 2 với xác suất:
+\[
+ p_X(0) = P(X=0) = \frac{1}{4}, \quad p_X(1) = P(X=1) = \frac{2}{4}, \quad p_X(2) = P(X=2) = \frac{1}{4}.
+\]
+Tổng tất cả các xác suất:
+\[ \sum_{i} p_X(x_i) = \frac{1}{4} + \frac{2}{4} + \frac{1}{4} = 1. \]
+Điều này xác nhận rằng tổng xác suất của tất cả giá trị có thể xảy ra bằng 1.
+
+\section{Luật Số Lớn}
+Luật số lớn (LLN) là một định lý cơ bản trong xác suất thống kê, mô tả xu hướng hội tụ của trung bình mẫu về giá trị kỳ vọng khi kích thước mẫu tăng. LLN đóng vai trò quan trọng trong thống kê và nhiều ứng dụng thực tế như kinh tế, khoa học dữ liệu.
+
+Có hai dạng của định lý Luật số lớn:
+
+\subsection{Luật số lớn yếu (Weak Law of Large Numbers - WLLN)}
+Giả sử $X_1, X_2, \dots, X_n$ là một dãy các biến ngẫu nhiên độc lập và cùng phân phối (i.i.d) với kỳ vọng hữu hạn $E[X_i] = \mu$. Khi đó, với mọi $\varepsilon > 0$, ta có:
+\begin{equation}
+\lim_{n \to \infty} P\left( \left| \frac{1}{n} \sum_{i=1}^{n} X_i - \mu \right| \geq \varepsilon \right) = 0
+\end{equation}
+Điều này có nghĩa là khi kích thước mẫu $n$ đủ lớn, xác suất để trung bình mẫu khác xa kỳ vọng thực tế sẽ tiến về 0.
+
+\subsubsection*{Giải thích các ký hiệu:}
+\begin{itemize}
+    \item $X_1, X_2, \dots, X_n$: Các biến ngẫu nhiên độc lập, cùng phân phối.
+    \item $E[X_i]$: Kỳ vọng của biến ngẫu nhiên $X_i$, ký hiệu là $\mu$.
+    \item $\frac{1}{n} \sum_{i=1}^{n} X_i$: Trung bình mẫu.
+    \item $P(A)$: Xác suất xảy ra của biến cố $A$.
+    \item $\lim_{n \to \infty}$: Giới hạn khi kích thước mẫu tiến đến vô cùng.
+    \item $\varepsilon$: Một số dương nhỏ tùy ý.
+\end{itemize}
+
+\subsection{Luật số lớn mạnh (Strong Law of Large Numbers - SLLN)}
+Với cùng điều kiện như trên, Luật số lớn mạnh phát biểu rằng:
+\begin{equation}
+P\left( \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} X_i = \mu \right) = 1
+\end{equation}
+Tức là trung bình mẫu sẽ hội tụ chắc chắn (almost surely) về kỳ vọng $\mu$ khi $n \to \infty$.
+
+\subsubsection*{Giải thích các ký hiệu:}
+\begin{itemize}
+    \item Các ký hiệu tương tự như Luật số lớn yếu.
+    \item $P(A) = 1$: Sự kiện $A$ xảy ra với xác suất chắc chắn.
+    \item $\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} X_i = \mu$: Trung bình mẫu hội tụ về kỳ vọng $\mu$ khi $n \to \infty$.
+\end{itemize}
+
+\subsection{Ví dụ Minh Họa}
+Giả sử ta có một đồng xu không cân bằng với xác suất xuất hiện mặt ngửa là $p = 0.6$. Gieo đồng xu $n$ lần và tính xác suất trung bình của số lần xuất hiện mặt ngửa:
+\begin{equation}
+\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i
+\end{equation}
+Theo Luật số lớn, khi $n$ tăng, $\bar{X}_n$ sẽ hội tụ về $p = 0.6$.
+
+\subsubsection*{Giải thích các ký hiệu:}
+\begin{itemize}
+    \item $X_i$: Biến ngẫu nhiên nhận giá trị 1 nếu lần gieo thứ $i$ ra mặt ngửa, và 0 nếu ra mặt sấp.
+    \item $\bar{X}_n$: Trung bình của các lần thử, tức là tỷ lệ số lần xuất hiện mặt ngửa trong $n$ lần thử.
+    \item Khi $n$ càng lớn, $\bar{X}_n$ sẽ tiến gần về giá trị kỳ vọng $p = 0.6$, theo Luật số lớn.
+\end{itemize}
+
+
+Luật số lớn cho thấy khi thu thập nhiều dữ liệu hơn, giá trị trung bình của mẫu sẽ gần hơn với giá trị kỳ vọng thực tế. Đây là cơ sở lý thuyết quan trọng trong thống kê, tài chính, trí tuệ nhân tạo và nhiều lĩnh vực khác.
+
+
+
+
+
+\section{Các Luật Phân Bố Xác Suất Quan Trọng}
+\subsection{Phân Bố Nhị Thức}
+\textbf{Định Nghĩa}
+Phân bố nhị thức mô tả số lần xảy ra của một sự kiện trong một số lần thử độc lập, khi mỗi lần thử chỉ có hai kết quả: \textbf{thành công} hoặc \textbf{thất bại}.
+
+Một biến ngẫu nhiên $X$ tuân theo phân bố nhị thức với các tham số $n$ (số lần thử) và $p$ (xác suất thành công trong mỗi lần thử) nếu xác suất để $X$ nhận giá trị $k$ (tức là có đúng $k$ lần thành công trong $n$ phép thử) được tính theo công thức:
+\begin{equation}
+    P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0,1,2,\dots,n.
+\end{equation}
+
+Trong đó:
+\begin{itemize}
+    \item $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ là hệ số nhị thức (binomial coefficient).
+    \item $p^k$ là xác suất có đúng $k$ lần thành công.
+    \item $(1-p)^{n-k}$ là xác suất có $(n-k)$ lần thất bại.
+\end{itemize}
+
+\textbf{Kỳ Vọng và Phương Sai}
+\begin{equation}
+    E(X) = np, \quad \text{Var}(X) = np(1-p).
+\end{equation}
+
+\textbf{Ví Dụ}
+Giả sử một bài kiểm tra trắc nghiệm có 10 câu hỏi, mỗi câu có 4 đáp án nhưng chỉ có 1 đáp án đúng. Một học sinh chọn đáp án ngẫu nhiên cho mỗi câu. Gọi $X$ là số câu trả lời đúng, thì $X$ tuân theo phân bố nhị thức $B(10, 0.25)$ vì xác suất chọn đúng một đáp án là $p = 0.25$.
+
+\textbf{Ứng Dụng Thực Tế}
+Phân bố nhị thức có nhiều ứng dụng trong thực tế, bao gồm:
+\begin{itemize}
+    \item Xác suất một sản phẩm bị lỗi khi lấy mẫu kiểm tra trong dây chuyền sản xuất.
+    \item Dự đoán số lượng khách hàng tiềm năng sẽ mua sản phẩm sau khi quảng cáo.
+    \item Xác suất thắng một trò chơi nếu người chơi có một tỷ lệ chiến thắng cố định.
+\end{itemize}
+
+
+
+\subsection{Phân Bố Poisson}
+\textbf{Định nghĩa}
+Phân bố Poisson là một phân bố xác suất rời rạc mô tả số lần xảy ra của một sự kiện trong một khoảng thời gian (hoặc không gian) nhất định khi các sự kiện đó xảy ra độc lập với nhau và có tỷ lệ trung bình không đổi.
+
+Một biến ngẫu nhiên $X$ tuân theo phân bố Poisson với tham số $\lambda > 0$ nếu nó có xác suất:
+\begin{equation}
+P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0,1,2,\dots
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $\lambda$ là số lần xảy ra trung bình của sự kiện trong khoảng thời gian hoặc không gian xác định.
+    \item $k!$ là giai thừa của $k$ với quy ước $0! = 1$.
+    \item $e \approx 2.718$ là hằng số Euler.
+\end{itemize}
+
+\textbf{Ý nghĩa và ứng dụng}
+Phân bố Poisson được sử dụng để mô tả số lần xảy ra của các sự kiện hiếm gặp trong một khoảng thời gian hoặc không gian cố định, chẳng hạn như:
+\begin{itemize}
+    \item Số cuộc gọi đến tổng đài trong một giờ.
+    \item Số lỗi xảy ra trong một hệ thống máy tính trong một ngày.
+    \item Số tai nạn giao thông trên một đoạn đường trong một tuần.
+    \item Số khách hàng đến một cửa hàng trong một khoảng thời gian nhất định.
+\end{itemize}
+
+\textbf{Các đặc trưng của phân bố Poisson}
+\begin{itemize}
+    \item \textbf{Kỳ vọng (trung bình)}: $E(X) = \lambda$
+    \item \textbf{Phương sai}: $\text{Var}(X) = \lambda$
+    \item \textbf{Độ lệch chuẩn}: $\sigma = \sqrt{\lambda}$
+\end{itemize}
+
+\textbf{Một số tính chất quan trọng:}
+\begin{itemize}
+    \item Phân bố Poisson có thể được sử dụng để xấp xỉ phân bố nhị thức $B(n, p)$ khi $n$ lớn và $p$ nhỏ sao cho $\lambda = np$.
+    \item Nếu $X_1 \sim \text{Poisson}(\lambda_1)$ và $X_2 \sim \text{Poisson}(\lambda_2)$ độc lập, thì tổng của chúng cũng tuân theo phân bố Poisson:
+    \begin{equation}
+    X_1 + X_2 \sim \text{Poisson}(\lambda_1 + \lambda_2).
+    \end{equation}
+\end{itemize}
+
+\textbf{Ví dụ minh họa}
+\begin{itemize}
+    \item \textbf{Ví dụ 1: Số cuộc gọi đến tổng đài}
+    Giả sử một tổng đài nhận trung bình 4 cuộc gọi mỗi phút. Hỏi xác suất để trong một phút có đúng 2 cuộc gọi đến là bao nhiêu?
+
+    Áp dụng công thức phân bố Poisson với $\lambda = 4$, $k = 2$:
+    \begin{equation}
+    P(X = 2) = \frac{4^2 e^{-4}}{2!} = \frac{16 e^{-4}}{2} \approx 0.1465.
+    \end{equation}
+    Vậy xác suất nhận đúng 2 cuộc gọi trong một phút là khoảng \textbf{14.65\%}.
+
+    \item \textbf{Ví dụ 2: Số lỗi phần mềm}
+    Một phần mềm có trung bình 3 lỗi xảy ra mỗi ngày. Xác suất để hôm nay có \textbf{không có lỗi nào} là bao nhiêu?
+
+    Dùng công thức với $\lambda = 3$, $k = 0$:
+    \begin{equation}
+    P(X = 0) = \frac{3^0 e^{-3}}{0!} = e^{-3} \approx 0.0498.
+    \end{equation}
+    Vậy xác suất không có lỗi nào trong ngày hôm nay là \textbf{4.98\%}.
+\end{itemize}
+
+
+\textbf{Mối liên hệ với các phân bố khác}
+\begin{itemize}
+    \item Khi $n \to \infty$, $p \to 0$ nhưng $np = \lambda$ cố định, phân bố nhị thức $B(n, p)$ xấp xỉ phân bố Poisson với tham số $\lambda$.
+    \item Khi $\lambda$ lớn, phân bố Poisson có thể được xấp xỉ bằng phân bố chuẩn:
+    \begin{equation}
+    X \approx N(\lambda, \lambda).
+    \end{equation}
+\end{itemize}
+
+\subsection{Phân Bố Chuẩn (Gauss)}
+
+Phân bố chuẩn, còn gọi là phân bố Gauss, là một trong những phân bố quan trọng nhất trong thống kê và xác suất. Nó được sử dụng rộng rãi trong nhiều lĩnh vực như tài chính, khoa học dữ liệu, kỹ thuật và kinh tế.\\
+\textbf{Định nghĩa}
+Phân bố chuẩn có dạng hàm mật độ xác suất (PDF) như sau:
+\begin{equation}
+    f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $\mu$ là kỳ vọng (trung bình) của phân bố.
+    \item $\sigma$ là độ lệch chuẩn.
+    \item $\sigma^2$ là phương sai.
+    \item $x$ là biến ngẫu nhiên tuân theo phân bố chuẩn.
+\end{itemize}
+
+\noindent \textbf{Đặc điểm của Phân Bố Chuẩn}\\
+Phân bố chuẩn có một số đặc điểm quan trọng:
+\begin{enumerate}
+    \item Đối xứng quanh giá trị trung bình $\mu$.
+    \item Đường cong hình chuông với đỉnh tại $x = \mu$.
+    \item Tổng diện tích dưới đường cong bằng 1.
+    \item Khoảng $\mu \pm \sigma$ chứa khoảng 68.27\% dữ liệu.
+    \item Khoảng $\mu \pm 2\sigma$ chứa khoảng 95.45\% dữ liệu.
+    \item Khoảng $\mu \pm 3\sigma$ chứa khoảng 99.73\% dữ liệu.
+\end{enumerate}
+
+\noindent \textbf{Phân bố chuẩn tắc}\\
+Phân bố chuẩn tắc (standard normal distribution) là trường hợp đặc biệt của phân bố chuẩn với:
+\begin{itemize}
+    \item $\mu = 0$
+    \item $\sigma = 1$
+\end{itemize}
+Trong trường hợp này, công thức phân bố chuẩn trở thành:
+\begin{equation}
+    f(z) = \frac{1}{\sqrt{2\pi}} e^{-\frac{z^2}{2}}
+\end{equation}
+
+Khi một biến ngẫu nhiên $X$ tuân theo phân bố chuẩn với kỳ vọng $\mu$ và độ lệch chuẩn $\sigma$, ta có thể chuẩn hóa về phân bố chuẩn tắc bằng công thức:
+\begin{equation}
+    Z = \frac{X - \mu}{\sigma}
+\end{equation}
+Biến đổi này giúp ta dễ dàng tra cứu bảng phân bố chuẩn và tính toán xác suất.
+
+\noindent \textbf{Ứng dụng của Phân bố chuẩn}\\
+Phân bố chuẩn có rất nhiều ứng dụng trong thực tế:
+\begin{itemize}
+    \item Kiểm định giả thuyết thống kê.
+    \item Mô hình hóa dữ liệu thực tế trong nhiều lĩnh vực.
+    \item Dùng trong kiểm soát chất lượng sản xuất.
+    \item Ước lượng khoảng tin cậy trong thống kê.
+    \item Dự báo và phân tích rủi ro trong tài chính.
+\end{itemize}
+
+\section{Bậc tự do (Degrees of Freedom - DoF)}
+Trong thống kê, bậc tự do liên quan đến số lượng giá trị có thể thay đổi tự do trong một phép tính, thường xuất hiện trong kiểm định giả thuyết và phân bố xác suất.
+
+\subsection{Định nghĩa toán học của bậc tự do}
+
+Trong thống kê, \textbf{bậc tự do} của một phép tính là số lượng giá trị có thể thay đổi tự do mà không bị ràng buộc bởi các điều kiện hoặc mối quan hệ toán học khác.
+
+Nếu có $n$ quan sát nhưng một số quan sát bị ràng buộc bởi một hoặc nhiều điều kiện, thì bậc tự do là số lượng giá trị có thể thay đổi một cách độc lập.
+
+Công thức tổng quát của bậc tự do trong thống kê:
+\begin{equation}
+    df = n - k
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $n$ là tổng số quan sát,
+    \item $k$ là số lượng tham số ước lượng từ dữ liệu.
+\end{itemize}
+
+\textbf{Ví dụ}: Nếu bạn có 5 số và biết trung bình của chúng, thì chỉ cần biết 4 số đầu tiên là có thể suy ra số thứ 5, nghĩa là chỉ có 4 bậc tự do.
+
+\subsection{Ý nghĩa trong ước lượng thống kê}
+
+Trong thống kê, khi tính toán các đặc trưng của mẫu (ví dụ: phương sai, độ lệch chuẩn), bậc tự do ảnh hưởng trực tiếp đến độ chính xác của ước lượng.
+
+\textbf{Phương sai mẫu $s^2$}
+Khi tính phương sai của mẫu, ta sử dụng công thức:
+
+\begin{equation}
+    s^2 = \frac{\sum (x_i - \bar{x})^2}{n - 1}
+\end{equation}
+
+Ở đây, $n - 1$ là số bậc tự do, vì ta đã sử dụng một quan sát để tính giá trị trung bình $\bar{x}$, làm giảm số lượng giá trị có thể thay đổi độc lập.
+
+Nếu dùng $n$ thay vì $n - 1$, ước lượng phương sai sẽ bị lệch (underestimate).
+
+\textbf{Ứng dụng thực tế: }
+Khi tính phương sai của một tập dữ liệu nhỏ, việc sử dụng bậc tự do $n - 1$ giúp tạo ra một ước lượng không thiên lệch cho phương sai tổng thể.
+
+
+\subsection{Bậc tự do trong kiểm định giả thuyết}
+Bậc tự do rất quan trọng trong các kiểm định thống kê như kiểm định $t$-test, kiểm định $\chi^2$, và ANOVA.
+
+\noindent\textbf{* Kiểm định $t$-test}\\
+Kiểm định $t$-test được sử dụng để so sánh trung bình của hai nhóm.
+
+Công thức bậc tự do trong kiểm định $t$-test một mẫu:
+\begin{equation}
+    df = n - 1
+\end{equation}
+
+Trong kiểm định $t$-test hai mẫu độc lập:
+\begin{equation}
+    df = n_1 + n_2 - 2
+\end{equation}
+trong đó $n_1, n_2$ là kích thước mẫu của hai nhóm.
+
+\textbf{Ứng dụng thực tế:}
+\begin{itemize}
+    \item So sánh điểm thi giữa hai lớp học.
+    \item Đánh giá hiệu quả của một loại thuốc giữa hai nhóm bệnh nhân.
+\end{itemize}
+
+\noindent\textbf{* Kiểm định $\chi^2$ (Kiểm định phù hợp và kiểm định độc lập)}\\
+Kiểm định $\chi^2$ giúp xác định sự khác biệt giữa các nhóm danh mục (categorical data).
+
+Công thức bậc tự do trong bảng tần suất:
+\begin{equation}
+    df = (r - 1) \times (c - 1)
+\end{equation}
+trong đó $r$ là số hàng, $c$ là số cột.
+
+\textbf{Ứng dụng thực tế:}
+\begin{itemize}
+    \item Kiểm tra xem giới tính có ảnh hưởng đến sở thích mua sắm hay không.
+    \item Đánh giá mối quan hệ giữa thói quen ăn uống và tình trạng sức khỏe.
+\end{itemize}
+
+\noindent\textbf{* Phân tích phương sai (ANOVA)}\\
+Trong ANOVA, bậc tự do giúp xác định nguồn biến thiên giữa các nhóm và bên trong nhóm.
+
+Công thức:
+\begin{equation}
+    df_{between} = k - 1
+\end{equation}
+\begin{equation}
+    df_{within} = N - k
+\end{equation}
+trong đó $k$ là số nhóm và $N$ là tổng số quan sát.
+
+\textbf{Ứng dụng thực tế:}
+\begin{itemize}
+    \item So sánh hiệu suất của ba phương pháp giảng dạy khác nhau.
+    \item Đánh giá hiệu quả của ba chiến lược tiếp thị.
+\end{itemize}
+
+
+
+\subsection{Bậc tự do trong hồi quy tuyến tính}
+
+Bậc tự do cũng quan trọng trong hồi quy tuyến tính vì nó ảnh hưởng đến chất lượng mô hình dự báo.
+
+Trong mô hình hồi quy tuyến tính có dạng:
+\begin{equation}
+Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_k X_k + \epsilon
+\end{equation}
+Bậc tự do được tính là:
+\begin{equation}
+df = n - (k + 1)
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $n$ là số quan sát.
+    \item $k$ là số biến độc lập.
+\end{itemize}
+
+\textbf{Ứng dụng thực tế}
+\begin{itemize}
+    \item Dự đoán giá bất động sản dựa trên diện tích, số phòng ngủ, và vị trí.
+    \item Phân tích các yếu tố ảnh hưởng đến doanh thu doanh nghiệp.
+\end{itemize}
+
+
+
+\subsection{Tác động của bậc tự do đến phân phối xác suất}
+
+Bậc tự do cũng ảnh hưởng đến hình dạng của một số phân phối xác suất như phân phối $t$-Student, phân phối $\chi^2$, và phân phối F.
+
+\begin{itemize}
+
+    \item Khi bậc tự do tăng, phân phối $t$-Student dần tiến gần đến phân phối chuẩn.
+
+    \item Trong phân phối $\chi^2$, bậc tự do ảnh hưởng đến mức độ phân tán của phân phối.
+
+    \item Trong kiểm định F, bậc tự do ảnh hưởng đến xác suất từ chối giả thuyết không.
+
+\end{itemize}
+
+
+\textbf{Ứng dụng thực tế}
+\begin{itemize}
+    \item Khi kiểm tra giả thuyết với số lượng mẫu nhỏ, ta sử dụng phân phối $t$-Student thay vì phân phối chuẩn.
+    \item Trong kiểm định phương sai, số bậc tự do quyết định xác suất sai lầm loại I.
+\end{itemize}
+
+
+\section{Kết Luận}
+Trong chương này, chúng ta đã tìm hiểu về các phân bố xác suất quan trọng, các công thức liên quan và một số định lý quan trọng. Những kiến thức này sẽ là nền tảng cho các ứng dụng trong thống kê và khoa học dữ liệu.
+
+

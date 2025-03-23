@@ -1,0 +1,628 @@
+\chapter{Xử lý dữ liệu trong kinh tế lượng}
+\section{Tổng quan về dữ liệu}
+\subsection{Khái niệm}
+\subsection{Phân loại dữ liệu}
+\subsection{Dữ liệu trong kinh tế lượng hiện đại}
+\begin{itemize}
+    \item \textbf{Dữ liệu chéo (Cross Sectional Data)}
+    \item \textbf{Dữ liệu chuỗi thời gian (Time Series Data)}
+    \item \textbf{Dữ liệu chéo gộp (Pooled Cross Sectional Data)}
+    \item \textbf{Dữ liệu bảng (Panel Data)}
+    \item \textbf{Dữ liệu không gian (Spatial Data)}
+    \item \textbf{Dữ liệu tần số cao (High-Frequency Data)}
+    \item \textbf{Dữ liệu văn bản (Text Data)}
+\end{itemize}
+
+\section{Các phương pháp đo lường dữ liệu}
+\subsection{Đo lường mức độ tập trung}
+\subsubsection{a. Trung bình (Mean)}
+\textbf{Định nghĩa: }
+Trung bình (Mean) là một đại lượng đo lường xu hướng trung tâm của dữ liệu. Nó cho biết giá trị đại diện của một tập hợp dữ liệu bằng cách lấy tổng tất cả các giá trị chia cho số lượng phần tử.
+
+\subsubsection{Công thức tính trung bình:}
+\begin{itemize}
+    \item \subsubsection{Trung bình số học (Arithmetic Mean)}
+        Trung bình số học của một tập dữ liệu gồm $n$ quan sát $x_1, x_2, \dots, x_n$ được tính bằng công thức:
+        \begin{equation}
+        \bar{x} = \frac{x_1 + x_2 + \dots + x_n}{n} = \frac{\sum_{i=1}^{n} x_i}{n}
+        \end{equation}
+        
+        \textbf{Ví dụ:} 
+        Tập dữ liệu: $\{10, 20, 30, 40, 50\}$
+        \begin{equation}
+        \bar{x} = \frac{10 + 20 + 30 + 40 + 50}{5} = 30
+        \end{equation}
+
+    \item \subsubsection{Trung bình có trọng số (Weighted Mean)}
+    Nếu mỗi giá trị $x_i$ có trọng số tương ứng $w_i$, thì trung bình có trọng số được tính bằng:
+    \begin{equation}
+    \bar{x}_w = \frac{\sum w_i x_i}{\sum w_i}
+    \end{equation}
+    
+    \textbf{Ví dụ:} Điểm của sinh viên:
+    \begin{itemize}
+        \item Toán (trọng số 4, điểm 8)
+        \item Lý (trọng số 3, điểm 7)
+        \item Hóa (trọng số 2, điểm 6)
+    \end{itemize}
+    
+    \begin{equation}
+    \bar{x}_w = \frac{(4 \times 8) + (3 \times 7) + (2 \times 6)}{4 + 3 + 2} = \frac{32 + 21 + 12}{9} = \frac{65}{9} \approx 7.22
+    \end{equation}
+    
+    \item \subsubsection{Trung bình hình học (Geometric Mean)}
+    Dùng khi dữ liệu có dạng tăng trưởng theo cấp số nhân:
+    \begin{equation}
+    GM = \left( \prod_{i=1}^{n} x_i \right)^{\frac{1}{n}} = \left(x_1 \times x_2 \times \dots \times x_n \right)^{\frac{1}{n}}
+    \end{equation}
+    
+    \textbf{Ví dụ:} Tăng trưởng doanh thu qua 3 năm là 5\%, 10\%, 15\%, trung bình hình học là:
+    \begin{equation}
+    GM = \left(1.05 \times 1.10 \times 1.15 \right)^{\frac{1}{3}} \approx 1.096
+    \end{equation}
+    Tức là mức tăng trung bình mỗi năm khoảng 9.6\%.
+
+
+    \item \subsubsection{Trung bình điều hòa (Harmonic Mean)}
+    Dùng khi dữ liệu là tốc độ hoặc tỷ lệ:
+    \begin{equation}
+    HM = \frac{n}{\sum_{i=1}^{n} \frac{1}{x_i}}
+    \end{equation}
+    
+    \textbf{Ví dụ:} Nếu một ô tô đi 60 km/h trong 1 giờ và 40 km/h trong 1 giờ:
+    \begin{equation}
+    HM = \frac{2}{\frac{1}{60} + \frac{1}{40}} = \frac{2}{\frac{2}{120} + \frac{3}{120}} = \frac{2}{\frac{5}{120}} = \frac{240}{5} = 48 \text{ km/h}
+    \end{equation}
+    
+\end{itemize}
+
+
+\subsubsection{b. Trung vị (Median)}
+\subsubsection{Định nghĩa}
+Trung vị (Median) là giá trị nằm ở giữa một tập hợp dữ liệu đã được sắp xếp theo thứ tự tăng dần hoặc giảm dần. Nó chia tập dữ liệu thành hai phần bằng nhau: 50\% giá trị nhỏ hơn trung vị và 50\% giá trị lớn hơn trung vị.
+
+\noindent \textbf{-Ưu điểm:}
+\begin{itemize}
+    \item Ít bị ảnh hưởng bởi giá trị ngoại lai (outliers).
+    \item Phù hợp khi dữ liệu có phân phối lệch.
+\end{itemize}
+
+\subsubsection{Cách tính trung vị}
+\subsubsection{* Dữ liệu rời rạc}
+\begin{itemize}
+    \item Nếu số lượng quan sát $N$ là số lẻ:
+    \[
+    \tilde{x} = X_{\frac{N+1}{2}}
+    \]
+    \item Nếu số lượng quan sát $N$ là số chẵn:
+    \[
+    \tilde{x} = \frac{X_{\frac{N}{2}} + X_{\frac{N}{2} + 1}}{2}
+    \]
+\end{itemize}
+
+\subsubsection{* Dữ liệu nhóm (có bảng tần số)}
+Trung vị được tính theo công thức:
+\[
+\tilde{x} = L + \frac{\frac{N}{2} - F}{f} \times h
+\]
+Trong đó:
+\begin{itemize}
+    \item $L$: Cận dưới của lớp chứa trung vị.
+    \item $N$: Tổng số quan sát.
+    \item $F$: Tần số tích lũy trước lớp chứa trung vị.
+    \item $f$: Tần số của lớp chứa trung vị.
+    \item $h$: Độ rộng lớp chứa trung vị.
+\end{itemize}
+
+\subsubsection{* Dữ liệu phân phối liên tục (sử dụng CDF)}
+Trung vị là giá trị $x$ sao cho:
+\[
+F(\tilde{x}) = 0.5
+\]
+Tức là điểm mà 50\% dữ liệu nằm dưới nó trong hàm phân phối tích lũy.
+
+
+
+\subsubsection{Khi nào nên dùng trung vị thay vì trung bình?}
+\begin{itemize}
+    \item Khi dữ liệu có ngoại lai, trung vị ít bị ảnh hưởng hơn.
+    \item Khi dữ liệu có phân phối lệch, trung vị thể hiện xu hướng trung tâm tốt hơn.
+    \item Khi dữ liệu có dạng phân phối log-normal, chẳng hạn như bất động sản, thu nhập, giá cổ phiếu, v.v.
+\end{itemize}
+
+
+
+\subsubsection{c. Mode}
+\textbf{Định nghĩa: }
+Mode (Yếu vị) là giá trị xuất hiện nhiều nhất trong một tập dữ liệu. Đây là một trong ba thước đo xu hướng trung tâm chính, bên cạnh Mean (trung bình) và Median (trung vị).
+
+\begin{itemize}
+    \item Nếu một tập dữ liệu có một giá trị xuất hiện nhiều nhất, nó được gọi là \textbf{unimodal} (đơn mode).
+    \item Nếu có hai giá trị cùng xuất hiện với tần suất cao nhất, tập dữ liệu được gọi là \textbf{bimodal} (hai mode).
+    \item Nếu có nhiều hơn hai giá trị xuất hiện với tần suất cao nhất, tập dữ liệu được gọi là \textbf{multimodal} (đa mode).
+\end{itemize}
+
+\textbf{* Công thức xác định mode: }
+Mode không có công thức cố định như mean hay median. Nó đơn giản là giá trị có tần suất xuất hiện cao nhất trong tập dữ liệu.
+
+\textbf{Ví dụ:}
+\begin{itemize}
+    \item Dữ liệu: \{2, 3, 5, 3, 3, 6, 7, 2, 2, 3\}
+    \item Mode = \textbf{3} (vì số 3 xuất hiện 4 lần, nhiều nhất trong tập dữ liệu).
+\end{itemize}
+
+\textbf{* Cách xác định mode trong phân bố tần suất}
+Với dữ liệu nhóm trong bảng tần suất, mode có thể được ước lượng bằng công thức:
+
+\begin{equation}
+\text{Mode} = L + \frac{(f_1 - f_0)}{(2f_1 - f_0 - f_2)} \times h
+\end{equation}
+
+Trong đó:
+\begin{itemize}
+    \item $L$ là cận dưới của lớp có tần suất cao nhất (lớp modal),
+    \item $f_1$ là tần suất của lớp modal,
+    \item $f_0$ là tần suất của lớp trước lớp modal,
+    \item $f_2$ là tần suất của lớp sau lớp modal,
+    \item $h$ là độ rộng của lớp.
+\end{itemize}
+
+\textbf{Ví dụ:} Nếu có bảng tần suất như sau:
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Khoảng lớp & Tần suất \\
+\hline
+10 - 20 & 5 \\
+20 - 30 & 8 \\
+30 - 40 & 12 \\
+40 - 50 & 9 \\
+50 - 60 & 6 \\
+\hline
+\end{tabular}
+\end{center}
+
+- Lớp có tần suất cao nhất là \textbf{30 - 40} với $f_1 = 12$,
+- $L = 30$, $f_0 = 8$, $f_2 = 9$,
+- $h = 10$.
+
+Áp dụng công thức:
+\begin{equation}
+\text{Mode} = 30 + \frac{(12 - 8)}{(2 \times 12 - 8 - 9)} \times 10 = 30 + \frac{4}{7} \times 10 = 30 + 5.71 = 35.71
+\end{equation}
+
+
+\subsubsection*{* Cách xác định Mode bằng đạo hàm}
+
+Mode của một phân bố liên tục là giá trị $x$ sao cho hàm mật độ xác suất $f(x)$ đạt cực đại, tức là:
+
+\subsubsection*{** Bước 1: Lấy đạo hàm bậc nhất}
+
+Lấy đạo hàm bậc nhất của $f(x)$ và giải phương trình:
+\begin{equation}
+    f'(x) = 0
+\end{equation}
+Đây là điều kiện cần để tìm điểm cực trị.
+
+\subsubsection*{** Bước 2: Kiểm tra đạo hàm bậc hai}
+
+\begin{itemize}
+    \item Nếu $f''(x) < 0$, thì $x$ là điểm cực đại và là Mode.
+    \item Nếu $f''(x) > 0$, thì $x$ là điểm cực tiểu (không phải Mode).
+\end{itemize}
+
+\subsubsection*{=> Ví dụ: Mode của phân bố chuẩn}
+
+Xét phân bố chuẩn $N(\mu, \sigma^2)$ có hàm mật độ xác suất:
+\begin{equation}
+    f(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+\end{equation}
+
+\subsubsection*{- Bước 1: Lấy đạo hàm}
+
+\begin{equation}
+    f'(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}} \cdot \left( -\frac{2(x - \mu)}{2\sigma^2} \right)
+\end{equation}
+\begin{equation}
+    = f(x) \cdot \left( -\frac{x - \mu}{\sigma^2} \right)
+\end{equation}
+
+Đặt $f'(x) = 0$, ta có $x - \mu = 0$ hay Mode $= \mu$.
+
+\subsubsection*{- Bước 2: Kiểm tra đạo hàm bậc hai}
+
+\begin{equation}
+    f''(x) = f(x) \cdot \left( -\frac{1}{\sigma^2} \right) + f(x) \cdot \left( -\frac{x - \mu}{\sigma^2} \right)^2
+\end{equation}
+
+Tại $x = \mu$, ta có $f''(x) < 0$, suy ra đây là điểm cực đại.
+
+\subsubsection*{** Kết luận: } Mode của phân bố chuẩn chính là trung bình $\mu$.
+
+
+
+\subsubsection*{Đặc điểm của mode: }
+\begin{itemize}
+    \item Mode có thể không tồn tại hoặc có nhiều hơn một giá trị trong tập dữ liệu.
+    \item Mode có thể bị ảnh hưởng bởi sự thay đổi nhỏ trong tần suất của dữ liệu.
+    \item Đối với dữ liệu định tính (categorical data), mode là thước đo trung tâm phù hợp nhất.
+\end{itemize}
+
+\textbf{Ví dụ:}
+\begin{itemize}
+    \item Dữ liệu màu sắc yêu thích của 100 người: \{Đỏ, Xanh, Xanh, Xanh, Đỏ, Đỏ, Đỏ, Xanh, Xanh, Đỏ, Đỏ, Xanh\}
+    \item Mode = \textbf{``Xanh''} (vì xuất hiện nhiều nhất).
+\end{itemize}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Tăng khoảng cách giữa các dòng
+    \begin{tabular}{|p{3cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|} % Giới hạn chiều rộng các cột
+        \hline
+        \textbf{Thuộc tính} & \textbf{Mode} & \textbf{Mean (Trung bình)} & \textbf{Median (Trung vị)} \\
+        \hline
+        Định nghĩa & Giá trị xuất hiện nhiều nhất & Trung bình số học của tất cả giá trị & Giá trị chính giữa của tập dữ liệu \\
+        \hline
+        Khi nào dùng? & Khi dữ liệu có giá trị lặp lại hoặc là dữ liệu định tính & Khi dữ liệu phân bố đều, không bị lệch & Khi dữ liệu có giá trị ngoại lai \\
+        \hline
+        Bị ảnh hưởng bởi ngoại lai? & Không & Có & Ít bị ảnh hưởng \\
+        \hline
+    \end{tabular}
+    \caption{So sánh Mode với Mean và Median}
+    \label{tab:comparison}
+\end{table}
+
+
+\textbf{Ứng Dụng của Mode}
+\begin{itemize}
+    \item \textbf{Thống kê kinh doanh}: Xác định sản phẩm bán chạy nhất.
+    \item \textbf{Giáo dục}: Xác định điểm số phổ biến nhất trong lớp học.
+    \item \textbf{Tiếp thị}: Tìm màu sắc, kích cỡ hoặc mẫu mã sản phẩm được ưa chuộng nhất.
+\end{itemize}
+
+Mode là một thước đo quan trọng trong thống kê, giúp hiểu rõ hơn về xu hướng trung tâm của dữ liệu. Trong nhiều trường hợp, nó là công cụ hữu ích hơn mean và median, đặc biệt đối với dữ liệu phân loại hoặc dữ liệu có phân phối không chuẩn.
+
+
+
+\subsection{Đo lường mức độ phân tán}
+\subsubsection{a. Tứ phân vị (Quartiles)}
+Tứ phân vị là các giá trị chia một tập dữ liệu đã được sắp xếp thành bốn phần bằng nhau. Các giá trị này giúp chúng ta hiểu rõ hơn về sự phân bố của dữ liệu.
+
+\subsubsection*{* Các loại tứ phân vị}
+\begin{itemize}
+    \item \textbf{Tứ phân vị thứ nhất ($Q_1$)}: Là phần tử nằm ở vị trí 25\% của dữ liệu đã sắp xếp. Đây là trung vị của nửa dưới của dữ liệu.
+    \item \textbf{Tứ phân vị thứ hai ($Q_2$)}: Là trung vị (median) của toàn bộ dữ liệu, chia dữ liệu thành hai phần bằng nhau (50\%).
+    \item \textbf{Tứ phân vị thứ ba ($Q_3$)}: Là phần tử nằm ở vị trí 75\% của dữ liệu. Đây là trung vị của nửa trên của dữ liệu.
+\end{itemize}
+
+\subsubsection*{* Cách tính tứ phân vị}
+\begin{enumerate}
+    \item Sắp xếp dữ liệu theo thứ tự tăng dần.
+    \item Tìm $Q_2$ (trung vị của toàn bộ dữ liệu).
+    \item Tìm $Q_1$ (trung vị của nửa dưới) và $Q_3$ (trung vị của nửa trên).
+\end{enumerate}
+
+\subsubsection{Ví dụ}
+Xét dãy số:
+\[2, 4, 7, 10, 12, 15, 18, 22, 25, 30\]
+\begin{itemize}
+    \item \textbf{$Q_2$ (Median)}: Trung vị là giá trị nằm giữa dãy số. Ở đây có 10 số, trung vị là:
+    \[ Q_2 = \frac{12 + 15}{2} = 13.5 \]
+    \item \textbf{$Q_1$ (Tứ phân vị thứ nhất)}: Trung vị của nửa dưới:
+    \[ Q_1 = \frac{4 + 7}{2} = 5.5 \]
+    \item \textbf{$Q_3$ (Tứ phân vị thứ ba)}: Trung vị của nửa trên:
+    \[ Q_3 = \frac{22 + 25}{2} = 23.5 \]
+\end{itemize}
+
+\subsubsection*{* Ý nghĩa của tứ phân vị}
+\begin{itemize}
+    \item Giúp xác định vị trí trung tâm và mức độ phân tán của dữ liệu.
+    \item Dùng để tính khoảng biến thiên liên tứ phân vị (IQR) nhằm đo lường độ phân tán.
+\end{itemize}
+
+
+\subsubsection*{b. Khoảng biến thiên liên tứ phân vị (IQR - Interquartile Range)}
+Khoảng biến thiên liên tứ phân vị (IQR) đo độ phân tán của 50\% dữ liệu trung tâm bằng cách tính hiệu giữa tứ phân vị thứ ba và tứ phân vị thứ nhất.
+
+\subsubsection*{Công thức tính IQR}
+\begin{equation}
+    IQR = Q_3 - Q_1
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $Q_1$ là tứ phân vị thứ nhất (25\%).
+    \item $Q_3$ là tứ phân vị thứ ba (75\%).
+\end{itemize}
+
+\subsection*{Ví dụ}
+Từ ví dụ trước với:
+\begin{align*}
+    Q_1 &= 5.5,\\
+    Q_3 &= 23.5
+\end{align*}
+Ta có:
+\begin{equation}
+    IQR = 23.5 - 5.5 = 18
+\end{equation}
+\textbf{$\rightarrow$ Khoảng 50\% dữ liệu trung tâm nằm trong khoảng từ 5.5 đến 23.5.}
+
+\subsubsection*{* Ý nghĩa của IQR}
+\begin{itemize}
+    \item \checkmark\ Không bị ảnh hưởng bởi ngoại lệ, vì chỉ xét khoảng giữa 50\% dữ liệu.
+    \item \checkmark\ Giúp phát hiện giá trị ngoại lệ, dựa vào ngưỡng ngoài:
+\end{itemize}
+
+\subsubsection{Giới hạn dưới và giới hạn trên}
+\begin{align}
+    \text{Giới hạn dưới} &= Q_1 - 1.5 \times IQR \\
+    \text{Giới hạn trên} &= Q_3 + 1.5 \times IQR
+\end{align}
+
+Nếu một điểm dữ liệu nằm ngoài khoảng này, nó có thể là ngoại lệ.
+
+\subsubsection*{* Ví dụ về phát hiện ngoại lệ}
+Với $Q_1 = 5.5$, $Q_3 = 23.5$, và $IQR = 18$:
+\begin{align*}
+    \text{Giới hạn dưới} &= 5.5 - 1.5 \times 18 = -21.5\\
+    \text{Giới hạn trên} &= 23.5 + 1.5 \times 18 = 50.5
+\end{align*}
+\textbf{$\rightarrow$ Nếu một giá trị nhỏ hơn -21.5 hoặc lớn hơn 50.5, nó có thể là ngoại lệ.}
+
+\subsubsection{c. Phương sai }
+\subsubsection{* Định nghĩa }
+Phương sai thể hiện mức độ chênh lệch của các giá trị dữ liệu so với giá trị trung bình. Nếu phương sai lớn, dữ liệu có mức độ phân tán cao; ngược lại, nếu phương sai nhỏ, các giá trị dữ liệu tập trung quanh giá trị trung bình.
+
+Phương sai thường được ký hiệu là:
+\begin{itemize}
+    \item $\sigma^2$ (sigma bình phương) cho tổng thể.
+    \item $s^2$ cho mẫu thống kê.
+\end{itemize}
+
+\subsubsection{* Công thức tính phương sai}
+\subsubsection{** Phương sai của tổng thể}
+Khi có toàn bộ dữ liệu trong tổng thể, phương sai được tính theo công thức:
+\begin{equation}
+    \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $\sigma^2$ là phương sai của tổng thể.
+    \item $N$ là số lượng phần tử trong tổng thể.
+    \item $x_i$ là từng giá trị dữ liệu.
+    \item $\mu$ là giá trị trung bình của tổng thể:
+          \begin{equation}
+              \mu = \frac{1}{N} \sum_{i=1}^{N} x_i
+          \end{equation}
+\end{itemize}
+
+\subsubsection{** Phương sai của mẫu}
+Khi chỉ có một mẫu từ tổng thể, phương sai được ước lượng bằng công thức:
+\begin{equation}
+    s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $s^2$ là phương sai của mẫu.
+    \item $n$ là số lượng phần tử trong mẫu.
+    \item $x_i$ là từng giá trị trong mẫu.
+    \item $\bar{x}$ là trung bình của mẫu:
+          \begin{equation}
+              \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+          \end{equation}
+\end{itemize}
+Lưu ý rằng trong công thức phương sai mẫu, mẫu số là $n-1$ thay vì $n$ để bù trừ độ chệch khi ước lượng phương sai của tổng thể từ mẫu nhỏ.
+
+\subsubsection*{* Ý nghĩa của phương sai}
+\begin{itemize}
+    \item \textbf{Đo lường mức độ phân tán}: Nếu phương sai lớn, dữ liệu phân tán rộng; nếu phương sai nhỏ, dữ liệu tập trung gần giá trị trung bình.
+    \item \textbf{Quan trọng trong thống kê và học máy}: Phương sai được sử dụng rộng rãi trong kiểm định giả thuyết, hồi quy tuyến tính, và các thuật toán học máy để đánh giá mức độ biến động của dữ liệu.
+    \item \textbf{So sánh độ biến động giữa các tập dữ liệu}: Ví dụ, phương sai giá cổ phiếu cao cho thấy biến động lớn, trong khi phương sai nhiệt độ môi trường thấp cho thấy nhiệt độ ổn định.
+\end{itemize}
+
+
+\subsubsection*{d. Độ lệch chuẩn (Standard Deviation)}
+\subsubsection{* Định Nghĩa Độ lệch chuẩn}
+Độ lệch chuẩn là một thước đo phản ánh mức độ phân tán của tập dữ liệu so với giá trị trung bình. Nếu độ lệch chuẩn lớn, dữ liệu có xu hướng phân tán rộng; nếu nhỏ, dữ liệu tập trung quanh giá trị trung bình.
+
+\subsubsection{* Công Thức Tính Độ lệch chuẩn}
+\subsubsection{** Độ lệch chuẩn của Tổng thể}
+Công thức tính độ lệch chuẩn của tổng thể:
+\begin{equation}
+    \sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2}
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $\sigma$ là độ lệch chuẩn của tổng thể.
+    \item $N$ là số phần tử trong tổng thể.
+    \item $x_i$ là từng giá trị dữ liệu.
+    \item $\mu$ là giá trị trung bình của tổng thể:
+    \begin{equation}
+        \mu = \frac{1}{N} \sum_{i=1}^{N} x_i
+    \end{equation}
+\end{itemize}
+
+\subsubsection{** Độ lệch chuẩn của Mẫu}
+Khi chỉ có một mẫu từ tổng thể, công thức tính độ lệch chuẩn mẫu là:
+\begin{equation}
+    s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2}
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $s$ là độ lệch chuẩn của mẫu.
+    \item $n$ là số phần tử trong mẫu.
+    \item $x_i$ là từng giá trị trong mẫu.
+    \item $\bar{x}$ là trung bình của mẫu:
+    \begin{equation}
+        \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+    \end{equation}
+\end{itemize}
+
+Lưu ý rằng trong công thức độ lệch chuẩn mẫu, mẫu số là $n-1$ thay vì $n$ để bù trừ độ chệch khi ước lượng độ lệch chuẩn của tổng thể từ mẫu nhỏ.
+
+\subsubsection*{* Ý Nghĩa của Độ lệch chuẩn}
+\begin{itemize}
+    \item \textbf{Đo lường mức độ phân tán:} Nếu độ lệch chuẩn lớn, dữ liệu phân tán rộng; nếu nhỏ, dữ liệu tập trung gần giá trị trung bình.
+    \item \textbf{Quan trọng trong thống kê và học máy:} Độ lệch chuẩn được sử dụng trong kiểm định giả thuyết, hồi quy tuyến tính, và các thuật toán học máy.
+    \item \textbf{So sánh độ biến động giữa các tập dữ liệu:} Ví dụ, độ lệch chuẩn giá cổ phiếu cao cho thấy biến động lớn, trong khi độ lệch chuẩn nhiệt độ môi trường thấp cho thấy nhiệt độ ổn định.
+\end{itemize}
+
+
+
+
+\subsection{Đo lường hình dạng phân phối dữ liệu}
+Hình dạng phân phối mô tả cách dữ liệu được sắp xếp xung quanh giá trị trung tâm.
+
+\subsubsection{a. Độ lệch (Skewness)}
+\textbf{Định nghĩa}: Độ lệch đo lường mức độ đối xứng của phân phối dữ liệu.
+
+\textbf{Công thức}:
+\begin{equation}
+    \text{Skewness} = \frac{\sum (x_i - \bar{x})^3}{(n-1) s^3}
+\end{equation}
+
+\textbf{Diễn giải}:
+\begin{itemize}
+    \item $\text{Skewness} = 0$: Phân phối đối xứng.
+    \item $\text{Skewness} > 0$: Phân phối lệch phải (đuôi dài bên phải).
+    \item $\text{Skewness} < 0$: Phân phối lệch trái (đuôi dài bên trái).
+\end{itemize}
+
+\textbf{Ví dụ}: Thu nhập của dân số thường có phân phối lệch phải vì có ít người có thu nhập rất cao.
+
+
+\subsubsection{b. Độ nhọn (Kurtosis)}
+
+\textbf{Định nghĩa:} Độ nhọn đo mức độ "tập trung" của dữ liệu quanh trung bình so với phân phối chuẩn.
+
+\textbf{Công thức:}
+\begin{equation}
+Kurtosis = \frac{\sum (x_i - \bar{x})^4}{(n-1) s^4}
+\end{equation}
+
+\textbf{Diễn giải:}
+\begin{itemize}
+    \item $Kurtosis = 3$: Phân phối chuẩn (mesokurtic).
+    \item $Kurtosis > 3$: Phân phối có đỉnh nhọn (leptokurtic), có nhiều ngoại lai.
+    \item $Kurtosis < 3$: Phân phối có đỉnh thấp, dẹt hơn (platykurtic).
+\end{itemize}
+
+\textbf{Ví dụ:} Giá cổ phiếu có thể có kurtosis cao vì có nhiều biến động lớn bất thường.
+
+
+
+
+\subsection{Đo lường mối quan hệ giữa các biến}
+Các thước đo này giúp đánh giá mối quan hệ giữa hai biến số
+\subsubsection{a. Hiệp phương sai (Covariance)}
+\textbf{Định nghĩa:} Hiệp phương sai đo mức độ thay đổi cùng nhau của hai biến số.
+
+\textbf{Công thức:}
+\begin{equation}
+Cov(X,Y) = \frac{\sum (x_i - \bar{x}) (y_i - \bar{y})}{n - 1}
+\end{equation}
+
+\textbf{Diễn giải:}
+\begin{itemize}
+    \item Nếu $Cov(X,Y) > 0$, hai biến có xu hướng tăng hoặc giảm cùng nhau.
+    \item Nếu $Cov(X,Y) < 0$, một biến tăng thì biến kia giảm.
+    \item Nếu $Cov(X,Y) = 0$, hai biến không liên hệ tuyến tính với nhau.
+\end{itemize}
+
+\textbf{Ví dụ:} Hiệp phương sai giữa thu nhập và chi tiêu của một hộ gia đình thường là dương.
+
+
+\subsubsection{b. Hệ số tương quan Pearson (Pearson Correlation)}
+
+\textbf{Định nghĩa:} Đo lường mức độ tuyến tính của mối quan hệ giữa hai biến.
+
+\textbf{Công thức:}
+\begin{equation}
+    r = \frac{\operatorname{Cov}(X,Y)}{s_X s_Y}
+\end{equation}
+
+\textbf{Diễn giải:}
+\begin{itemize}
+    \item $r=1$: Mối quan hệ tuyến tính hoàn hảo dương.
+    \item $r=-1$: Mối quan hệ tuyến tính hoàn hảo âm.
+    \item $r=0$: Không có tương quan tuyến tính.
+\end{itemize}
+
+\textbf{Ví dụ:} Tương quan giữa số giờ học và điểm thi thường dương, nhưng không phải lúc nào cũng là 1.
+
+\subsubsection{c. Hệ số tương quan Spearman (Spearman Correlation)}
+\subsubsection{* Giới thiệu}
+Hệ số tương quan Spearman (\textbf{Spearman's rank correlation coefficient}), ký hiệu là $\rho$ hoặc $r_s$, đo mức độ tương quan giữa hai tập hợp dữ liệu dựa trên \textbf{thứ hạng} thay vì giá trị thực tế. Nó được sử dụng khi dữ liệu không tuân theo phân phối chuẩn hoặc khi mối quan hệ giữa hai biến không hoàn toàn tuyến tính.
+
+\subsubsection{* Công thức tính}
+Hệ số Spearman được tính theo công thức:
+\begin{equation}
+    r_s = 1 - \frac{6 \sum d_i^2}{n(n^2 - 1)}
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $d_i$ là hiệu giữa thứ hạng của từng cặp dữ liệu: $d_i = \text{rank}(x_i) - \text{rank}(y_i)$.
+    \item $n$ là số lượng quan sát (cặp dữ liệu).
+\end{itemize}
+
+\subsubsection{** Bảng tính toán ví dụ}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        X & Y & Rank(X) & Rank(Y) & $d_i = \text{Rank}(X) - \text{Rank}(Y)$ \\
+        \midrule
+        10 & 200 & 1 & 2 & -1 \\
+        20 & 180 & 2 & 1 & 1 \\
+        30 & 220 & 3 & 4 & -1 \\
+        40 & 240 & 4 & 5 & -1 \\
+        50 & 210 & 5 & 3 & 2 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Ví dụ về tính hệ số Spearman}
+    \label{tab:spearman_example}
+\end{table}
+
+Tính tổng bình phương sai lệch:
+\begin{equation}
+    \sum d_i^2 = 1^2 + (-1)^2 + (-1)^2 + (-1)^2 + 2^2 = 1 + 1 + 1 + 1 + 4 = 8
+\end{equation}
+Thay vào công thức tính Spearman:
+\begin{equation}
+    r_s = 1 - \frac{6(8)}{5(25 - 1)} = 1 - \frac{48}{120} = 1 - 0.4 = 0.6
+\end{equation}
+Kết quả $r_s = 0.6$ cho thấy mối quan hệ tương quan dương vừa phải giữa X và Y.
+
+\subsubsection{* So sánh với Pearson}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lcc}
+        \toprule
+        Tiêu chí & Pearson ($r$) & Spearman ($r_s$) \\
+        \midrule
+        Dữ liệu yêu cầu & Phân phối chuẩn & Không yêu cầu \\
+        Tính toán dựa trên & Giá trị thực & Thứ hạng \\
+        Đo lường quan hệ & Tuyến tính & Phi tuyến đơn điệu \\
+        Nhạy cảm với ngoại lệ & Có & Ít hơn \\
+        \bottomrule
+    \end{tabular}
+    \caption{So sánh hệ số Pearson và Spearman}
+    \label{tab:pearson_vs_spearman}
+\end{table}
+
+\subsubsection{* Khi nào nên sử dụng Spearman?}
+\begin{itemize}
+    \item Khi dữ liệu không tuân theo phân phối chuẩn.
+    \item Khi dữ liệu có quan hệ phi tuyến nhưng đơn điệu (tăng hoặc giảm liên tục).
+    \item Khi có nhiều ngoại lệ ảnh hưởng đến phân phối của dữ liệu.
+    \item Khi làm việc với dữ liệu xếp hạng (ordinal data).
+\end{itemize}
+
+Hệ số tương quan Spearman là một công cụ hữu ích để đo lường mối quan hệ giữa hai biến trong trường hợp dữ liệu không tuyến tính hoặc không có phân phối chuẩn. Nó có tính ứng dụng cao trong phân tích dữ liệu xã hội, tài chính, và khoa học tự nhiên.
+
+
+\section{Xử lý dữ liệu trong kinh tế lượng}
+\subsection{Định nghĩa bài toán}
+\subsection{Thu thập dữ liệu}
+\subsection{Xử lý dữ liệu}
+\subsection{Kết luận}

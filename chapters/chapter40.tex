@@ -1,0 +1,68 @@
+\chapter{Giới thiệu phương pháp Monte Carlo}
+\section{Tổng quan về phương pháp Monte Carlo}
+Phương pháp Monte Carlo là một kỹ thuật tính toán dựa trên mô phỏng ngẫu nhiên để tìm nghiệm số của các bài toán phức tạp. Trong kinh tế lượng, Monte Carlo được sử dụng để:
+\begin{itemize}
+    \item Kiểm định tính chính xác của các ước lượng thống kê.
+    \item Phân tích tính chất phân phối của các thống kê kiểm định.
+    \item Đánh giá hiệu suất của các mô hình kinh tế lượng.
+\end{itemize}
+
+Cho một mô hình kinh tế lượng:
+\begin{equation}
+    Y = f(X, \theta) + \varepsilon
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y$ là biến phụ thuộc,
+    \item $X$ là ma trận biến độc lập,
+    \item $\theta$ là vector tham số cần ước lượng,
+    \item $\varepsilon \sim \mathcal{N}(0, \sigma^2)$ là nhiễu ngẫu nhiên.
+\end{itemize}
+Monte Carlo có thể được sử dụng để phân tích các tính chất của ước lượng $\hat{\theta}$.
+
+
+
+\section{Mô phỏng Monte Carlo trong kiểm định giả thuyết kinh tế lượng}
+\subsection{Mô tả quy trình Monte Carlo}
+Để đánh giá một ước lượng $\hat{\theta}$, ta sử dụng quy trình mô phỏng Monte Carlo sau:
+\begin{enumerate}
+    \item Chọn một giá trị thật của tham số $\theta_0$ và xác định mô hình kinh tế lượng.
+    \item Sinh ngẫu nhiên tập dữ liệu giả lập $(X, Y)$ theo mô hình:
+    \begin{equation}
+        Y_i = X_i \theta_0 + \varepsilon_i, \quad \varepsilon_i \sim \mathcal{N}(0, \sigma^2)
+    \end{equation}
+    \item Ước lượng tham số $\hat{\theta}$ bằng phương pháp ước lượng như OLS:
+    \begin{equation}
+        \hat{\theta} = (X'X)^{-1}X'Y
+    \end{equation}
+    \item Lặp lại bước 2 và 3 với nhiều bộ dữ liệu giả lập $(X, Y)$ để có các ước lượng $\hat{\theta}^{(1)}, \hat{\theta}^{(2)}, \dots, \hat{\theta}^{(M)}$.
+    \item Phân tích phân phối của $\hat{\theta}$ để kiểm tra tính chệch, phương sai và hiệu suất của phương pháp ước lượng.
+\end{enumerate}
+
+\subsection{Tính chệch và phương sai của ước lượng}
+Từ các lần lặp Monte Carlo, ta có thể tính kỳ vọng và phương sai của ước lượng:
+\begin{equation}
+    E[\hat{\theta}] \approx \frac{1}{M} \sum_{m=1}^{M} \hat{\theta}^{(m)}
+\end{equation}
+\begin{equation}
+    \operatorname{Var}(\hat{\theta}) \approx \frac{1}{M - 1} \sum_{m=1}^{M} (\hat{\theta}^{(m)} - E[\hat{\theta}])^2
+\end{equation}
+\begin{itemize}
+    \item Nếu $E[\hat{\theta}] = \theta_0$, phương pháp ước lượng là không chệch.
+    \item Nếu phương sai nhỏ, phương pháp có độ chính xác cao.
+\end{itemize}
+
+\subsection{Ứng dụng trong kiểm định giả thuyết}
+Trong kiểm định giả thuyết, Monte Carlo được dùng để kiểm tra phân phối của các thống kê kiểm định.
+Ví dụ, với kiểm định giả thuyết:
+\begin{equation}
+    H_0: \theta = \theta_0
+\end{equation}
+ta có thể sử dụng thống kê $t$:
+\begin{equation}
+    t = \frac{\hat{\theta} - \theta_0}{s_{\hat{\theta}}}
+\end{equation}
+\begin{itemize}
+    \item $s_{\hat{\theta}}$ là độ lệch chuẩn của $\hat{\theta}$.
+    \item Nếu Monte Carlo cho thấy phân phối của $t$ không tuân theo phân phối chuẩn $t$, thì kiểm định truyền thống có thể không đáng tin cậy.
+\end{itemize}

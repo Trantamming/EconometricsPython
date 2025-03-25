@@ -1,82 +1,206 @@
 \babel@toc {vietnamese}{}\relax 
-\contentsline {chapter}{\numberline {1}Giới thiệu kinh tế lượng và vai trò của Python}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Kinh tế lượng là gì?}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Tại sao sử dụng Python trong kinh tế lượng?}{1}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Các thư viện quan trọng}{1}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Cài đặt môi trường làm việc}{1}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Cài đặt Python và Anaconda}{1}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Thiết lập môi trường làm việc bằng Jupyter Notebook}{2}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {1.4.3}Hướng dẫn cài đặt thư viện}{2}{subsection.1.4.3}%
-\contentsline {chapter}{\numberline {2}Xử lý dữ liệu trong kinh tế lượng}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Tổng quan về dữ liệu}{3}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Khái niệm}{3}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Phân loại dữ liệu}{3}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Dữ liệu trong kinh tế lượng hiện đại}{3}{subsection.2.1.3}%
-\contentsline {section}{\numberline {2.2}Các phương pháp đo lường dữ liệu}{3}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Đo lường mức độ tập trung}{3}{subsection.2.2.1}%
-\contentsline {subsubsection}{a. Trung bình (Mean)}{3}{subsection.2.2.1}%
-\contentsline {subsubsection}{Công thức tính trung bình:}{4}{subsection.2.2.1}%
-\contentsline {subsubsection}{Trung bình số học (Arithmetic Mean)}{4}{subsection.2.2.1}%
-\contentsline {subsubsection}{Trung bình có trọng số (Weighted Mean)}{4}{equation.2.2}%
-\contentsline {subsubsection}{Trung bình hình học (Geometric Mean)}{4}{equation.2.4}%
-\contentsline {subsubsection}{Trung bình điều hòa (Harmonic Mean)}{5}{equation.2.6}%
-\contentsline {subsubsection}{b. Trung vị (Median)}{5}{equation.2.8}%
-\contentsline {subsubsection}{Định nghĩa}{5}{equation.2.8}%
-\contentsline {subsubsection}{Cách tính trung vị}{5}{equation.2.8}%
-\contentsline {subsubsection}{* Dữ liệu rời rạc}{5}{equation.2.8}%
-\contentsline {subsubsection}{* Dữ liệu nhóm (có bảng tần số)}{5}{equation.2.8}%
-\contentsline {subsubsection}{* Dữ liệu phân phối liên tục (sử dụng CDF)}{6}{equation.2.8}%
-\contentsline {subsubsection}{Khi nào nên dùng trung vị thay vì trung bình?}{6}{equation.2.8}%
-\contentsline {subsubsection}{c. Mode}{6}{equation.2.8}%
-\contentsline {subsection}{\numberline {2.2.2}Đo lường mức độ phân tán}{9}{subsection.2.2.2}%
-\contentsline {subsubsection}{a. Tứ phân vị (Quartiles)}{9}{subsection.2.2.2}%
-\contentsline {subsubsection}{Ví dụ}{9}{Item.6}%
-\contentsline {subsubsection}{Giới hạn dưới và giới hạn trên}{11}{equation.2.17}%
-\contentsline {subsubsection}{c. Phương sai }{11}{equation.2.19}%
-\contentsline {subsubsection}{* Định nghĩa }{11}{equation.2.19}%
-\contentsline {subsubsection}{* Công thức tính phương sai}{11}{equation.2.19}%
-\contentsline {subsubsection}{** Phương sai của tổng thể}{11}{equation.2.19}%
-\contentsline {subsubsection}{** Phương sai của mẫu}{12}{equation.2.21}%
-\contentsline {subsubsection}{* Định Nghĩa Độ lệch chuẩn}{12}{equation.2.23}%
-\contentsline {subsubsection}{* Công Thức Tính Độ lệch chuẩn}{12}{equation.2.23}%
-\contentsline {subsubsection}{** Độ lệch chuẩn của Tổng thể}{12}{equation.2.23}%
-\contentsline {subsubsection}{** Độ lệch chuẩn của Mẫu}{13}{equation.2.25}%
-\contentsline {subsection}{\numberline {2.2.3}Đo lường hình dạng phân phối dữ liệu}{13}{subsection.2.2.3}%
-\contentsline {subsubsection}{a. Độ lệch (Skewness)}{14}{subsection.2.2.3}%
-\contentsline {subsubsection}{b. Độ nhọn (Kurtosis)}{14}{equation.2.28}%
-\contentsline {subsection}{\numberline {2.2.4}Đo lường mối quan hệ giữa các biến}{14}{subsection.2.2.4}%
-\contentsline {subsubsection}{a. Hiệp phương sai (Covariance)}{14}{subsection.2.2.4}%
-\contentsline {subsubsection}{b. Hệ số tương quan Pearson (Pearson Correlation)}{15}{equation.2.30}%
-\contentsline {subsubsection}{c. Hệ số tương quan Spearman (Spearman Correlation)}{15}{equation.2.31}%
-\contentsline {subsubsection}{* Giới thiệu}{15}{equation.2.31}%
-\contentsline {subsubsection}{* Công thức tính}{15}{equation.2.31}%
-\contentsline {subsubsection}{** Bảng tính toán ví dụ}{16}{equation.2.32}%
-\contentsline {subsubsection}{* So sánh với Pearson}{16}{equation.2.34}%
-\contentsline {subsubsection}{* Khi nào nên sử dụng Spearman?}{16}{table.caption.4}%
-\contentsline {section}{\numberline {2.3}Xử lý dữ liệu trong kinh tế lượng}{17}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Định nghĩa bài toán}{17}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Thu thập dữ liệu}{17}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Xử lý dữ liệu}{17}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Kết luận}{17}{subsection.2.3.4}%
-\contentsline {chapter}{\numberline {3}Luật phân bố xác suất}{19}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Giới thiệu}{19}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Các Định Nghĩa Cơ Bản}{19}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Biến ngẫu nhiên}{19}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Hàm phân bố xác suất (CDF - Cumulative Distribution Function)}{19}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Hàm mật độ xác suất (PDF - Probability Density Function)}{20}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Hàm khối xác suất (PMF - Probability Mass Function)}{20}{subsection.3.2.4}%
-\contentsline {section}{\numberline {3.3}Luật Số Lớn}{21}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Luật số lớn yếu (Weak Law of Large Numbers - WLLN)}{21}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Luật số lớn mạnh (Strong Law of Large Numbers - SLLN)}{21}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Ví dụ Minh Họa}{22}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Các Luật Phân Bố Xác Suất Quan Trọng}{22}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Phân Bố Nhị Thức}{22}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Phân Bố Poisson}{23}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Phân Bố Chuẩn (Gauss)}{25}{subsection.3.4.3}%
-\contentsline {section}{\numberline {3.5}Bậc tự do (Degrees of Freedom - DoF)}{26}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Định nghĩa toán học của bậc tự do}{26}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Ý nghĩa trong ước lượng thống kê}{26}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Bậc tự do trong kiểm định giả thuyết}{27}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Bậc tự do trong hồi quy tuyến tính}{28}{subsection.3.5.4}%
-\contentsline {subsection}{\numberline {3.5.5}Tác động của bậc tự do đến phân phối xác suất}{28}{subsection.3.5.5}%
-\contentsline {section}{\numberline {3.6}Kết Luận}{29}{section.3.6}%
+\contentsline {part}{I.\hspace {1em}Tổng quan về kinh tế lượng và Python}{1}{part.1}%
+\contentsline {chapter}{\numberline {1.}Giới thiệu kinh tế lượng và vai trò của Python}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1.}Kinh tế lượng là gì?}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2.}Tại sao sử dụng Python trong kinh tế lượng?}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3.}Các thư viện quan trọng}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4.}Cài đặt môi trường làm việc}{2}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1.}Cài đặt Python và Anaconda}{2}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2.}Thiết lập môi trường làm việc bằng Jupyter Notebook}{3}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3.}Hướng dẫn cài đặt thư viện}{3}{subsection.1.4.3}%
+\contentsline {chapter}{\numberline {2.}Xử lý dữ liệu trong kinh tế lượng}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1.}Tổng quan về dữ liệu}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1.}Khái niệm}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2.}Phân loại dữ liệu}{4}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3.}Dữ liệu trong kinh tế lượng hiện đại}{4}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2.}Các phương pháp đo lường dữ liệu}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1.}Đo lường mức độ tập trung}{4}{subsection.2.2.1}%
+\contentsline {subsubsection}{a. Trung bình (Mean)}{4}{subsection.2.2.1}%
+\contentsline {subsubsection}{Công thức tính trung bình:}{5}{subsection.2.2.1}%
+\contentsline {subsubsection}{Trung bình số học (Arithmetic Mean)}{5}{subsection.2.2.1}%
+\contentsline {subsubsection}{Trung bình có trọng số (Weighted Mean)}{5}{equation.2.2}%
+\contentsline {subsubsection}{Trung bình hình học (Geometric Mean)}{5}{equation.2.4}%
+\contentsline {subsubsection}{Trung bình điều hòa (Harmonic Mean)}{6}{equation.2.6}%
+\contentsline {subsubsection}{b. Trung vị (Median)}{6}{equation.2.8}%
+\contentsline {subsubsection}{Định nghĩa}{6}{equation.2.8}%
+\contentsline {subsubsection}{Cách tính trung vị}{6}{equation.2.8}%
+\contentsline {subsubsection}{* Dữ liệu rời rạc}{6}{equation.2.8}%
+\contentsline {subsubsection}{* Dữ liệu nhóm (có bảng tần số)}{6}{equation.2.8}%
+\contentsline {subsubsection}{* Dữ liệu phân phối liên tục (sử dụng CDF)}{7}{equation.2.8}%
+\contentsline {subsubsection}{Khi nào nên dùng trung vị thay vì trung bình?}{7}{equation.2.8}%
+\contentsline {subsubsection}{c. Mode}{7}{equation.2.8}%
+\contentsline {subsection}{\numberline {2.2.2.}Đo lường mức độ phân tán}{10}{subsection.2.2.2}%
+\contentsline {subsubsection}{a. Tứ phân vị (Quartiles)}{10}{subsection.2.2.2}%
+\contentsline {subsubsection}{Ví dụ}{10}{Item.6}%
+\contentsline {subsubsection}{Giới hạn dưới và giới hạn trên}{12}{equation.2.17}%
+\contentsline {subsubsection}{c. Phương sai }{12}{equation.2.19}%
+\contentsline {subsubsection}{* Định nghĩa }{12}{equation.2.19}%
+\contentsline {subsubsection}{* Công thức tính phương sai}{12}{equation.2.19}%
+\contentsline {subsubsection}{** Phương sai của tổng thể}{12}{equation.2.19}%
+\contentsline {subsubsection}{** Phương sai của mẫu}{13}{equation.2.21}%
+\contentsline {subsubsection}{* Định Nghĩa Độ lệch chuẩn}{13}{equation.2.23}%
+\contentsline {subsubsection}{* Công Thức Tính Độ lệch chuẩn}{13}{equation.2.23}%
+\contentsline {subsubsection}{** Độ lệch chuẩn của Tổng thể}{13}{equation.2.23}%
+\contentsline {subsubsection}{** Độ lệch chuẩn của Mẫu}{14}{equation.2.25}%
+\contentsline {subsection}{\numberline {2.2.3.}Đo lường hình dạng phân phối dữ liệu}{14}{subsection.2.2.3}%
+\contentsline {subsubsection}{a. Độ lệch (Skewness)}{15}{subsection.2.2.3}%
+\contentsline {subsubsection}{b. Độ nhọn (Kurtosis)}{15}{equation.2.28}%
+\contentsline {subsection}{\numberline {2.2.4.}Đo lường mối quan hệ giữa các biến}{15}{subsection.2.2.4}%
+\contentsline {subsubsection}{a. Hiệp phương sai (Covariance)}{15}{subsection.2.2.4}%
+\contentsline {subsubsection}{b. Hệ số tương quan Pearson (Pearson Correlation)}{16}{equation.2.30}%
+\contentsline {subsubsection}{c. Hệ số tương quan Spearman (Spearman Correlation)}{16}{equation.2.31}%
+\contentsline {subsubsection}{* Giới thiệu}{16}{equation.2.31}%
+\contentsline {subsubsection}{* Công thức tính}{16}{equation.2.31}%
+\contentsline {subsubsection}{** Bảng tính toán ví dụ}{17}{equation.2.32}%
+\contentsline {subsubsection}{* So sánh với Pearson}{17}{equation.2.34}%
+\contentsline {subsubsection}{* Khi nào nên sử dụng Spearman?}{17}{table.caption.4}%
+\contentsline {section}{\numberline {2.3.}Xử lý dữ liệu trong kinh tế lượng}{18}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1.}Định nghĩa bài toán}{18}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2.}Thu thập dữ liệu}{18}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3.}Xử lý dữ liệu}{18}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4.}Kết luận}{18}{subsection.2.3.4}%
+\contentsline {chapter}{\numberline {3.}Luật phân bố xác suất}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1.}Giới thiệu}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2.}Các Định Nghĩa Cơ Bản}{19}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1.}Biến ngẫu nhiên}{19}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2.}Hàm phân bố xác suất (CDF - Cumulative Distribution Function)}{19}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3.}Hàm mật độ xác suất (PDF - Probability Density Function)}{20}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4.}Hàm khối xác suất (PMF - Probability Mass Function)}{20}{subsection.3.2.4}%
+\contentsline {section}{\numberline {3.3.}Luật Số Lớn}{21}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1.}Luật số lớn yếu (Weak Law of Large Numbers - WLLN)}{21}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2.}Luật số lớn mạnh (Strong Law of Large Numbers - SLLN)}{21}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3.}Ví dụ minh họa}{22}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4.}Các luật phân bố xác suất quan trọng}{22}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1.}Phân bố nhị thức}{22}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2.}Phân Bố Poisson}{23}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3.}Phân Bố Chuẩn (Gauss)}{25}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5.}Bậc tự do (Degrees of Freedom - DoF)}{26}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1.}Định nghĩa toán học của bậc tự do}{26}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2.}Ý nghĩa trong ước lượng thống kê}{26}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3.}Bậc tự do trong kiểm định giả thuyết}{27}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4.}Bậc tự do trong hồi quy tuyến tính}{28}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5.}Tác động của bậc tự do đến phân phối xác suất}{28}{subsection.3.5.5}%
+\contentsline {chapter}{\numberline {4.}Các phương pháp phân tích dữ liệu bằng mô hình thống kê}{29}{chapter.4}%
+\contentsline {section}{\numberline {4.1.}Phương pháp ước lượng tham số (Parameter Estimation)}{29}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1.}Phương pháp bình quân nhỏ nhất (OLS - Ordinary Least Squares)}{29}{subsection.4.1.1}%
+\contentsline {subsubsection}{a. Giới thiệu về phương pháp OLS}{29}{subsection.4.1.1}%
+\contentsline {subsubsection}{b. Mô hình hồi quy tuyến tính tổng quát}{29}{subsection.4.1.1}%
+\contentsline {subsubsection}{c. Nguyên lý của phương pháp OLS}{30}{equation.4.1}%
+\contentsline {subsubsection}{d. Các giả định của OLS}{30}{equation.4.3}%
+\contentsline {subsubsection}{e. Ước lượng và kiểm định ý nghĩa của hệ số hồi quy}{30}{Item.18}%
+\contentsline {subsubsection}{f. Đánh giá chất lượng mô hình hồi quy}{31}{equation.4.4}%
+\contentsline {subsubsection}{* Hệ số xác định $R^2$}{31}{equation.4.4}%
+\contentsline {subsubsection}{* Kiểm định F}{31}{equation.4.5}%
+\contentsline {subsection}{\numberline {4.1.2.}Phương pháp hợp lý tối đa (MLE - Maximum Likelihood Estimation)}{31}{subsection.4.1.2}%
+\contentsline {subsubsection}{a. Giới thiệu về phương pháp MLE}{31}{subsection.4.1.2}%
+\contentsline {subsubsection}{b. Hàm hợp lý và hàm log-hợp lý}{32}{equation.4.8}%
+\contentsline {subsubsection}{c. Ví dụ: Ước lượng tham số trong phân phối chuẩn}{32}{equation.4.10}%
+\contentsline {subsubsection}{d. Các tính chất của ước lượng MLE}{33}{equation.4.16}%
+\contentsline {subsubsection}{* Tính nhất quán}{33}{equation.4.16}%
+\contentsline {subsubsection}{* Tính không chệch và hiệu quả}{33}{equation.4.16}%
+\contentsline {subsubsection}{* Phân phối tiệm cận}{33}{equation.4.16}%
+\contentsline {subsubsection}{e. Kiểm định giả thuyết với MLE}{33}{equation.4.18}%
+\contentsline {subsection}{\numberline {4.1.3.}Ước lượng Hậu nghiệm Tối đa (Maximum A Posteriori - MAP)}{34}{subsection.4.1.3}%
+\contentsline {subsubsection}{a. Giới thiệu}{34}{subsection.4.1.3}%
+\contentsline {subsubsection}{b. Công thức toán học}{34}{subsection.4.1.3}%
+\contentsline {subsubsection}{c. So sánh với MLE}{34}{equation.4.22}%
+\contentsline {subsubsection}{* Ví dụ cụ thể}{35}{equation.4.23}%
+\contentsline {subsubsection}{=> MAP với phân phối Gaussian}{35}{equation.4.23}%
+\contentsline {subsubsection}{d. Ứng dụng của MAP}{36}{equation.4.23}%
+\contentsline {subsection}{\numberline {4.1.4.}Ước lượng Bayes đầy đủ (Bayesian Estimation)}{36}{subsection.4.1.4}%
+\contentsline {subsubsection}{a. Giới thiệu}{36}{subsection.4.1.4}%
+\contentsline {subsubsection}{b. Công thức Bayes cho ước lượng tham số}{36}{subsection.4.1.4}%
+\contentsline {subsubsection}{c. Ước lượng Bayes đầy đủ và kỳ vọng hậu nghiệm}{37}{equation.4.25}%
+\contentsline {subsubsection}{* Ví dụ: Ước lượng Bayes với tham số của phân phối Gaussian}{37}{equation.4.27}%
+\contentsline {subsubsection}{d. So sánh với các phương pháp khác}{38}{equation.4.33}%
+\contentsline {subsubsection}{e. Ứng dụng thực tế}{38}{table.caption.5}%
+\contentsline {section}{\numberline {4.2.}Kiểm định giả thuyết thống kê (Hypothesis Testing)}{38}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1.}Giá trị p (p-value)}{38}{subsection.4.2.1}%
+\contentsline {subsubsection}{a. Định nghĩa p-value}{38}{subsection.4.2.1}%
+\contentsline {subsubsection}{b. Cách tính p-value}{39}{equation.4.34}%
+\contentsline {subsubsection}{c. Ý nghĩa của p-value}{39}{equation.4.36}%
+\contentsline {subsubsection}{* Ví dụ minh họa}{39}{equation.4.36}%
+\contentsline {subsection}{\numberline {4.2.2.}Kiểm định giả thuyết về hệ số hồi quy/Kiểm định t (t-test)}{39}{subsection.4.2.2}%
+\contentsline {subsubsection}{a. Giới thiệu về kiểm định t trong hồi quy}{39}{subsection.4.2.2}%
+\contentsline {subsubsection}{b. Xây dựng giả thuyết kiểm định}{40}{equation.4.38}%
+\contentsline {subsubsection}{c. Thống kê kiểm định t}{40}{equation.4.40}%
+\contentsline {subsubsection}{d. Phân phối của thống kê t}{40}{equation.4.43}%
+\contentsline {subsubsection}{e. Quy tắc ra quyết định}{41}{equation.4.43}%
+\contentsline {subsubsection}{* Ví dụ minh họa}{41}{equation.4.43}%
+\contentsline {subsection}{\numberline {4.2.3.}Kiểm định F}{41}{subsection.4.2.3}%
+\contentsline {subsubsection}{a. Giới thiệu về kiểm định F}{41}{subsection.4.2.3}%
+\contentsline {subsubsection}{b. Công thức kiểm định F}{42}{subsection.4.2.3}%
+\contentsline {subsubsection}{c. Phân phối của thống kê F}{42}{equation.4.51}%
+\contentsline {subsubsection}{d. Ý nghĩa của kiểm định F}{43}{equation.4.51}%
+\contentsline {subsection}{\numberline {4.2.4.}Kiểm định hiện tượng phương sai sai số thay đổi (heteroskedasticity)}{43}{subsection.4.2.4}%
+\contentsline {subsubsection}{a. Giới thiệu}{43}{subsection.4.2.4}%
+\contentsline {subsubsection}{b. Mô hình toán học}{43}{subsection.4.2.4}%
+\contentsline {subsubsection}{c. Các kiểm định phương sai sai số thay đổi}{43}{equation.4.54}%
+\contentsline {subsubsection}{* Kiểm định Breusch-Pagan}{43}{equation.4.54}%
+\contentsline {subsubsection}{* Kiểm định White}{44}{equation.4.56}%
+\contentsline {subsection}{\numberline {4.2.5.}Kiểm định tự tương quan}{44}{subsection.4.2.5}%
+\contentsline {subsubsection}{a. Giới thiệu}{44}{subsection.4.2.5}%
+\contentsline {subsubsection}{b. Mô hình hồi quy tuyến tính}{44}{subsection.4.2.5}%
+\contentsline {subsubsection}{c. Kiểm định Durbin-Watson}{44}{equation.4.60}%
+\contentsline {subsubsection}{d. Kiểm định Breusch-Godfrey}{45}{equation.4.61}%
+\contentsline {part}{II.\hspace {1em}Mô hình hồi quy tuyến tính}{46}{part.2}%
+\contentsline {chapter}{\numberline {5.}Mô hình hồi quy tuyến tinh đơn giản}{47}{chapter.5}%
+\contentsline {chapter}{\numberline {6.}Mô hình hồi quy tuyến tính với biến tiên lượng phân nhóm}{48}{chapter.6}%
+\contentsline {chapter}{\numberline {7.}Mô hình hồi quy đa biến}{49}{chapter.7}%
+\contentsline {chapter}{\numberline {8.}Mô hình hồi quy đa thức}{50}{chapter.8}%
+\contentsline {chapter}{\numberline {9.}Mô hình hồi quy vững chắc (Robust Regression)}{51}{chapter.9}%
+\contentsline {chapter}{\numberline {10.}Mô hình hồi quy đa biến đa thức (Multivariate Polynomial Regression)}{52}{chapter.10}%
+\contentsline {part}{III.\hspace {1em}Mô hình hồi quy phi tuyến}{53}{part.3}%
+\contentsline {chapter}{\numberline {11.}Mô hình hồi quy hàm mũ (Exponential Regression)}{54}{chapter.11}%
+\contentsline {chapter}{\numberline {12.}Mô hình hồi quy logarit (Logarithmic Regression)}{55}{chapter.12}%
+\contentsline {chapter}{\numberline {13.}Mô hình hồi quy hàm Cobb-Douglas (Cobb-Douglas Regression)}{56}{chapter.13}%
+\contentsline {chapter}{\numberline {14.}Mô hình hồi quy Logistic (Logistic Regression)}{57}{chapter.14}%
+\contentsline {chapter}{\numberline {15.}Mô hình hồi quy Probit (Probit Regression)}{58}{chapter.15}%
+\contentsline {chapter}{\numberline {16.}Mô hình hồi quy Tobit (Tobit Regression)}{59}{chapter.16}%
+\contentsline {chapter}{\numberline {17.}Mô hình hồi quy Poisson (Poisson Regression)}{60}{chapter.17}%
+\contentsline {part}{IV.\hspace {1em}Hồi quy sống còn (Survival Regression)}{61}{part.4}%
+\contentsline {chapter}{\numberline {18.}Mô hình hồi quy Cox (Cox Proportional Hazards Model)}{62}{chapter.18}%
+\contentsline {chapter}{\numberline {19.}Mô hình Weibull (Weibull Regression Model)}{63}{chapter.19}%
+\contentsline {chapter}{\numberline {20.}Mô hình hồi quy Log-logistic (Log-logistic Regression Model)}{64}{chapter.20}%
+\contentsline {chapter}{\numberline {21.}Mô hình hồi quy Gamma (Gamma Regression Model)}{65}{chapter.21}%
+\contentsline {chapter}{\numberline {22.}Mô hình hồi quy hỗn hợp (Frailty Models)}{66}{chapter.22}%
+\contentsline {part}{V.\hspace {1em}Ước lượng Bayesian}{67}{part.5}%
+\contentsline {chapter}{\numberline {23.}Giới thiệu về Ước lượng Bayesian}{68}{chapter.23}%
+\contentsline {chapter}{\numberline {24.}Phân phối trước, phân phối hậu nghiệm và quy trình tính toán}{69}{chapter.24}%
+\contentsline {chapter}{\numberline {25.}Ước lượng Bayesian trong mô hình hồi quy}{70}{chapter.25}%
+\contentsline {chapter}{\numberline {26.}MCMC và ứng dụng trong mô hình kinh tế lượng}{71}{chapter.26}%
+\contentsline {chapter}{\numberline {27.}Các ứng dụng thực tế và ví dụ minh họa}{72}{chapter.27}%
+\contentsline {part}{VI.\hspace {1em}Phân tích dữ liệu chuỗi thời gian (Time Series Data)}{73}{part.6}%
+\contentsline {chapter}{\numberline {28.}Tổng quan về chuỗi thời gian}{74}{chapter.28}%
+\contentsline {section}{\numberline {28.1.}Các khái niệm cơ bản: tính dừng, tự tương quan, mùa vụ}{74}{section.28.1}%
+\contentsline {section}{\numberline {28.2.}Biểu diễn và phân tích dữ liệu chuỗi thời gian}{74}{section.28.2}%
+\contentsline {chapter}{\numberline {29.}Mô hình ARIMA và các biến thể}{75}{chapter.29}%
+\contentsline {section}{\numberline {29.1.}Mô hình AR, MA, ARMA, ARIMA}{75}{section.29.1}%
+\contentsline {section}{\numberline {29.2.}Phương pháp chọn bậc mô hình tối ưu (AIC, BIC)}{75}{section.29.2}%
+\contentsline {section}{\numberline {29.3.}Dự báo bằng ARIMA}{75}{section.29.3}%
+\contentsline {chapter}{\numberline {30.}Mô hình ARCH/GARCH}{76}{chapter.30}%
+\contentsline {section}{\numberline {30.1.}Biến động tài chính và mô hình ARCH/GARCH}{76}{section.30.1}%
+\contentsline {section}{\numberline {30.2.}Ước lượng tham số và dự báo biến động}{76}{section.30.2}%
+\contentsline {part}{VII.\hspace {1em}Kinh tế lượng không gian (Spatial Econometrics)}{77}{part.7}%
+\contentsline {chapter}{\numberline {31.}Tổng quan về kinh tế lượng không gian}{78}{chapter.31}%
+\contentsline {section}{\numberline {31.1.}Dữ liệu không gian và ứng dụng}{78}{section.31.1}%
+\contentsline {section}{\numberline {31.2.}Kiểm định tính không gian của dữ liệu}{78}{section.31.2}%
+\contentsline {chapter}{\numberline {32.}Mô hình hồi quy không gian}{79}{chapter.32}%
+\contentsline {section}{\numberline {32.1.}Spatial Autoregressive Model (SAR)}{79}{section.32.1}%
+\contentsline {section}{\numberline {32.2.}Spatial Error Model (SEM)}{79}{section.32.2}%
+\contentsline {section}{\numberline {32.3.}Spatial Durbin Model (SDM)}{79}{section.32.3}%
+\contentsline {part}{VIII.\hspace {1em}Machine Learning trong kinh tế lượng}{80}{part.8}%
+\contentsline {chapter}{\numberline {33.}Ứng dụng Machine Learning trong kinh tế lượng}{81}{chapter.33}%
+\contentsline {section}{\numberline {33.1.}So sánh Machine Learning với phương pháp kinh tế lượng truyền thống}{81}{section.33.1}%
+\contentsline {section}{\numberline {33.2.}2. Kỹ thuật feature engineering và xử lý dữ liệu lớn}{81}{section.33.2}%
+\contentsline {chapter}{\numberline {34.}Hồi quy bằng thuật toán Machine Learning}{82}{chapter.34}%
+\contentsline {section}{\numberline {34.1.}Random Forest Regression}{82}{section.34.1}%
+\contentsline {section}{\numberline {34.2.}Gradient Boosting Machines (GBM, XGBoost, LightGBM)}{82}{section.34.2}%
+\contentsline {section}{\numberline {34.3.}Neural Networks trong dự báo kinh tế}{82}{section.34.3}%
+\contentsline {part}{IX.\hspace {1em}Phương pháp Monte Carlo và mô phỏng}{83}{part.9}%
+\contentsline {chapter}{\numberline {35.}Giới thiệu phương pháp Monte Carlo}{84}{chapter.35}%
+\contentsline {section}{\numberline {35.1.}Nguyên tắc cơ bản của mô phỏng Monte Carlo}{84}{section.35.1}%
+\contentsline {section}{\numberline {35.2.}Ứng dụng Monte Carlo trong kiểm định giả thuyết kinh tế lượng}{84}{section.35.2}%
+\contentsline {chapter}{\numberline {36.}Ứng dụng mô phỏng trong kinh tế}{85}{chapter.36}%
+\contentsline {section}{\numberline {36.1.}Mô phỏng dữ liệu kinh tế lượng}{85}{section.36.1}%
+\contentsline {section}{\numberline {36.2.}Mô hình dự báo tài chính bằng mô phỏng}{85}{section.36.2}%

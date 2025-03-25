@@ -1,0 +1,704 @@
+\chapter{Các phương pháp phân tích dữ liệu bằng mô hình thống kê}
+Trong kinh tế lượng, hai phương pháp tiếp cận quan trọng cần đề cập là ước tính tham số và kiểm định giả thuyết, vì chúng là nền tảng để xây dựng và đánh giá các mô hình kinh tế lượng.
+\section{Phương pháp ước lượng tham số (Parameter Estimation)}
+\subsection{Phương pháp bình quân nhỏ nhất (OLS - Ordinary Least Squares)}
+\subsubsection{a. Giới thiệu về phương pháp OLS}
+Phương pháp bình phương nhỏ nhất (OLS) là một trong những phương pháp phổ biến nhất trong kinh tế lượng và thống kê để ước lượng các tham số của mô hình hồi quy tuyến tính. Mục tiêu của OLS là tìm ra các hệ số hồi quy sao cho tổng bình phương phần dư (sai số giữa giá trị thực tế và giá trị dự báo) là nhỏ nhất.
+
+\subsubsection{b. Mô hình hồi quy tuyến tính tổng quát}
+Giả sử mô hình hồi quy tuyến tính có dạng:
+\begin{equation}
+Y_i = \beta_0 + \beta_1 X_{i1} + \beta_2 X_{i2} + \dots + \beta_k X_{ik} + \varepsilon_i
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y_i$ là biến phụ thuộc (biến kết quả)
+    \item $X_{ij}$ là các biến độc lập (biến giải thích)
+    \item $\beta_0, \beta_1, \dots, \beta_k$ là các hệ số hồi quy cần ước lượng
+    \item $\varepsilon_i$ là sai số ngẫu nhiên
+\end{itemize}
+
+\subsubsection{c. Nguyên lý của phương pháp OLS}
+Phương pháp OLS tìm kiếm các hệ số $\beta$ bằng cách cực tiểu hóa tổng bình phương sai số:
+\begin{equation}
+S(\beta) = \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2 = \sum_{i=1}^{n} (Y_i - (\beta_0 + \beta_1 X_{i1} + ... + \beta_k X_{ik}))^2
+\end{equation}
+Để tìm các hệ số $\beta$, ta giải hệ phương trình bình thường (normal equations):
+\begin{equation}
+(X'X)\hat{\beta} = X'Y
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $X$ là ma trận dữ liệu của các biến độc lập ($n \times k$)
+    \item $Y$ là vector của biến phụ thuộc ($n \times 1$)
+    \item $\hat{\beta}$ là vector hệ số hồi quy ($k \times 1$)
+    \item $X'$ là ma trận chuyển vị của $X$
+\end{itemize}
+
+\subsubsection{d. Các giả định của OLS}
+Phương pháp OLS hoạt động tốt khi các giả định sau được thỏa mãn:
+\begin{enumerate}
+    \item \textbf{Tuyến tính}: Mô hình phải có dạng tuyến tính đối với các tham số.
+    \item \textbf{Kỳ vọng bằng 0 của sai số}: $E(\varepsilon_i) = 0$.
+    \item \textbf{Độc lập của sai số}: Sai số không có tương quan với nhau (không có tự tương quan).
+    \item \textbf{Phương sai đồng nhất}: Sai số có phương sai không đổi (không có hiện tượng phương sai thay đổi).
+    \item \textbf{Không có đa cộng tuyến hoàn hảo}: Các biến độc lập không được có tương quan tuyến tính hoàn hảo.
+    \item \textbf{Phân phối chuẩn của sai số (nếu mẫu nhỏ)}: Giả định này giúp kiểm định giả thuyết và tính khoảng tin cậy chính xác hơn.
+\end{enumerate}
+
+\subsubsection{e. Ước lượng và kiểm định ý nghĩa của hệ số hồi quy}
+Sau khi ước lượng các hệ số hồi quy bằng OLS, ta kiểm định ý nghĩa thống kê của chúng bằng kiểm định t (t-test). Giả thuyết kiểm định cho mỗi hệ số $\beta_j$:
+\begin{itemize}
+    \item $H_0: \beta_j = 0$ (hệ số không có ý nghĩa thống kê)
+    \item $H_1: \beta_j \neq 0$ (hệ số có ý nghĩa thống kê)
+\end{itemize}
+
+Chỉ số thống kê t được tính bằng:
+\begin{equation}
+t_j = \frac{\hat{\beta}_j}{SE(\hat{\beta}_j)}
+\end{equation}
+trong đó $SE(\hat{\beta}_j)$ là sai số chuẩn của hệ số ước lượng $\beta_j$. Nếu giá trị p-value của kiểm định nhỏ hơn mức ý nghĩa $\alpha$ (thường là 0.05), ta bác bỏ $H_0$ và kết luận rằng hệ số có ý nghĩa thống kê.
+
+\subsubsection{f. Đánh giá chất lượng mô hình hồi quy}
+\subsubsection{* Hệ số xác định $R^2$}
+Hệ số xác định $R^2$ đo lường mức độ giải thích của mô hình đối với biến phụ thuộc:
+\begin{equation}
+R^2 = 1 - \frac{SSR}{SST} = \frac{SSE}{SST}
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $SSR$ là tổng bình phương sai số (Sum of Squared Residuals)
+    \item $SST$ là tổng bình phương tổng thể (Total Sum of Squares)
+    \item $SSE$ là tổng bình phương hồi quy (Sum of Squares for Regression)
+\end{itemize}
+
+\subsubsection{* Kiểm định F}
+Kiểm định F đánh giá xem mô hình hồi quy có phù hợp hay không:
+\begin{equation}
+F = \frac{(SST - SSR)/k}{SSR/(n-k-1)}
+\end{equation}
+Nếu p-value của kiểm định F nhỏ hơn mức ý nghĩa $\alpha$, mô hình được xem là có ý nghĩa tổng thể.
+
+
+Phương pháp bình phương nhỏ nhất (OLS) là một kỹ thuật phổ biến để ước lượng mô hình hồi quy tuyến tính. Khi các giả định của OLS được thỏa mãn, phương pháp này giúp chúng ta có được các ước lượng không chệch, hiệu quả và tối ưu. Tuy nhiên, nếu các giả định bị vi phạm, có thể cần đến các phương pháp hồi quy khác như hồi quy tổng quát (GLS), hồi quy Ridge hoặc hồi quy LASSO để khắc phục.
+
+
+\subsection{Phương pháp hợp lý tối đa (MLE - Maximum Likelihood Estimation)}
+\subsubsection{a. Giới thiệu về phương pháp MLE}
+
+Phương pháp hợp lý tối đa (MLE - Maximum Likelihood Estimation) là một phương pháp thống kê dùng để ước lượng các tham số của một mô hình xác suất dựa trên dữ liệu quan sát. Nguyên tắc cơ bản của MLE là tìm giá trị của các tham số sao cho xác suất quan sát được tập dữ liệu hiện có là lớn nhất.
+
+Nếu mô hình xác suất có phân phối xác suất $f(Y \mid \theta)$, trong đó:
+
+\begin{itemize}
+    \item $Y = (Y_1, Y_2, ..., Y_n)$ là tập dữ liệu quan sát
+    \item $\theta$ là vector tham số cần ước lượng
+\end{itemize}
+
+Thì MLE sẽ tìm giá trị $\hat{\theta}$ sao cho hàm hợp lý $L(\theta)$ đạt cực đại:
+
+\begin{equation}
+\hat{\theta} = \arg\max_{\theta} L(\theta)
+\end{equation}
+
+trong đó $L(\theta)$ là hàm hợp lý của dữ liệu:
+
+\begin{equation}
+L(\theta) = P(Y \mid \theta) = \prod_{i=1}^{n} f(Y_i \mid \theta)
+\end{equation}
+
+\subsubsection{b. Hàm hợp lý và hàm log-hợp lý}
+
+Do tích của nhiều xác suất nhỏ có thể dẫn đến vấn đề số học, ta thường sử dụng hàm log-hợp lý:
+
+\begin{equation}
+\ell(\theta) = \log L(\theta) = \sum_{i=1}^{n} \log f(Y_i \mid \theta)
+\end{equation}
+
+Bài toán tối đa hóa hàm hợp lý chuyển thành:
+
+\begin{equation}
+\hat{\theta} = \arg\max_{\theta} \ell(\theta)
+\end{equation}
+
+\subsubsection{c. Ví dụ: Ước lượng tham số trong phân phối chuẩn}
+
+Giả sử dữ liệu $Y_1, Y_2, ..., Y_n$ được lấy mẫu từ phân phối chuẩn:
+
+\begin{equation}
+Y_i \sim \mathcal{N}(\mu, \sigma^2)
+\end{equation}
+
+Hàm mật độ xác suất của phân phối chuẩn là:
+
+\begin{equation}
+f(Y_i \mid \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left(-\frac{(Y_i - \mu)^2}{2\sigma^2} \right)
+\end{equation}
+
+Hàm log-hợp lý:
+
+\begin{equation}
+\ell(\mu, \sigma^2) = \sum_{i=1}^{n} \left[ -\frac{1}{2} \log (2\pi\sigma^2) - \frac{(Y_i - \mu)^2}{2\sigma^2} \right]
+\end{equation}
+
+Tính đạo hàm theo $\mu$:
+
+\begin{equation}
+\frac{\partial \ell}{\partial \mu} = \sum_{i=1}^{n} \frac{Y_i - \mu}{\sigma^2}
+\end{equation}
+
+Giải phương trình $\frac{\partial \ell}{\partial \mu} = 0$ ta được:
+
+\begin{equation}
+\hat{\mu} = \frac{1}{n} \sum_{i=1}^{n} Y_i
+\end{equation}
+
+Tương tự, ước lượng của $\sigma^2$ là:
+
+\begin{equation}
+\hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{\mu})^2
+\end{equation}
+
+\subsubsection{d. Các tính chất của ước lượng MLE}
+
+\subsubsection{* Tính nhất quán}
+Ước lượng MLE là nhất quán, nghĩa là khi $n \to \infty$, giá trị ước lượng $\hat{\theta}$ hội tụ về giá trị thật $\theta_0$.
+
+\subsubsection{* Tính không chệch và hiệu quả}
+Dưới các điều kiện thông thường, MLE gần như không chệch và đạt được giới hạn Cramér-Rao.
+
+\subsubsection{* Phân phối tiệm cận}
+Khi kích thước mẫu đủ lớn:
+
+\begin{equation}
+\hat{\theta} \sim \mathcal{N}(\theta_0, I(\theta_0)^{-1})
+\end{equation}
+
+trong đó $I(\theta)$ là ma trận thông tin Fisher:
+
+\begin{equation}
+I(\theta) = -E \left[ \frac{\partial^2 \ell(\theta)}{\partial \theta^2} \right]
+\end{equation}
+
+\subsubsection{e. Kiểm định giả thuyết với MLE}
+Sau khi ước lượng $\theta$, ta có thể kiểm định giả thuyết bằng kiểm định Wald:
+
+\begin{equation}
+z = \frac{\hat{\theta} - \theta_0}{\text{SE}(\hat{\theta})} \sim \mathcal{N}(0,1)
+\end{equation}
+
+trong đó $\text{SE}(\hat{\theta})$ là sai số chuẩn của $\hat{\theta}$.
+
+Phương pháp hợp lý tối đa (MLE) là một phương pháp mạnh mẽ để ước lượng tham số của mô hình xác suất. MLE có nhiều tính chất quan trọng như tính nhất quán, hiệu quả và không chệch tiệm cận. Trong thực tế, MLE được áp dụng rộng rãi trong thống kê, kinh tế lượng, machine learning và nhiều lĩnh vực khác.
+
+\subsection{Ước lượng Hậu nghiệm Tối đa (Maximum A Posteriori - MAP)}
+\subsubsection{a. Giới thiệu}
+Ước lượng MAP là một phương pháp thống kê trong khuôn khổ Bayesian, được sử dụng để tìm tham số $\theta$ sao cho xác suất hậu nghiệm $P(\theta | D)$ đạt giá trị lớn nhất.
+
+MAP là một mở rộng của Ước lượng hợp lý tối đa (MLE) bằng cách đưa thêm phân bố tiên nghiệm $P(\theta)$ vào mô hình, giúp kiểm soát nhiễu và tránh hiện tượng quá khớp.
+
+\subsubsection{b. Công thức toán học}
+Theo định lý Bayes, xác suất hậu nghiệm được tính bởi:
+\begin{equation}
+P(\theta | D) = \frac{P(D | \theta) P(\theta)}{P(D)}
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $P(\theta | D)$ là xác suất hậu nghiệm của tham số $\theta$.
+    \item $P(D | \theta)$ là hàm hợp lý (likelihood) – xác suất của dữ liệu quan sát được khi biết tham số $\theta$.
+    \item $P(\theta)$ là phân bố tiên nghiệm (prior) của $\theta$.
+    \item $P(D)$ là hàm bằng chứng:
+    \begin{equation}
+    P(D) = \int P(D | \theta) P(\theta) d\theta
+    \end{equation}
+\end{itemize}
+Vì $P(D)$ là một hằng số, nên việc tối đa hóa $P(\theta | D)$ tương đương với tối đa hóa tử số:
+\begin{equation}
+\hat{\theta}_{MAP} = \arg\max_{\theta} P(D | \theta) P(\theta)
+\end{equation}
+
+\subsubsection{c. So sánh với MLE}
+Nếu phân bố tiên nghiệm $P(\theta)$ là đều (Uniform prior), ta có:
+\begin{equation}
+\hat{\theta}_{MAP} = \arg\max_{\theta} P(D | \theta)
+\end{equation}
+Điều này chính là ước lượng MLE.
+
+\subsubsection{* Ví dụ cụ thể}
+\subsubsection{=> MAP với phân phối Gaussian}
+
+Giả sử ta muốn ước lượng tham số $\theta$ từ dữ liệu $D = \{x_1, x_2, ..., x_n\}$ theo mô hình:
+\begin{equation*}
+    x_i \sim \mathcal{N}(\theta, \sigma^2)
+\end{equation*}
+
+với tiên nghiệm:
+\begin{equation*}
+    \theta \sim \mathcal{N}(\mu_0, \sigma_0^2)
+\end{equation*}
+
+\subsubsection*{** Hàm hợp lý:}
+\begin{equation*}
+    P(D|\theta) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left( -\frac{(x_i - \theta)^2}{2\sigma^2} \right)
+\end{equation*}
+
+\subsubsection*{** Phân bố tiên nghiệm:}
+\begin{equation*}
+    P(\theta) = \frac{1}{\sqrt{2\pi\sigma_0^2}} \exp \left( -\frac{(\theta - \mu_0)^2}{2\sigma_0^2} \right)
+\end{equation*}
+
+\subsubsection*{** Xác suất hậu nghiệm:}
+\begin{equation*}
+    P(\theta | D) \propto P(D|\theta) P(\theta)
+\end{equation*}
+
+Lấy log của biểu thức trên và tối đa hóa theo $\theta$:
+\begin{equation*}
+    \log P(\theta | D) = -\sum_{i=1}^{n} \frac{(x_i - \theta)^2}{2\sigma^2} - \frac{(\theta - \mu_0)^2}{2\sigma_0^2} + C
+\end{equation*}
+
+Lấy đạo hàm theo $\theta$ và đặt bằng 0:
+\begin{equation*}
+    \sum_{i=1}^{n} \frac{x_i - \theta}{\sigma^2} + \frac{\mu_0 - \theta}{\sigma_0^2} = 0
+\end{equation*}
+
+Giải ra được:
+\begin{equation*}
+    \hat{\theta}_{MAP} = \frac{\frac{\mu_0}{\sigma_0^2} + \frac{1}{\sigma^2} \sum_{i=1}^{n} x_i}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}
+\end{equation*}
+
+Ta thấy rằng MAP là trung bình có trọng số giữa trung bình dữ liệu và giá trị tiên nghiệm.
+
+\begin{itemize}
+    \item Nếu $\sigma_0^2 \to \infty$ (tức là không có prior), ta thu được MLE:
+    \begin{equation*}
+        \hat{\theta}_{MLE} = \frac{1}{n} \sum_{i=1}^{n} x_i
+    \end{equation*}
+    \item Nếu $n \to \infty$, dữ liệu thống trị prior, nên MAP gần với MLE.
+\end{itemize}
+
+
+\subsubsection{d. Ứng dụng của MAP}
+\begin{itemize}
+    \item Học máy (Machine Learning): MAP được dùng trong Hồi quy Bayesian và Phân loại Naïve Bayes.
+    \item Xử lý ngôn ngữ tự nhiên (NLP): Smoothing trong mô hình Markov ẩn (HMM).
+    \item Xử lý ảnh (Computer Vision): Khử nhiễu hình ảnh bằng cách thêm prior vào mô hình.
+    \item Kinh tế lượng: MAP giúp giảm hiện tượng đa cộng tuyến trong hồi quy tuyến tính.
+\end{itemize}
+
+Ước lượng MAP giúp ước lượng tham số bằng cách kết hợp thông tin từ dữ liệu và thông tin tiên nghiệm. Nó mở rộng MLE bằng cách thêm prior vào mô hình, giúp ổn định ước lượng trong trường hợp dữ liệu ít hoặc có nhiễu cao.
+
+
+\subsection{Ước lượng Bayes đầy đủ (Bayesian Estimation)}
+\subsubsection{a. Giới thiệu}
+Ước lượng Bayes đầy đủ là một phương pháp suy luận thống kê dựa trên lý thuyết Bayes, kết hợp thông tin từ dữ liệu quan sát với thông tin tiên nghiệm (prior) để đưa ra ước lượng xác suất của tham số cần ước lượng.
+
+\subsubsection{b. Công thức Bayes cho ước lượng tham số}
+Giả sử ta có dữ liệu quan sát $D = \{ x_1, x_2, \dots, x_n \}$ và cần ước lượng tham số $\theta$. Theo định lý Bayes, xác suất hậu nghiệm của tham số $\theta$ được tính bằng:
+
+\begin{equation}
+P(\theta | D) = \frac{P(D | \theta) P(\theta)}{P(D)}
+\end{equation}
+
+trong đó:
+\begin{itemize}
+    \item $P(D | \theta)$ là \textbf{hàm hợp lý (likelihood)}, thể hiện xác suất quan sát dữ liệu $D$ khi biết tham số $\theta$.
+    \item $P(\theta)$ là \textbf{phân bố tiên nghiệm (prior distribution)} của $\theta$.
+    \item $P(D)$ là \textbf{bằng chứng (evidence)}, được tính bằng:
+    \begin{equation}
+    P(D) = \int P(D | \theta) P(\theta) d\theta
+    \end{equation}
+\end{itemize}
+
+\subsubsection{c. Ước lượng Bayes đầy đủ và kỳ vọng hậu nghiệm}
+Ước lượng Bayes đầy đủ của tham số $\theta$ thường được lấy là \textbf{kỳ vọng hậu nghiệm (posterior mean)}:
+
+\begin{equation}
+\hat{\theta}_{\text{Bayes}} = E[\theta | D] = \int \theta P(\theta | D) d\theta
+\end{equation}
+
+Ngoài ra, có thể chọn \textbf{trung vị hậu nghiệm} hoặc \textbf{chế độ hậu nghiệm (MAP - Maximum A Posteriori)}:
+
+\begin{equation}
+\hat{\theta}_{\text{MAP}} = \arg\max_{\theta} P(\theta | D)
+\end{equation}
+Nếu prior là phân bố không thông tin (non-informative prior) hoặc khi kích thước mẫu lớn, thì ước lượng Bayes thường hội tụ về Ước lượng hợp lý tối đa (MLE).
+
+
+\subsubsection{* Ví dụ: Ước lượng Bayes với tham số của phân phối Gaussian}
+Giả sử dữ liệu $D = \{x_1, x_2, ..., x_n\}$ được lấy mẫu từ phân phối Gaussian:
+
+\begin{equation}
+    x_i \sim \mathcal{N}(\theta, \sigma^2)
+\end{equation}
+
+với phương sai $\sigma^2$ đã biết. Ta muốn ước lượng tham số $\theta$ theo phương pháp Bayes.
+
+\subsubsection*{* Bước 1: Chọn phân bố tiên nghiệm}
+Giả sử ta chọn prior của $\theta$ là một phân phối Gaussian:
+
+\begin{equation}
+    \theta \sim \mathcal{N}(\mu_0, \sigma_0^2)
+\end{equation}
+
+\subsubsection*{* Bước 2: Tính xác suất hậu nghiệm}
+Hàm hợp lý của dữ liệu là:
+
+\begin{equation}
+    P(D | \theta) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left( \frac{-(x_i - \theta)^2}{2\sigma^2} \right)
+\end{equation}
+
+\noindent Theo định lý Bayes, xác suất hậu nghiệm của $\theta$ là:
+
+\begin{equation}
+    P(\theta | D) \propto P(D | \theta) P(\theta)
+\end{equation}
+
+\noindent Lấy log của xác suất hậu nghiệm và tối đa hóa theo $\theta$, ta thu được:
+
+\begin{equation}
+    \hat{\theta}_{\text{Bayes}} = \frac{\frac{\mu_0}{\sigma_0^2} + \frac{1}{\sigma^2} \sum_{i=1}^{n} x_i}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}
+\end{equation}
+
+\subsubsection*{** Nhận xét:}
+\begin{itemize}
+    \item $\hat{\theta}_{\text{Bayes}}$ là trung bình có trọng số giữa giá trị tiên nghiệm $\mu_0$ và trung bình mẫu của dữ liệu.
+    \item Nếu prior không có thông tin (tức là $\sigma_0^2 \to \infty$), thì $\hat{\theta}_{\text{Bayes}}$ hội tụ về MLE:
+\end{itemize}
+
+\begin{equation}
+    \hat{\theta}_{\text{MLE}} = \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+\end{equation}
+
+\subsubsection{d. So sánh với các phương pháp khác}
+\begin{table}[h]
+    \centering
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|l|c|c|c|}
+            \hline
+            \textbf{Tiêu chí} & \textbf{MAP} & \textbf{Bayes (Kỳ vọng hậu nghiệm)} & \textbf{MLE} \\
+            \hline
+            Cách chọn & $\arg\max P(\theta|D)$ & $E[\theta|D]$ & $\arg\max P(D|\theta)$ \\
+            \hline
+            Ảnh hưởng của prior & Có & Có (mạnh hơn MAP) & Không \\
+            \hline
+            Khi $n \to \infty$ & Hội tụ về MLE & Hội tụ về MLE & Chính là MLE \\
+            \hline
+        \end{tabular}
+    }
+    \caption{So sánh các phương pháp ước lượng}
+    \label{tab:comparison}
+\end{table}
+
+\subsubsection{e. Ứng dụng thực tế}
+\begin{itemize}
+    \item \textbf{Học máy}: Naive Bayes, Gaussian Process Regression.
+    \item \textbf{Khoa học dữ liệu}: Phân tích dữ liệu với bất định cao.
+    \item \textbf{Y học}: Ước lượng hiệu quả của thuốc.
+    \item \textbf{Kinh tế lượng}: Dự báo tài chính bằng mô hình Bayes.
+\end{itemize}
+
+Ước lượng Bayes đầy đủ kết hợp thông tin tiên nghiệm và dữ liệu quan sát để đưa ra kết quả chính xác hơn so với phương pháp MLE. Tuy nhiên, tính toán có thể phức tạp và cần sử dụng phương pháp xấp xỉ như MCMC.
+
+
+
+
+
+\section{Kiểm định giả thuyết thống kê (Hypothesis Testing)}
+\subsection{Giá trị p (p-value)}
+\subsubsection{a. Định nghĩa p-value}
+Trong thống kê, p-value (giá trị p) là xác suất thu được kết quả ít nhất cực đoan như quan sát thực tế, giả sử rằng giả thuyết không (null hypothesis, $H_0$) là đúng.
+
+\textbf{Công thức toán học: }p-value được định nghĩa là:
+\begin{equation}
+    p = P(T \geq T_{obs} | H_0)
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $T$ là thống kê kiểm định,
+    \item $T_{obs}$ là giá trị thống kê kiểm định tính toán từ mẫu dữ liệu,
+    \item $H_0$ là giả thuyết không.
+\end{itemize}
+
+\subsubsection{b. Cách tính p-value}
+Cách tính p-value phụ thuộc vào loại kiểm định:
+\begin{itemize}
+    \item \textbf{Kiểm định một phía:} p-value được tính bằng xác suất của phần đuôi của phân phối thống kê kiểm định vượt quá giá trị quan sát được.
+    \begin{equation}
+        p = P(T \geq T_{obs} | H_0) \quad \text{hoặc} \quad p = P(T \leq T_{obs} | H_0)
+    \end{equation}
+    \item \textbf{Kiểm định hai phía:} p-value là tổng của hai xác suất đuôi của phân phối thống kê kiểm định:
+    \begin{equation}
+        p = 2 \min\{P(T \geq T_{obs} | H_0), P(T \leq T_{obs} | H_0)\}
+    \end{equation}
+\end{itemize}
+
+\subsubsection{c. Ý nghĩa của p-value}
+\begin{itemize}
+    \item Nếu p-value nhỏ hơn mức ý nghĩa $\alpha$ (thường là 0.05 hoặc 0.01), bác bỏ giả thuyết không $H_0$.
+    \item Nếu p-value lớn hơn mức ý nghĩa $\alpha$, không đủ bằng chứng để bác bỏ $H_0$.
+\end{itemize}
+
+\subsubsection{* Ví dụ minh họa}
+Giả sử chúng ta thực hiện kiểm định giả thuyết với thống kê kiểm định tuân theo phân phối chuẩn chuẩn hóa $N(0,1)$ và giá trị quan sát được là $T_{obs} = 2.1$. Khi đó:
+\begin{equation}
+    p = P(Z \geq 2.1) = 1 - \Phi(2.1) \approx 0.0179
+\end{equation}
+Nếu chọn mức ý nghĩa $\alpha = 0.05$, ta bác bỏ giả thuyết không.
+
+
+\subsection{Kiểm định giả thuyết về hệ số hồi quy/Kiểm định t (t-test)}
+\subsubsection{a. Giới thiệu về kiểm định t trong hồi quy}
+
+Trong mô hình hồi quy tuyến tính tổng quát:
+\begin{equation}
+    Y_i = \beta_0 + \beta_1 X_{i1} + \beta_2 X_{i2} + \dots + \beta_k X_{ik} + \varepsilon_i
+\end{equation}
+
+Phương pháp bình phương nhỏ nhất (OLS) được sử dụng để ước lượng các hệ số hồi quy $\hat{\beta}_j$. Sau khi ước lượng, ta cần kiểm định xem các hệ số này có ý nghĩa thống kê hay không. Kiểm định t (t-test) được sử dụng để đánh giá xem một hệ số hồi quy $\beta_j$ có khác 0 một cách có ý nghĩa thống kê hay không.
+
+\subsubsection{b. Xây dựng giả thuyết kiểm định}
+
+Với mỗi hệ số hồi quy $\beta_j$, ta có giả thuyết kiểm định:
+
+\begin{itemize}
+    \item \textbf{Giả thuyết không ($H_0$)}: Hệ số hồi quy không có ý nghĩa thống kê.
+    \begin{equation}
+        H_0: \beta_j = 0
+    \end{equation}
+    \item \textbf{Giả thuyết đối ($H_1$)}: Hệ số hồi quy có ý nghĩa thống kê.
+    \begin{equation}
+        H_1: \beta_j \neq 0
+    \end{equation}
+\end{itemize}
+
+\subsubsection{c. Thống kê kiểm định t}
+
+Thống kê kiểm định t được tính theo công thức:
+\begin{equation}
+    t_j = \frac{\hat{\beta}_j - 0}{SE(\hat{\beta}_j)}
+\end{equation}
+
+trong đó:
+
+\begin{itemize}
+    \item $\hat{\beta}_j$ là ước lượng của hệ số hồi quy $\beta_j$.
+    \item $SE(\hat{\beta}_j)$ là sai số chuẩn của $\hat{\beta}_j$, được tính bởi:
+    \begin{equation}
+        SE(\hat{\beta}_j) = \sqrt{\sigma^2 (X'X)^{-1}_{jj}}
+    \end{equation}
+    với $\sigma^2$ là phương sai của sai số ngẫu nhiên, ước lượng bởi:
+    \begin{equation}
+        \hat{\sigma}^2 = \frac{\sum_{i=1}^{n} \hat{\varepsilon}_i^2}{n - k - 1}
+    \end{equation}
+    trong đó:
+    \begin{itemize}
+        \item $\hat{\varepsilon}_i = Y_i - \hat{Y}_i$ là phần dư của mô hình hồi quy.
+        \item $n$ là số quan sát.
+        \item $k$ là số biến độc lập trong mô hình (không tính hằng số).
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{d. Phân phối của thống kê t}
+
+Thống kê kiểm định t tuân theo phân phối \textbf{Student t} với \textbf{$n - k - 1$ bậc tự do}.
+
+\begin{itemize}
+    \item Nếu kích thước mẫu $n$ lớn ($n > 30$), phân phối t gần với phân phối chuẩn $N(0,1)$.
+    \item Nếu $n$ nhỏ, ta phải sử dụng bảng phân phối t để tìm giá trị tới hạn.
+\end{itemize}
+
+\subsubsection{e. Quy tắc ra quyết định}
+
+Với mức ý nghĩa $\alpha$ (thường chọn $\alpha = 0.05$ hoặc $\alpha = 0.01$), ta xác định giá trị tới hạn $t_{\alpha/2, n-k-1}$ từ bảng phân phối t.
+
+\begin{itemize}
+    \item Nếu $|t_j| > t_{\alpha/2, n-k-1}$, ta bác bỏ giả thuyết $H_0$ $\Rightarrow$ Kết luận rằng $\beta_j$ có ý nghĩa thống kê.
+    \item Nếu $|t_j| \leq t_{\alpha/2, n-k-1}$, ta không đủ cơ sở bác bỏ $H_0$ $\Rightarrow$ Kết luận rằng không có đủ bằng chứng để khẳng định $\beta_j$ khác 0.
+\end{itemize}
+
+Ngoài ra, ta cũng có thể sử dụng \textbf{p-value}:
+
+\begin{itemize}
+    \item Nếu \textbf{p-value < $\alpha$} $\Rightarrow$ bác bỏ $H_0$, hệ số có ý nghĩa.
+    \item Nếu \textbf{p-value $\geq \alpha$} $\Rightarrow$ không bác bỏ $H_0$, hệ số không có ý nghĩa.
+\end{itemize}
+
+\subsubsection{* Ví dụ minh họa}
+
+Giả sử ta có mô hình hồi quy:
+\begin{equation}
+    Y = \beta_0 + \beta_1 X_1 + \varepsilon
+\end{equation}
+
+với ước lượng OLS thu được:
+\begin{equation}
+    \hat{\beta}_1 = 2.5, \quad SE(\hat{\beta}_1) = 0.8
+\end{equation}
+
+Số quan sát $n = 25$, số biến $k = 1$, nên bậc tự do $df = 25 - 1 - 1 = 23$.
+
+Thống kê t:
+\begin{equation}
+    t_1 = \frac{2.5}{0.8} = 3.125
+\end{equation}
+
+Tra bảng phân phối t với $df = 23$ và $\alpha = 0.05$, ta có giá trị tới hạn:
+\begin{equation}
+    t_{0.025,23} \approx 2.069
+\end{equation}
+
+Vì $3.125 > 2.069$, ta bác bỏ $H_0$ $\Rightarrow$ Kết luận rằng $\beta_1$ có ý nghĩa thống kê ở mức $\alpha = 0.05$.
+
+Kiểm định t giúp đánh giá mức độ ảnh hưởng của từng biến độc lập trong mô hình hồi quy tuyến tính. Khi sử dụng kiểm định này, cần đảm bảo các giả định của OLS được thỏa mãn để đảm bảo tính chính xác của kết quả kiểm định.
+
+\subsection{Kiểm định F}
+\subsubsection{a. Giới thiệu về kiểm định F}
+Kiểm định F được sử dụng để kiểm tra xem toàn bộ mô hình hồi quy có ý nghĩa thống kê hay không. Cụ thể, nó kiểm định giả thuyết rằng tất cả các hệ số hồi quy (ngoại trừ hằng số) đều bằng 0.
+\newline
+Giả thuyết kiểm định:
+\begin{itemize}
+    \item \( H_0 \): Các hệ số hồi quy không có ý nghĩa thống kê, tức là \( \beta_1 = \beta_2 = \dots = \beta_k = 0 \).
+    \item \( H_1 \): Ít nhất một trong các hệ số hồi quy khác 0.
+\end{itemize}
+
+Nếu bác bỏ \( H_0 \), ta kết luận rằng ít nhất một biến độc lập có ảnh hưởng đáng kể đến biến phụ thuộc.
+
+\subsubsection{b. Công thức kiểm định F}
+Thống kê F được tính bằng công thức:
+\begin{equation}
+F = \frac{\left( \frac{SST - SSR}{k} \right)}{\left( \frac{SSR}{n - k - 1} \right)}
+\end{equation}
+
+Trong đó:
+\begin{itemize}
+    \item \( SST \) (Total Sum of Squares) là tổng bình phương tổng thể:
+    \begin{equation}
+    SST = \sum_{i=1}^{n} (Y_i - \bar{Y})^2
+    \end{equation}
+    \item \( SSR \) (Sum of Squared Residuals) là tổng bình phương phần dư:
+    \begin{equation}
+    SSR = \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2
+    \end{equation}
+    \item \( SSE \) (Sum of Squares for Regression) là tổng bình phương hồi quy:
+    \begin{equation}
+    SSE = SST - SSR = \sum_{i=1}^{n} (\hat{Y}_i - \bar{Y})^2
+    \end{equation}
+\end{itemize}
+
+Mô hình có:
+\begin{itemize}
+    \item \( n \) là số quan sát.
+    \item \( k \) là số biến độc lập.
+    \item \( n - k - 1 \) là bậc tự do của phần dư.
+\end{itemize}
+
+\subsubsection{c. Phân phối của thống kê F}
+Thống kê \( F \) tuân theo phân phối F với hai bậc tự do:
+\begin{itemize}
+    \item \( df_1 = k \) (số biến độc lập).
+    \item \( df_2 = n - k - 1 \) (số quan sát trừ đi số tham số cần ước lượng).
+\end{itemize}
+
+Nếu giá trị \textbf{p-value} nhỏ hơn mức ý nghĩa \( \alpha \) (thường là 0.05), ta bác bỏ giả thuyết \( H_0 \) và kết luận rằng mô hình có ý nghĩa thống kê.
+
+\subsubsection{d. Ý nghĩa của kiểm định F}
+\begin{itemize}
+    \item Nếu giá trị F lớn và p-value nhỏ, mô hình có ý nghĩa tổng thể.
+    \item Nếu giá trị F nhỏ và p-value lớn, mô hình không có ý nghĩa, tức là biến độc lập không giải thích được biến phụ thuộc.
+\end{itemize}
+
+
+
+
+\subsection{Kiểm định hiện tượng phương sai sai số thay đổi (heteroskedasticity)}
+\subsubsection{a. Giới thiệu}
+Trong mô hình hồi quy tuyến tính, giả định phương sai của sai số là không đổi (homoskedasticity). Tuy nhiên, nếu phương sai của sai số thay đổi theo biến độc lập, ta có hiện tượng phương sai sai số thay đổi (heteroskedasticity). Điều này có thể dẫn đến ước lượng không hiệu quả trong hồi quy OLS và ảnh hưởng đến kiểm định giả thuyết.
+
+\subsubsection{b. Mô hình toán học}
+Xét mô hình hồi quy tuyến tính:
+\begin{equation}
+    y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_k x_{ik} + \varepsilon_i,
+\end{equation}
+với giả định:
+\begin{equation}
+    E(\varepsilon_i) = 0, \quad \text{Var}(\varepsilon_i) = \sigma_i^2.
+\end{equation}
+Nếu $\sigma_i^2$ không phải là hằng số mà phụ thuộc vào một hoặc nhiều biến độc lập, ta có heteroskedasticity:
+\begin{equation}
+    \sigma_i^2 = g(x_{i1}, x_{i2}, \dots, x_{ik}).
+\end{equation}
+
+\subsubsection{c. Các kiểm định phương sai sai số thay đổi}
+\subsubsection{* Kiểm định Breusch-Pagan}
+Kiểm định Breusch-Pagan kiểm tra xem phương sai của sai số có phụ thuộc vào biến độc lập không. Cụ thể, hồi quy phần dư bình phương $\hat{\varepsilon}_i^2$ theo biến độc lập:
+\begin{equation}
+    \hat{\varepsilon}_i^2 = \gamma_0 + \gamma_1 x_{i1} + \gamma_2 x_{i2} + \dots + \gamma_k x_{ik} + u_i.
+\end{equation}
+Sau đó, sử dụng thống kê kiểm định LM:
+\begin{equation}
+    LM = n R^2 \sim \chi^2_k,
+\end{equation}
+trong đó $R^2$ là hệ số xác định từ hồi quy trên. Nếu giá trị $LM$ lớn hơn giá trị tới hạn, bác bỏ giả thuyết không có heteroskedasticity.
+
+\subsubsection{* Kiểm định White}
+Kiểm định White kiểm tra heteroskedasticity mà không giả định cấu trúc cụ thể của phương sai sai số. Hồi quy phần dư bình phương theo tất cả các biến độc lập và bình phương của chúng:
+\begin{equation}
+    \hat{\varepsilon}_i^2 = \gamma_0 + \sum_{j=1}^{k} \gamma_j x_{ij} + \sum_{j=1}^{k} \sum_{m=j}^{k} \gamma_{jm} x_{ij} x_{im} + u_i.
+\end{equation}
+Thống kê kiểm định tương tự như Breusch-Pagan:
+\begin{equation}
+    LM = n R^2 \sim \chi^2_m,
+\end{equation}
+trong đó $m$ là số bậc tự do.
+
+Hiện tượng phương sai sai số thay đổi làm ảnh hưởng đến tính hiệu quả của ước lượng OLS. Các kiểm định như Breusch-Pagan và White giúp phát hiện heteroskedasticity để điều chỉnh mô hình phù hợp.
+
+
+\subsection{Kiểm định tự tương quan}
+\subsubsection{a. Giới thiệu}
+Tự tương quan (autocorrelation) là hiện tượng khi các sai số trong mô hình hồi quy không độc lập với nhau. Điều này thường xuất hiện trong dữ liệu chuỗi thời gian hoặc khi có yếu tố hệ thống chưa được mô hình hóa đúng.
+
+\subsubsection{b. Mô hình hồi quy tuyến tính}
+Giả sử mô hình hồi quy tuyến tính:
+\begin{equation}
+    y_t = \beta_0 + \beta_1 x_{1t} + \beta_2 x_{2t} + \dots + \beta_k x_{kt} + \varepsilon_t,
+\end{equation}
+trong đó $\varepsilon_t$ là sai số ngẫu nhiên.
+
+Nếu tồn tại tự tương quan, ta có:
+\begin{equation}
+    Cov(\varepsilon_t, \varepsilon_{t-1}) \neq 0.
+\end{equation}
+
+\subsubsection{c. Kiểm định Durbin-Watson}
+Một trong những kiểm định phổ biến để phát hiện tự tương quan bậc nhất là kiểm định Durbin-Watson (DW). Thống kê kiểm định DW được tính như sau:
+\begin{equation}
+    DW = \frac{\sum_{t=2}^{n} (\varepsilon_t - \varepsilon_{t-1})^2}{\sum_{t=1}^{n} \varepsilon_t^2}.
+\end{equation}
+
+Giá trị $DW$ nằm trong khoảng $[0,4]$ và được diễn giải như sau:
+- $DW \approx 2$: Không có tự tương quan bậc nhất.
+- $DW < 2$: Có tự tương quan dương.
+- $DW > 2$: Có tự tương quan âm.
+
+\subsubsection{d. Kiểm định Breusch-Godfrey}
+Kiểm định Durbin-Watson chỉ áp dụng cho tự tương quan bậc nhất. Để kiểm định tự tương quan bậc cao hơn, ta sử dụng kiểm định Breusch-Godfrey:
+
+1. Hồi quy mô hình gốc và lấy phần dư $\hat{\varepsilon}_t$.
+2. Hồi quy phần dư theo chính nó:
+   \begin{equation}
+       \hat{\varepsilon}_t = \rho_1 \hat{\varepsilon}_{t-1} + \rho_2 \hat{\varepsilon}_{t-2} + \dots + \rho_p \hat{\varepsilon}_{t-p} + \eta_t.
+   \end{equation}
+3. Kiểm định giả thuyết:
+   \begin{itemize}
+       \item $H_0$: Không có tự tương quan bậc $p$.
+       \item $H_1$: Có tự tương quan bậc $p$.
+   \end{itemize}
+   Kiểm định dựa trên thống kê $LM$:
+   \begin{equation}
+       LM = n R^2 \sim \chi^2_p,
+   \end{equation}
+   trong đó $R^2$ là hệ số xác định từ hồi quy phụ.
+
+Nếu phát hiện tự tương quan, có thể sử dụng các phương pháp như mô hình sai số tổng quát (GLS) hoặc ước lượng Newey-West để hiệu chỉnh phương sai của ước lượng.

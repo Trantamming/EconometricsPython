@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.23)  23 MAR 2025 19:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.23)  25 MAR 2025 13:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -645,7 +645,11 @@ Package: anyfontsize 2007/11/22 anyfontsize.sty by pts
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count315
 \l__pdf_internal_box=\box64
-) (EconometricsPython.aux (frontmatter/titlepage.aux) (frontmatter/preface.aux) (chapters/chapter1.aux) (chapters/chapter2.aux) (chapters/chapter3.aux) (appendices/appendixA.aux))
+) (EconometricsPython.aux (frontmatter/titlepage.aux) (frontmatter/preface.aux)
+
+LaTeX Warning: Label `tab:comparison' multiply defined.
+
+(appendices/appendixA.aux))
 \openout1 = `EconometricsPython.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
@@ -748,34 +752,34 @@ Package caption Info: End \AtBeginDocument code.
 
 No file frontmatter/preface.tex.
 (EconometricsPython.toc
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 3.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 4.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4.
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4.
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 3.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 4.
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 3.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 4.
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <13> on input line 3.
+(Font)              <13> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9.09996> on input line 3.
+(Font)              <9.09996> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6.5> on input line 3.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
+(Font)              <6.5> on input line 4.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -789,52 +793,61 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 
-])
+]
+
+[2]
+
+[3]
+
+[4])
 \tf@toc=\write4
 \openout4 = `EconometricsPython.toc'.
 
 
 
-[2]
-\openout2 = `chapters/chapter1.aux'.
+[5]
 
- (chapters/chapter1.tex
-Ch\uhorn \ohorn ng 1.
+[6
 
-Package natbib Warning: Citation `wooldridge2019' on page 1 undefined on input line 4.
+]
 
 
-Package natbib Warning: Citation `angrist2009' on page 1 undefined on input line 5.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.21 ...g quan v·ªÅ kinh t·∫ø l∆∞·ª£ng v√† Python}
+                                                   [1
+
+] (chapters/chapter1.tex
+Ch\uhorn \ohorn ng 1..
+
+Package natbib Warning: Citation `wooldridge2019' on page 2 undefined on input line 4.
+
+
+Package natbib Warning: Citation `angrist2009' on page 2 undefined on input line 5.
 
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 13.
 (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
-Package natbib Warning: Citation `van2020python' on page 1 undefined on input line 21.
+Package natbib Warning: Citation `van2020python' on page 2 undefined on input line 21.
 
 
-Package natbib Warning: Citation `continuum2018anaconda' on page 1 undefined on input line 22.
+Package natbib Warning: Citation `continuum2018anaconda' on page 2 undefined on input line 22.
 
 LaTeX Font Info:    Trying to load font information for T5+lmtt on input line 26.
 (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/lm\t5lmtt.fd
 File: t5lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.29     \begin{verbatim}
-                          [1
-
-
+[2
 
 {C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
 
-Package natbib Warning: Citation `kluyver2016jupyter' on page 2 undefined on input line 36.
+Package natbib Warning: Citation `kluyver2016jupyter' on page 3 undefined on input line 36.
 
-)
+) (chapters/chapter2.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -843,17 +856,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[2]
-\openout2 = `chapters/chapter2.aux'.
-
- (chapters/chapter2.tex
-Ch\uhorn \ohorn ng 2.
+[3]
+Ch\uhorn \ohorn ng 2..
 
 
-[3
-
-
-
+[4
 
 ]
 
@@ -864,16 +871,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[4{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.24503pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.24503pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
-
-[5]
+[5{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -892,13 +890,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
 [7]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 261.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 261.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 261.
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -908,6 +899,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
 [8]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 261.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 261.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 261.
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -963,6 +961,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [14]
 
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[15]
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
@@ -974,16 +981,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[15])
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.24503pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.24503pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
-
-[16]
+[16]) (chapters/chapter3.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -993,9 +991,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
 [17]
-\openout2 = `chapters/chapter3.aux'.
-
- (chapters/chapter3.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1004,16 +999,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[18
+[18]
+Ch\uhorn \ohorn ng 3..
 
 
-
+[19
 
 ]
-Ch\uhorn \ohorn ng 3.
-
-
-[19]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1085,7 +1077,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[27]
+[27]) (chapters/chapter4.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1094,7 +1086,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[28])
+[28]
+Ch\uhorn \ohorn ng 4..
+
+
+[29
+
+]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1103,7 +1101,376 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[29]
+[30]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[31]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[32]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[33]
+Overfull \hbox (1.30716pt too wide) in paragraph at lines 194--194
+|[]\T5/lmr/bx/n/13 ◊Óc l˜Òng H™u nghiªm TËi ^^_a (Max-i-mum A Pos-te-ri-ori - MAP)| 
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[34]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[35]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[36]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[37]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[38]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[39]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[40]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[41]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[42]
+Overfull \hbox (2.6743pt too wide) in paragraph at lines 614--614
+|[]\T5/lmr/bx/n/13 Ki∫m ^^_‡nh hiªn t˜Òng ph˜Ïng sai sai sË thay ^^_Íi (het-eroskedas-
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[43]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[44])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[45]
+
+[46
+
+] (chapters/chapter5.tex
+Ch\uhorn \ohorn ng 5..
+) (chapters/chapter6.tex
+
+[47
+
+]
+Ch\uhorn \ohorn ng 6..
+) (chapters/chapter7.tex
+
+[48
+
+]
+Ch\uhorn \ohorn ng 7..
+) (chapters/chapter8.tex
+
+[49
+
+]
+Ch\uhorn \ohorn ng 8..
+) (chapters/chapter9.tex
+
+[50
+
+]
+Ch\uhorn \ohorn ng 9..
+) (chapters/chapter10.tex
+
+[51
+
+]
+Ch\uhorn \ohorn ng 10..
+)
+
+[52
+
+]
+
+[53
+
+] (chapters/chapter11.tex
+Ch\uhorn \ohorn ng 11..
+) (chapters/chapter12.tex
+
+[54
+
+]
+Ch\uhorn \ohorn ng 12..
+) (chapters/chapter13.tex
+
+[55
+
+]
+Ch\uhorn \ohorn ng 13..
+) (chapters/chapter14.tex
+
+[56
+
+]
+Ch\uhorn \ohorn ng 14..
+) (chapters/chapter15.tex
+
+[57
+
+]
+Ch\uhorn \ohorn ng 15..
+) (chapters/chapter16.tex
+
+[58
+
+]
+Ch\uhorn \ohorn ng 16..
+) (chapters/chapter17.tex
+
+[59
+
+]
+Ch\uhorn \ohorn ng 17..
+)
+
+[60
+
+]
+
+[61
+
+] (chapters/chapter18.tex
+Ch\uhorn \ohorn ng 18..
+) (chapters/chapter19.tex
+
+[62
+
+]
+Ch\uhorn \ohorn ng 19..
+) (chapters/chapter20.tex
+
+[63
+
+]
+Ch\uhorn \ohorn ng 20..
+) (chapters/chapter21.tex
+
+[64
+
+]
+Ch\uhorn \ohorn ng 21..
+) (chapters/chapter22.tex
+
+[65
+
+]
+Ch\uhorn \ohorn ng 22..
+)
+
+[66
+
+]
+
+[67
+
+] (chapters/chapter23.tex
+Ch\uhorn \ohorn ng 23..
+) (chapters/chapter24.tex
+
+[68
+
+]
+Ch\uhorn \ohorn ng 24..
+) (chapters/chapter25.tex
+
+[69
+
+]
+Ch\uhorn \ohorn ng 25..
+) (chapters/chapter26.tex
+
+[70
+
+]
+Ch\uhorn \ohorn ng 26..
+) (chapters/chapter27.tex
+
+[71
+
+]
+Ch\uhorn \ohorn ng 27..
+)
+
+[72
+
+]
+
+[73
+
+] (chapters/chapter28.tex
+Ch\uhorn \ohorn ng 28..
+) (chapters/chapter29.tex
+
+[74
+
+]
+Ch\uhorn \ohorn ng 29..
+) (chapters/chapter30.tex
+
+[75
+
+]
+Ch\uhorn \ohorn ng 30..
+)
+
+[76
+
+]
+
+[77
+
+] (chapters/chapter31.tex
+Ch\uhorn \ohorn ng 31..
+) (chapters/chapter32.tex
+
+[78
+
+]
+Ch\uhorn \ohorn ng 32..
+)
+
+[79
+
+]
+
+[80
+
+] (chapters/chapter33.tex
+Ch\uhorn \ohorn ng 33..
+) (chapters/chapter34.tex
+
+[81
+
+]
+Ch\uhorn \ohorn ng 34..
+)
+
+[82
+
+]
+
+[83
+
+] (chapters/chapter35.tex
+Ch\uhorn \ohorn ng 35..
+) (chapters/chapter36.tex
+
+[84
+
+]
+Ch\uhorn \ohorn ng 36..
+)
+
+[85
+
+]
 \openout2 = `appendices/appendixA.aux'.
 
  (appendices/appendixA.tex)
@@ -1111,26 +1478,30 @@ No file EconometricsPython.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-(EconometricsPython.aux (frontmatter/titlepage.aux) (frontmatter/preface.aux) (chapters/chapter1.aux) (chapters/chapter2.aux) (chapters/chapter3.aux) (appendices/appendixA.aux))
+(EconometricsPython.aux (frontmatter/titlepage.aux) (frontmatter/preface.aux) (appendices/appendixA.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `EconometricsPython.out' has not changed.
-(rerunfilecheck)             Checksum: 8119DBB47E1D5ED8F7FDD34C664BA121;10581.
+(rerunfilecheck)             Checksum: 0994AA0A9E93480026330A7A5259F0E2;32637.
  ) 
 Here is how much of TeX's memory you used:
- 16040 strings out of 473523
- 258672 string characters out of 5714630
- 672140 words of memory out of 5000000
- 38797 multiletter control sequences out of 15000+600000
+ 16531 strings out of 473523
+ 267265 string characters out of 5714630
+ 672067 words of memory out of 5000000
+ 38998 multiletter control sequences out of 15000+600000
  674000 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,13n,82p,577b,599s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,13n,87p,609b,630s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on EconometricsPython.pdf (32 pages, 423137 bytes).
+Output written on EconometricsPython.pdf (92 pages, 591691 bytes).
 PDF statistics:
- 570 PDF objects out of 1000 (max. 8388607)
- 149 named destinations out of 1000 (max. 500000)
- 361 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1309 PDF objects out of 1440 (max. 8388607)
+ 352 named destinations out of 1000 (max. 500000)
+ 945 words of extra memory for PDF output out of 10000 (max. 10000000)
 

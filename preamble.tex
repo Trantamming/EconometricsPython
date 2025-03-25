@@ -40,11 +40,21 @@
 
 \usepackage[font=large,labelfont=bf]{caption} % Tăng size chữ của dòng chú thích 
 
-
+\usepackage{amsmath, amssymb, amsthm, graphicx, booktabs}
+\usepackage{caption}
+\captionsetup{justification=centering}
 
 % Tùy chỉnh số chương/mục
-\renewcommand{\thechapter}{\arabic{chapter}}
-\renewcommand{\thesection}{\thechapter.\arabic{section}}
+% \renewcommand{\thechapter}{\arabic{chapter}}
+% \renewcommand{\thesection}{\thechapter.\arabic{section}}
+
+% Thêm dấu chấm vào số chương, mục, tiểu mục
+\renewcommand{\thepart}{\Roman{part}.}
+\renewcommand{\thechapter}{\arabic{chapter}.}
+\renewcommand{\thesection}{\thechapter\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+
 
 % Định dạng header/footer
 \pagestyle{fancy}

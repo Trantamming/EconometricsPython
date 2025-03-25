@@ -89,7 +89,7 @@ Tức là trung bình mẫu sẽ hội tụ chắc chắn (almost surely) về k
     \item $\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} X_i = \mu$: Trung bình mẫu hội tụ về kỳ vọng $\mu$ khi $n \to \infty$.
 \end{itemize}
 
-\subsection{Ví dụ Minh Họa}
+\subsection{Ví dụ minh họa}
 Giả sử ta có một đồng xu không cân bằng với xác suất xuất hiện mặt ngửa là $p = 0.6$. Gieo đồng xu $n$ lần và tính xác suất trung bình của số lần xuất hiện mặt ngửa:
 \begin{equation}
 \bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i
@@ -110,9 +110,9 @@ Luật số lớn cho thấy khi thu thập nhiều dữ liệu hơn, giá trị
 
 
 
-\section{Các Luật Phân Bố Xác Suất Quan Trọng}
-\subsection{Phân Bố Nhị Thức}
-\textbf{Định Nghĩa}
+\section{Các luật phân bố xác suất quan trọng}
+\subsection{Phân bố nhị thức}
+\textbf{Định nghĩa}
 Phân bố nhị thức mô tả số lần xảy ra của một sự kiện trong một số lần thử độc lập, khi mỗi lần thử chỉ có hai kết quả: \textbf{thành công} hoặc \textbf{thất bại}.
 
 Một biến ngẫu nhiên $X$ tuân theo phân bố nhị thức với các tham số $n$ (số lần thử) và $p$ (xác suất thành công trong mỗi lần thử) nếu xác suất để $X$ nhận giá trị $k$ (tức là có đúng $k$ lần thành công trong $n$ phép thử) được tính theo công thức:
@@ -127,7 +127,7 @@ Trong đó:
     \item $(1-p)^{n-k}$ là xác suất có $(n-k)$ lần thất bại.
 \end{itemize}
 
-\textbf{Kỳ Vọng và Phương Sai}
+\textbf{Kỳ vọng và Phương sai}
 \begin{equation}
     E(X) = np, \quad \text{Var}(X) = np(1-p).
 \end{equation}
@@ -135,7 +135,7 @@ Trong đó:
 \textbf{Ví Dụ}
 Giả sử một bài kiểm tra trắc nghiệm có 10 câu hỏi, mỗi câu có 4 đáp án nhưng chỉ có 1 đáp án đúng. Một học sinh chọn đáp án ngẫu nhiên cho mỗi câu. Gọi $X$ là số câu trả lời đúng, thì $X$ tuân theo phân bố nhị thức $B(10, 0.25)$ vì xác suất chọn đúng một đáp án là $p = 0.25$.
 
-\textbf{Ứng Dụng Thực Tế}
+\textbf{Ứng dụng thực tế}
 Phân bố nhị thức có nhiều ứng dụng trong thực tế, bao gồm:
 \begin{itemize}
     \item Xác suất một sản phẩm bị lỗi khi lấy mẫu kiểm tra trong dây chuyền sản xuất.
@@ -146,7 +146,7 @@ Phân bố nhị thức có nhiều ứng dụng trong thực tế, bao gồm:
 
 
 \subsection{Phân Bố Poisson}
-\textbf{Định nghĩa}
+\textbf{Định nghĩa : }
 Phân bố Poisson là một phân bố xác suất rời rạc mô tả số lần xảy ra của một sự kiện trong một khoảng thời gian (hoặc không gian) nhất định khi các sự kiện đó xảy ra độc lập với nhau và có tỷ lệ trung bình không đổi.
 
 Một biến ngẫu nhiên $X$ tuân theo phân bố Poisson với tham số $\lambda > 0$ nếu nó có xác suất:
@@ -414,9 +414,5 @@ Bậc tự do cũng ảnh hưởng đến hình dạng của một số phân ph
     \item Khi kiểm tra giả thuyết với số lượng mẫu nhỏ, ta sử dụng phân phối $t$-Student thay vì phân phối chuẩn.
     \item Trong kiểm định phương sai, số bậc tự do quyết định xác suất sai lầm loại I.
 \end{itemize}
-
-
-\section{Kết Luận}
-Trong chương này, chúng ta đã tìm hiểu về các phân bố xác suất quan trọng, các công thức liên quan và một số định lý quan trọng. Những kiến thức này sẽ là nền tảng cho các ứng dụng trong thống kê và khoa học dữ liệu.
 
 

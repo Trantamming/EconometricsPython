@@ -1,1 +1,57 @@
 \chapter{Mô hình hồi quy đa biến đa thức (Multivariate Polynomial Regression)}
+\section{Giới thiệu}
+Mô hình hồi quy đa biến đa thức (Multivariate Polynomial Regression) là một mở rộng của hồi quy tuyến tính đa biến, trong đó ta đưa vào các bậc cao hơn của biến độc lập để mô hình hóa quan hệ phi tuyến giữa biến phụ thuộc và các biến độc lập.
+
+\section{Mô hình Toán học}
+Giả sử ta có một tập dữ liệu gồm $n$ quan sát với $p$ biến độc lập $X_1, X_2, \dots, X_p$, mô hình hồi quy đa biến đa thức bậc $d$ có dạng tổng quát như sau:
+\begin{equation}
+    Y = \beta_0 + \sum_{j=1}^{p} \beta_j X_j + \sum_{j=1}^{p} \sum_{k=j}^{p} \beta_{jk} X_j X_k + \sum_{j=1}^{p} \sum_{k=j}^{p} \sum_{l=k}^{p} \beta_{jkl} X_j X_k X_l + \dots + \varepsilon
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y$ là biến phụ thuộc,
+    \item $X_j$ là các biến độc lập,
+    \item $\beta_0, \beta_j, \beta_{jk}, \beta_{jkl}, \dots$ là các hệ số hồi quy cần ước lượng,
+    \item $\varepsilon \sim N(0, \sigma^2)$ là sai số ngẫu nhiên.
+\end{itemize}
+
+\section{Ma trận Thiết kế}
+Để biểu diễn mô hình dưới dạng ma trận, ta có thể định nghĩa ma trận thiết kế $X$ như sau:
+\begin{equation}
+  X = \begin{bmatrix}
+  1 & x_{11} & x_{12} & \dots & x_{1p} & x_{11}^2 & x_{12}^2 & \dots & x_{1p}^2 \\
+  1 & x_{21} & x_{22} & \dots & x_{2p} & x_{21}^2 & x_{22}^2 & \dots & x_{2p}^2 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+  1 & x_{n1} & x_{n2} & \dots & x_{np} & x_{n1}^2 & x_{n2}^2 & \dots & x_{np}^2
+  \end{bmatrix}
+  \end{equation}
+  
+Khi đó, mô hình có thể viết gọn lại dưới dạng:
+\begin{equation}
+    Y = X \beta + \varepsilon
+\end{equation}
+với:
+\begin{itemize}
+    \item $Y = (Y_1, Y_2, \dots, Y_n)^T$ là vector các giá trị quan sát,
+    \item $\beta$ là vector hệ số hồi quy,
+    \item $\varepsilon$ là vector sai số ngẫu nhiên.
+\end{itemize}
+
+\section{Ước lượng tham số}
+Hệ số hồi quy $\beta$ có thể được ước lượng bằng phương pháp bình phương nhỏ nhất (OLS - Ordinary Least Squares):
+\begin{equation}
+    \hat{\beta} = (X^T X)^{-1} X^T Y
+\end{equation}
+Điều này đòi hỏi $X^T X$ khả nghịch, nếu không, ta có thể sử dụng hồi quy Ridge hoặc các phương pháp điều chuẩn khác.
+
+\section{Đánh giá Mô hình}
+Các tiêu chí đánh giá mô hình bao gồm:
+\begin{itemize}
+    \item Hệ số xác định $R^2$: đo lường mức độ giải thích của mô hình đối với biến phụ thuộc.
+    \item Kiểm định F: kiểm tra ý nghĩa tổng thể của mô hình.
+    \item Kiểm định t: kiểm tra ý nghĩa của từng hệ số hồi quy.
+    \item Phân tích phần dư: kiểm tra giả định về sai số.
+\end{itemize}
+
+\section{Kết luận}
+Mô hình hồi quy đa biến đa thức là một công cụ hữu ích để mô hình hóa các quan hệ phi tuyến giữa biến phụ thuộc và các biến độc lập. Tuy nhiên, cần chú ý đến vấn đề đa cộng tuyến khi sử dụng các bậc cao của biến độc lập.

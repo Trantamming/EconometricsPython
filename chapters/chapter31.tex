@@ -1,3 +1,93 @@
 \chapter{Tổng quan về kinh tế lượng không gian}
-\section{Dữ liệu không gian và ứng dụng}
-\section{Kiểm định tính không gian của dữ liệu}
+\section{Khái niệm và tầm quan trọng của kinh tế lượng không gian}
+\subsection{Khái niệm}
+Kinh tế lượng không gian là nhánh của kinh tế lượng tập trung vào các mô hình thống kê có tính đến mối quan hệ không gian giữa các đơn vị quan sát. Trong bối cảnh này, dữ liệu không gian có thể là:
+\begin{itemize}
+    \item \textbf{Dữ liệu vùng (areal data)}: Thuộc tính của các vùng địa lý (GDP theo tỉnh, tỉ lệ thất nghiệp theo quận).
+    \item \textbf{Dữ liệu điểm (point data)}: Dữ liệu có tọa độ cụ thể (vị trí doanh nghiệp, điểm đo ô nhiễm).
+    \item \textbf{Dữ liệu dòng chảy (flow data)}: Biểu thị sự di chuyển giữa các khu vực (dòng di cư, dòng vốn đầu tư).
+\end{itemize}
+
+Khi dữ liệu có tính không gian, giả định tính độc lập của phần dư trong hồi quy tuyến tính OLS bị vi phạm do tồn tại tự tương quan không gian.
+
+\subsection{Tầm quan trọng}
+Kinh tế lượng không gian quan trọng vì:
+\begin{itemize}
+    \item Hầu hết hiện tượng kinh tế - xã hội đều có sự liên kết không gian.
+    \item Mô hình hồi quy truyền thống bỏ qua yếu tố không gian có thể dẫn đến ước lượng chệch.
+    \item Cung cấp công cụ phân tích chính xác hơn cho các nhà hoạch định chính sách.
+\end{itemize}
+
+\section{Ứng dụng thực tế trong kinh tế, xã hội và môi trường}
+\subsection{Kinh tế}
+\begin{itemize}
+    \item Phát triển vùng: Nghiên cứu tác động lan tỏa của đầu tư công.
+    \item Bất động sản: Định giá nhà dựa trên đặc điểm không gian.
+\end{itemize}
+
+\subsection{Xã hội}
+\begin{itemize}
+    \item Dịch tễ học: Phân tích sự lây lan của dịch bệnh.
+    \item Bất bình đẳng thu nhập: Tương quan không gian của mức sống.
+\end{itemize}
+
+\subsection{Môi trường}
+\begin{itemize}
+    \item Ô nhiễm không khí: Dòng chảy không khí mang theo chất ô nhiễm.
+    \item Biến đổi khí hậu: Ảnh hưởng lan tỏa của thiên tai.
+\end{itemize}
+
+\section{Sự khác biệt giữa kinh tế lượng truyền thống và kinh tế lượng không gian}
+\subsection{Mô hình hồi quy tuyến tính truyền thống}
+Mô hình OLS chuẩn có dạng:
+\begin{equation}
+    Y = X\beta + \varepsilon
+\end{equation}
+
+với giả định không có tự tương quan không gian.
+
+\subsection{Mô hình kinh tế lượng không gian}
+\textbf{Mô hình Spatial Lag (SLM)}:
+\begin{equation}
+    Y = \rho W Y + X \beta + \varepsilon
+\end{equation}
+
+\textbf{Mô hình Spatial Error (SEM)}:
+\begin{equation}
+    Y = X \beta + u, \quad u = \lambda W u + \varepsilon
+\end{equation}
+
+\section{Các thách thức khi phân tích dữ liệu không gian}
+\subsection{Xác định mối quan hệ không gian}
+Lựa chọn ma trận trọng số không gian $W$ rất quan trọng, các phương pháp phổ biến:
+\begin{itemize}
+    \item Láng giềng k gần nhất (k-nearest neighbors)
+    \item Khoảng cách nghịch đảo (inverse distance weighting)
+    \item Dựa trên biên giới hành chính (contiguity-based weights)
+\end{itemize}
+
+\subsection{Kiểm định tự tương quan không gian}
+\textbf{Moran’s I}:
+\begin{equation}
+    I = \frac{N}{\sum_i \sum_j W_{ij}} \times \frac{\sum_i \sum_j W_{ij} (Y_i - \bar{Y}) (Y_j - \bar{Y})}{\sum_i (Y_i - \bar{Y})^2}
+\end{equation}
+
+\textbf{Geary’s C}:
+\begin{equation}
+    C = \frac{(N-1) \sum_i \sum_j W_{ij} (Y_i - Y_j)^2}{2 \sum_i (Y_i - \bar{Y})^2}
+\end{equation}
+
+\subsection{Lựa chọn mô hình thích hợp}
+Cần chọn mô hình phù hợp dựa trên kiểm định:
+\begin{itemize}
+    \item Kiểm định Lagrange Multiplier (LM) để quyết định giữa SLM và SEM.
+    \item So sánh Akaike Information Criterion (AIC) giữa các mô hình.
+\end{itemize}
+
+\section{Tóm tắt chương}
+\begin{itemize}
+    \item Kinh tế lượng không gian quan trọng vì nhiều hiện tượng kinh tế có sự lan tỏa theo không gian.
+    \item Khác với mô hình OLS truyền thống, mô hình không gian đưa vào ma trận trọng số $W$.
+    \item Có hai mô hình chính: Spatial Lag Model (SLM) và Spatial Error Model (SEM).
+    \item Phân tích dữ liệu không gian gặp nhiều thách thức.
+\end{itemize}

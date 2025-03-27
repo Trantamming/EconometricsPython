@@ -1,1 +1,64 @@
 \chapter{Mô hình hồi quy Poisson (Poisson Regression)}
+\section{Giới thiệu}
+Mô hình hồi quy Poisson được sử dụng để mô hình hóa dữ liệu đếm, trong đó biến phụ thuộc (biến phản hồi) $Y$ là một biến rời rạc nhận các giá trị nguyên không âm. Mô hình này giả định rằng số lần xuất hiện của sự kiện tuân theo phân phối Poisson.
+
+\section{Định nghĩa mô hình}
+Cho biến phản hồi $Y_i$ tuân theo phân phối Poisson:
+\begin{equation}
+    Y_i \sim \text{Poisson}(\lambda_i)
+\end{equation}
+trong đó $\lambda_i > 0$ là giá trị kỳ vọng có điều kiện của $Y_i$.
+
+Hàm phân phối xác suất (PMF) của biến Poisson là:
+\begin{equation}
+    P(Y_i = k | X_i) = \frac{e^{-\lambda_i} \lambda_i^k}{k!}, \quad k = 0, 1, 2, \dots
+\end{equation}
+
+\section{Hàm liên kết và mô hình tuyến tính}
+Hàm kỳ vọng của $Y_i$ được mô hình hóa thông qua một hàm liên kết log:
+\begin{equation}
+    \log(\lambda_i) = X_i \beta
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $X_i$ là vector hàng của các biến độc lập (biến giải thích) cho quan sát thứ $i$.
+    \item $\beta$ là vector hệ số hồi quy.
+\end{itemize}
+Từ đó, ta có:
+\begin{equation}
+    \lambda_i = e^{X_i \beta}
+\end{equation}
+
+\section{Ước lượng tham số}
+Các tham số $\beta$ của mô hình được ước lượng bằng phương pháp hợp lý tối đa (MLE). Hàm hợp lý của mô hình là:
+\begin{equation}
+    L(\beta) = \prod_{i=1}^{n} \frac{e^{-\lambda_i} \lambda_i^{y_i}}{y_i!}
+\end{equation}
+Hàm log-hợp lý:
+\begin{equation}
+    \ell(\beta) = \sum_{i=1}^{n} \left(y_i \log \lambda_i - \lambda_i - \log y_i! \right)
+\end{equation}
+Thay $\lambda_i = e^{X_i \beta}$ vào:
+\begin{equation}
+    \ell(\beta) = \sum_{i=1}^{n} \left(y_i X_i \beta - e^{X_i \beta} - \log y_i! \right)
+\end{equation}
+
+Hệ số $\beta$ được tìm bằng cách giải phương trình:
+\begin{equation}
+    \frac{\partial \ell(\beta)}{\partial \beta} = \sum_{i=1}^{n} X_i (y_i - e^{X_i \beta}) = 0
+\end{equation}
+Phương trình này thường được giải bằng các phương pháp số như Newton-Raphson.
+
+\section{Kiểm định ý nghĩa của mô hình}
+\subsection{Kiểm định Wald}
+Ta kiểm định giả thuyết:
+\begin{equation}
+    H_0: \beta_j = 0 \quad \text{v.s.} \quad H_1: \beta_j \neq 0
+\end{equation}
+Dùng thống kê kiểm định Wald:
+\begin{equation}
+    W_j = \frac{\hat{\beta}_j}{SE(\hat{\beta}_j)} \sim N(0,1)
+\end{equation}
+
+\subsection{Kiểm định độ phù hợp}
+Ta có thể sử dụng thống kê Deviance hoặc kiểm định Pearson để kiểm tra độ phù hợp của mô hình.

@@ -1,1 +1,46 @@
 \chapter{Mô hình hồi quy Logistic (Logistic Regression)}
+\section{Giới thiệu}
+Mô hình hồi quy Logistic là một phương pháp thống kê được sử dụng để mô hình hóa xác suất của một biến phụ thuộc nhị phân dựa vào một hoặc nhiều biến độc lập.
+
+\section{Công thức tổng quát}
+Giả sử ta có một tập dữ liệu với $n$ quan sát, mỗi quan sát bao gồm một biến phản hồi nhị phân $Y_i \in \{0,1\}$ và một vector các biến độc lập $X_i = (x_{i1}, x_{i2}, \dots, x_{ip})$. Hồi quy logistic mô hình hóa xác suất có điều kiện của $Y_i$ như sau:
+\begin{equation}
+P(Y_i = 1 | X_i) = \pi_i = \frac{e^{\beta_0 + \beta_1 x_{i1} + \dots + \beta_p x_{ip}}}{1 + e^{\beta_0 + \beta_1 x_{i1} + \dots + \beta_p x_{ip}}}.
+\end{equation}
+
+Lấy logit (hàm log-odds) của xác suất, ta có phương trình tuyến tính:
+\begin{equation}
+\text{logit}(\pi_i) = \log\left( \frac{\pi_i}{1 - \pi_i} \right) = \beta_0 + \beta_1 x_{i1} + \dots + \beta_p x_{ip}.
+\end{equation}
+
+\section{Ước lượng tham số}
+Các hệ số hồi quy $\beta_0, \beta_1, \dots, \beta_p$ được ước lượng bằng phương pháp hợp lý cực đại (Maximum Likelihood Estimation - MLE). Hàm hợp lý cho toàn bộ mẫu là:
+\begin{equation}
+L(\beta) = \prod_{i=1}^{n} \pi_i^{y_i} (1 - \pi_i)^{1 - y_i}.
+\end{equation}
+
+Lấy log của hàm hợp lý, ta có log-likelihood:
+\begin{equation}
+\ell(\beta) = \sum_{i=1}^{n} \left[ y_i \log(\pi_i) + (1 - y_i) \log(1 - \pi_i) \right].
+\end{equation}
+
+Ước lượng $\hat{\beta}$ được tìm bằng cách giải phương trình đạo hàm bậc nhất của $\ell(\beta)$:
+\begin{equation}
+\frac{\partial \ell(\beta)}{\partial \beta_j} = \sum_{i=1}^{n} (y_i - \pi_i) x_{ij} = 0, \quad \forall j \in \{0, 1, \dots, p\}.
+\end{equation}
+
+\section{Kiểm định ý nghĩa mô hình}
+Để kiểm định ý nghĩa của các hệ số hồi quy, ta sử dụng kiểm định Wald hoặc kiểm định LR:
+\begin{itemize}
+    \item \textbf{Kiểm định Wald}: Xét giả thuyết $H_0: \beta_j = 0$ so với $H_1: \beta_j \neq 0$. Thống kê kiểm định:
+    \begin{equation}
+    z_j = \frac{\hat{\beta}_j}{\text{SE}(\hat{\beta}_j)} \sim N(0,1).
+    \end{equation}
+    \item \textbf{Kiểm định Likelihood Ratio (LR)}: So sánh log-likelihood của mô hình đầy đủ và mô hình rút gọn:
+    \begin{equation}
+    G = -2 \left[ \ell(\beta^{(0)}) - \ell(\hat{\beta}) \right] \sim \chi^2_p.
+    \end{equation}
+\end{itemize}
+
+\section{Kết luận}
+Mô hình hồi quy logistic là một công cụ mạnh mẽ để phân loại nhị phân, thường được sử dụng trong thống kê, học máy và các lĩnh vực khác như y tế, tài chính và khoa học xã hội.

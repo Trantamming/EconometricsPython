@@ -1,0 +1,6 @@
+PWD d:\EconometricsPython\chapters
+INPUT C:\Users\ADMIN\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
+INPUT d:\EconometricsPython\chapters\chapter23.tex
+OUTPUT chapter23.log
+OUTPUT chapter23.pdf
+INPUT C:\Users\ADMIN\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map

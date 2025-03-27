@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.23)  25 MAR 2025 20:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.23)  27 MAR 2025 15:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -58,29 +58,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
-Package: geometry 2020/01/02 v5.9 Page Geometry
- (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
-) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
-Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2024/12/12 v1.0g TeX engine tests
-))
-\Gm@cnth=\count271
-\Gm@cntv=\count272
-\c@Gm@tempcnt=\count273
-\Gm@bindingoffset=\dimen142
-\Gm@wd@mp=\dimen143
-\Gm@odd@mp=\dimen144
-\Gm@even@mp=\dimen145
-\Gm@layoutwidth=\dimen146
-\Gm@layoutheight=\dimen147
-\Gm@layouthoffset=\dimen148
-\Gm@layoutvoffset=\dimen149
-\Gm@dimlist=\toks18
- (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
 \@mathmargin=\skip51
 
@@ -89,22 +67,22 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2021/08/26 v2.01 AMS text
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks19
-\ex@=\dimen150
+\@emptytoks=\toks17
+\ex@=\dimen142
 )) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen151
+\pmbraise@=\dimen143
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count274
+\inf@bad=\count271
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count275
-\leftroot@=\count276
+\uproot@=\count272
+\leftroot@=\count273
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count277
-\DOTSCASE@=\count278
+\classnum@=\count274
+\DOTSCASE@=\count275
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -114,34 +92,34 @@ LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
 LaTeX Info: Redefining \Bigg on input line 724.
-\big@size=\dimen152
+\big@size=\dimen144
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count279
+\macc@depth=\count276
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count280
+\c@MaxMatrixCols=\count277
 \dotsspace@=\muskip17
-\c@parentequation=\count281
-\dspbrk@lvl=\count282
-\tag@help=\toks20
-\row@=\count283
-\column@=\count284
-\maxfields@=\count285
-\andhelp@=\toks21
-\eqnshift@=\dimen153
-\alignsep@=\dimen154
-\tagshift@=\dimen155
-\tagwidth@=\dimen156
-\totwidth@=\dimen157
-\lineht@=\dimen158
-\@envbody=\toks22
+\c@parentequation=\count278
+\dspbrk@lvl=\count279
+\tag@help=\toks18
+\row@=\count280
+\column@=\count281
+\maxfields@=\count282
+\andhelp@=\toks19
+\eqnshift@=\dimen145
+\alignsep@=\dimen146
+\tagshift@=\dimen147
+\tagwidth@=\dimen148
+\totwidth@=\dimen149
+\lineht@=\dimen150
+\@envbody=\toks20
 \multlinegap=\skip52
 \multlinetaggap=\skip53
-\mathdisplay@stack=\toks23
+\mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
@@ -155,7 +133,10 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+ (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks22
+) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
@@ -166,11 +147,13 @@ Package graphics Info: Driver file: pdftex.def on input line 106.
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen159
-\Gin@req@width=\dimen160
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
- (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+ (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
@@ -197,16 +180,16 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count286
+\c@section@level=\count283
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count287
+\etb@tempcnta=\count284
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen161
-\Hy@linkcounter=\count288
-\Hy@pagecounter=\count289
+\@linkdim=\dimen153
+\Hy@linkcounter=\count285
+\Hy@pagecounter=\count286
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -214,7 +197,7 @@ Now handling font encoding PD1 ...
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count290
+\Hy@SavedSpaceFactor=\count287
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -227,21 +210,21 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count291
+\c@Hy@tempcnt=\count288
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen162
+\XeTeXLinkMargin=\dimen154
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count292
-\Field@Width=\dimen163
-\Fld@charsize=\dimen164
+\Fld@menulength=\count289
+\Field@Width=\dimen155
+\Fld@charsize=\dimen156
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -253,9 +236,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count293
-\c@Item=\count294
-\c@Hfootnote=\count295
+\Hy@abspage=\count290
+\c@Item=\count291
+\c@Hfootnote=\count292
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
@@ -264,8 +247,8 @@ File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\Fld@listcount=\count296
-\c@bookmark@seq@number=\count297
+\Fld@listcount=\count293
+\c@bookmark@seq@number=\count294
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
@@ -276,8 +259,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \Hy@SectionHShift=\skip54
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
-\inpenc@prehook=\toks24
-\inpenc@posthook=\toks25
+\inpenc@prehook=\toks23
+\inpenc@posthook=\toks24
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5enc.def
@@ -443,12 +426,12 @@ LaTeX Font Info:    Trying to load font information for T5+lmr on input line 116
 File: t5lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2025/02/14 v25.4 The multilingual framework for pdfLaTeX, LuaLaTeX and XeLaTeX
-\babel@savecnt=\count298
-\U@D=\dimen165
+\babel@savecnt=\count295
+\U@D=\dimen157
 \l@unhyphenated=\language79
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count299
+\bbl@dirlevel=\count296
 
 *************************************
 * Local config file bblopts.cfg used
@@ -482,7 +465,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip55
 \bibsep=\skip56
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count300
+\c@NAT@ctr=\count297
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@headwidth=\skip57
@@ -499,18 +482,18 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthL=\skip68
 \f@nch@widthC=\skip69
 \f@nch@widthR=\skip70
-\@temptokenb=\toks26
+\@temptokenb=\toks25
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box54
 \beforetitleunit=\skip71
 \aftertitleunit=\skip72
-\ttl@plus=\dimen166
-\ttl@minus=\dimen167
-\ttl@toksa=\toks27
-\titlewidth=\dimen168
-\titlewidthlast=\dimen169
-\titlewidthfirst=\dimen170
+\ttl@plus=\dimen158
+\ttl@minus=\dimen159
+\ttl@toksa=\toks26
+\titlewidth=\dimen160
+\titlewidthlast=\dimen161
+\titlewidthfirst=\dimen162
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 116.
@@ -530,82 +513,82 @@ Package vntex Warning: No input encoding specified, using UTF-8 as default on in
 File: vncaps.tex 2006/06/07 v1.1 Captions in Vietnamese
 )) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen171
-\lightrulewidth=\dimen172
-\cmidrulewidth=\dimen173
-\belowrulesep=\dimen174
-\belowbottomsep=\dimen175
-\aboverulesep=\dimen176
-\abovetopsep=\dimen177
-\cmidrulesep=\dimen178
-\cmidrulekern=\dimen179
-\defaultaddspace=\dimen180
-\@cmidla=\count301
-\@cmidlb=\count302
-\@aboverulesep=\dimen181
-\@belowrulesep=\dimen182
-\@thisruleclass=\count303
-\@lastruleclass=\count304
-\@thisrulewidth=\dimen183
+\heavyrulewidth=\dimen163
+\lightrulewidth=\dimen164
+\cmidrulewidth=\dimen165
+\belowrulesep=\dimen166
+\belowbottomsep=\dimen167
+\aboverulesep=\dimen168
+\abovetopsep=\dimen169
+\cmidrulesep=\dimen170
+\cmidrulekern=\dimen171
+\defaultaddspace=\dimen172
+\@cmidla=\count298
+\@cmidlb=\count299
+\@aboverulesep=\dimen173
+\@belowrulesep=\dimen174
+\@thisruleclass=\count300
+\@lastruleclass=\count301
+\@thisrulewidth=\dimen175
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2024-10-27 v4.22 Multi-page Table package (DPC)
 \LTleft=\skip73
 \LTright=\skip74
 \LTpre=\skip75
 \LTpost=\skip76
-\LTchunksize=\count305
-\LTcapwidth=\dimen184
+\LTchunksize=\count302
+\LTcapwidth=\dimen176
 \LT@head=\box55
 \LT@firsthead=\box56
 \LT@foot=\box57
 \LT@lastfoot=\box58
 \LT@gbox=\box59
-\LT@cols=\count306
-\LT@rows=\count307
-\c@LT@tables=\count308
-\c@LT@chunks=\count309
-\LT@p@ftn=\toks28
+\LT@cols=\count303
+\LT@rows=\count304
+\c@LT@tables=\count305
+\c@LT@chunks=\count306
+\LT@p@ftn=\toks27
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
-\col@sep=\dimen185
+\col@sep=\dimen177
 \ar@mcellbox=\box60
-\extrarowheight=\dimen186
-\NC@list=\toks29
+\extrarowheight=\dimen178
+\NC@list=\toks28
 \extratabsurround=\skip77
 \backup@length=\skip78
 \ar@cellbox=\box61
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip79
-\multirow@cntb=\count310
+\multirow@cntb=\count307
 \multirow@dima=\skip80
-\bigstrutjot=\dimen187
+\bigstrutjot=\dimen179
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen188
-\captionmargin=\dimen189
-\caption@leftmargin=\dimen190
-\caption@rightmargin=\dimen191
-\caption@width=\dimen192
-\caption@indent=\dimen193
-\caption@parindent=\dimen194
-\caption@hangindent=\dimen195
+\caption@tempdima=\dimen180
+\captionmargin=\dimen181
+\caption@leftmargin=\dimen182
+\caption@rightmargin=\dimen183
+\caption@width=\dimen184
+\caption@indent=\dimen185
+\caption@parindent=\dimen186
+\caption@hangindent=\dimen187
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count311
-\c@continuedfloat=\count312
+\c@caption@flags=\count308
+\c@continuedfloat=\count309
 Package caption Info: hyperref package is loaded.
 Package caption Info: longtable package is loaded.
  (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count313
-\float@exts=\toks30
+\c@float@type=\count310
+\float@exts=\toks29
 \float@box=\box62
-\@float@everytoks=\toks31
+\@float@everytoks=\toks30
 \@floatcapt=\box63
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
@@ -625,21 +608,38 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
 Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
-\everycr=\toks32
+\everycr=\toks31
 \minrowclearance=\skip81
-\rownum=\count314
+\rownum=\count311
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks33
-\thm@bodyfont=\toks34
-\thm@headfont=\toks35
-\thm@notefont=\toks36
-\thm@headpunct=\toks37
+\thm@style=\toks32
+\thm@bodyfont=\toks33
+\thm@headfont=\toks34
+\thm@notefont=\toks35
+\thm@headpunct=\toks36
 \thm@preskip=\skip82
 \thm@postskip=\skip83
 \thm@headsep=\skip84
-\dth@everypar=\toks38
-) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/anyfontsize\anyfontsize.sty
+\dth@everypar=\toks37
+) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count312
+\Gm@cntv=\count313
+\c@Gm@tempcnt=\count314
+\Gm@bindingoffset=\dimen188
+\Gm@wd@mp=\dimen189
+\Gm@odd@mp=\dimen190
+\Gm@even@mp=\dimen191
+\Gm@layoutwidth=\dimen192
+\Gm@layoutheight=\dimen193
+\Gm@layouthoffset=\dimen194
+\Gm@layoutvoffset=\dimen195
+\Gm@dimlist=\toks38
+ (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/anyfontsize\anyfontsize.sty
 Package: anyfontsize 2007/11/22 anyfontsize.sty by pts
 ) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
 \lst@mode=\count315
@@ -700,6 +700,34 @@ LaTeX Font Info:    Trying to load font information for T5+cmr on input line 6.
 File: t5cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 6.
+ (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count324
+\scratchdimen=\dimen256
+\scratchbox=\box67
+\nofMPsegments=\count325
+\nofMParguments=\count326
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count327
+\MPscratchDim=\dimen257
+\MPnumerator=\count328
+\makeMPintoPDFobject=\count329
+\everyMPtoPDFconversion=\toks41
+) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package hyperref Info: Link coloring OFF on input line 6.
+ (EconometricsPython.out) (EconometricsPython.out)
+\@outlinefile=\write3
+\openout3 = `EconometricsPython.out'.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -735,38 +763,10 @@ LaTeX Font Info:    ... okay on input line 6.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count324
-\scratchdimen=\dimen256
-\scratchbox=\box67
-\nofMPsegments=\count325
-\nofMParguments=\count326
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count327
-\MPscratchDim=\dimen257
-\MPnumerator=\count328
-\makeMPintoPDFobject=\count329
-\everyMPtoPDFconversion=\toks41
-) (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-))
-Package hyperref Info: Link coloring OFF on input line 6.
- (EconometricsPython.out) (EconometricsPython.out)
-\@outlinefile=\write3
-\openout3 = `EconometricsPython.out'.
-
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: float package is loaded.
-Package caption Info: listings package is loaded.
-Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count330
 \openout2 = `frontmatter/titlepage.aux'.
 
- (frontmatter/titlepage.tex
+(frontmatter/titlepage.tex
 
 [1
 
@@ -820,20 +820,45 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ]
+Underfull \vbox (badness 1389) has occurred while \output is active []
+
+
 
 [2]
 
-[3]
+[3{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 
 [4]
 
-[5])
+[5]
+
+[6]
+
+[7]
+
+[8]
+
+[9]
+
+[10]
+
+[11]
+
+[12]
+
+[13]
+
+[14])
 \tf@toc=\write4
 \openout4 = `EconometricsPython.toc'.
 
 
 
-[6]
+[15]
+
+[16
+
+]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
@@ -842,15 +867,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 l.21 ...g quan v·ªÅ kinh t·∫ø l∆∞·ª£ng v√† Python}
                                                    [1
 
-
 ] (chapters/chapter1.tex
-Ch\uhorn \ohorn ng 1..
-
-Package natbib Warning: Citation `wooldridge2019' on page 2 undefined on input line 4.
-
-
-Package natbib Warning: Citation `angrist2009' on page 2 undefined on input line 5.
-
+Ch\uhorn \ohorn ng 1.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 13.
 (C:\Users\ADMIN\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -882,7 +900,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
 [3]
-Ch\uhorn \ohorn ng 2..
+Ch\uhorn \ohorn ng 2.
 
 
 [4
@@ -896,7 +914,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[5{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+[5{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1025,7 +1043,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
 [18]
-Ch\uhorn \ohorn ng 3..
+Ch\uhorn \ohorn ng 3.
 
 
 [19
@@ -1112,7 +1130,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
 [28]
-Ch\uhorn \ohorn ng 4..
+Ch\uhorn \ohorn ng 4.
 
 
 [29
@@ -1154,11 +1172,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
 [33]
-Overfull \hbox (1.30716pt too wide) in paragraph at lines 194--194
-|[]\T5/lmr/bx/n/13 ◊Óc l˜Òng H™u nghiªm TËi ^^_a (Max-i-mum A Pos-te-ri-ori - MAP)| 
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1240,11 +1253,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
 [42]
-Overfull \hbox (2.6743pt too wide) in paragraph at lines 614--614
-|[]\T5/lmr/bx/n/13 Ki∫m ^^_‡nh hiªn t˜Òng ph˜Ïng sai sai sË thay ^^_Íi (het-eroskedas-
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1276,242 +1284,1113 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [46
 
 ] (chapters/chapter5.tex
-Ch\uhorn \ohorn ng 5..
-) (chapters/chapter6.tex
+Ch\uhorn \ohorn ng 5.
+
 
 [47
 
-]
-Ch\uhorn \ohorn ng 6..
-) (chapters/chapter7.tex
+]) (chapters/chapter6.tex
 
-[48
 
-]
-Ch\uhorn \ohorn ng 7..
-) (chapters/chapter8.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[49
+[48]
 
-]
-Ch\uhorn \ohorn ng 8..
-) (chapters/chapter9.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[49]
+Ch\uhorn \ohorn ng 6.
+
 
 [50
 
-]
-Ch\uhorn \ohorn ng 9..
-) (chapters/chapter10.tex
+]) (chapters/chapter7.tex
 
-[51
 
-]
-Ch\uhorn \ohorn ng 10..
-)
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[51]
+Ch\uhorn \ohorn ng 7.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 31.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 31.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 31.
+
+
 
 [52
 
 ]
 
-[53
 
-] (chapters/chapter11.tex
-Ch\uhorn \ohorn ng 11..
-) (chapters/chapter12.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[54
+[53]) (chapters/chapter8.tex
 
-]
-Ch\uhorn \ohorn ng 12..
-) (chapters/chapter13.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[54]
+Ch\uhorn \ohorn ng 8.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 29.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 29.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 29.
+
+
 
 [55
 
-]
-Ch\uhorn \ohorn ng 13..
-) (chapters/chapter14.tex
+]) (chapters/chapter9.tex
 
-[56
 
-]
-Ch\uhorn \ohorn ng 14..
-) (chapters/chapter15.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[56]
+Ch\uhorn \ohorn ng 9.
+
 
 [57
 
-]
-Ch\uhorn \ohorn ng 15..
-) (chapters/chapter16.tex
+]) (chapters/chapter10.tex
 
-[58
 
-]
-Ch\uhorn \ohorn ng 16..
-) (chapters/chapter17.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.74004pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.74004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.74004pt}.
+
+[58]
+Ch\uhorn \ohorn ng 10.
+
+Underfull \vbox (badness 2401) has occurred while \output is active []
+
+
 
 [59
 
-]
-Ch\uhorn \ohorn ng 17..
-)
+])
 
-[60
 
-]
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 26.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{26.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-14.24503pt}.
+
+[60]
 
 [61
 
-] (chapters/chapter18.tex
-Ch\uhorn \ohorn ng 18..
-) (chapters/chapter19.tex
+] (chapters/chapter11.tex
+Ch\uhorn \ohorn ng 11.
+
 
 [62
 
-]
-Ch\uhorn \ohorn ng 19..
-) (chapters/chapter20.tex
+]) (chapters/chapter12.tex
 
-[63
 
-]
-Ch\uhorn \ohorn ng 20..
-) (chapters/chapter21.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[63]
+Ch\uhorn \ohorn ng 12.
+
 
 [64
 
 ]
-Ch\uhorn \ohorn ng 21..
-) (chapters/chapter22.tex
 
-[65
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 42.
 
-]
-Ch\uhorn \ohorn ng 22..
-)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 42.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 42.
+
+) (chapters/chapter13.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[65]
+Ch\uhorn \ohorn ng 13.
+
 
 [66
 
-]
+]) (chapters/chapter14.tex
 
-[67
 
-] (chapters/chapter23.tex
-Ch\uhorn \ohorn ng 23..
-) (chapters/chapter24.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[67]
+Ch\uhorn \ohorn ng 14.
+
 
 [68
 
-]
-Ch\uhorn \ohorn ng 24..
-) (chapters/chapter25.tex
+]) (chapters/chapter15.tex
 
-[69
 
-]
-Ch\uhorn \ohorn ng 25..
-) (chapters/chapter26.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[69]
+Ch\uhorn \ohorn ng 15.
+
 
 [70
 
-]
-Ch\uhorn \ohorn ng 26..
-) (chapters/chapter27.tex
+]) (chapters/chapter16.tex
 
-[71
 
-]
-Ch\uhorn \ohorn ng 27..
-)
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[71]
+Ch\uhorn \ohorn ng 16.
+
 
 [72
 
-]
+]) (chapters/chapter17.tex
 
-[73
 
-] (chapters/chapter28.tex
-Ch\uhorn \ohorn ng 28..
-) (chapters/chapter29.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[73]
+Ch\uhorn \ohorn ng 17.
+
 
 [74
 
-]
-Ch\uhorn \ohorn ng 29..
-) (chapters/chapter30.tex
+])
 
-[75
 
-]
-Ch\uhorn \ohorn ng 30..
-)
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[75]
 
 [76
 
-]
+] (chapters/chapter18.tex
+Ch\uhorn \ohorn ng 18.
+
 
 [77
 
-] (chapters/chapter31.tex
-Ch\uhorn \ohorn ng 31..
-) (chapters/chapter32.tex
+]) (chapters/chapter19.tex
 
-[78
 
-]
-Ch\uhorn \ohorn ng 32..
-)
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
 
-[79
+[78]
 
-]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[79]
+Ch\uhorn \ohorn ng 19.
+
 
 [80
 
-] (chapters/chapter33.tex
-Ch\uhorn \ohorn ng 33..
-) (chapters/chapter34.tex
+]) (chapters/chapter20.tex
 
-[81
 
-]
-Ch\uhorn \ohorn ng 34..
-) (chapters/chapter35.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[81]
+Ch\uhorn \ohorn ng 20.
+
 
 [82
 
 ]
-Ch\uhorn \ohorn ng 35..
-) (chapters/chapter36.tex
 
-[83
 
-]
-Ch\uhorn \ohorn ng 36..
-) (chapters/chapter37.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
 
-[84
+[83]) (chapters/chapter21.tex
 
-]
-Ch\uhorn \ohorn ng 37..
-) (chapters/chapter38.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[84]
+Ch\uhorn \ohorn ng 21.
+
 
 [85
 
-]
-Ch\uhorn \ohorn ng 38..
-)
+]) (chapters/chapter22.tex
 
-[86
 
-]
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
 
-[87
+[86]
 
-] (chapters/chapter39.tex
-Ch\uhorn \ohorn ng 39..
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[87]
+Ch\uhorn \ohorn ng 22.
 
 
 [88
+
+])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[89]
+
+[90
+
+] (chapters/chapter23.tex
+Ch\uhorn \ohorn ng 23.
+
+
+[91
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[92]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[93]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[94]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[95]) (chapters/chapter24.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[96]
+Ch\uhorn \ohorn ng 24.
+
+
+[97
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.06001pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.06001pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.06001pt}.
+
+[98]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.06001pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.06001pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.06001pt}.
+
+[99]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.06001pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.06001pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.06001pt}.
+
+[100]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.06001pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.06001pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.06001pt}.
+
+[101]) (chapters/chapter25.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.06001pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.06001pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.06001pt}.
+
+[102]
+Ch\uhorn \ohorn ng 25.
+
+
+[103
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[104]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[105]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[106]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[107]) (chapters/chapter26.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[108]
+Ch\uhorn \ohorn ng 26.
+
+
+[109
+
+]
+Overfull \hbox (27.04823pt too wide) in paragraph at lines 60--60
+|[]\T5/lmr/bx/n/13 Ph˜Ïng ph°p EM Bayesian (Expectation-Maximization Bayesian)| 
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[110]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[111]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[112]) (chapters/chapter27.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[113]
+Ch\uhorn \ohorn ng 27.
+
+
+[114
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[115])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[116]
+
+[117
+
+] (chapters/chapter28.tex
+Ch\uhorn \ohorn ng 28.
+
+
+[118
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[119]) (chapters/chapter29.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[120]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[121]
+Ch\uhorn \ohorn ng 29.
+
+
+[122
+
+]) (chapters/chapter30.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[123]
+Ch\uhorn \ohorn ng 30.
+
+
+[124
+
+])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[125]
+
+[126
+
+] (chapters/chapter31.tex
+Ch\uhorn \ohorn ng 31.
+
+
+[127
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[128]) (chapters/chapter32.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[129]
+Ch\uhorn \ohorn ng 32.
+
+
+[130
+
+]) (chapters/chapter33.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[131]
+Ch\uhorn \ohorn ng 33.
+
+
+[132
+
+]) (chapters/chapter34.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[133]
+Ch\uhorn \ohorn ng 34.
+
+
+[134
+
+]
+Overfull \hbox (3.82744pt too wide) detected at line 37
+[][][]\OML/lmm/m/it/13 L\OT1/lmr/m/n/13 (\OML/lmm/m/it/13 ^^L; ^^Z; ^^[[]\OT1/lmr/m/n/13 ) = \OMS/lmsy/m/n/13 ^^@[] []\OT1/lmr/m/n/13 (2\OML/lmm/m/it/13 ^^Y^^[[]\OT1/lmr/m/n/13 ) + [] \OMS/lmsy/m/n/13 j\OML/lmm/m/it/13 I \OMS/lmsy/m/n/13 ^^@ \OML/lmm/m/it/13 ^^ZW\OMS/lmsy/m/n/13 j ^^@ []\OT1/lmr/m/n/13 (\OML/lmm/m/it/13 Y \OMS/lmsy/m/n/13 ^^@ \OML/lmm/m/it/13 ^^ZWY \OMS/lmsy/m/n/13 ^^@ \OML/lmm/m/it/13 X^^L\OT1/lmr/m/n/13 )[](\OML/lmm/m/it/13 Y \OMS/lmsy/m/n/13 ^^@ \OML/lmm/m/it/13 ^^ZWY \OMS/lmsy/m/n/13 ^^@ \OML/lmm/m/it/13 X^^L\OT1/lmr/m/n/13 )
+ []
+
+) (chapters/chapter35.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[135]
+Ch\uhorn \ohorn ng 35.
+
+
+[136
+
+]) (chapters/chapter36.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[137]
+Ch\uhorn \ohorn ng 36.
+
+
+[138
+
+]
+Overfull \hbox (4.7096pt too wide) in paragraph at lines 39--40
+[]\T5/lmr/m/n/13 MÊ hºnh SAR (Spa-tial Au-tore-gres-sive Model) v† SEM (Spa-tial Er-ror Model). 
+ []
+
+)
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[139]
+
+[140
+
+] (chapters/chapter37.tex
+Ch\uhorn \ohorn ng 37.
+
+Underfull \vbox (badness 1824) has occurred while \output is active []
+
+
+
+[141
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[142]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[143]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[144]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[145]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[146]) (chapters/chapter38.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[147]
+Ch\uhorn \ohorn ng 38.
+
+
+[148
+
+]
+Overfull \hbox (43.33748pt too wide) detected at line 29
+[][][]\OML/lmm/m/it/13 IQR \OT1/lmr/m/n/13 = \OML/lmm/m/it/13 Q[] \OMS/lmsy/m/n/13 ^^@ \OML/lmm/m/it/13 Q[];  X[][]X[] < Q[] \OMS/lmsy/m/n/13 ^^@ \OT1/lmr/m/n/13 1\OML/lmm/m/it/13 :\OT1/lmr/m/n/13 5\OML/lmm/m/it/13 IQR[]X[] > Q[] \OT1/lmr/m/n/13 + 1\OML/lmm/m/it/13 :\OT1/lmr/m/n/13 5\OML/lmm/m/it/13 IQR
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[149]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[150]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[151]) (chapters/chapter39.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[152]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.24503pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.24503pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
+
+[153]
+Ch\uhorn \ohorn ng 39.
+
+
+[154
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[155]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[156]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 131.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 131.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 131.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[157]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[158]) (chapters/chapter40.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[159]
+Ch\uhorn \ohorn ng 40.
+
+
+[160
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[161]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[162]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[163]) (chapters/chapter41.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[164]
+Ch\uhorn \ohorn ng 41.
+
+
+[165
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[166]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[167]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[168]) (chapters/chapter42.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[169]
+Ch\uhorn \ohorn ng 42.
+
+
+[170
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[171]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[172]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[173])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.44502pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.44502pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.44502pt}.
+
+[174]
+
+[175
+
+] (chapters/chapter43.tex
+Ch\uhorn \ohorn ng 43.
+
+
+[176
+
+]) (chapters/chapter44.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.55501pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.55501pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
+
+[177]
+Ch\uhorn \ohorn ng 44.
+
+
+[178
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 43--44
@@ -1527,7 +2406,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[89]
+[179]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 93.
 
 
@@ -1542,10 +2421,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[90]
-Underfull \vbox (badness 5832) has occurred while \output is active []
-
-
+[180]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1554,7 +2430,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[91]
+[181]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1563,7 +2439,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[92]) (chapters/chapter40.tex
+[182])
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1572,30 +2448,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.24503pt}.
 
-[93]
-Ch\uhorn \ohorn ng 40..
+[183]
 
+[184
 
-[94
-
-])
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.55501pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.55501pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.55501pt}.
-
-[95]
+]
 \openout2 = `appendices/appendixA.aux'.
 
  (appendices/appendixA.tex)
-No file EconometricsPython.bbl.
+
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 105.
+
+(EconometricsPython.bbl)
 
 Package natbib Warning: There were undefined citations.
 
-(EconometricsPython.aux (frontmatter/titlepage.aux) (frontmatter/preface.aux) (appendices/appendixA.aux))
+
+
+[185
+
+
+
+
+
+] (EconometricsPython.aux (frontmatter/titlepage.aux) (frontmatter/preface.aux) (appendices/appendixA.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1605,20 +2482,20 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `EconometricsPython.out' has not changed.
-(rerunfilecheck)             Checksum: 9CE1FC903981101AE0ABAAA0EA1D581E;42594.
+(rerunfilecheck)             Checksum: 4D4A2BB4D723EE844FD66E2CF70DE5D9;113988.
  ) 
 Here is how much of TeX's memory you used:
- 18365 strings out of 473523
- 292560 string characters out of 5714630
- 851289 words of memory out of 5000000
- 40665 multiletter control sequences out of 15000+600000
- 674313 words of font info for 88 fonts, out of 8000000 for 9000
+ 19619 strings out of 473523
+ 310514 string characters out of 5714630
+ 850922 words of memory out of 5000000
+ 41054 multiletter control sequences out of 15000+600000
+ 722771 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,13n,90p,823b,1969s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr5.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on EconometricsPython.pdf (102 pages, 687549 bytes).
+ 80i,13n,90p,823b,1971s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr5.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/ADMIN/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on EconometricsPython.pdf (202 pages, 1382013 bytes).
 PDF statistics:
- 1637 PDF objects out of 1728 (max. 8388607)
- 495 named destinations out of 1000 (max. 500000)
- 1185 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4336 PDF objects out of 5155 (max. 8388607)
+ 1334 named destinations out of 1440 (max. 500000)
+ 3849 words of extra memory for PDF output out of 10000 (max. 10000000)
 

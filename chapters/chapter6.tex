@@ -1,1 +1,63 @@
 \chapter{Mô hình hồi quy tuyến tính với biến tiên lượng phân nhóm}
+\section{Giới thiệu}
+Mô hình hồi quy tuyến tính với biến tiên lượng phân nhóm (Grouped Predictor Linear Regression Model) được sử dụng khi một biến giải thích có thể được chia thành các nhóm khác nhau, mỗi nhóm có thể có ảnh hưởng khác nhau đến biến phụ thuộc.
+
+\section{Mô hình toán học}
+Giả sử mô hình hồi quy tổng quát có dạng:
+\begin{equation}
+Y_i = \beta_0 + \beta_1 X_{i1} + \beta_2 X_{i2} + \dots + \beta_p X_{ip} + \varepsilon_i,
+\end{equation}
+trong đó:
+\begin{itemize}
+\item $Y_i$ là biến phụ thuộc (kết quả quan sát được).
+\item $X_{ij}$ là biến tiên lượng (predictor variables), với $j = 1, 2, \dots, p$.
+\item $\beta_0, \beta_1, \dots, \beta_p$ là các tham số cần ước lượng.
+\item $\varepsilon_i$ là nhiễu ngẫu nhiên có phân phối $\mathcal{N}(0, \sigma^2)$.
+\end{itemize}
+
+Trong trường hợp biến tiên lượng có thể phân nhóm, ta sử dụng biến giả (dummy variables) để đại diện cho các nhóm:
+\begin{equation}
+Y_i = \beta_0 + \beta_1 X_{i1} + \beta_2 X_{i2} + \gamma_1 G_{i1} + \gamma_2 G_{i2} + \dots + \gamma_k G_{ik} + \varepsilon_i,
+\end{equation}
+trong đó:
+\begin{itemize}
+\item $G_{ij}$ là biến giả, nhận giá trị $1$ nếu quan sát thuộc nhóm $j$ và $0$ nếu không.
+\item $\gamma_j$ thể hiện tác động của nhóm $j$ lên biến phụ thuộc.
+\end{itemize}
+
+\section{Ước lượng tham số}
+Các tham số của mô hình được ước lượng bằng phương pháp bình phương nhỏ nhất (OLS). Hệ số hồi quy $\hat{\beta}$ được tính bằng công thức:
+\begin{equation}
+\hat{\beta} = (X^T X)^{-1} X^T Y,
+\end{equation}
+trong đó:
+\begin{itemize}
+\item $X$ là ma trận thiết kế chứa các biến tiên lượng và biến giả,
+\item $Y$ là vector quan sát của biến phụ thuộc.
+\end{itemize}
+
+\section{Kiểm định ý nghĩa}
+Để kiểm tra xem nhóm có ảnh hưởng đến biến phụ thuộc hay không, ta thực hiện kiểm định giả thuyết:
+\begin{equation}
+H_0: \gamma_1 = \gamma_2 = \dots = \gamma_k = 0.
+\end{equation}
+Sử dụng kiểm định F:
+\begin{equation}
+F = \frac{(RSS_{r} - RSS_{ur}) / k}{RSS_{ur} / (n - p - k)},
+\end{equation}
+trong đó:
+\begin{itemize}
+\item $RSS_r$ là tổng bình phương phần dư của mô hình bị ràng buộc (không có biến phân nhóm),
+\item $RSS_{ur}$ là tổng bình phương phần dư của mô hình đầy đủ,
+\item $n$ là số quan sát, $p$ là số biến tiên lượng không phân nhóm.
+\end{itemize}
+
+Nếu giá trị $F$ đủ lớn, ta bác bỏ $H_0$, kết luận rằng nhóm có ảnh hưởng đến biến phụ thuộc.
+
+\section{Ứng dụng thực tiễn}
+Mô hình này được áp dụng trong nhiều lĩnh vực:
+\begin{itemize}
+\item Phân tích mức lương theo nhóm ngành nghề.
+\item Đánh giá hiệu quả của các chiến lược marketing theo khu vực địa lý.
+\item Dự báo nhu cầu tiêu dùng dựa trên phân nhóm thu nhập.
+\end{itemize}

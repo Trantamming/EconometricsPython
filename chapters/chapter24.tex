@@ -1,1 +1,226 @@
-\chapter{Phân phối trước, phân phối hậu nghiệm và quy trình tính toán}
+\chapter{Hồi quy Bayesian (Bayesian Regression)}
+
+\section{Giới thiệu về Hồi quy Bayesian}
+Hồi quy Bayesian là một phương pháp thống kê dựa trên lý thuyết xác suất Bayes để ước lượng tham số của mô hình hồi quy. Thay vì coi tham số là cố định như trong phương pháp hồi quy thường quy (frequentist), phương pháp Bayesian coi tham số là biến ngẫu nhiên có phân phối xác suất.
+
+\section{Công thức Bayes}
+Công thức Bayes cơ bản được biểu diễn như sau:
+\begin{equation}
+    P(\theta | D) = \frac{P(D | \theta) P(\theta)}{P(D)}
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $\theta$ là tham số của mô hình cần ước lượng,
+    \item $D$ là dữ liệu quan sát,
+    \item $P(\theta | D)$ là phân phối hậu nghiệm (posterior) của $\theta$ sau khi quan sát dữ liệu,
+    \item $P(D | \theta)$ là hàm hợp lý (likelihood),
+    \item $P(\theta)$ là phân phối tiên nghiệm (prior),
+    \item $P(D)$ là hằng số chuẩn hóa (marginal likelihood), cũng được gọi là bằng chứng (evidence).
+\end{itemize}
+
+\section{Mô hình Hồi quy tuyến tính Bayesian}
+Giả sử ta có một tập dữ liệu gồm $n$ quan sát $(X, y)$ với $X \in \mathbb{R}^{n \times p}$ là ma trận đặc trưng và $y \in \mathbb{R}^n$ là vector đầu ra. Mô hình hồi quy tuyến tính có dạng:
+\begin{equation}
+    y = X \beta + \epsilon,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $\beta \in \mathbb{R}^p$ là vector tham số cần ước lượng,
+    \item $\epsilon \sim \mathcal{N}(0, \sigma^2 I_n)$ là nhiễu Gaussian.
+\end{itemize}
+
+\subsection{Xác định phân phối tiên nghiệm}
+Giả sử rằng $\beta$ có phân phối tiên nghiệm Gaussian:
+\begin{equation}
+    \beta \sim \mathcal{N}(\mu_0, \Sigma_0),
+\end{equation}
+trong đó $\mu_0$ và $\Sigma_0$ là trung bình và hiệp phương sai tiên nghiệm.
+
+\subsection{Xác định hàm hợp lý}
+Vì nhiễu $\epsilon$ tuân theo phân phối Gaussian, nên xác suất có điều kiện của $y$ theo $\beta$ là:
+\begin{equation}
+    P(y | X, \beta) = \mathcal{N}(X\beta, \sigma^2 I_n).
+\end{equation}
+
+\subsection{Tính toán phân phối hậu nghiệm}
+Theo định lý Bayes, phân phối hậu nghiệm của $\beta$ được xác định bởi:
+\begin{equation}
+    P(\beta | X, y) \propto P(y | X, \beta) P(\beta).
+\end{equation}
+Do cả $P(y | X, \beta)$ và $P(\beta)$ đều là phân phối Gaussian, nên phân phối hậu nghiệm của $\beta$ cũng là Gaussian:
+\begin{equation}
+    \beta | X, y \sim \mathcal{N}(\mu_n, \Sigma_n),
+\end{equation}
+trong đó:
+\begin{align}
+    \Sigma_n &= (X^T X / \sigma^2 + \Sigma_0^{-1})^{-1}, \\
+    \mu_n &= \Sigma_n (X^T y / \sigma^2 + \Sigma_0^{-1} \mu_0).
+\end{align}
+
+\section{Dự báo Bayesian}
+Dự báo cho một điểm dữ liệu mới $x_*$ được tính bằng cách lấy kỳ vọng theo phân phối hậu nghiệm:
+\begin{equation}
+    y_* | x_*, X, y \sim \mathcal{N}(x_*^T \mu_n, x_*^T \Sigma_n x_* + \sigma^2).
+\end{equation}
+
+\section{Ưu điểm của Hồi quy Bayesian}
+\begin{itemize}
+    \item Hỗ trợ mô hình hóa sự không chắc chắn bằng phân phối hậu nghiệm.
+    \item Giúp tránh overfitting khi dữ liệu huấn luyện ít bằng cách sử dụng thông tin tiên nghiệm.
+    \item Linh hoạt hơn so với hồi quy tuyến tính truyền thống.
+\end{itemize}
+
+Hồi quy Bayesian cung cấp một cách tiếp cận mạnh mẽ và linh hoạt cho các bài toán hồi quy, đặc biệt hữu ích khi dữ liệu ít hoặc có nhiễu. Việc sử dụng phân phối tiên nghiệm giúp bổ sung thông tin vào mô hình và cải thiện kết quả dự báo.
+
+\section{Các mô hình hồi quy Bayesian}
+\subsection{Hồi quy tuyến tính Bayesian (Bayesian Linear Regression)}
+\subsubsection{a. Giới thiệu}
+Hồi quy tuyến tính Bayesian (Bayesian Linear Regression) là một phương pháp thống kê cho phép kết hợp thông tin tiên nghiệm với dữ liệu quan sát để ước lượng tham số của mô hình hồi quy tuyến tính.
+
+\subsubsection{b. Mô hình hồi quy tuyến tính}
+Giả sử ta có mô hình hồi quy tuyến tính tiêu chuẩn:
+\begin{equation}
+    y = X \beta + \varepsilon, \quad \varepsilon \sim \mathcal{N}(0, \sigma^2 I)
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $y \in \mathbb{R}^n$ là vector giá trị đầu ra,
+    \item $X \in \mathbb{R}^{n \times d}$ là ma trận dữ liệu,
+    \item $\beta \in \mathbb{R}^d$ là vector tham số cần ước lượng,
+    \item $\varepsilon \sim \mathcal{N}(0, \sigma^2 I)$ là nhiễu Gaussian có phương sai $\sigma^2$.
+\end{itemize}
+
+\subsubsection{c. Tiên nghiệm (Prior)}
+Trong Bayesian Regression, ta đặt giả thuyết tiên nghiệm cho $\beta$ dưới dạng phân phối Gaussian:
+\begin{equation}
+    p(\beta) = \mathcal{N}(\beta | \mu_0, \Sigma_0)
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $\mu_0$ là trung bình tiên nghiệm,
+    \item $\Sigma_0$ là ma trận hiệp phương sai tiên nghiệm.
+\end{itemize}
+
+\subsubsection{d. Phân phối hậu nghiệm (Posterior Distribution)}
+Sử dụng định lý Bayes:
+\begin{equation}
+    p(\beta | X, y) \propto p(y | X, \beta) p(\beta)
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $p(y | X, \beta)$ là phân phối khả năng (likelihood),
+    \item $p(\beta)$ là phân phối tiên nghiệm.
+\end{itemize}
+Từ đó, ta có phân phối hậu nghiệm của $\beta$ là một phân phối Gaussian:
+\begin{equation}
+    p(\beta | X, y) = \mathcal{N}(\beta | \mu_N, \Sigma_N)
+\end{equation}
+Trong đó:
+\begin{align}
+    \Sigma_N &= (X^T X / \sigma^2 + \Sigma_0^{-1})^{-1} \\
+    \mu_N &= \Sigma_N (X^T y / \sigma^2 + \Sigma_0^{-1} \mu_0)
+\end{align}
+
+\subsubsection{e. Dự báo (Predictive Distribution)}
+Cho một điểm dữ liệu mới $x_*$, đầu ra dự đoán được tính bằng:
+\begin{equation}
+    p(y_* | x_*, X, y) = \mathcal{N}(y_* | x_*^T \mu_N, x_*^T \Sigma_N x_* + \sigma^2)
+\end{equation}
+
+Hồi quy tuyến tính Bayesian giúp biểu diễn độ không chắc chắn trong ước lượng tham số và dự đoán. Phương pháp này đặc biệt hữu ích khi dữ liệu ít hoặc có nhiễu.
+
+
+\subsection{Hồi quy Logistic Bayesian (Bayesian Logistic Regression)}
+\subsubsection{a. Giới thiệu}
+Hồi quy logistic Bayesian mở rộng mô hình hồi quy logistic bằng cách đưa vào phân bố xác suất trên các tham số, giúp giảm hiện tượng quá khớp (overfitting) và cung cấp phân bố hậu nghiệm cho việc suy luận.
+
+\subsubsection{b. Mô hình toán học}
+Giả sử ta có tập dữ liệu gồm $n$ quan sát $\{(x_i, y_i)\}_{i=1}^{n}$, trong đó:
+\begin{itemize}
+    \item $x_i \in \mathbb{R}^d$ là vector đặc trưng của quan sát thứ $i$,
+    \item $y_i \in \{0,1\}$ là nhãn của quan sát thứ $i$,
+    \item $\beta \in \mathbb{R}^d$ là vector tham số cần ước lượng.
+\end{itemize}
+
+Xác suất của nhãn $y_i$ được mô hình hóa bởi:
+\begin{equation}
+    P(y_i = 1 | x_i, \beta) = \sigma(x_i^T \beta),
+\end{equation}
+trong đó $\sigma(z)$ là hàm sigmoid:
+\begin{equation}
+    \sigma(z) = \frac{1}{1 + e^{-z}}.
+\end{equation}
+
+\subsubsection{c. Hàm khả năng (Likelihood)}
+Với toàn bộ tập dữ liệu, hàm khả năng được viết dưới dạng:
+\begin{equation}
+    P(Y | X, \beta) = \prod_{i=1}^{n} \sigma(x_i^T \beta)^{y_i} (1 - \sigma(x_i^T \beta))^{1 - y_i}.
+\end{equation}
+
+\subsubsection{d. Phân bố tiên nghiệm (Prior Distribution)}
+Thông thường, ta chọn phân bố Gaussian làm tiên nghiệm cho $\beta$:
+\begin{equation}
+    P(\beta) = \mathcal{N}(\beta | 0, \lambda I),
+\end{equation}
+trong đó $\lambda I$ là ma trận hiệp phương sai, kiểm soát mức độ phẳng của phân bố tiên nghiệm.
+
+\subsubsection{e. Phân bố hậu nghiệm (Posterior Distribution)}
+Sử dụng Định lý Bayes, phân bố hậu nghiệm của $\beta$ là:
+\begin{equation}
+    P(\beta | X, Y) \propto P(Y | X, \beta) P(\beta).
+\end{equation}
+
+Do không có dạng giải tích đơn giản, ta phải dùng phương pháp xấp xỉ như:
+\begin{itemize}
+    \item Lấy mẫu Monte Carlo Markov Chain (MCMC),
+    \item Xấp xỉ Laplace,
+    \item Biến phân (Variational Inference).
+\end{itemize}
+
+
+Hồi quy logistic Bayesian giúp tích hợp thông tin tiên nghiệm vào quá trình học, cải thiện khả năng suy luận và tránh quá khớp. Việc ước lượng phân bố hậu nghiệm yêu cầu các phương pháp tính toán xấp xỉ.
+
+\subsection{Hồi quy Bayesian với dữ liệu bảng (Bayesian Panel Data Models)}
+\subsubsection{a. Giới thiệu}
+Dữ liệu bảng (panel data) kết hợp dữ liệu theo không gian và thời gian, thường được biểu diễn dưới dạng $y_{it}$ với chỉ số $i$ cho từng cá nhân và $t$ cho từng thời điểm. Mô hình hồi quy Bayesian cung cấp một cách tiếp cận xác suất để ước lượng tham số và giải quyết vấn đề bất định.
+
+\subsubsection{b. Mô hình hồi quy dữ liệu bảng}
+Giả sử mô hình hồi quy tuyến tính dạng:
+\begin{equation}
+    y_{it} = \mathbf{x}_{it}'\boldsymbol{\beta} + \alpha_i + \varepsilon_{it}, \quad \varepsilon_{it} \sim \mathcal{N}(0, \sigma^2)
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $y_{it}$ là biến phụ thuộc của cá nhân $i$ tại thời điểm $t$.
+    \item $\mathbf{x}_{it}$ là vector các biến độc lập.
+    \item $\boldsymbol{\beta}$ là vector hệ số hồi quy chung.
+    \item $\alpha_i$ là hiệu ứng cá nhân (random effects hoặc fixed effects).
+    \item $\varepsilon_{it}$ là nhiễu ngẫu nhiên.
+\end{itemize}
+
+\subsubsection{c. Phương pháp Bayesian}
+Trong Bayesian, các tham số được coi là biến ngẫu nhiên với phân phối tiên nghiệm $p(\boldsymbol{\theta})$. Phân phối hậu nghiệm được tính bằng định lý Bayes:
+\begin{equation}
+    p(\boldsymbol{\theta} | \mathbf{y}) \propto p(\mathbf{y} | \boldsymbol{\theta}) p(\boldsymbol{\theta})
+\end{equation}
+trong đó $\boldsymbol{\theta} = \{\boldsymbol{\beta}, \alpha_i, \sigma^2\}$ là tập hợp các tham số cần ước lượng.
+
+\subsubsection{d. Phân phối tiên nghiệm}
+\begin{itemize}
+    \item Với $\boldsymbol{\beta}$: sử dụng tiên nghiệm không thông tin $\mathcal{N}(0, \lambda I)$. 
+    \item Với $\alpha_i$: sử dụng $\mathcal{N}(0, \tau^2)$. 
+    \item Với $\sigma^2$: sử dụng phân phối nghịch gamma $\text{Inv-Gamma}(a, b)$.
+\end{itemize}
+
+\subsubsection{e. Phân phối hậu nghiệm và suy luận}
+Phân phối hậu nghiệm không có dạng đóng nên cần sử dụng phương pháp lấy mẫu Monte Carlo Markov Chain (MCMC), chẳng hạn như thuật toán Gibbs Sampling hoặc Hamiltonian Monte Carlo.
+
+\subsubsection{f. Mô hình Hiệu ứng Ngẫu nhiên (Random Effects)}
+Mô hình hiệu ứng ngẫu nhiên giả sử $\alpha_i \sim \mathcal{N}(0, \tau^2)$. Khi đó, phân phối hậu nghiệm của $\alpha_i$ có dạng:
+\begin{equation}
+    p(\alpha_i | \mathbf{y}, \boldsymbol{\beta}, \sigma^2) \sim \mathcal{N}\left( \frac{\tau^2 \sum_t (y_{it} - \mathbf{x}_{it}'\boldsymbol{\beta})}{\sigma^2 + T \tau^2}, \frac{\sigma^2 \tau^2}{\sigma^2 + T \tau^2} \right)
+\end{equation}
+
+
+Hồi quy Bayesian với dữ liệu bảng cung cấp một cách tiếp cận mềm dẻo để phân tích dữ liệu theo thời gian và không gian. Phương pháp MCMC cho phép ước lượng phân phối hậu nghiệm khi không có nghiệm giải tích.
+

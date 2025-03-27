@@ -1,1 +1,65 @@
-\chapter{Mô hình hồi quy tuyến tinh đơn giản}
+\chapter{Mô hình hồi quy tuyến tinh đơn giản (Simple Linear Regression)}
+\section{Giới thiệu}
+Mô hình hồi quy tuyến tính đơn giản là một trong những mô hình cơ bản nhất trong kinh tế lượng, được sử dụng để mô tả mối quan hệ giữa một biến phụ thuộc ($Y$) và một biến độc lập ($X$).
+
+\section{Phương trình tổng quát}
+Phương trình hồi quy tuyến tính đơn giản có dạng:
+\begin{equation}
+    Y_i = \beta_0 + \beta_1 X_i + \varepsilon_i, \quad i = 1,2,...,n
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $Y_i$: Giá trị của biến phụ thuộc tại quan sát thứ $i$.
+    \item $X_i$: Giá trị của biến độc lập tại quan sát thứ $i$.
+    \item $\beta_0$: Hệ số chặn (intercept).
+    \item $\beta_1$: Hệ số hồi quy (slope coefficient).
+    \item $\varepsilon_i$: Sai số ngẫu nhiên, phản ánh các yếu tố không quan sát được.
+\end{itemize}
+
+\section{Giả định của mô hình hồi quy tuyến tính}
+Để ước lượng chính xác, mô hình cần thỏa mãn các giả định sau:
+\begin{enumerate}
+    \item \textbf{Tính tuyến tính}: Mối quan hệ giữa $X$ và $Y$ là tuyến tính.
+    \item \textbf{Độc lập của sai số}: Các sai số $\varepsilon_i$ là độc lập với nhau.
+    \item \textbf{Phân phối chuẩn của sai số}: $\varepsilon_i \sim N(0, \sigma^2)$.
+    \item \textbf{Phương sai không đổi} (Homoskedasticity): $Var(\varepsilon_i) = \sigma^2$, không phụ thuộc vào $X$.
+    \item \textbf{Không có đa cộng tuyến}: Không có sự tương quan hoàn hảo giữa các biến độc lập (trong trường hợp mô hình mở rộng nhiều biến).
+\end{enumerate}
+
+\section{Ước lượng tham số bằng phương pháp bình phương nhỏ nhất (OLS)}
+Mục tiêu của OLS là tìm các giá trị $\hat{\beta_0}$ và $\hat{\beta_1}$ sao cho tổng bình phương sai số (RSS) nhỏ nhất:
+\begin{equation}
+    RSS = \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2 = \sum_{i=1}^{n} (Y_i - \beta_0 - \beta_1 X_i)^2
+\end{equation}
+
+Để tìm cực tiểu của RSS, ta giải hệ phương trình đạo hàm:
+\begin{align}
+    \frac{\partial RSS}{\partial \beta_0} &= -2\sum_{i=1}^{n} (Y_i - \beta_0 - \beta_1 X_i) = 0 \\
+    \frac{\partial RSS}{\partial \beta_1} &= -2\sum_{i=1}^{n} X_i (Y_i - \beta_0 - \beta_1 X_i) = 0
+\end{align}
+Giải hệ phương trình trên, ta có các ước lượng:
+\begin{equation}
+    \hat{\beta_1} = \frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{\sum_{i=1}^{n} (X_i - \bar{X})^2}
+\end{equation}
+\begin{equation}
+    \hat{\beta_0} = \bar{Y} - \hat{\beta_1} \bar{X}
+\end{equation}
+Trong đó $\bar{X}$ và $\bar{Y}$ lần lượt là trung bình của $X$ và $Y$.
+
+\section{Tính chất của ước lượng OLS}
+Dưới các giả định của mô hình, các ước lượng OLS có các tính chất:
+\begin{itemize}
+    \item Không chệch: $E(\hat{\beta_0}) = \beta_0$, $E(\hat{\beta_1}) = \beta_1$.
+    \item Hiệu quả: Có phương sai nhỏ nhất trong lớp các ước lượng tuyến tính không chệch (BLUE - Best Linear Unbiased Estimator).
+    \item Phân phối của $\hat{\beta_1}$ là chuẩn: $\hat{\beta_1} \sim N(\beta_1, \sigma^2 / \sum (X_i - \bar{X})^2)$.
+\end{itemize}
+
+\section{Đánh giá độ phù hợp của mô hình}
+Hệ số xác định ($R^2$) đo lường mức độ giải thích của biến độc lập đối với biến phụ thuộc:
+\begin{equation}
+    R^2 = 1 - \frac{\sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2}{\sum_{i=1}^{n} (Y_i - \bar{Y})^2}
+\end{equation}
+$R^2$ nằm trong khoảng $[0,1]$, giá trị càng cao mô hình càng phù hợp.
+
+\section{Kết luận}
+Mô hình hồi quy tuyến tính đơn giản là công cụ quan trọng trong phân tích kinh tế lượng. Bằng cách sử dụng phương pháp OLS, ta có thể ước lượng các tham số và đánh giá độ phù hợp của mô hình một cách chính xác.

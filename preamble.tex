@@ -1,5 +1,5 @@
 \usepackage{lmodern}
-\usepackage{geometry}
+
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -14,9 +14,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{vntex}
-\usepackage{amsmath, amssymb}
-\usepackage{graphicx}
-\usepackage{hyperref}
+
+
+
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -52,11 +52,13 @@
 % \renewcommand{\thesection}{\thechapter.\arabic{section}}
 
 % Thêm dấu chấm vào số chương, mục, tiểu mục
-\renewcommand{\thepart}{\Roman{part}.}
-\renewcommand{\thechapter}{\arabic{chapter}.}
-\renewcommand{\thesection}{\thechapter\arabic{section}.}
-\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
-\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+\renewcommand{\thepart}{\Roman{part}} % Không cần dấu chấm
+\renewcommand{\thechapter}{\arabic{chapter}} % Bỏ dấu chấm ở đây
+\renewcommand{\thesection}{\thechapter.\arabic{section}} % Dùng dấu chấm ở đây
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}} % Giữ dấu chấm ở đây
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}} % Giữ dấu chấm ở đây
+\numberwithin{equation}{chapter} % Đánh số công thức theo chương
+
 
 
 % Định dạng header/footer
@@ -64,6 +66,17 @@
 \fancyhf{}
 \fancyhead[L]{\leftmark}
 \fancyhead[R]{\thepage}
+
+
+% Footer
+\fancyfoot[L]{\textit{Các mô hình kinh tế lượng hiện đại}}    % Bên trái footer là tên sách
+\fancyfoot[C]{}                     % Không có nội dung ở giữa footer
+\fancyfoot[R]{\textit{Trần Minh Tâm}} % Bên phải footer là tên tác giả
+
+
+% Thêm đường kẻ ngang trên footer
+\renewcommand{\footrulewidth}{0.4pt} % Độ dày của đường kẻ ngang footer
+
 
 % Cấu hình khoảng cách lề
 \geometry{a4paper, top=1in, bottom=1in, left=1.2in, right=1in}
@@ -98,3 +111,5 @@
 }
 
 \lstset{style=mystyle}
+
+

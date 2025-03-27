@@ -1,4 +1,66 @@
 \chapter{Mô hình ARIMA và các biến thể}
+
 \section{Mô hình AR, MA, ARMA, ARIMA}
-\section{Phương pháp chọn bậc mô hình tối ưu (AIC, BIC)}
+
+\subsection{Mô hình AR (AutoRegressive)}
+Mô hình tự hồi quy bậc $p$ (AR($p$)) được biểu diễn như sau:
+\begin{equation}
+    Y_t = \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \dots + \phi_p Y_{t-p} + \epsilon_t,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y_t$ là giá trị của chuỗi thời gian tại thời điểm $t$.
+    \item $\phi_i$ là hệ số của mô hình.
+    \item $\epsilon_t$ là nhiễu trắng với $\mathbb{E}[\epsilon_t] = 0$ và $\text{Var}(\epsilon_t) = \sigma^2$.
+\end{itemize}
+
+\subsection{Mô hình MA (Moving Average)}
+Mô hình trung bình trượt bậc $q$ (MA($q$)) được biểu diễn như sau:
+\begin{equation}
+    Y_t = \epsilon_t + \theta_1 \epsilon_{t-1} + \theta_2 \epsilon_{t-2} + \dots + \theta_q \epsilon_{t-q}.
+\end{equation}
+
+\subsection{Mô hình ARMA}
+Mô hình kết hợp giữa AR và MA bậc $(p,q)$ (ARMA($p,q$)) được biểu diễn như:
+\begin{equation}
+    Y_t = \sum_{i=1}^{p} \phi_i Y_{t-i} + \sum_{j=1}^{q} \theta_j \epsilon_{t-j} + \epsilon_t.
+\end{equation}
+
+\subsection{Mô hình ARIMA}
+Mô hình ARIMA($p,d,q$) mở rộng ARMA bằng cách thêm phép sai phân:
+\begin{equation}
+    (1 - B)^d Y_t = \sum_{i=1}^{p} \phi_i (1 - B)^d Y_{t-i} + \sum_{j=1}^{q} \theta_j \epsilon_{t-j} + \epsilon_t,
+\end{equation}
+trong đó $B$ là toán tử trễ ($B Y_t = Y_{t-1}$).
+
+\section{Phương pháp chọn bậc mô hình tối ưu}
+
+\subsection{Tiêu chí AIC (Akaike Information Criterion)}
+\begin{equation}
+    \text{AIC} = -2 \ln(L) + 2k,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $L$ là giá trị cực đại của hàm hợp lý.
+    \item $k$ là số tham số trong mô hình.
+\end{itemize}
+
+\subsection{Tiêu chí BIC (Bayesian Information Criterion)}
+\begin{equation}
+    \text{BIC} = -2 \ln(L) + k \ln(n),
+\end{equation}
+trong đó $n$ là số quan sát.
+
 \section{Dự báo bằng ARIMA}
+Dự báo bằng mô hình ARIMA sử dụng phương pháp ngoại suy:
+\begin{equation}
+    \hat{Y}_{t+h} = E[Y_{t+h} | Y_t, Y_{t-1}, \dots]
+\end{equation}
+Phương pháp phổ biến là Box-Jenkins, gồm các bước:
+\begin{enumerate}
+    \item Kiểm tra tính dừng.
+    \item Xác định bậc $p$, $d$, $q$.
+    \item Ước lượng tham số.
+    \item Kiểm tra mô hình.
+    \item Dự báo.
+\end{enumerate}

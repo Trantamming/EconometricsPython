@@ -1,270 +1,206 @@
-\chapter{Ứng dụng mô phỏng trong kinh tế}
-\section{Mô phỏng dữ liệu kinh tế lượng}
-\subsection{Mô hình tổng quát}
+\chapter{Hồi quy và Dự báo với Machine Learning}
+\section{So sánh hồi quy truyền thống với ML}
+Hồi quy truyền thống (như hồi quy tuyến tính) và Machine Learning (ML) có sự khác biệt rõ rệt về mô hình hóa dữ liệu, cách tiếp cận và mục tiêu tối ưu hóa. Dưới đây là một phân tích toán học chi tiết:
 
-Chúng ta xét một mô hình hồi quy tuyến tính bội như sau:
-
+\subsubsection{Hồi quy truyền thống}
+Hồi quy tuyến tính cổ điển có dạng:
 \begin{equation}
-GDP_t = \beta_0 + \beta_1 Investment_t + \beta_2 Consumption_t + \varepsilon_t
+    Y = X \beta + \varepsilon,
 \end{equation}
-
-với:
-\begin{itemize}
-    \item $GDP_t$ là tổng sản phẩm quốc nội tại thời điểm $t$,
-    \item $Investment_t$ là đầu tư tại thời điểm $t$,
-    \item $Consumption_t$ là tiêu dùng tại thời điểm $t$,
-    \item $\varepsilon_t \sim N(0, \sigma^2)$ là nhiễu ngẫu nhiên có phân phối chuẩn với trung bình bằng 0 và phương sai $\sigma^2$,
-    \item $\beta_0, \beta_1, \beta_2$ là các tham số cần ước lượng.
-\end{itemize}
-
-\subsection{Mô phỏng dữ liệu bằng phương pháp Monte Carlo}
-
-\textbf{Bước 1: Xác định số lượng quan sát}  \\
-Chọn số lượng quan sát $T$, ví dụ $T = 1000$, để mô phỏng dữ liệu.
-
-\textbf{Bước 2: Xác định giá trị thực của các tham số}  \\
-Chọn giá trị thực của các tham số:
-\begin{equation}
-\beta_0 = 5, \quad \beta_1 = 2, \quad \beta_2 = 3
-\end{equation}
-
-\textbf{Bước 3: Sinh dữ liệu giả lập cho biến độc lập}  \\
-Sinh các biến $Investment_t$ và $Consumption_t$ từ phân phối chuẩn hoặc phân phối khác phù hợp với thực tế. Ví dụ:
-\begin{equation}
-Investment_t \sim N(10, 5^2), \quad Consumption_t \sim N(20, 10^2)
-\end{equation}
-
-\textbf{Bước 4: Sinh nhiễu ngẫu nhiên $\varepsilon_t$}  \\
-Sinh $\varepsilon_t$ từ phân phối chuẩn:
-\begin{equation}
-\varepsilon_t \sim N(0, 2^2)
-\end{equation}
-
-\textbf{Bước 5: Tính giá trị của $GDP_t$ theo phương trình hồi quy}  \\
-\begin{equation}
-GDP_t = 5 + 2 Investment_t + 3 Consumption_t + \varepsilon_t
-\end{equation}
-
-\textbf{Bước 6: Ước lượng tham số hồi quy}  \\
-Sử dụng phương pháp bình phương nhỏ nhất (OLS - Ordinary Least Squares) để ước lượng các tham số $\beta$. Hệ số ước lượng được tính theo công thức:
-
-\begin{equation}
-\hat{\beta} = (X'X)^{-1}X'Y
-\end{equation}
-
 trong đó:
 \begin{itemize}
-    \item $X$ là ma trận thiết kế:
-    \begin{equation}
-    X = \begin{bmatrix} 1 & Investment_1 & Consumption_1 \\ 1 & Investment_2 & Consumption_2 \\ \vdots & \vdots & \vdots \\ 1 & Investment_T & Consumption_T \end{bmatrix}
-    \end{equation}
-    \item $Y$ là vector kết quả:
-    \begin{equation}
-    Y = \begin{bmatrix} GDP_1 \\ GDP_2 \\ \vdots \\ GDP_T \end{bmatrix}
-    \end{equation}
-    \item $\hat{\beta}$ là vector các ước lượng:
-    \begin{equation}
-    \hat{\beta} = \begin{bmatrix} \hat{\beta}_0 \\ \hat{\beta}_1 \\ \hat{\beta}_2 \end{bmatrix}
-    \end{equation}
+    \item $Y$ là biến phụ thuộc (đầu ra),
+    \item $X$ là ma trận các biến độc lập (đặc trưng),
+    \item $\beta$ là vector hệ số hồi quy,
+    \item $\varepsilon$ là nhiễu có phân phối chuẩn $\mathcal{N}(0, \sigma^2)$.
 \end{itemize}
 
-\textbf{Bước 7: Lặp lại quy trình}  \\
-Lặp lại các bước trên $N$ lần (ví dụ $N = 1000$) để tạo ra nhiều bộ dữ liệu khác nhau và phân tích sự ổn định của các ước lượng $\hat{\beta}$.
-
-\subsection{Đánh giá tính ổn định của ước lượng}
-
-Sau khi thực hiện mô phỏng Monte Carlo, ta có thể phân tích sự ổn định của các ước lượng bằng cách:
-\begin{itemize}
-    \item Tính \textbf{trung bình của các ước lượng} $\hat{\beta}$ trên toàn bộ các lần lặp. Nếu $E[\hat{\beta}] \approx \beta$, thì ước lượng không chệch.
-    \item Tính \textbf{phương sai của các ước lượng} để đánh giá độ tin cậy của mô hình. Nếu phương sai nhỏ, mô hình có độ tin cậy cao.
-    \item Vẽ \textbf{biểu đồ phân phối của $\hat{\beta}$} để kiểm tra tính chuẩn của ước lượng.
-\end{itemize}
-
-\subsection*{Tóm lại: }
-\begin{itemize}
-    \item Mô phỏng dữ liệu kinh tế lượng giúp kiểm tra tính ổn định của ước lượng bằng phương pháp Monte Carlo.
-    \item Ta có thể sinh ngẫu nhiên các biến đầu vào, sau đó sử dụng OLS để ước lượng tham số.
-    \item Việc lặp lại nhiều lần giúp đánh giá tính ổn định của các ước lượng $\beta$.
-\end{itemize}
-
-
-Dưới đây là mã Python để thực hiện mô phỏng Monte Carlo theo mô hình kinh tế lượng đã đề cập:
-
-\begin{lstlisting}[basicstyle=\ttfamily\large][language=Python, caption=Mô phỏng Monte Carlo]
-  import numpy as np
-  import statsmodels.api as sm
-  import matplotlib.pyplot as plt
-  
-  def monte_carlo_simulation(n_simulations=1000, n_samples=100):
-      beta_0, beta_1, beta_2 = 2, 0.5, 0.3  
-      beta_estimates = []
-      
-      for _ in range(n_simulations):
-          investment = np.random.normal(50, 10, n_samples)
-          consumption = np.random.normal(30, 5, n_samples)
-          epsilon = np.random.normal(0, 5, n_samples)
-          
-          gdp = beta_0 + beta_1 * investment + beta_2 * consumption + epsilon
-          
-          X = np.column_stack((np.ones(n_samples), investment, consumption))
-          y = gdp
-          
-          model = sm.OLS(y, X).fit()
-          beta_estimates.append(model.params)
-      
-      beta_estimates = np.array(beta_estimates)
-      
-      plt.figure(figsize=(10, 5))
-      plt.hist(beta_estimates[:, 1], bins=30, alpha=0.6, label="Beta 1")
-      plt.hist(beta_estimates[:, 2], bins=30, alpha=0.6, label="Beta 2")
-      plt.axvline(beta_1, color='r', linestyle='dashed', linewidth=2, label='True Beta 1')
-      plt.axvline(beta_2, color='g', linestyle='dashed', linewidth=2, label='True Beta 2")
-      plt.xlabel("Gia tri uoc luong")
-      plt.ylabel("Tan suat")
-      plt.title("Phan phoi cua uoc luong Beta")
-      plt.legend()
-      plt.show()
-      
-      return beta_estimates
-  
-  beta_estimates = monte_carlo_simulation()
-  \end{lstlisting}
-  
-
-Mã Python trên thực hiện mô phỏng Monte Carlo với các tham số đã nêu, sử dụng hồi quy OLS để ước lượng hệ số và trực quan hóa phân phối của các ước lượng. 
-
-
-
-\section{Mô hình dự báo tài chính bằng mô phỏng - Minh họa với trường hợp mô phỏng giá cổ phiếu bằng ARIMA + Monte Carlo}
-\subsection{Giới thiệu phương pháp}
-Phương pháp này kết hợp mô hình \textbf{ARIMA} để ước lượng chuỗi thời gian giá cổ phiếu và phương pháp \textbf{Monte Carlo} để mô phỏng nhiều kịch bản giá trong tương lai với các sai số ngẫu nhiên.
-
-\begin{itemize}
-\item \textbf{ARIMA (AutoRegressive Integrated Moving Average)}: Dự báo giá cổ phiếu dựa trên cấu trúc tự hồi quy và trung bình trượt của chuỗi thời gian.
-\item \textbf{Monte Carlo Simulation}: Dự báo bằng cách tạo nhiều đường giá tương lai với nhiễu ngẫu nhiên để đánh giá sự không chắc chắn.
-\end{itemize}
-
-\subsection{Mô hình ARIMA}
-Mô hình ARIMA$(p, d, q)$ được xác định bởi:
+Hệ số $\beta$ được ước lượng bằng phương pháp bình phương tối thiểu thông thường (OLS - Ordinary Least Squares):
 \begin{equation}
-(1 - \sum_{i=1}^{p} \phi_i L^i)(1 - L)^d Y_t = (1 + \sum_{j=1}^{q} \theta_j L^j) \epsilon_t
+    \hat{\beta} = (X^T X)^{-1} X^T Y.
+\end{equation}
+
+\subsubsection{Machine Learning trong Hồi quy}
+Machine Learning sử dụng các mô hình phức tạp hơn như hồi quy Ridge, Lasso, và phương pháp phi tuyến như Random Forest, Neural Networks. Cách tiếp cận này có đặc điểm:
+
+\paragraph{Ridge Regression:} Ổn định hóa bằng thêm một thành phần phạt $\lambda \|\beta\|^2$:
+\begin{equation}
+    \hat{\beta}_{ridge} = (X^T X + \lambda I)^{-1} X^T Y.
+\end{equation}
+
+\paragraph{Lasso Regression:} Sử dụng phạt $\ell_1$ để chọn biến:
+\begin{equation}
+    \hat{\beta}_{lasso} = \arg\min_\beta \left( \|Y - X\beta\|^2 + \lambda \|\beta\|_1 \right).
+\end{equation}
+
+\paragraph{Random Forest và Gradient Boosting:} Các mô hình dựa trên cây quyết định, không có dạng công thức đơn giản mà sử dụng tập hợp cây quyết định để dự báo.
+
+\paragraph{Neural Networks:} Mô hình phi tuyến, tối ưu hóa dựa trên lan truyền ngược và hàm mất mát như:
+\begin{equation}
+    L = \sum_{i=1}^{n} (Y_i - f(X_i; \theta))^2.
+\end{equation}
+
+\subsection{So sánh Hiệu suất}
+Các mô hình ML thường có hiệu suất tốt hơn khi dữ liệu phi tuyến hoặc có nhiều biến tương quan, nhưng yêu cầu nhiều dữ liệu hơn và tính toán phức tạp hơn.
+
+
+
+
+
+\section{Mô hình XGBoost, Random Forest và hồi quy phi tuyến}
+\subsection{Giới thiệu}
+Mô hình XGBoost, Random Forest và hồi quy phi tuyến là các phương pháp mạnh mẽ trong Machine Learning để xử lý các quan hệ phi tuyến giữa biến đầu vào và đầu ra. Chúng giúp cải thiện độ chính xác dự báo so với các mô hình hồi quy tuyến tính truyền thống.
+
+\subsection{Random Forest}
+Random Forest (RF) là một tập hợp của nhiều cây quyết định, trong đó:
+\begin{itemize}
+    \item Mỗi cây được xây dựng từ một tập con ngẫu nhiên của dữ liệu.
+    \item Kết quả cuối cùng được lấy trung bình (đối với bài toán hồi quy) hoặc theo số phiếu bầu (đối với phân loại).
+\end{itemize}
+Công thức dự báo của Random Forest được biểu diễn như sau:
+\begin{equation}
+    \hat{y} = \frac{1}{T} \sum_{t=1}^{T} f_t(x),
+\end{equation}
+trong đó $T$ là số lượng cây trong rừng, $f_t(x)$ là hàm dự đoán của cây thứ $t$.
+
+\subsection{XGBoost}
+XGBoost (Extreme Gradient Boosting) là một phương pháp tăng cường (boosting) dựa trên việc xây dựng cây quyết định tuần tự nhằm giảm thiểu hàm mất mát.
+Hàm mất mát tổng thể trong XGBoost có dạng:
+\begin{equation}
+    L = \sum_{i=1}^{n} l(y_i, \hat{y}_i) + \sum_{t=1}^{T} \Omega(f_t),
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $l(y_i, \hat{y}_i)$ là hàm mất mát giữa giá trị thực và giá trị dự báo,
+    \item $\Omega(f_t)$ là hàm điều chuẩn để kiểm soát độ phức tạp của cây quyết định.
+\end{itemize}
+Mô hình mới $F(x)$ được cập nhật theo công thức:
+\begin{equation}
+    F^{(t)}(x) = F^{(t-1)}(x) + \eta f_t(x),
+\end{equation}
+trong đó $\eta$ là tốc độ học.
+
+\subsection{Hồi quy Phi tuyến}
+Hồi quy phi tuyến mô tả mối quan hệ giữa biến đầu vào và đầu ra bằng một hàm phi tuyến như:
+\begin{equation}
+    y = f(x, \theta) + \varepsilon,
+\end{equation}
+trong đó $f(x, \theta)$ có thể là một hàm mũ, logarit, sigmoid hoặc một mạng nơ-ron.
+Một số mô hình phổ biến:
+\begin{itemize}
+    \item Hồi quy đa thức: $y = \beta_0 + \beta_1 x + \beta_2 x^2 + \dots + \beta_p x^p + \varepsilon$.
+    \item Hồi quy logarit: $y = \beta_0 + \beta_1 \log(x) + \varepsilon$.
+    \item Hồi quy hàm mũ: $y = \beta_0 e^{\beta_1 x} + \varepsilon$.
+\end{itemize}
+
+\subsection{Kết luận}
+Random Forest, XGBoost và hồi quy phi tuyến là các công cụ mạnh mẽ để dự báo và phân tích dữ liệu có tính phi tuyến, giúp cải thiện đáng kể độ chính xác so với mô hình tuyến tính truyền thống.
+
+
+
+
+
+
+\section{Đánh giá mô hình dự báo (MAPE, RMSE, R-squared)}
+\subsection{Giới thiệu}
+Trong kinh tế lượng và machine learning, đánh giá mô hình dự báo là một bước quan trọng để kiểm tra mức độ chính xác của mô hình. Ba chỉ số phổ biến để đánh giá mô hình dự báo bao gồm:\\
+- Sai số phần trăm tuyệt đối trung bình (Mean Absolute Percentage Error - MAPE) \\
+- Căn bậc hai của trung bình bình phương sai số (Root Mean Square Error - RMSE) \\
+- Hệ số xác định ($R^2$ - R-squared)
+
+\subsection{Sai số phần trăm tuyệt đối trung bình (MAPE)}
+MAPE đo lường sai số tương đối trung bình của các dự báo so với giá trị thực tế:
+\begin{equation}
+    \text{MAPE} = \frac{1}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100\%
 \end{equation}
 Trong đó:
 \begin{itemize}
-\item $p$ là số bậc tự hồi quy (AR).
-\item $d$ là số lần lấy sai phân (I).
-\item $q$ là số bậc trung bình trượt (MA).
-\item $\epsilon_t \sim N(0, \sigma^2)$ là nhiễu trắng.
+    \item $y_i$ là giá trị thực tế tại quan sát thứ $i$
+    \item $\hat{y}_i$ là giá trị dự báo tại quan sát thứ $i$
+    \item $n$ là số quan sát
 \end{itemize}
-Sau khi ước lượng mô hình ARIMA từ dữ liệu lịch sử, ta sẽ sử dụng nó để dự báo xu hướng giá tương lai.
+Giá trị MAPE càng nhỏ thì mô hình dự báo càng chính xác.
 
-\subsection{Mô phỏng Monte Carlo dựa trên ARIMA}
-Sau khi có mô hình ARIMA, ta mô phỏng Monte Carlo bằng cách:
-\begin{enumerate}
-\item Lấy \textbf{giá dự báo từ ARIMA}.
-\item Thêm \textbf{nhiễu ngẫu nhiên} $\epsilon_t \sim N(0, \hat{\sigma}^2)$.
-\item Lặp lại nhiều lần để tạo các kịch bản khác nhau.
-\end{enumerate}
-Công thức dự báo giá cổ phiếu:
+\subsection{Căn bậc hai của trung bình bình phương sai số (RMSE)}
+RMSE đo lường sai số dự báo trung bình theo đơn vị gốc của biến phụ thuộc:
 \begin{equation}
-S_{t+1} = \hat{S}_{t+1}^{ARIMA} + \sigma \cdot Z_t
+    \text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
 \end{equation}
-với $Z_t \sim N(0,1)$, mô phỏng nhiều kịch bản giá khác nhau.
+RMSE càng nhỏ thì mô hình càng chính xác, vì sai số bình phương được giảm thiểu.
 
-Dưới đây là mã Python để thực hiện mô phỏng giá cổ phiếu bằng mô hình ARIMA kết hợp với Monte Carlo.
+\subsection{Hệ số xác định ($R^2$ - R-squared)}
+Hệ số xác định đo lường mức độ giải thích của biến độc lập đối với biến phụ thuộc:
+\begin{equation}
+    R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+\end{equation}
+Trong đó $\bar{y}$ là giá trị trung bình của biến phụ thuộc. Giá trị $R^2$ nằm trong khoảng $[0,1]$, với $R^2$ càng gần 1 thì mô hình càng phù hợp.
 
-\subsubsection{Cài đặt thư viện}
-\begin{lstlisting}[basicstyle=\ttfamily\large]
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from statsmodels.tsa.arima.model import ARIMA
-
-
-num_simulations = 1000
-forecast_days = 30
-\end{lstlisting}
-
-\subsubsection{Đọc dữ liệu và ước lượng mô hình ARIMA}
-\begin{lstlisting}[basicstyle=\ttfamily\large]
-
-np.random.seed(42)
-returns = np.random.normal(0, 1, 500)  
-prices = 100 + np.cumsum(returns)  
-
-df = pd.DataFrame({'Price': prices})
+\subsection{Kết luận}
+Các chỉ số MAPE, RMSE, và $R^2$ cung cấp các cách tiếp cận khác nhau để đánh giá mô hình dự báo. Tùy vào mục tiêu phân tích mà ta có thể sử dụng từng chỉ số phù hợp.
 
 
-model = ARIMA(df['Price'], order=(1, 1, 1))
-model_fit = model.fit()
-\end{lstlisting}
-
-\subsubsection{Mô phỏng Monte Carlo}
-\begin{lstlisting}[basicstyle=\ttfamily\large]
-
-simulated_paths = np.zeros((num_simulations, forecast_days))
-
-for i in range(num_simulations):
-forecast = model_fit.forecast(steps=forecast_days)
-noise = np.random.normal(0, np.std(forecast), forecast_days)
-simulated_paths[i, :] = forecast + noise
-\end{lstlisting}
-
-\subsubsection{Hiển thị kết quả}
-\begin{lstlisting}[basicstyle=\ttfamily\large]
-
-plt.figure(figsize=(10, 5))
-plt.plot(simulated_paths.T, color='lightblue', alpha=0.2)
-plt.plot(np.mean(simulated_paths, axis=0), color='red', label='Trung binh du bao')
-plt.legend()
-plt.title('Mo phong gia co phieu bang ARIMA + Monte Carlo')
-plt.xlabel('Ngay')
-plt.ylabel('Gia co phieu')
-plt.show()
-\end{lstlisting}
 
 
-Phương pháp kết hợp ARIMA và mô phỏng Monte Carlo giúp dự báo kịch bản giá cổ phiếu với độ không chắc chắn được mô hình hóa bằng nhiễu ngẫu nhiên.
 
-% \subsection{Mô hình chuyển động Brown hình học (GBM - Geometric Brownian Motion)}
-% Mô hình giá cổ phiếu theo chuyển động Brown hình học được biểu diễn bởi phương trình vi phân ngẫu nhiên:
-% \begin{equation}
-%     dS_t = \mu S_t dt + \sigma S_t dW_t
-% \end{equation}
-% trong đó:
-% \begin{itemize}
-%     \item $S_t$ là giá cổ phiếu tại thời điểm $t$,
-%     \item $\mu$ là tỷ suất sinh lợi trung bình (drift),
-%     \item $\sigma$ là độ biến động (volatility),
-%     \item $W_t$ là quá trình Wiener chuẩn (chuyển động Brown chuẩn) với tính chất:
-%     \begin{equation}
-%         dW_t \sim \mathcal{N}(0, dt)
-%     \end{equation}
-% \end{itemize}
 
-% \subsection{Giải phương trình vi phân ngẫu nhiên}
-% Sử dụng công thức Itô, nghiệm của phương trình trên có thể được biểu diễn dưới dạng tích phân:
-% \begin{equation}
-%     S_{t+1} = S_t \exp \left( \left( \mu - \frac{1}{2} \sigma^2 \right) \Delta t + \sigma \sqrt{\Delta t} Z_t \right)
-% \end{equation}
-% trong đó:
-% \begin{itemize}
-%     \item $\Delta t$ là bước nhảy thời gian nhỏ,
-%     \item $Z_t \sim \mathcal{N}(0,1)$ là biến ngẫu nhiên phân phối chuẩn.
-% \end{itemize}
+\section{ML và các phương pháp Bayes trong dự báo kinh tế lượng}
+\subsection{Giới thiệu}
+Machine Learning (ML) và phương pháp Bayes ngày càng được sử dụng rộng rãi trong dự báo kinh tế lượng do khả năng xử lý dữ liệu lớn và cập nhật thông tin theo cách xác suất.
 
-% \subsection{Mô phỏng Monte Carlo}
-% Để mô phỏng giá cổ phiếu theo thời gian, ta thực hiện:
-% \begin{enumerate}
-%     \item Khởi tạo giá cổ phiếu ban đầu $S_0$.
-%     \item Sinh một tập hợp lớn các số ngẫu nhiên $Z_t$ từ phân phối chuẩn $\mathcal{N}(0,1)$.
-%     \item Áp dụng công thức mô phỏng trên để cập nhật giá $S_t$.
-%     \item Lặp lại quy trình nhiều lần để thu thập các đường giá khác nhau.
-% \end{enumerate}
+\subsection{Phương pháp Bayes trong Dự Báo}
+Phương pháp Bayes dựa trên định lý Bayes:
+\begin{equation}
+    P(\theta | D) = \frac{P(D | \theta) P(\theta)}{P(D)}
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $P(\theta | D)$ là xác suất hậu nghiệm của tham số $\theta$ sau khi quan sát dữ liệu $D$.
+    \item $P(D | \theta)$ là hàm khả năng (likelihood) của dữ liệu.
+    \item $P(\theta)$ là xác suất tiên nghiệm của tham số $\theta$.
+    \item $P(D)$ là xác suất biên của dữ liệu.
+\end{itemize}
 
-% \subsection{Ý nghĩa kinh tế}
-% \begin{itemize}
-%     \item Thành phần $\left( \mu - \frac{1}{2} \sigma^2 \right) \Delta t$ thể hiện xu hướng tăng trưởng trung bình có điều chỉnh theo rủi ro.
-%     \item Thành phần $\sigma \sqrt{\Delta t} Z_t$ biểu diễn sự biến động ngẫu nhiên của giá cổ phiếu.
-% \end{itemize}
-% Mô hình GBM là cơ sở của nhiều phương pháp định giá tài sản tài chính, bao gồm mô hình Black-Scholes để định giá quyền chọn.
+\subsubsection{Mô hình hồi quy Bayes}
+Mô hình hồi quy Bayes mở rộng hồi quy tuyến tính thông qua cách tiếp cận xác suất:
+\begin{equation}
+    y = X \beta + \epsilon, \quad \epsilon \sim \mathcal{N}(0, \sigma^2 I)
+\end{equation}
+Trong mô hình Bayes, $\beta$ được xem là một biến ngẫu nhiên với phân phối tiên nghiệm $P(\beta)$, thường được chọn là phân phối Gauss:
+\begin{equation}
+    \beta \sim \mathcal{N}(\mu_0, \Sigma_0)
+\end{equation}
+Khi có dữ liệu quan sát, phân phối hậu nghiệm của $\beta$ cũng là một phân phối Gauss:
+\begin{equation}
+    P(\beta | D) \propto P(D | \beta) P(\beta)
+\end{equation}
+
+\subsubsection{Ước lượng bằng phương pháp Bayes}
+Giá trị kỳ vọng của $\beta$ trong mô hình hồi quy Bayes được tính như sau:
+\begin{equation}
+    \mathbb{E}[\beta | D] = (X^TX + \Sigma_0^{-1})^{-1} (X^T y + \Sigma_0^{-1} \mu_0)
+\end{equation}
+\begin{equation}
+    \text{Var}(\beta | D) = (X^TX + \Sigma_0^{-1})^{-1} \sigma^2
+\end{equation}
+
+\subsection{Kết hợp Machine Learning và Bayes trong Dự Báo}
+\subsubsection{Bayesian Neural Networks (BNN)}
+Mạng nơ-ron Bayes sử dụng phân phối tiên nghiệm trên các trọng số $W$:
+\begin{equation}
+    P(W | D) = \frac{P(D | W) P(W)}{P(D)}
+\end{equation}
+BNN thường được huấn luyện bằng các phương pháp xấp xỉ như Variational Inference (VI) hoặc Markov Chain Monte Carlo (MCMC).
+
+\subsubsection{Gaussian Processes (GP) trong dự báo kinh tế}
+Mô hình Gaussian Process (GP) có thể được sử dụng trong dự báo thời gian với phân phối tiên nghiệm Gauss:
+\begin{equation}
+    f(x) \sim \mathcal{GP}(m(x), k(x, x'))
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $m(x)$ là hàm trung bình.
+    \item $k(x, x')$ là hàm hiệp phương sai (kernel function).
+\end{itemize}
+
+\subsection{Kết luận}
+Phương pháp Bayes mang lại lợi thế trong dự báo kinh tế lượng nhờ khả năng cập nhật thông tin và biểu diễn sự không chắc chắn trong mô hình. Kết hợp Machine Learning với Bayesian Inference giúp tăng độ chính xác và tính linh hoạt của các mô hình dự báo.

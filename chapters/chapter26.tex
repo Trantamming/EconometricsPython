@@ -1,1 +1,157 @@
-\chapter{MCMC và ứng dụng trong mô hình kinh tế lượng}
+\chapter{Ước lượng Bayesian với dữ liệu nhỏ hoặc không đầy đủ}
+
+\section{Giới thiệu}
+Ước lượng Bayesian cung cấp một phương pháp mạnh mẽ để xử lý dữ liệu nhỏ hoặc không đầy đủ bằng cách kết hợp thông tin tiên nghiệm (prior information) với dữ liệu quan sát được để suy luận về tham số. Khi dữ liệu ít hoặc bị thiếu, mô hình Bayesian có thể sử dụng tiên nghiệm thích hợp để cải thiện độ chính xác của ước lượng.
+
+Gọi $\theta$ là tham số cần ước lượng, và $D$ là tập dữ liệu quan sát được (có thể nhỏ hoặc không đầy đủ). Theo quy tắc Bayes:
+\begin{equation}
+    p(\theta | D) = \frac{p(D | \theta) p(\theta)}{p(D)}
+\end{equation}
+trong đó:\\
+- $p(\theta)$ là tiên nghiệm về $\theta$,\\
+- $p(D | \theta)$ là xác suất có điều kiện của dữ liệu (likelihood),\\
+- $p(D)$ là hệ số chuẩn hóa, còn gọi là \textbf{bằng chứng} (evidence),\\
+- $p(\theta | D)$ là phân phối hậu nghiệm của tham số.
+
+\section{Chọn tiên nghiệm phù hợp với dữ liệu nhỏ}
+Khi dữ liệu nhỏ, lựa chọn tiên nghiệm đóng vai trò quan trọng vì nó có thể ảnh hưởng mạnh đến kết quả. Một số lựa chọn phổ biến:
+
+\subsection{Tiên nghiệm không thông tin (Non-informative prior)}
+- Khi không có nhiều thông tin trước, ta chọn tiên nghiệm phẳng (uniform) hoặc Jeffreys prior:
+  \begin{equation}
+      p(\theta) \propto 1
+  \end{equation}
+  hoặc
+  \begin{equation}
+      p(\theta) \propto \frac{1}{\sqrt{I(\theta)}}
+  \end{equation}
+  với $I(\theta)$ là thông tin Fisher.
+
+\subsection{Tiên nghiệm thông tin (Informative prior)}
+- Nếu có thông tin trước về tham số, ta dùng phân phối Gaussian, Gamma, Beta, v.v.\\
+- Ví dụ: Nếu $\theta$ là trung bình của phân phối chuẩn, ta có thể chọn tiên nghiệm Gaussian:
+  \begin{equation}
+      \theta \sim \mathcal{N}(\mu_0, \sigma_0^2)
+  \end{equation}
+
+\subsection{Tiên nghiệm co rút (Shrinkage prior)}
+- Khi số lượng tham số lớn hơn số quan sát, ta sử dụng tiên nghiệm Laplace (Lasso Bayesian) hoặc tiên nghiệm Gaussian chuẩn hóa (Ridge Bayesian):
+  \begin{equation}
+      p(\theta) \propto e^{-\lambda |\theta|}
+  \end{equation}
+  hoặc
+  \begin{equation}
+      p(\theta) \propto e^{-\lambda \theta^2}
+  \end{equation}
+
+\section{Ước lượng Bayesian với dữ liệu không đầy đủ}
+Khi dữ liệu bị thiếu, ta cần tích hợp phân phối hậu nghiệm theo những giá trị không quan sát được.
+
+\subsection{Phương pháp tích phân biên (Marginalization)}
+Giả sử dữ liệu bị thiếu là $X_m$, dữ liệu quan sát là $X_o$. Khi đó, ta tính hậu nghiệm biên:
+\begin{equation}
+    p(\theta | X_o) = \int p(\theta | X_o, X_m) p(X_m | X_o) dX_m
+\end{equation}
+
+\subsection{Phương pháp Gibbs Sampling (MCMC)}
+1. Lấy mẫu $X_m^{(t+1)} \sim p(X_m | \theta^{(t)}, X_o)$\\
+2. Lấy mẫu $\theta^{(t+1)} \sim p(\theta | X_o, X_m^{(t+1)})$
+
+\subsection{Phương pháp EM Bayesian (Expectation-Maximization Bayesian)}
+1. \textbf{Bước E}: Tính kỳ vọng hậu nghiệm có điều kiện $Q(\theta) = E[\log p(X | \theta) | X_o]$.\\
+2. \textbf{Bước M}: Cập nhật tham số bằng cách tối đa hóa:
+   \begin{equation}
+       \theta^{(t+1)} = \arg\max_{\theta} Q(\theta) p(\theta)
+   \end{equation}
+
+\section{Ví dụ: Ước lượng trung bình với dữ liệu nhỏ hoặc bị thiếu}
+Giả sử ta có một tập dữ liệu nhỏ $X = \{ x_1, x_2, ..., x_n \}$ từ phân phối chuẩn $X_i \sim \mathcal{N}(\mu, \sigma^2)$, với $\sigma^2$ đã biết.
+
+1. \textbf{Chọn tiên nghiệm}:
+   \begin{equation}
+       \mu \sim \mathcal{N}(\mu_0, \tau_0^2)
+   \end{equation}
+
+2. \textbf{Tính phân phối hậu nghiệm}:
+   \begin{equation}
+       p(X | \mu) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x_i - \mu)^2}{2\sigma^2}}
+   \end{equation}
+
+   \begin{equation}
+       \mu | X \sim \mathcal{N}(\mu_n, \tau_n^2)
+   \end{equation}
+   với:
+   \begin{equation}
+       \mu_n = \frac{\frac{\mu_0}{\tau_0^2} + \frac{n\bar{x}}{\sigma^2}}{\frac{1}{\tau_0^2} + \frac{n}{\sigma^2}}
+   \end{equation}
+   \begin{equation}
+       \tau_n^2 = \frac{1}{\frac{1}{\tau_0^2} + \frac{n}{\sigma^2}}
+   \end{equation}
+
+   \section{Ví dụ minh họa: Ước Lượng Bayesian trong kinh tế lượng}
+
+   Giả sử chúng ta có một bộ dữ liệu nhỏ về mối quan hệ giữa \textbf{tăng trưởng GDP ($Y$)} và \textbf{chi tiêu chính phủ ($X$)} của một số quốc gia trong một khoảng thời gian ngắn. Vì số quan sát ít, ước lượng theo phương pháp truyền thống (OLS) có thể không đáng tin cậy. Ta sẽ sử dụng \textbf{hồi quy Bayesian} để cải thiện kết quả.
+   
+   \subsection{Mô hình Hồi Quy Bayesian}
+   Mô hình hồi quy tuyến tính có dạng:
+   \begin{equation}
+       Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad \epsilon_i \sim \mathcal{N}(0, \sigma^2)
+   \end{equation}
+   
+   với:
+   \begin{itemize}
+       \item $Y_i$ là tăng trưởng GDP của quốc gia $i$.
+       \item $X_i$ là chi tiêu chính phủ của quốc gia $i$.
+       \item $\beta_0, \beta_1$ là các tham số cần ước lượng.
+       \item $\epsilon_i$ là sai số ngẫu nhiên tuân theo phân phối chuẩn với phương sai $\sigma^2$.
+   \end{itemize}
+   
+   \subsection{Thiết Lập Phân Phối Tiên Nghiệm (Prior)}
+   Vì dữ liệu nhỏ, ta sử dụng phân phối tiên nghiệm để đưa thêm thông tin từ các nghiên cứu trước. Giả sử:
+   \begin{align*}
+       \beta_0 &\sim \mathcal{N}(0, 10) \\
+       \beta_1 &\sim \mathcal{N}(0.5, 0.2) \\
+       \sigma^2 &\sim \text{Inverse-Gamma}(2, 2)
+   \end{align*}
+   
+   \subsection{Tính Phân Phối Hậu Nghiệm (Posterior)}
+   Theo định lý Bayes, ta có:
+   \begin{equation}
+       P(\beta_0, \beta_1, \sigma^2 | Y, X) \propto P(Y | X, \beta_0, \beta_1, \sigma^2) P(\beta_0, \beta_1, \sigma^2)
+   \end{equation}
+   
+   với $P(Y | X, \beta_0, \beta_1, \sigma^2)$ là hàm hợp lý (likelihood) của mô hình hồi quy chuẩn.
+   
+   Vì phân phối hậu nghiệm không có dạng đóng (closed-form), ta phải sử dụng \textbf{phương pháp MCMC (Markov Chain Monte Carlo)} để lấy mẫu từ hậu nghiệm.
+   
+   \subsection{Ước Lượng Bằng Gibbs Sampling}
+   Quy trình Gibbs Sampling gồm các bước:
+   \begin{enumerate}
+       \item \textbf{Khởi tạo giá trị ban đầu} cho $\beta_0, \beta_1, \sigma^2$.
+       \item \textbf{Cập nhật $\beta_0$ và $\beta_1$ từ phân phối có điều kiện}:
+       \begin{equation}
+           P(\beta_0, \beta_1 | Y, X, \sigma^2) = \mathcal{N}(\mu, \Sigma)
+       \end{equation}
+       với $\mu, \Sigma$ là các tham số ước lượng từ dữ liệu.
+       \item \textbf{Cập nhật $\sigma^2$ từ phân phối có điều kiện}:
+       \begin{equation}
+           P(\sigma^2 | Y, X, \beta_0, \beta_1) = \text{Inverse-Gamma}(\alpha', \beta')
+       \end{equation}
+       \item \textbf{Lặp lại} bước 2 và 3 cho đến khi đạt hội tụ.
+   \end{enumerate}
+   
+   \subsection{Kết Quả và Ứng Dụng}
+   Sau khi chạy MCMC, ta có thể lấy giá trị trung bình của các mẫu $\beta_0, \beta_1$ để có ước lượng tốt hơn về tác động của chi tiêu chính phủ đến tăng trưởng GDP. Với Bayesian, ta còn có \textbf{độ tin cậy của ước lượng} thông qua phân phối hậu nghiệm, giúp tránh overfitting khi dữ liệu nhỏ.
+   
+   \subsection{Ứng dụng thực tế}
+   \begin{itemize}
+       \item Phân tích tác động của chính sách tài khóa khi dữ liệu chưa đủ lớn.
+       \item Dự báo tăng trưởng GDP với ít quan sát.
+       \item Hỗ trợ ra quyết định khi dữ liệu kinh tế bị thiếu hoặc không hoàn chỉnh.
+   \end{itemize}
+
+
+\section{Kết luận}
+- Bayesian inference rất phù hợp khi dữ liệu nhỏ hoặc bị thiếu.\\
+- Tiên nghiệm đóng vai trò quan trọng trong việc điều chỉnh kết quả ước lượng.\\
+- Các phương pháp như Gibbs Sampling và EM Bayesian giúp xử lý dữ liệu không đầy đủ.

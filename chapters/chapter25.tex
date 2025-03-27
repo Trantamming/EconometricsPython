@@ -1,1 +1,219 @@
-\chapter{Ước lượng Bayesian trong mô hình hồi quy}
+\chapter{Mô hình chuỗi thời gian Bayesian}
+
+\section{Giới thiệu}
+Chuỗi thời gian Bayesian (Bayesian Time Series) là một phương pháp mô hình hóa dữ liệu chuỗi thời gian sử dụng lý thuyết xác suất Bayes để suy luận về các tham số không quan sát được. Phương pháp này giúp cập nhật niềm tin của chúng ta về một mô hình khi có thêm dữ liệu mới, cho phép linh hoạt hơn so với các phương pháp suy diễn tần suất (frequentist).
+
+\section{Mô hình tổng quát}
+Một mô hình chuỗi thời gian Bayesian điển hình có dạng:
+\begin{equation}
+    y_t = f(y_{t-1}, y_{t-2}, ..., \theta) + \varepsilon_t,
+\end{equation}
+với \(\theta\) là vector tham số cần ước lượng, và \(\varepsilon_t\) là nhiễu trắng với \(\varepsilon_t \sim \mathcal{N}(0, \sigma^2)\).
+
+\section{Ước lượng tham số bằng Bayes}
+Theo nguyên lý Bayes, ta có công thức:
+\begin{equation}
+    p(\theta | Y) \propto p(Y | \theta) p(\theta),
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item \(p(\theta | Y)\) là phân phối hậu nghiệm (posterior distribution),
+    \item \(p(Y | \theta)\) là hàm khả năng (likelihood function),
+    \item \(p(\theta)\) là phân phối tiên nghiệm (prior distribution).
+\end{itemize}
+
+\section{Mô hình tự hồi quy Bayesian (Bayesian AR model)}
+Một mô hình AR Bayesian bậc \(p\) có dạng:
+\begin{equation}
+    y_t = \sum_{i=1}^{p} \phi_i y_{t-i} + \varepsilon_t,
+\end{equation}
+trong đó \(\phi_i\) là các hệ số hồi quy cần ước lượng.
+
+Lựa chọn phân phối tiên nghiệm:
+\begin{equation}
+    \phi_i \sim \mathcal{N}(0, \tau^2),
+\end{equation}
+với \(\tau^2\) được xác định dựa trên dữ liệu.
+
+\section{Mô hình động Bayesian (Bayesian Dynamic Models)}
+Mô hình động có dạng:
+\begin{align}
+    y_t &= X_t \beta_t + \varepsilon_t, \quad \varepsilon_t \sim \mathcal{N}(0, \sigma^2), \\
+    \beta_t &= \beta_{t-1} + \eta_t, \quad \eta_t \sim \mathcal{N}(0, Q).
+\end{align}
+Quá trình \(\beta_t\) cho phép hệ số thay đổi theo thời gian.
+
+\section{Phương pháp suy luận trong Mô hình chuỗi thời gian Bayesia}
+Trong mô hình chuỗi thời gian Bayesian, mục tiêu chính là ước lượng \textbf{phân phối hậu nghiệm} $p(\theta | \mathcal{D})$, tức là phân phối của tham số $\theta$ sau khi quan sát dữ liệu $\mathcal{D}$. Tuy nhiên, trong hầu hết các trường hợp, phân phối hậu nghiệm \textbf{không có dạng đóng}, do đó ta phải sử dụng các phương pháp \textbf{lấy mẫu xấp xỉ} hoặc \textbf{tối ưu hóa xấp xỉ} để ước lượng nó.
+
+Ba phương pháp chính thường được sử dụng là:
+
+\subsection{Phương pháp Markov Chain Monte Carlo (MCMC)}
+MCMC là một phương pháp tạo mẫu từ phân phối hậu nghiệm bằng cách xây dựng một chuỗi Markov có phân phối dừng chính là phân phối hậu nghiệm cần ước lượng.
+
+\subsubsection{* Nguyên lý}  
+\begin{itemize}
+    \item Bắt đầu từ một giá trị khởi tạo $\theta_0$.
+    \item Tạo một chuỗi các mẫu $\theta_1, \theta_2, \dots$ sao cho phân phối của các mẫu này tiệm cận phân phối hậu nghiệm $p(\theta | \mathcal{D})$.
+    \item Sử dụng các thuật toán lấy mẫu như \textbf{Metropolis-Hastings} hoặc \textbf{Gibbs Sampling}.
+\end{itemize}
+
+\subsubsection{* Ưu điểm}
+\begin{itemize}
+    \item Chính xác khi số lượng mẫu đủ lớn.
+\end{itemize}
+
+\subsubsection{* Nhược điểm}
+\begin{itemize}
+    \item Tính toán chậm, khó hội tụ nếu không chọn hàm đề xuất tốt.
+\end{itemize}
+
+\subsection{Phương pháp Hamiltonian Monte Carlo (HMC)}
+HMC là một cải tiến của MCMC, sử dụng \textbf{cơ học Hamilton} để di chuyển trong không gian tham số hiệu quả hơn.
+
+\subsubsection{* Nguyên lý}  
+\begin{itemize}
+    \item Xem tham số $\theta$ như một vật thể chuyển động trong không gian dưới ảnh hưởng của một trường lực sinh ra từ hàm xác suất hậu nghiệm.
+    \item Dùng phương trình Hamilton để tính toán chuyển động của tham số, giúp lấy mẫu hiệu quả hơn so với MCMC truyền thống.
+\end{itemize}
+
+\subsubsection{* Ưu điểm}
+\begin{itemize}
+    \item Hội tụ nhanh hơn so với MCMC thông thường.
+    \item Ít bị mắc kẹt trong các vùng mật độ thấp.
+\end{itemize}
+
+\subsubsection{* Nhược điểm}
+\begin{itemize}
+    \item Cần tính đạo hàm của hàm hậu nghiệm (đắt về mặt tính toán).
+    \item Khó điều chỉnh các siêu tham số.
+\end{itemize}
+
+\subsection{Phương pháp Variational Bayes (VB)}
+Variational Bayes là một phương pháp tối ưu hóa thay vì lấy mẫu. Nó tìm một phân phối gần đúng $q(\theta)$ để xấp xỉ hậu nghiệm $p(\theta | \mathcal{D})$ bằng cách \textbf{tối ưu hóa một hàm mất mát} gọi là *ELBO* (Evidence Lower Bound).
+
+\subsubsection{* Nguyên lý}  
+\begin{itemize}
+    \item Xác định một họ phân phối đơn giản $q(\theta)$ để xấp xỉ hậu nghiệm $p(\theta | \mathcal{D})$.
+    \item Tìm $q(\theta)$ tốt nhất bằng cách tối đa hóa ELBO.
+\end{itemize}
+
+\subsubsection{* Ưu điểm}
+\begin{itemize}
+    \item Tốc độ nhanh hơn MCMC/HMC.
+    \item Tính toán hiệu quả hơn cho mô hình lớn.
+\end{itemize}
+
+\subsubsection{* Nhược điểm}
+\begin{itemize}
+    \item Độ chính xác kém hơn so với MCMC/HMC.
+    \item Phụ thuộc vào lựa chọn của họ phân phối xấp xỉ.
+\end{itemize}
+
+\subsubsection{* Tóm tắt lựa chọn phương pháp}
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Phương pháp} & \textbf{Loại tiếp cận} & \textbf{Độ chính xác} & \textbf{Hiệu suất tính toán} \\
+        \hline
+        MCMC & Lấy mẫu & Cao & Chậm \\
+        \hline
+        HMC & Lấy mẫu & Rất cao & Trung bình \\
+        \hline
+        VB & Tối ưu hóa & Trung bình & Nhanh \\
+        \hline
+    \end{tabular}
+\end{center}
+
+Nếu cần tính toán chính xác cao và có đủ tài nguyên, ta chọn \textbf{HMC hoặc MCMC}. Nếu cần tính toán nhanh hơn, có thể chọn \textbf{Variational Bayes}.
+
+
+\section{Các mô hình chuỗi thời gian Bayesian phổ biến trong kinh tế lượng}
+\subsection{Bayesian Vector Autoregression (BVAR)}
+Mô hình Vector Autoregression (VAR) mở rộng theo hướng Bayesian nhằm giải quyết vấn đề \textbf{overfitting} khi số lượng biến kinh tế lớn.
+
+\subsubsection{a. Định nghĩa mô hình VAR}
+Một mô hình VAR bậc $p$ có dạng:
+\begin{equation}
+    Y_t = A_1 Y_{t-1} + A_2 Y_{t-2} + \dots + A_p Y_{t-p} + \epsilon_t
+\end{equation}
+với:
+\begin{itemize}
+    \item $Y_t \in \mathbb{R}^N$ là vector gồm $N$ biến kinh tế tại thời điểm $t$.
+    \item $A_i$ là ma trận hệ số $N \times N$.
+    \item $\epsilon_t \sim \mathcal{N}(0, \Sigma)$ là nhiễu trắng với hiệp phương sai $\Sigma$.
+\end{itemize}
+Viết lại dạng vector hóa:
+\begin{equation}
+    Y = X \beta + \epsilon
+\end{equation}
+với:
+\begin{itemize}
+    \item $Y = \begin{bmatrix} Y_1 \\ Y_2 \\ \vdots \\ Y_T \end{bmatrix}$,
+    \item $X = \begin{bmatrix} Y_0 & Y_{-1} & \dots & Y_{-p+1} \\ Y_1 & Y_0 & \dots & Y_{-p+2} \\ \vdots & \vdots & \ddots & \vdots \\ Y_{T-1} & Y_{T-2} & \dots & Y_{T-p} \end{bmatrix}$,
+    \item $\beta$ là vector hóa của tất cả $A_i$,
+    \item $\epsilon \sim \mathcal{N}(0, I_T \otimes \Sigma)$.
+\end{itemize}
+
+\subsubsection{b. Hồi quy Bayesian với tiên nghiệm Minnesota}
+Để tránh overfitting, ta áp đặt tiên nghiệm lên $\beta$:
+\begin{equation}
+    \beta \sim \mathcal{N}(\mu_\beta, \Omega_\beta)
+\end{equation}
+\begin{itemize}
+    \item \textbf{Minnesota prior} giả định các hệ số của biến trễ cao hơn có phương sai nhỏ hơn:
+    \begin{equation}
+        \text{Var}(A_{i, jk}) = \frac{\lambda^2}{i^2}, \quad i = 1, 2, \dots, p
+    \end{equation}
+    với $\lambda$ là tham số điều chỉnh độ chặt của tiên nghiệm.
+    \item Tiên nghiệm về ma trận hiệp phương sai nhiễu:
+    \begin{equation}
+        \Sigma \sim \text{Inverse-Wishart}(\Psi, \nu)
+    \end{equation}
+    \item Phân phối hậu nghiệm của $\beta$ và $\Sigma$:
+    \begin{equation}
+        p(\beta, \Sigma | Y) \propto p(Y | \beta, \Sigma) p(\beta) p(\Sigma)
+    \end{equation}
+\end{itemize}
+Ước lượng bằng \textbf{Gibbs Sampling} để lấy mẫu từ phân phối hậu nghiệm.
+
+\subsection{Bayesian State-Space Models}
+Mô hình \textbf{Bayesian State-Space} mô tả động thái của các trạng thái ẩn trong nền kinh tế.
+
+\subsubsection{a. Định nghĩa mô hình}
+Mô hình gồm hai phương trình:
+\begin{itemize}
+    \item \textbf{Phương trình trạng thái (State Equation)}:
+    \begin{equation}
+        S_t = F S_{t-1} + \eta_t, \quad \eta_t \sim \mathcal{N}(0, Q)
+    \end{equation}
+    \item \textbf{Phương trình quan sát (Observation Equation)}:
+    \begin{equation}
+        Y_t = H S_t + \epsilon_t, \quad \epsilon_t \sim \mathcal{N}(0, R)
+    \end{equation}
+\end{itemize}
+trong đó:
+\begin{itemize}
+    \item $S_t$ là trạng thái ẩn của nền kinh tế.
+    \item $Y_t$ là dữ liệu quan sát được.
+    \item $F, H$ là ma trận hệ số.
+    \item $\eta_t, \epsilon_t$ là nhiễu Gaussian.
+\end{itemize}
+
+\subsubsection{b. Bayesian Estimation}
+Tiên nghiệm:
+\begin{equation}
+    S_0 \sim \mathcal{N}(\mu_0, \Sigma_0)
+\end{equation}
+\begin{equation}
+    Q \sim \text{Inverse-Wishart}(\Psi_Q, \nu_Q)
+\end{equation}
+\begin{equation}
+    R \sim \text{Inverse-Wishart}(\Psi_R, \nu_R)
+\end{equation}
+Ước lượng bằng \textbf{Particle Filtering} hoặc \textbf{Markov Chain Monte Carlo (MCMC)}.
+
+
+
+
+Mô hình chuỗi thời gian Bayesian cung cấp một cách tiếp cận linh hoạt và mạnh mẽ để xử lý dữ liệu chuỗi thời gian, đặc biệt khi có sự không chắc chắn về tham số hoặc khi các tham số có thể thay đổi theo thời gian.

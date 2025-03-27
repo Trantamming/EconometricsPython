@@ -1,0 +1,176 @@
+\chapter{Machine Learning trong phân tích dữ liệu chuỗi thời gian}
+\section{Mô hình hóa dữ liệu chuỗi thời gian bằng ML}
+
+Dữ liệu chuỗi thời gian là một tập hợp các quan sát được thu thập theo thứ tự thời gian. Cho một chuỗi thời gian $\{y_t\}_{t=1}^{T}$, mục tiêu chính là dự báo giá trị tương lai $y_{T+h}$ dựa trên các quan sát trong quá khứ.
+
+\subsection{Định nghĩa chuỗi thời gian}
+Một chuỗi thời gian $\{y_t\}$ được coi là một hàm số theo thời gian:
+\begin{equation}
+    y_t = f(t) + \epsilon_t,
+\end{equation}
+trong đó $f(t)$ là thành phần có hệ thống và $\epsilon_t$ là nhiễu ngẫu nhiên.
+
+\subsection{Mô hình hồi quy tuyến tính}
+Một trong những phương pháp đơn giản để phân tích chuỗi thời gian là mô hình hồi quy tuyến tính:
+\begin{equation}
+    y_t = \beta_0 + \beta_1 y_{t-1} + \beta_2 x_t + \epsilon_t,
+\end{equation}
+trong đó: \\
+- $y_t$ là giá trị cần dự báo, \\
+- $y_{t-1}$ là giá trị trễ của chuỗi, \\ 
+- $x_t$ là biến giải thích, \\ 
+- $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ là nhiễu.
+
+\subsection{Mô hình ARIMA}
+Mô hình tự hồi quy tích hợp trung bình trượt (ARIMA) có dạng:
+\begin{equation}
+    \phi(B) (1 - B)^d y_t = \theta(B) \epsilon_t,
+\end{equation}
+trong đó: \\
+- $B$ là toán tử trễ ($B y_t = y_{t-1}$), \\
+- $\phi(B)$ là đa thức tự hồi quy bậc $p$, \\
+- $\theta(B)$ là đa thức trung bình trượt bậc $q$, \\
+- $d$ là số lần lấy sai phân.
+
+\subsection{Mô hình dựa trên Machine Learning}
+Các phương pháp Machine Learning có thể được sử dụng để dự báo chuỗi thời gian, bao gồm:
+\begin{itemize}
+    \item Hồi quy Ridge, Lasso
+    \item Mạng nơ-ron nhân tạo (ANN)
+    \item Mạng nơ-ron hồi quy (RNN, LSTM, GRU)
+\end{itemize}
+
+Một mô hình Perceptron đa tầng (MLP - Multi-Layer Perceptron) có thể được biểu diễn như sau:
+\begin{equation}
+    \hat{y}_t = \sigma \left(W_2 \cdot \sigma(W_1 x_t + b_1) + b_2 \right),
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $x_t \in \mathbb{R}^n$ là vector đầu vào tại thời điểm $t$,
+    \item $W_1 \in \mathbb{R}^{m \times n}$ và $W_2 \in \mathbb{R}^{1 \times m}$ là ma trận trọng số,
+    \item $b_1 \in \mathbb{R}^m$ và $b_2 \in \mathbb{R}$ là các hệ số điều chỉnh (bias),
+    \item $\sigma(\cdot)$ là hàm kích hoạt phi tuyến (ví dụ: ReLU, sigmoid, tanh),
+    \item $\hat{y}_t$ là giá trị dự báo tại thời điểm $t$.
+\end{itemize}
+
+Các hàm kích hoạt phổ biến trong MLP bao gồm:
+\begin{itemize}
+    \item Hàm sigmoid:
+    \begin{equation}
+        \sigma(x) = \frac{1}{1 + e^{-x}}
+    \end{equation}
+    \item Hàm ReLU:
+    \begin{equation}
+        \sigma(x) = \max(0, x)
+    \end{equation}
+    \item Hàm tanh:
+    \begin{equation}
+        \sigma(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+    \end{equation}
+\end{itemize}
+
+Mô hình MLP học tham số $W_1, W_2, b_1, b_2$ thông qua tối ưu hóa hàm mất mát, chẳng hạn như hàm lỗi bình phương trung bình (MSE):
+\begin{equation}
+    L = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2.
+\end{equation}
+
+
+
+\section{So sánh ARIMA, VAR với ML (XGBoost, LSTM)}
+\subsection{Mô hình ARIMA}
+ARIMA (Autoregressive Integrated Moving Average) là một mô hình thống kê truyền thống được sử dụng để phân tích chuỗi thời gian. Mô hình có dạng tổng quát:
+\begin{equation}
+    \phi(B) (1 - B)^d y_t = \theta(B) \epsilon_t,
+\end{equation}
+trong đó: \\
+- $\phi(B)$ là đa thức tự hồi quy (AR) bậc $p$, \\
+- $\theta(B)$ là đa thức trung bình trượt (MA) bậc $q$, \\
+- $d$ là số lần lấy sai phân để làm dừng chuỗi.
+
+\subsection{Mô hình VAR (Vector Autoregression)}
+VAR mở rộng mô hình AR để bao gồm nhiều biến:
+\begin{equation}
+    Y_t = A_1 Y_{t-1} + A_2 Y_{t-2} + \dots + A_p Y_{t-p} + \epsilon_t,
+\end{equation}
+trong đó: \\
+- $Y_t$ là vector các biến, \\
+- $A_i$ là ma trận hệ số, \\
+- $\epsilon_t$ là vector nhiễu trắng.
+
+\subsection{XGBoost trong dự báo chuỗi thời gian}
+XGBoost (Extreme Gradient Boosting) là một thuật toán cây quyết định tăng cường có thể được sử dụng để dự báo chuỗi thời gian bằng cách biến chuỗi thời gian thành một bài toán hồi quy:
+\begin{equation}
+    y_t = f(x_t) + \epsilon_t,
+\end{equation}
+trong đó: \\
+- $x_t$ là vector đặc trưng của chuỗi thời gian tại thời điểm $t$, \\
+- $f(x_t)$ là một tổ hợp tuyến tính của nhiều cây quyết định. 
+
+Hàm mất mát của XGBoost thường sử dụng dạng:
+\begin{equation}
+    L = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 + \lambda \sum_{j} \Omega(f_j),
+\end{equation}
+trong đó $\Omega(f_j)$ là độ phức tạp của cây quyết định.
+
+\subsection{LSTM trong dự báo chuỗi thời gian}
+LSTM (Long Short-Term Memory) là một dạng mạng nơ-ron hồi quy (RNN) chuyên dùng để dự báo chuỗi thời gian. Trạng thái ẩn $h_t$ của LSTM được tính như sau:
+\begin{align}
+    f_t &= \sigma(W_f x_t + U_f h_{t-1} + b_f), \\
+    i_t &= \sigma(W_i x_t + U_i h_{t-1} + b_i), \\
+    \tilde{c}_t &= \tanh(W_c x_t + U_c h_{t-1} + b_c), \\
+    c_t &= f_t \odot c_{t-1} + i_t \odot \tilde{c}_t, \\
+    o_t &= \sigma(W_o x_t + U_o h_{t-1} + b_o), \\
+    h_t &= o_t \odot \tanh(c_t),
+\end{align}
+trong đó: \\ 
+- $f_t, i_t, o_t$ lần lượt là cổng quên, cổng nhập và cổng đầu ra, \\
+- $c_t$ là bộ nhớ, \\
+- $h_t$ là trạng thái ẩn, \\
+- $W, U, b$ là các tham số học.
+
+
+
+\section{Phát hiện xu hướng và cú sốc kinh tế bằng ML}
+Phát hiện xu hướng và cú sốc kinh tế là một vấn đề quan trọng trong kinh tế lượng tài chính. Các phương pháp Machine Learning có thể hỗ trợ phân tích các đặc điểm của chuỗi thời gian kinh tế bằng cách phát hiện các biến động bất thường và xu hướng dài hạn.
+
+\subsection{Phát hiện xu hướng bằng hồi quy tuyến tính}
+Xu hướng của một chuỗi thời gian $y_t$ có thể được mô hình hóa bằng phương trình hồi quy tuyến tính đơn giản:
+\begin{equation}
+    y_t = \alpha + \beta t + \epsilon_t,
+\end{equation}
+trong đó: \\
+- $\alpha$ là hằng số, \\
+- $\beta$ là hệ số xu hướng, \\
+- $t$ là thời gian, \\
+- $\epsilon_t$ là sai số ngẫu nhiên.
+
+Nếu $\beta > 0$, chuỗi có xu hướng tăng, nếu $\beta < 0$, chuỗi có xu hướng giảm.
+
+\subsection{Phát hiện cú sốc kinh tế bằng kiểm định thay đổi cấu trúc}
+Một cú sốc kinh tế có thể gây ra thay đổi đột ngột trong cấu trúc dữ liệu chuỗi thời gian. Kiểm định Chow có thể được sử dụng để phát hiện sự thay đổi cấu trúc tại thời điểm $T_c$:
+\begin{equation}
+    F = \frac{(RSS_r - RSS_u) / k}{RSS_u / (n - 2k)},
+\end{equation}
+trong đó: \\
+- $RSS_r$ là tổng bình phương dư của mô hình gộp (không có thay đổi cấu trúc), \\
+- $RSS_u$ là tổng bình phương dư của mô hình có thay đổi cấu trúc, \\
+- $k$ là số tham số trong mô hình.
+
+Nếu giá trị $F$ lớn hơn giá trị tới hạn, ta bác bỏ giả thuyết không và kết luận rằng có sự thay đổi cấu trúc.
+
+\subsection{Phát hiện xu hướng phi tuyến bằng Machine Learning}
+Các mô hình phi tuyến như LSTM hoặc XGBoost có thể học các xu hướng ẩn trong dữ liệu:
+\begin{itemize}
+    \item Mạng LSTM có thể phát hiện xu hướng dài hạn và các mẫu phức tạp bằng cách sử dụng cơ chế bộ nhớ dài hạn.
+    \item XGBoost có thể phát hiện các yếu tố quan trọng ảnh hưởng đến xu hướng và cú sốc kinh tế.
+\end{itemize}
+Mô hình LSTM có thể được biểu diễn như sau:
+\begin{align}
+    f_t &= \sigma(W_f x_t + U_f h_{t-1} + b_f), \\
+    i_t &= \sigma(W_i x_t + U_i h_{t-1} + b_i), \\
+    \tilde{c}_t &= \tanh(W_c x_t + U_c h_{t-1} + b_c), \\
+    c_t &= f_t \odot c_{t-1} + i_t \odot \tilde{c}_t, \\
+    o_t &= \sigma(W_o x_t + U_o h_{t-1} + b_o), \\
+    h_t &= o_t \odot \tanh(c_t),
+\end{align}
+trong đó $\odot$ là phép nhân từng phần tử, và các biến $f_t, i_t, o_t, c_t$ lần lượt là các cổng quên, đầu vào, đầu ra và trạng thái bộ nhớ.

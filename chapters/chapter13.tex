@@ -1,1 +1,60 @@
 \chapter{Mô hình hồi quy hàm Cobb-Douglas (Cobb-Douglas Regression)}
+\section{Giới thiệu}
+Mô hình hồi quy hàm Cobb-Douglas là một dạng hồi quy phi tuyến thường được sử dụng trong kinh tế học để mô hình hóa mối quan hệ giữa sản lượng và các yếu tố đầu vào như vốn và lao động.
+
+\section{Biểu diễn toán học}
+Mô hình Cobb-Douglas có dạng tổng quát:
+\begin{equation}
+    Y = A X_1^{\beta_1} X_2^{\beta_2} \dots X_k^{\beta_k} e^{\varepsilon}
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y$ là biến phụ thuộc (sản lượng, đầu ra,...),
+    \item $X_1, X_2, \dots, X_k$ là các biến độc lập (các yếu tố đầu vào như vốn, lao động,...),
+    \item $A$ là hằng số,
+    \item $\beta_1, \beta_2, \dots, \beta_k$ là các tham số cần ước lượng,
+    \item $e^{\varepsilon}$ là thành phần sai số ngẫu nhiên.
+\end{itemize}
+
+\section{Tuyến tính hóa mô hình}
+Do mô hình Cobb-Douglas có dạng phi tuyến, ta lấy log hai vế của phương trình để biến đổi về dạng hồi quy tuyến tính:
+\begin{equation}
+    \ln Y = \ln A + \beta_1 \ln X_1 + \beta_2 \ln X_2 + \dots + \beta_k \ln X_k + \varepsilon
+\end{equation}
+Khi đó, ta có thể viết lại dưới dạng:
+\begin{equation}
+    Y^* = \beta_0 + \beta_1 X_1^* + \beta_2 X_2^* + \dots + \beta_k X_k^* + \varepsilon
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y^* = \ln Y$, $X_i^* = \ln X_i$,
+    \item $\beta_0 = \ln A$,
+    \item Hồi quy tuyến tính có thể được ước lượng bằng phương pháp bình phương nhỏ nhất (OLS).
+\end{itemize}
+
+\section{Ước lượng tham số}
+Sử dụng phương pháp bình phương nhỏ nhất (OLS), các tham số $\beta_0, \beta_1, \dots, \beta_k$ được ước lượng bằng cách giải:
+\begin{equation}
+    \hat{\beta} = (X^T X)^{-1} X^T Y^*
+\end{equation}
+
+\section{Kiểm định mô hình}
+Sau khi ước lượng, ta cần kiểm định ý nghĩa của các hệ số hồi quy thông qua kiểm định t:
+\begin{equation}
+    t_j = \frac{\hat{\beta_j}}{SE(\hat{\beta_j})}
+\end{equation}
+trong đó $SE(\hat{\beta_j})$ là sai số chuẩn của $\hat{\beta_j}$. Giá trị $t_j$ được so sánh với phân phối t để quyết định giữ hay bác bỏ giả thuyết $H_0: \beta_j = 0$.
+
+Ngoài ra, kiểm định tổng thể mô hình sử dụng kiểm định F:
+\begin{equation}
+    F = \frac{SST - SSE}{k} \Big/ \frac{SSE}{n-k-1}
+\end{equation}
+trong đó $SST$ là tổng phương sai tổng và $SSE$ là tổng phương sai sai số.
+
+\section{Ứng dụng thực tế}
+Mô hình Cobb-Douglas thường được sử dụng trong:
+\begin{itemize}
+    \item Phân tích sản xuất trong kinh tế học,
+    \item Xây dựng mô hình tăng trưởng,
+    \item Đánh giá tác động của vốn và lao động đến GDP.
+\end{itemize}

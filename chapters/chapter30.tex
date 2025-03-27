@@ -1,3 +1,39 @@
 \chapter{Mô hình ARCH/GARCH}
+
 \section{Biến động tài chính và mô hình ARCH/GARCH}
+
+Trong lĩnh vực tài chính, các chuỗi thời gian thường có đặc điểm \textit{phương sai không cố định} (heteroskedasticity), nghĩa là mức độ biến động của dữ liệu thay đổi theo thời gian. Mô hình ARCH (Autoregressive Conditional Heteroskedasticity) và GARCH (Generalized Autoregressive Conditional Heteroskedasticity) được sử dụng để mô tả hiện tượng này.
+
+\subsection{Mô hình ARCH}
+Giả sử một chuỗi thời gian $\{r_t\}$ được mô tả bởi phương trình:
+\begin{equation}
+    r_t = \mu + \epsilon_t,
+\end{equation}
+với $\epsilon_t$ là sai số ngẫu nhiên có kỳ vọng bằng 0, nhưng phương sai có thể thay đổi theo thời gian. Mô hình ARCH($p$) giả định rằng phương sai có dạng:
+\begin{equation}
+    \sigma_t^2 = \alpha_0 + \sum_{i=1}^{p} \alpha_i \epsilon_{t-i}^2,
+\end{equation}
+với $\alpha_0 > 0$, $\alpha_i \geq 0$ để đảm bảo phương sai luôn dương.
+
+\subsection{Mô hình GARCH}
+Mô hình GARCH($p, q$) mở rộng ARCH bằng cách thêm vào các bậc trễ của chính phương sai có điều kiện:
+\begin{equation}
+    \sigma_t^2 = \alpha_0 + \sum_{i=1}^{p} \alpha_i \epsilon_{t-i}^2 + \sum_{j=1}^{q} \beta_j \sigma_{t-j}^2,
+\end{equation}
+với $\alpha_i \geq 0$, $\beta_j \geq 0$, và $\sum_{i=1}^{p} \alpha_i + \sum_{j=1}^{q} \beta_j < 1$ để đảm bảo tính ổn định.
+
 \section{Ước lượng tham số và dự báo biến động}
+
+\subsection{Ước lượng tham số}
+Thông thường, các tham số của mô hình ARCH/GARCH được ước lượng bằng phương pháp \textit{hợp lý tối đa} (Maximum Likelihood Estimation - MLE). Hàm hợp lý có dạng:
+\begin{equation}
+    L(\theta) = -\frac{1}{2} \sum_{t=1}^{T} \left(\log(2\pi) + \log(\sigma_t^2) + \frac{\epsilon_t^2}{\sigma_t^2} \right),
+\end{equation}
+trong đó $\theta$ là vector chứa các tham số cần ước lượng.
+
+\subsection{Dự báo biến động}
+Dự báo phương sai có điều kiện được thực hiện bằng cách sử dụng phương trình hồi quy của GARCH. Ví dụ, với mô hình GARCH(1,1), phương sai kỳ vọng tại thời điểm $t+1$ được tính bằng:
+\begin{equation}
+    \mathbb{E}[\sigma_{t+1}^2 | \mathcal{F}_t] = \alpha_0 + \alpha_1 \epsilon_t^2 + \beta_1 \sigma_t^2.
+\end{equation}
+Dự báo nhiều bước có thể được tính đệ quy bằng cách lặp lại công thức trên.

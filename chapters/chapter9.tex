@@ -1,1 +1,44 @@
 \chapter{Mô hình hồi quy vững chắc (Robust Regression)}
+\section{Giới thiệu}
+Hồi quy vững chắc (Robust Regression) là một phương pháp ước lượng mô hình hồi quy tuyến tính khi dữ liệu chứa các ngoại lệ (outliers) hoặc vi phạm giả định phân phối chuẩn của phần dư.
+
+\section{Hàm mất mát và phương pháp ước lượng}
+Hồi quy vững chắc sử dụng một hàm mất mát (loss function) thay thế cho phương pháp bình phương tối thiểu thông thường (OLS). Tổng quát, bài toán tối ưu có dạng:
+\begin{equation}
+    \hat{\beta} = \arg \min_{\beta} \sum_{i=1}^{n} \rho(y_i - X_i \beta)
+\end{equation}
+trong đó $\rho(\cdot)$ là một hàm mất mát vững chắc.
+
+\section{Các phương pháp hồi quy vững chắc}
+\subsection{Hồi quy Huber}
+Hồi quy Huber sử dụng một hàm mất mát kết hợp giữa bình phương lỗi nhỏ và giá trị tuyệt đối cho lỗi lớn:
+\begin{equation}
+    \rho_H(r) = \begin{cases} r^2 / 2, & \text{nếu } |r| \leq c \\
+    c(|r| - c/2), & \text{nếu } |r| > c \end{cases}
+\end{equation}
+trong đó $c$ là một ngưỡng xác định.
+
+\subsection{Hồi quy Tukey}
+Hồi quy Tukey sử dụng một hàm mất mát chặn giá trị của các ngoại lệ lớn:
+\begin{equation}
+    \rho_T(r) = \begin{cases} c^2 \left(1 - \left(1 - \frac{r^2}{c^2}\right)^3\right) / 6, & \text{nếu } |r| \leq c \\
+    c^2 / 6, & \text{nếu } |r| > c \end{cases}
+\end{equation}
+
+\section{Thuật toán IRLS}
+Hồi quy vững chắc thường được ước lượng bằng thuật toán Bình phương tối thiểu có trọng số lặp lại (Iteratively Reweighted Least Squares - IRLS):
+\begin{enumerate}
+    \item Khởi tạo $\beta^{(0)}$ từ hồi quy OLS.
+    \item Tại bước lặp thứ $t$, tính trọng số $w_i^{(t)}$ từ đạo hàm của hàm mất mát:
+    \begin{equation}
+        w_i^{(t)} = \frac{\psi(r_i^{(t)})}{r_i^{(t)}}
+    \end{equation}
+    \item Giải bài toán hồi quy có trọng số:
+    \begin{equation}
+        \beta^{(t+1)} = \arg \min_{\beta} \sum_{i=1}^{n} w_i^{(t)} (y_i - X_i \beta)^2
+    \end{equation}
+    \item Lặp lại cho đến khi $\beta^{(t)}$ hội tụ.
+\end{enumerate}
+
+\section{Kết luận}
+Hồi quy vững chắc cung cấp một giải pháp hiệu quả để giảm thiểu tác động của ngoại lệ trong mô hình hồi quy tuyến tính. Phương pháp này giúp cải thiện tính ổn định của ước lượng khi dữ liệu vi phạm giả định chuẩn hoặc có giá trị ngoại lai.

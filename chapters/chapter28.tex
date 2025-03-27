@@ -1,3 +1,101 @@
 \chapter{Tổng quan về chuỗi thời gian}
 \section{Các khái niệm cơ bản: tính dừng, tự tương quan, mùa vụ}
+\subsection{Tính Dừng (Stationarity)}
+Một chuỗi thời gian $\{Y_t\}$ được gọi là dừng (stationary) nếu các đặc điểm thống kê của nó không thay đổi theo thời gian. Điều này có nghĩa là:
+\begin{itemize}
+    \item Giá trị kỳ vọng $E(Y_t)$ không thay đổi theo thời gian:
+    \begin{equation}
+        E(Y_t) = \mu, \quad \forall t.
+    \end{equation}
+    \item Phương sai $\text{Var}(Y_t)$ là hằng số:
+    \begin{equation}
+        \text{Var}(Y_t) = \sigma^2, \quad \forall t.
+    \end{equation}
+    \item Hàm tự hiệp phương sai $\gamma(k) = \text{Cov}(Y_t, Y_{t+k})$ chỉ phụ thuộc vào độ trễ $k$ mà không phụ thuộc vào thời điểm $t$:
+    \begin{equation}
+        \gamma(k) = E[(Y_t - \mu)(Y_{t+k} - \mu)].
+    \end{equation}
+\end{itemize}
+Chuỗi thời gian không dừng có thể được chuyển thành chuỗi dừng bằng phương pháp sai phân (differencing):
+\begin{equation}
+    \Delta Y_t = Y_t - Y_{t-1}.
+\end{equation}
+
+\subsection{Tự Tương Quan (Autocorrelation)}
+Tự tương quan đo lường mối quan hệ giữa các quan sát của chuỗi thời gian tại các thời điểm khác nhau. Hệ số tự tương quan bậc $k$ (Autocorrelation Function - ACF) được định nghĩa như sau:
+\begin{equation}
+    \rho_k = \frac{\gamma(k)}{\gamma(0)} = \frac{E[(Y_t - \mu)(Y_{t+k} - \mu)]}{\sigma^2}, \quad k = 0,1,2,\dots
+\end{equation}
+Một chuỗi thời gian có thể có tự tương quan dương ($\rho_k > 0$) hoặc tự tương quan âm ($\rho_k < 0$). 
+
+Bài kiểm định Durbin-Watson thường được sử dụng để kiểm tra tự tương quan trong mô hình hồi quy:
+\begin{equation}
+    DW = \frac{\sum_{t=2}^{T} (e_t - e_{t-1})^2}{\sum_{t=1}^{T} e_t^2},
+\end{equation}
+trong đó $e_t$ là phần dư của mô hình hồi quy.
+
+\subsection{Tính Mùa Vụ (Seasonality)}
+Mùa vụ xảy ra khi một chuỗi thời gian có các mẫu lặp lại theo chu kỳ cố định. Một mô hình phổ biến để mô tả tính mùa vụ là:
+\begin{equation}
+    Y_t = T_t + S_t + I_t,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $T_t$: thành phần xu hướng (trend component),
+    \item $S_t$: thành phần mùa vụ (seasonal component),
+    \item $I_t$: thành phần ngẫu nhiên (irregular component).
+\end{itemize}
+Mô hình hồi quy với biến giả mùa vụ có dạng:
+\begin{equation}
+    Y_t = \beta_0 + \sum_{i=1}^{s-1} \beta_i D_{it} + \epsilon_t,
+\end{equation}
+trong đó $D_{it}$ là các biến giả đại diện cho các giai đoạn trong chu kỳ mùa vụ.
+
+
 \section{Biểu diễn và phân tích dữ liệu chuỗi thời gian}
+\subsection{Giới thiệu}
+Dữ liệu chuỗi thời gian là tập hợp các quan sát được thu thập theo thứ tự thời gian. Phân tích chuỗi thời gian nhằm mục đích mô tả, mô hình hóa và dự báo dữ liệu trong tương lai.
+
+\subsection{Biểu diễn dữ liệu chuỗi thời gian}
+Dữ liệu chuỗi thời gian được ký hiệu là $\{Y_t\}_{t=1}^{T}$, trong đó $Y_t$ là giá trị quan sát tại thời điểm $t$. Một số phương pháp biểu diễn dữ liệu chuỗi thời gian:
+\begin{itemize}
+    \item \textbf{Biểu đồ chuỗi thời gian (Time Series Plot)}: Trực quan hóa sự thay đổi của $Y_t$ theo thời gian $t$.
+    \item \textbf{Biểu đồ phân phối (Histogram)}: Phân bố xác suất của chuỗi dữ liệu.
+    \item \textbf{Biểu đồ tự tương quan (ACF - Autocorrelation Function)}: Biểu diễn mức độ tương quan của một quan sát với chính nó ở các độ trễ khác nhau.
+    \item \textbf{Biểu đồ PACF (Partial Autocorrelation Function)}: Tính toán tương quan giữa các quan sát sau khi loại bỏ ảnh hưởng của các quan sát trung gian.
+\end{itemize}
+
+\subsection{Phân tích dữ liệu chuỗi thời gian}
+\subsubsection{Kiểm tra tính dừng}
+Tính dừng của chuỗi thời gian rất quan trọng trong việc xây dựng mô hình dự báo. Một chuỗi thời gian được gọi là dừng nếu:
+\begin{itemize}
+    \item Kỳ vọng $E(Y_t) = \mu$ không thay đổi theo thời gian.
+    \item Phương sai $Var(Y_t) = \sigma^2$ là hằng số.
+    \item Hàm tự tương quan $\gamma(k) = Cov(Y_t, Y_{t-k})$ chỉ phụ thuộc vào độ trễ $k$.
+\end{itemize}
+Kiểm định tính dừng phổ biến:
+\begin{itemize}
+    \item Kiểm định Dickey-Fuller (ADF Test): $H_0$: Chuỗi có gốc đơn vị (không dừng).
+    \item Kiểm định KPSS: $H_0$: Chuỗi là dừng.
+\end{itemize}
+
+\subsubsection{Phân tích tự tương quan}
+Tự tương quan đo lường mức độ tương quan giữa các quan sát trong chuỗi thời gian:
+\begin{equation}
+    \rho_k = \frac{Cov(Y_t, Y_{t-k})}{Var(Y_t)}
+\end{equation}
+Hàm tự tương quan ACF giúp phát hiện tính dừng và nhận dạng mô hình ARIMA.
+
+\subsubsection{Phân tích mùa vụ}
+Mùa vụ thể hiện sự lặp lại có chu kỳ trong dữ liệu chuỗi thời gian. Mô hình phổ biến:
+\begin{itemize}
+    \item Mô hình hồi quy với biến giả mùa vụ:
+    \begin{equation}
+        Y_t = \beta_0 + \sum_{j=1}^{s-1} \beta_j D_{jt} + \epsilon_t
+    \end{equation}
+    trong đó $D_{jt}$ là biến giả mùa vụ.
+    \item Mô hình SARIMA: Mở rộng ARIMA với thành phần mùa vụ $(p,d,q)\times (P,D,Q)_s$.
+\end{itemize}
+
+\subsection{Kết luận}
+Biểu diễn và phân tích chuỗi thời gian là bước quan trọng giúp nhận diện tính chất của dữ liệu, từ đó lựa chọn mô hình phù hợp để dự báo.

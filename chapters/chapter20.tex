@@ -1,1 +1,81 @@
 \chapter{Mô hình hồi quy Log-logistic (Log-logistic Regression Model)}
+\section{Giới thiệu}
+Mô hình hồi quy Log-logistic là một dạng mô hình phân tích sống sót hoặc phân tích thời gian, tương tự như mô hình Weibull nhưng có khả năng xử lý tốt hơn đối với dữ liệu có đuôi phân phối dày. Mô hình này được sử dụng rộng rãi trong các lĩnh vực như kinh tế, y học, và kỹ thuật.
+
+\section{Định nghĩa mô hình}
+Giả sử biến thời gian sống hoặc thời gian đến sự kiện $T$ tuân theo phân phối Log-logistic với hàm mật độ xác suất (PDF) được cho bởi:
+\begin{equation}
+    f(T) = \frac{(\lambda \gamma) (T/\lambda)^{\gamma - 1}}{(1 + (T/\lambda)^\gamma)^2}, \quad T > 0,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $\lambda > 0$ là tham số tỷ lệ (scale parameter),
+    \item $\gamma > 0$ là tham số hình dạng (shape parameter).
+\end{itemize}
+
+Hàm phân phối tích lũy (CDF) của mô hình Log-logistic được viết dưới dạng:
+\begin{equation}
+    F(T) = \frac{1}{1 + (T/\lambda)^{-\gamma}}, \quad T > 0.
+\end{equation}
+
+Hàm nguy cơ (hazard function) được xác định bởi:
+\begin{equation}
+    h(T) = \frac{(\lambda \gamma) (T/\lambda)^{\gamma - 1}}{(1 + (T/\lambda)^\gamma) T}.
+\end{equation}
+
+\section{Hồi quy Log-logistic}
+Để mô hình hóa tác động của các biến dự báo $X = (X_1, X_2, \dots, X_p)$ lên biến phụ thuộc $T$, ta sử dụng dạng hồi quy Log-logistic:
+\begin{equation}
+    \log(T) = X\beta + \varepsilon,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $X\beta = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p$ là tổ hợp tuyến tính của các biến dự báo,
+    \item $\varepsilon$ là nhiễu có phân phối Logistic chuẩn với trung bình 0 và phương sai $\pi^2/3$.
+\end{itemize}
+
+Từ đây, ta có hàm phân phối tích lũy có điều kiện:
+\begin{equation}
+    P(T \leq t | X) = \frac{1}{1 + \exp(- (\log t - X\beta) / \sigma)},
+\end{equation}
+trong đó $\sigma$ là tham số tỷ lệ.
+
+\section{Ước lượng tham số}
+Tham số của mô hình có thể được ước lượng bằng phương pháp hợp lý tối đa (Maximum Likelihood Estimation - MLE). Hàm hợp lý có dạng:
+\begin{equation}
+    L(\beta, \sigma) = \prod_{i=1}^{n} f(T_i | X_i; \beta, \sigma),
+\end{equation}
+trong đó $T_i$ là thời gian quan sát của cá nhân thứ $i$. Tương đương, log-hàm hợp lý là:
+\begin{equation}
+    \ell(\beta, \sigma) = \sum_{i=1}^{n} \left[ \log f(T_i | X_i; \beta, \sigma) \right].
+\end{equation}
+
+Giải phương trình đạo hàm của log-hàm hợp lý sẽ cho giá trị ước lượng $\hat{\beta}$ và $\hat{\sigma}$.
+
+\section{Kiểm định mô hình}
+\subsection{Kiểm định Wald}
+Kiểm định Wald được sử dụng để kiểm tra ý nghĩa thống kê của từng hệ số hồi quy:
+\begin{equation}
+    W_j = \frac{\hat{\beta}_j}{\text{SE}(\hat{\beta}_j)},
+\end{equation}
+trong đó $\text{SE}(\hat{\beta}_j)$ là sai số chuẩn của ước lượng $\hat{\beta}_j$. Nếu $|W_j|$ lớn hơn một giá trị tới hạn, ta bác bỏ giả thuyết $H_0: \beta_j = 0$.
+
+\subsection{Kiểm định tỉ số hợp lý (Likelihood Ratio Test)}
+Kiểm định này so sánh hai mô hình lồng nhau:
+\begin{equation}
+    LR = -2 (\ell_{\text{restricted}} - \ell_{\text{full}}),
+\end{equation}
+trong đó $\ell_{\text{restricted}}$ là log-hàm hợp lý của mô hình ràng buộc (không có biến giải thích), còn $\ell_{\text{full}}$ là log-hàm hợp lý của mô hình đầy đủ. Giá trị $LR$ được so sánh với phân phối $\chi^2$.
+
+\subsection{Kiểm định hệ số hồi quy chung (Wald Test tổng quát)}
+Ta kiểm định giả thuyết tổng quát:
+\begin{equation}
+    H_0: \beta_1 = \beta_2 = \dots = \beta_p = 0.
+\end{equation}
+Giá trị kiểm định Wald tổng quát có dạng:
+\begin{equation}
+    W = \beta' \left( \text{Var}(\hat{\beta}) \right)^{-1} \beta \sim \chi^2_p.
+\end{equation}
+
+\section{Kết luận}
+Mô hình hồi quy Log-logistic là một công cụ mạnh mẽ trong phân tích dữ liệu sống sót và thời gian đến sự kiện. Với khả năng xử lý các đuôi phân phối dài, nó thích hợp cho nhiều ứng dụng thực tế như kinh tế, y học, và kỹ thuật.

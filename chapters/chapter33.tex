@@ -1,15 +1,57 @@
-\chapter{Các phương pháp Machine Learning trong Kinh tế lượng}
-\section{Giới thiệu về Machine Learning trong Kinh tế lượng}
-Machine Learning (ML) ngày càng được ứng dụng rộng rãi trong kinh tế lượng nhằm nâng cao độ chính xác của mô hình dự báo, kiểm định mô hình và xử lý dữ liệu lớn. Sự khác biệt chính giữa ML và các phương pháp kinh tế lượng truyền thống là cách tiếp cận dữ liệu: ML tập trung vào tính linh hoạt và tối ưu hóa dự báo, trong khi kinh tế lượng truyền thống thường dựa trên lý thuyết kinh tế và kiểm định giả thuyết.
+\chapter{Các Mô Hình Kinh Tế Lượng Không Gian}
+\section{Mô hình hồi quy không gian tuyến tính (SLM)}
+\subsection{Công thức và ý nghĩa}
+Mô hình hồi quy không gian tuyến tính (Spatial Lag Model - SLM) được biểu diễn bởi phương trình:
+\begin{equation}
+    y = \rho W y + X \beta + \varepsilon,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $y$ là vector kết quả (biến phụ thuộc).
+    \item $W$ là ma trận trọng số không gian.
+    \item $\rho$ là hệ số tự tương quan không gian.
+    \item $X$ là ma trận biến giải thích.
+    \item $\beta$ là vector hệ số hồi quy.
+    \item $\varepsilon$ là nhiễu trắng có phân phối chuẩn $N(0, \sigma^2 I)$.
+\end{itemize}
 
-\section{Hồi quy tuyến tính mở rộng: Ridge, Lasso, Elastic Net}
+\subsection{Ứng dụng của SLM}
+SLM được ứng dụng rộng rãi trong các lĩnh vực như:
+\begin{itemize}
+    \item Định giá bất động sản dựa trên ảnh hưởng từ các khu vực lân cận.
+    \item Phân tích tác động lan truyền của chính sách kinh tế.
+    \item Nghiên cứu dịch tễ học để xác định mô hình lây lan bệnh dịch.
+\end{itemize}
 
-\section{Mô hình cây quyết định và boosting (Random Forest, XGBoost}
+\section{Mô hình sai số không gian (SEM)}
+\subsection{Công thức và ý nghĩa}
+Mô hình sai số không gian (Spatial Error Model - SEM) được biểu diễn bởi phương trình:
+\begin{equation}
+    y = X \beta + u,
+\end{equation}
+trong đó:
+\begin{equation}
+    u = \lambda W u + \varepsilon.
+\end{equation}
+Thành phần sai số $u$ có cấu trúc không gian thông qua ma trận trọng số $W$.
 
-\section{Machine Learning nhân quả: Double ML, Causal Inference}
+\subsection{Khi nào nên sử dụng SEM?}
+SEM phù hợp khi có sự phụ thuộc không gian trong sai số nhưng không nhất thiết trong biến phụ thuộc.
 
-\section{Deep Learning trong phân tích kinh tế}
+\section{Mô hình Durbin không gian (SDM)}
+\subsection{Công thức tổng quát}
+Mô hình Durbin không gian (Spatial Durbin Model - SDM) mở rộng từ SLM:
+\begin{equation}
+    y = \rho W y + X \beta + W X \theta + \varepsilon.
+\end{equation}
 
+\subsection{Sự khác biệt giữa SDM và SLM}
+SDM bao gồm các biến giải thích có tác động lan truyền không gian thông qua $W X$.
 
-
-
+\section{Các mô hình mở rộng khác}
+\begin{itemize}
+    \item Mô hình SAR: $y = \rho W y + X \beta + \varepsilon$.
+    \item Mô hình SLX: $y = X \beta + W X \theta + \varepsilon$.
+    \item Mô hình GWR: Hồi quy địa phương với tham số thay đổi theo vị trí.
+    \item Mô hình Bayesian Spatial: Sử dụng Bayesian inference để ước lượng mô hình không gian.
+\end{itemize}

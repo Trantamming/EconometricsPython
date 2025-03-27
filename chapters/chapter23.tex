@@ -1,1 +1,229 @@
-\chapter{Giới thiệu về Ước lượng Bayesian}
+\chapter{Tổng quan về Ước lượng Bayesian}
+\section{Giới thiệu về Ước lượng Bayesian}
+Ước lượng Bayesian dựa trên định lý Bayes để cập nhật niềm tin về tham số của một mô hình thống kê sau khi có dữ liệu quan sát. Trái ngược với phương pháp ước lượng tần suất (frequentist), trong đó tham số là cố định nhưng không xác định, phương pháp Bayesian coi tham số là một biến ngẫu nhiên với một phân phối xác suất tiên nghiệm (prior distribution).
+
+\subsection{Định lý Bayes}
+\begin{equation}
+P(\theta | D) = \frac{P(D | \theta) P(\theta)}{P(D)}
+\end{equation}
+
+Trong đó:
+\begin{itemize}
+    \item $\theta$ là tham số cần ước lượng.
+    \item $D$ là tập dữ liệu quan sát được.
+    \item $P(\theta)$ là phân phối tiên nghiệm (**prior distribution**).
+    \item $P(D | \theta)$ là hàm khả năng (**likelihood function**).
+    \item $P(D)$ là xác suất bằng tổng (evidence):
+    \begin{equation}
+    P(D) = \int P(D | \theta) P(\theta) d\theta
+    \end{equation}
+    \item $P(\theta | D)$ là phân phối hậu nghiệm (**posterior distribution**).
+\end{itemize}
+
+\section{Phân phối trước, phân phối hậu nghiệm và quy trình tính toán}
+\subsection{Phân phối tiên nghiệm (Prior Distribution)}
+Phân phối tiên nghiệm $P(\theta)$ phản ánh kiến thức hoặc niềm tin có sẵn về $\theta$ trước khi quan sát dữ liệu. Các loại phổ biến:
+\begin{itemize}
+    \item **Phân phối không thông tin**: $P(\theta) \propto 1$.
+    \item **Phân phối chuẩn**: $\theta \sim \mathcal{N}(\mu_0, \sigma_0^2)$.
+    \item **Phân phối Beta**: $\theta \sim \text{Beta}(\alpha, \beta)$.
+\end{itemize}
+
+\subsection{Phân phối hậu nghiệm (Posterior Distribution)}
+\begin{equation}
+P(\theta | D) \propto P(D | \theta) P(\theta)
+\end{equation}
+
+Ví dụ: Với mẫu $x_1, x_2, ..., x_n$ từ phân phối Gaussian:
+\begin{equation}
+P(D | \theta) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x_i - \theta)^2}{2\sigma^2}\right)
+\end{equation}
+
+Nếu $P(\theta) = \mathcal{N}(\mu_0, \sigma_0^2)$, thì hậu nghiệm cũng là Gaussian:
+\begin{equation}
+P(\theta | D) = \mathcal{N}(\mu_n, \sigma_n^2)
+\end{equation}
+
+Với:
+\begin{align}
+\mu_n &= \frac{\sigma_0^2 \sum x_i + \sigma^2 \mu_0}{n\sigma_0^2 + \sigma^2} \\
+\sigma_n^2 &= \left(\frac{n}{\sigma^2} + \frac{1}{\sigma_0^2}\right)^{-1}
+\end{align}
+
+
+Hoặc :
+\begin{equation}
+    \mu_n = \frac{\frac{1}{\sigma_0^2} \mu_0 + \frac{n}{\sigma^2} \bar{x}}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}
+\end{equation}
+
+\begin{equation}
+    \sigma_n^2 = \frac{1}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}
+\end{equation}
+
+\section*{Quy trình tính toán trong Bayesian}
+
+\begin{enumerate}
+    \item Chọn phân phối tiên nghiệm phù hợp.
+    \item Định nghĩa hàm khả năng dựa trên mô hình dữ liệu.
+    \item Áp dụng Định lý Bayes để cập nhật phân phối hậu nghiệm.
+    \item Nếu cần ước lượng điểm, sử dụng kỳ vọng hậu nghiệm:
+    \begin{equation}
+        \hat{\theta} = \mathbb{E}[\theta | D]
+    \end{equation}
+\end{enumerate}
+
+
+\section{Diễn giải ý tưởng của phương pháp ước lượng Bayesian trong kinh tế lượng}
+
+\subsection{Định nghĩa}
+\begin{itemize}
+    \item \textbf{Phân phối tiên nghiệm (Prior)}: Là \textit{niềm tin ban đầu} về một tham số trước khi quan sát dữ liệu thực tế.
+    \item \textbf{Phân phối hậu nghiệm (Posterior)}: Là \textit{niềm tin đã được cập nhật} sau khi quan sát dữ liệu thực tế.
+\end{itemize}
+
+Công thức Bayes thể hiện điều này:
+\begin{equation}
+    P(\theta | D) = \frac{P(D | \theta) P(\theta)}{P(D)}
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $P(\theta)$: Tiên nghiệm (prior), phản ánh kiến thức có trước về tham số $\theta$.
+    \item $P(D | \theta)$: Khả năng (likelihood), thể hiện xác suất dữ liệu quan sát được nếu $\theta$ có giá trị nào đó.
+    \item $P(D)$: Bằng chứng (evidence), đại diện cho xác suất của dữ liệu quan sát được.
+    \item $P(\theta | D)$: Hậu nghiệm (posterior), tức là phân phối xác suất của $\theta$ sau khi cập nhật thông tin từ dữ liệu.
+\end{itemize}
+
+\subsection{Ví dụ thực tế: Dự báo lạm phát}
+
+\subsubsection{* Bối cảnh}
+Giả sử cần dự báo lạm phát của Việt Nam vào năm 2025 dựa trên dữ liệu lịch sử.
+
+\subsubsection{* Bước 1: Xác định tiên nghiệm (Prior)}
+Trước khi có dữ liệu mới, có thể giả định:
+\begin{itemize}
+    \item Lạm phát thường dao động trong khoảng 2\% - 5\%.
+    \item Trung bình 10 năm qua: 3\%, độ lệch chuẩn 1\%.
+    \item Chọn phân phối tiên nghiệm: 
+    \begin{equation}
+        \pi(\theta) \sim \mathcal{N}(3, 1^2)
+    \end{equation}
+\end{itemize}
+
+\subsubsection{* Bước 2: Quan sát dữ liệu thực tế (Likelihood)}
+Dữ liệu từ 2015-2024 cho thấy:
+\begin{itemize}
+    \item Lạm phát năm 2023: 4.2\%.
+    \item Dữ liệu vĩ mô cho thấy xu hướng tăng.
+    \item Giả sử độ lệch chuẩn: 0.5\%.
+\end{itemize}
+
+\subsubsection{* Bước 3: Cập nhật hậu nghiệm (Posterior)}
+Sử dụng công thức Bayes:
+\begin{equation}
+    P(\theta | D) \sim \mathcal{N}(3.5, 0.7^2)
+\end{equation}
+
+\textbf{Ý nghĩa}:
+\begin{itemize}
+    \item Dự báo lạm phát dịch chuyển từ 3\% lên 3.5\%.
+    \item Độ không chắc chắn giảm nhờ có dữ liệu mới.
+\end{itemize}
+
+\subsubsection{* Bước 4: Ứng dụng thực tế}
+\begin{itemize}
+    \item \textbf{Chính phủ}: Điều chỉnh chính sách tiền tệ để kiểm soát lạm phát.
+    \item \textbf{Ngân hàng}: Điều chỉnh lãi suất cho vay.
+    \item \textbf{Doanh nghiệp}: Lập kế hoạch giá cả.
+\end{itemize}
+
+\subsection* {=> Tóm lại:}
+\begin{itemize}
+    \item Tiên nghiệm giúp tận dụng kiến thức có sẵn khi dữ liệu ít.
+    \item Hậu nghiệm kết hợp thông tin từ dữ liệu mới để đưa ra dự báo tốt hơn.
+    \item Bayesian giúp cải thiện dự báo kinh tế lượng ngay cả khi dữ liệu ít.
+\end{itemize}
+
+\textbf{Mô tả chi tiết quá trình tính toán:}
+\subsubsection{** Thu thập dữ liệu lạm phát thực tế (2015-2024)}
+Dưới đây là tỷ lệ lạm phát hàng năm của Việt Nam từ năm 2015 đến 2024, dựa trên dữ liệu từ Ngân hàng Thế giới và các nguồn khác:
+
+\begin{table}[H] % Sử dụng H thay vì h
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Năm} & \textbf{Tỷ lệ lạm phát (\%)} \\
+        \hline
+        2015 & 0.6 \\
+        2016 & 2.7 \\
+        2017 & 3.5 \\
+        2018 & 3.5 \\
+        2019 & 2.8 \\
+        2020 & 3.2 \\
+        2021 & 1.8 \\
+        2022 & 3.2 \\
+        2023 & 3.3 \\
+        2024 & 4.1 \\
+        \hline
+    \end{tabular}
+    \caption{Tỷ lệ lạm phát của Việt Nam (2015-2024)}
+    \label{tab:inflation}
+\end{table}
+
+\subsubsection{** Xác định phân phối tiên nghiệm (Prior)}
+Giả sử rằng trước khi quan sát dữ liệu, chúng ta có niềm tin rằng tỷ lệ lạm phát trung bình của Việt Nam dao động quanh mức 3\% với độ lệch chuẩn là 1\%. Do đó, ta chọn phân phối tiên nghiệm cho tỷ lệ lạm phát $\theta$ là:
+\begin{equation}
+    \theta \sim N(3, 1^2)
+\end{equation}
+
+\subsubsection{** Tính toán thống kê từ dữ liệu}
+Từ dữ liệu lạm phát thực tế, ta tính:
+
+\textbf{Trung bình mẫu ($\bar{x}$)}:
+\begin{equation}
+    \bar{x} = \frac{0.6 + 2.7 + 3.5 + 3.5 + 2.8 + 3.2 + 1.8 + 3.2 + 3.3 + 4.1}{10} = 3.07
+\end{equation}
+
+\textbf{Độ lệch chuẩn mẫu ($s$)}:
+\begin{equation}
+    s = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n-1}} \approx 0.87
+\end{equation}
+
+\subsubsection{** Xác định phân phối hậu nghiệm (Posterior)}
+Sử dụng công thức cập nhật Bayesian, phân phối hậu nghiệm của $\theta$ là:
+\begin{equation}
+    \theta | D \sim N(\mu_n, \sigma_n^2)
+\end{equation}
+
+Trong đó:
+\begin{align}
+    \mu_n &= \frac{\frac{1}{\sigma_0^2} \mu_0 + \frac{n}{\sigma^2} \bar{x}}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}} \\
+    \sigma_n^2 &= \frac{1}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}
+\end{align}
+
+Với các giá trị:
+\begin{itemize}
+    \item $\mu_0 = 3$, $\sigma_0^2 = 1$
+    \item $n = 10$, $\bar{x} = 3.07$
+    \item Giả sử $\sigma^2 = s^2 = 0.87^2$
+\end{itemize}
+
+Thay vào công thức:
+\begin{align}
+    \mu_n &= \frac{\frac{1}{1} \times 3 + \frac{10}{0.87^2} \times 3.07}{\frac{1}{1} + \frac{10}{0.87^2}} \approx 3.06 \\
+    \sigma_n^2 &= \frac{1}{\frac{1}{1} + \frac{10}{0.87^2}} \approx 0.07
+\end{align}
+
+Vậy, phân phối hậu nghiệm của tỷ lệ lạm phát năm 2025 là:
+\begin{equation}
+    \theta | D \sim N(3.06, 0.07)
+\end{equation}
+
+\subsubsection{** Dự báo và Kết luận}
+Dựa trên phân phối hậu nghiệm, dự báo tỷ lệ lạm phát cho năm 2025 là khoảng 3.06\% với độ không chắc chắn được đo bằng độ lệch chuẩn khoảng $\sqrt{0.07} \approx 0.26$. Điều này cho thấy dự báo khá tin cậy.
+
+\textbf{Lưu ý:} Phương pháp trên dựa trên giả định rằng dữ liệu lạm phát hàng năm tuân theo phân phối chuẩn. Trong thực tế, cần kiểm tra các giả định này và có thể sử dụng các phương pháp phức tạp hơn để dự báo chính xác hơn.
+
+\section{Kết luận}
+Ước lượng Bayesian cung cấp một khung lý thuyết mạnh mẽ cho phân tích dữ liệu. Với MCMC, ta có thể giải quyết các mô hình phức tạp mà phương pháp tần suất gặp khó khăn.
+
+

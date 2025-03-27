@@ -1,1 +1,91 @@
 \chapter{Mô hình hồi quy đa biến}
+\section{Định nghĩa Mô hình hồi quy đa biến}
+Mô hình hồi quy đa biến mở rộng từ mô hình hồi quy tuyến tính đơn giản bằng cách sử dụng nhiều biến giải thích (predictors) thay vì chỉ một. Công thức tổng quát của mô hình có dạng:
+\begin{equation}
+Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p + \varepsilon
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y$ là biến phụ thuộc (response variable).
+    \item $X_1, X_2, ..., X_p$ là các biến độc lập (predictor variables).
+    \item $\beta_0$ là hằng số chặn (intercept).
+    \item $\beta_1, \beta_2, ..., \beta_p$ là các hệ số hồi quy (regression coefficients).
+    \item $\varepsilon$ là sai số ngẫu nhiên (random error).
+\end{itemize}
+Dưới dạng ma trận, mô hình có thể viết là:
+\begin{equation}
+\mathbf{Y} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\varepsilon}
+\end{equation}
+
+\section{Ước lượng tham số bằng phương pháp bình phương tối thiểu (OLS)}
+Mục tiêu của hồi quy là ước lượng các hệ số $\boldsymbol{\beta}$ sao cho sai số bình phương tổng (SSE) nhỏ nhất:
+\begin{equation}
+SSE = \sum_{i=1}^{n} \varepsilon_i^2 = \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2
+\end{equation}
+Dùng phương pháp bình phương tối thiểu (OLS), ước lượng của $\boldsymbol{\beta}$ là:
+\begin{equation}
+\hat{\boldsymbol{\beta}} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}
+\end{equation}
+
+\section{Đánh giá mô hình}
+\subsection{Độ phù hợp của mô hình - Hệ số xác định $R^2$}
+Hệ số xác định $R^2$ đo lường mức độ giải thích của mô hình đối với phương sai của biến phụ thuộc:
+\begin{equation}
+    R^2 = 1 - \frac{SSE}{SST}
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $SST = \sum(Y_i - \bar{Y})^2$ là tổng phương sai tổng cộng (Total Sum of Squares).
+    \item $SSE = \sum(Y_i - \hat{Y})^2$ là tổng phương sai sai số (Residual Sum of Squares).
+\end{itemize}
+Nếu $R^2$ càng gần 1, mô hình càng giải thích tốt phương sai của $Y$.
+
+\subsection{Kiểm định ý nghĩa của từng hệ số hồi quy}
+Để kiểm tra xem một biến $X_j$ có ảnh hưởng thống kê đến $Y$ hay không, ta kiểm định giả thuyết:
+\begin{align*}
+    H_0 &: \beta_j = 0 \quad \text{(không có tác động)} \\
+    H_1 &: \beta_j \neq 0 \quad \text{(có tác động)}
+\end{align*}
+Dùng kiểm định $t$:
+\begin{equation}
+    t_j = \frac{\hat{\beta}_j}{SE(\hat{\beta}_j)}
+\end{equation}
+\noindent với $SE(\hat{\beta}_j)$ là sai số chuẩn của ước lượng hệ số. Giá trị $t_j$ này được so sánh với phân phối $t$ để ra quyết định.
+
+\subsection{Kiểm định tổng thể mô hình (Kiểm định F)}
+Kiểm định giả thuyết:
+\begin{align*}
+    H_0 &: \beta_1 = \beta_2 = \dots = \beta_p = 0 \quad \text{(không có biến nào có tác động)} \\
+    H_1 &: \text{ít nhất một hệ số } \beta_j \neq 0
+\end{align*}
+Dùng kiểm định tổng thể F:
+\begin{equation}
+    F = \frac{SST - SSE}{SSE} \times \frac{n - p - 1}{p}
+\end{equation}
+so sánh với phân phối $F_{p,n-p-1}$ để quyết định giữ hay bác bỏ $H_0$.
+
+
+\section{Giả định của mô hình hồi quy đa biến}
+\begin{enumerate}
+    \item Tuyến tính: Y có quan hệ tuyến tính với các biến độc lập.
+    \item Không có đa cộng tuyến: Các biến độc lập không có quan hệ tuyến tính quá mạnh (có thể kiểm tra bằng hệ số VIF).
+    \item Phân phối chuẩn của sai số: $\varepsilon \sim N(0,\sigma^2)$ (có thể kiểm tra bằng biểu đồ Q-Q plot).
+    \item Phương sai không đổi: $\text{Var}(\varepsilon) = \sigma^2$, có thể kiểm tra bằng Breusch-Pagan test.
+    \item Không có tự tương quan: Các sai số không được phụ thuộc nhau (có thể kiểm tra bằng Durbin-Watson test).
+\end{enumerate}
+
+\section{Ứng dụng thực tế}
+Mô hình hồi quy đa biến được áp dụng trong:
+\begin{itemize}
+    \item Kinh tế học: Dự báo tăng trưởng GDP dựa trên các yếu tố như lãi suất, tỷ lệ thất nghiệp, đầu tư.
+    \item Tài chính: Định giá cổ phiếu dựa trên các biến như thu nhập công ty, lãi suất thị trường.
+    \item Marketing: Dự đoán doanh số bán hàng dựa trên giá sản phẩm, ngân sách quảng cáo, mùa vụ.
+    \item Y tế: Dự báo nguy cơ mắc bệnh dựa trên yếu tố như chỉ số BMI, huyết áp, độ tuổi.
+\end{itemize}
+
+\section{Mở rộng mô hình}
+\begin{itemize}
+    \item Hồi quy phi tuyến: Dùng biến đa thức hoặc hàm logarit.
+    \item Hồi quy Ridge \& Lasso: Để xử lý đa cộng tuyến bằng cách thêm điều chuẩn.
+    \item Hồi quy logistic: Dùng cho bài toán phân loại (biến phụ thuộc là nhị phân).
+\end{itemize}

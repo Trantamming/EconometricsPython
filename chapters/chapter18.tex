@@ -1,1 +1,68 @@
 \chapter{Mô hình hồi quy Cox (Cox Proportional Hazards Model)}
+\section{Giới thiệu}
+Mô hình hồi quy Cox (Cox Proportional Hazards Model) là một phương pháp phân tích sống sót (survival analysis) phổ biến được giới thiệu bởi David Cox vào năm 1972. Mô hình này được sử dụng để phân tích tác động của các biến giải thích đối với thời gian sống sót của một đối tượng.
+
+\section{Cấu trúc mô hình}
+Mô hình Cox không giả định một dạng cụ thể cho hàm nguy cơ (hazard function) $ h(t) $, nhưng giả định rằng tỷ lệ nguy cơ giữa các cá thể là không đổi theo thời gian. Hàm nguy cơ có dạng:
+\begin{equation}
+    h(t | X) = h_0(t) e^{\beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p},
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $ h(t | X) $: Hàm nguy cơ tại thời điểm $ t $ khi có biến dự báo $ X $.
+    \item $ h_0(t) $: Hàm nguy cơ cơ bản (baseline hazard function), không phụ thuộc vào biến giải thích.
+    \item $ X_1, X_2, \dots, X_p $: Các biến dự báo (covariates).
+    \item $ \beta_1, \beta_2, \dots, \beta_p $: Các hệ số hồi quy cần ước lượng.
+\end{itemize}
+
+\section{Ước lượng tham số}
+Các hệ số $ \beta $ được ước lượng thông qua phương pháp hợp lý từng phần (partial likelihood). Hàm hợp lý từng phần được biểu diễn dưới dạng:
+\begin{equation}
+    L(\beta) = \prod_{i=1}^{n} \frac{e^{\beta^T X_i}}{\sum_{j \in R(t_i)} e^{\beta^T X_j}},
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $ t_i $ là thời gian sự kiện xảy ra cho cá thể thứ $ i $.
+    \item $ R(t_i) $ là tập hợp các cá thể còn sống ngay trước thời điểm $ t_i $.
+\end{itemize}
+Hàm log-likelihood tương ứng là:
+\begin{equation}
+    \ell(\beta) = \sum_{i=1}^{n} \left( \beta^T X_i - \log \sum_{j \in R(t_i)} e^{\beta^T X_j} \right).
+\end{equation}
+Ước lượng cực đại hợp lý (Maximum Likelihood Estimation - MLE) được sử dụng để tìm các hệ số $ \beta $ tối ưu bằng cách giải phương trình đạo hàm của hàm log-likelihood:
+\begin{equation}
+    \frac{\partial \ell(\beta)}{\partial \beta} = 0.
+\end{equation}
+
+\section{Giả định của mô hình Cox}
+Mô hình Cox dựa trên các giả định sau:
+\begin{itemize}
+    \item Tỷ lệ nguy cơ (hazard ratio) giữa các cá thể là không đổi theo thời gian.
+    \item Các biến giải thích có tác động tuyến tính lên log tỷ lệ nguy cơ.
+    \item Không có sự vi phạm nghiêm trọng về phương sai và tự tương quan.
+\end{itemize}
+
+\section{Kiểm định giả thuyết và đánh giá mô hình}
+\subsection{Kiểm định ý nghĩa của các hệ số}
+Giá trị $ \beta $ được kiểm định bằng kiểm định Wald hoặc kiểm định tỷ số hợp lý (Likelihood Ratio Test - LRT) với giả thuyết:
+\begin{equation}
+    H_0: \beta_i = 0 \quad \text{(biến không ảnh hưởng đến thời gian sống sót)}.
+\end{equation}
+
+\subsection{Kiểm tra giả định tỷ lệ nguy cơ}
+Giả định tỷ lệ nguy cơ có thể được kiểm tra bằng:
+\begin{itemize}
+    \item Phương pháp đồ thị Schoenfeld residuals.
+    \item Kiểm định thống kê dựa trên phần dư Schoenfeld.
+\end{itemize}
+
+\section{Ứng dụng thực tế}
+Mô hình Cox được sử dụng rộng rãi trong các lĩnh vực:
+\begin{itemize}
+    \item Y học: Ước lượng thời gian sống sót của bệnh nhân với các yếu tố nguy cơ.
+    \item Tài chính: Dự báo thời gian vỡ nợ của doanh nghiệp.
+    \item Kinh tế: Phân tích thời gian tồn tại của doanh nghiệp trên thị trường.
+\end{itemize}
+
+\section{Kết luận}
+Mô hình hồi quy Cox là một công cụ mạnh mẽ trong phân tích sống sót, cho phép nghiên cứu tác động của nhiều yếu tố lên thời gian xảy ra sự kiện mà không cần giả định dạng cụ thể của hàm nguy cơ cơ bản.

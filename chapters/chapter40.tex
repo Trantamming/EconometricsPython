@@ -1,68 +1,144 @@
-\chapter{Giới thiệu phương pháp Monte Carlo}
-\section{Tổng quan về phương pháp Monte Carlo}
-Phương pháp Monte Carlo là một kỹ thuật tính toán dựa trên mô phỏng ngẫu nhiên để tìm nghiệm số của các bài toán phức tạp. Trong kinh tế lượng, Monte Carlo được sử dụng để:
-\begin{itemize}
-    \item Kiểm định tính chính xác của các ước lượng thống kê.
-    \item Phân tích tính chất phân phối của các thống kê kiểm định.
-    \item Đánh giá hiệu suất của các mô hình kinh tế lượng.
-\end{itemize}
+\chapter{Machine Learning trong phân tích nhân quả và chính sách}
+\section{Machine Learning nhân quả (Causal Forest, Double ML)}
+Machine Learning nhân quả kết hợp các phương pháp học máy với mô hình kinh tế lượng để ước lượng tác động nhân quả trong các chính sách kinh tế và xã hội.
 
-Cho một mô hình kinh tế lượng:
+\subsection{Causal Forest}
+Causal Forest (Rừng Nhân Quả) là một phương pháp mở rộng từ Random Forest để ước lượng hiệu ứng nhân quả không đồng nhất giữa các nhóm. Mô hình dựa trên phương pháp cây quyết định với trọng số thích nghi.
+
+Giả sử mô hình nhân quả:
 \begin{equation}
-    Y = f(X, \theta) + \varepsilon
+Y = \tau(X) D + f(X) + \varepsilon
 \end{equation}
 trong đó:
 \begin{itemize}
-    \item $Y$ là biến phụ thuộc,
-    \item $X$ là ma trận biến độc lập,
-    \item $\theta$ là vector tham số cần ước lượng,
-    \item $\varepsilon \sim \mathcal{N}(0, \sigma^2)$ là nhiễu ngẫu nhiên.
+    \item $Y$ là biến kết quả,
+    \item $D$ là biến can thiệp (treatment),
+    \item $\tau(X)$ là hiệu ứng nhân quả không đồng nhất cần ước lượng,
+    \item $f(X)$ là hàm kiểm soát,
+    \item $\varepsilon$ là sai số.
 \end{itemize}
-Monte Carlo có thể được sử dụng để phân tích các tính chất của ước lượng $\hat{\theta}$.
 
+Causal Forest xây dựng cây quyết định để chia dữ liệu dựa trên biến $X$, sau đó tính hiệu ứng nhân quả trong từng nhóm.
 
-
-\section{Mô phỏng Monte Carlo trong kiểm định giả thuyết kinh tế lượng}
-\subsection{Mô tả quy trình Monte Carlo}
-Để đánh giá một ước lượng $\hat{\theta}$, ta sử dụng quy trình mô phỏng Monte Carlo sau:
+\subsection{Double Machine Learning (Double ML)}
+Double ML là một phương pháp dựa trên việc kết hợp các mô hình hồi quy học máy với ước lượng hiệu ứng nhân quả. Phương pháp này bao gồm hai bước chính:
 \begin{enumerate}
-    \item Chọn một giá trị thật của tham số $\theta_0$ và xác định mô hình kinh tế lượng.
-    \item Sinh ngẫu nhiên tập dữ liệu giả lập $(X, Y)$ theo mô hình:
-    \begin{equation}
-        Y_i = X_i \theta_0 + \varepsilon_i, \quad \varepsilon_i \sim \mathcal{N}(0, \sigma^2)
-    \end{equation}
-    \item Ước lượng tham số $\hat{\theta}$ bằng phương pháp ước lượng như OLS:
-    \begin{equation}
-        \hat{\theta} = (X'X)^{-1}X'Y
-    \end{equation}
-    \item Lặp lại bước 2 và 3 với nhiều bộ dữ liệu giả lập $(X, Y)$ để có các ước lượng $\hat{\theta}^{(1)}, \hat{\theta}^{(2)}, \dots, \hat{\theta}^{(M)}$.
-    \item Phân tích phân phối của $\hat{\theta}$ để kiểm tra tính chệch, phương sai và hiệu suất của phương pháp ước lượng.
+    \item Hồi quy $Y$ trên $X$ và hồi quy $D$ trên $X$ bằng Machine Learning để loại bỏ yếu tố gây nhiễu.
+    \item Ước lượng hiệu ứng nhân quả bằng phương pháp học máy tuyến tính hoặc phi tuyến tính.
 \end{enumerate}
 
-\subsection{Tính chệch và phương sai của ước lượng}
-Từ các lần lặp Monte Carlo, ta có thể tính kỳ vọng và phương sai của ước lượng:
+Mô hình Double ML có dạng:
+\begin{align}
+Y &= g(X) + \tau D + U \\
+D &= m(X) + V
+\end{align}
+Trong đó $U, V$ là phần dư.
+
+Ước lượng hiệu ứng nhân quả bằng cách sử dụng sai số có điều chỉnh:
 \begin{equation}
-    E[\hat{\theta}] \approx \frac{1}{M} \sum_{m=1}^{M} \hat{\theta}^{(m)}
+\hat{\tau} = \frac{\sum_{i=1}^{n} (\tilde{Y}_i - \bar{\tilde{Y}})(\tilde{D}_i - \bar{\tilde{D}})}{\sum_{i=1}^{n} (\tilde{D}_i - \bar{\tilde{D}})^2}
 \end{equation}
-\begin{equation}
-    \operatorname{Var}(\hat{\theta}) \approx \frac{1}{M - 1} \sum_{m=1}^{M} (\hat{\theta}^{(m)} - E[\hat{\theta}])^2
-\end{equation}
+trong đó $\tilde{Y}_i$ và $\tilde{D}_i$ là phần dư sau khi loại bỏ ảnh hưởng của $X$.
+
+
+
+
+\section{Xác định tác động chính sách bằng ML}
+\subsection{Giới thiệu}
+Trong kinh tế lượng, việc đánh giá tác động của các chính sách là một vấn đề quan trọng. Truyền thống, các phương pháp như hồi quy tuyến tính, mô hình sai biệt-kép (Difference-in-Differences, DID) và phương pháp sử dụng biến công cụ (Instrumental Variables, IV) được áp dụng. Tuy nhiên, Machine Learning (ML) cung cấp các công cụ mạnh mẽ hơn để xác định tác động chính sách, đặc biệt trong các mô hình phi tuyến tính và dữ liệu lớn.
+
+\subsection{Mô hình tổng quát}
+Giả sử ta có một tập dữ liệu $\{(X_i, D_i, Y_i)\}_{i=1}^{N}$, trong đó:
 \begin{itemize}
-    \item Nếu $E[\hat{\theta}] = \theta_0$, phương pháp ước lượng là không chệch.
-    \item Nếu phương sai nhỏ, phương pháp có độ chính xác cao.
+    \item $X_i$ là vector đặc trưng (covariates) của cá nhân/thực thể $i$.
+    \item $D_i \in \{0,1\}$ là biến chỉ thị chính sách (được nhận hay không).
+    \item $Y_i$ là kết quả đầu ra (outcome) mà ta muốn đo lường.
 \end{itemize}
 
-\subsection{Ứng dụng trong kiểm định giả thuyết}
-Trong kiểm định giả thuyết, Monte Carlo được dùng để kiểm tra phân phối của các thống kê kiểm định.
-Ví dụ, với kiểm định giả thuyết:
+Mô hình tác động chính sách được biểu diễn như sau:
 \begin{equation}
-    H_0: \theta = \theta_0
+    Y_i = \tau(X_i) D_i + f(X_i) + \epsilon_i,
 \end{equation}
-ta có thể sử dụng thống kê $t$:
+trong đó $\tau(X_i)$ là tác động chính sách điều kiện theo đặc trưng $X_i$, $f(X_i)$ là thành phần kiểm soát và $\epsilon_i$ là nhiễu.
+
+\subsection{Phương pháp Machine Learning trong đánh giá chính sách}
+
+\subsubsection{Causal Forest}
+Causal Forest (Athey và Imbens, 2016) là một mô hình dựa trên Random Forest để ước lượng tác động chính sách dị biệt theo từng cá nhân:
 \begin{equation}
-    t = \frac{\hat{\theta} - \theta_0}{s_{\hat{\theta}}}
+    \hat{\tau}(X) = \mathbb{E}[Y | X, D=1] - \mathbb{E}[Y | X, D=0].
 \end{equation}
+Mô hình sử dụng cây quyết định để chia nhóm đồng nhất về đặc trưng $X$, sau đó ước lượng tác động trung bình có điều kiện.
+
+\subsubsection{Double Machine Learning (Double ML)}
+Phương pháp Double ML (Chernozhukov et al., 2018) sử dụng hồi quy Lasso hoặc Random Forest để điều chỉnh nhiễu trước khi ước lượng tác động chính sách:
+\begin{align}
+    \tilde{Y}_i &= Y_i - \hat{f}(X_i), \\
+    \tilde{D}_i &= D_i - \hat{g}(X_i), \\
+    \tau &= \frac{\sum_{i=1}^{N} \tilde{Y}_i \tilde{D}_i}{\sum_{i=1}^{N} \tilde{D}_i^2}.
+\end{align}
+Phương pháp này giúp giảm sai lệch do nhiễu và lựa chọn biến tự động.
+
+\subsection{Kết luận}
+Machine Learning mang lại những công cụ mạnh mẽ để xác định tác động chính sách, đặc biệt khi dữ liệu có nhiều biến số và quan hệ phi tuyến tính. Causal Forest và Double ML là hai phương pháp phổ biến giúp nâng cao độ chính xác của ước lượng.
+
+
+
+
+
+
+\section{Kiểm định giả thuyết và ML trong phân tích chính sách}
+\subsection{Giới thiệu}
+Kiểm định giả thuyết là một công cụ quan trọng trong phân tích chính sách. Khi kết hợp với Machine Learning (ML), phương pháp này có thể giúp phát hiện mối quan hệ nhân quả, đánh giá tác động của chính sách, và cải thiện độ chính xác của mô hình dự báo.
+
+\subsection{Kiểm định giả thuyết thống kê}
+Giả sử chúng ta có hai giả thuyết:
 \begin{itemize}
-    \item $s_{\hat{\theta}}$ là độ lệch chuẩn của $\hat{\theta}$.
-    \item Nếu Monte Carlo cho thấy phân phối của $t$ không tuân theo phân phối chuẩn $t$, thì kiểm định truyền thống có thể không đáng tin cậy.
+    \item $H_0$: Không có tác động của chính sách.
+    \item $H_1$: Chính sách có tác động đáng kể.
 \end{itemize}
+
+Với dữ liệu $X = \{x_1, x_2, ..., x_n\}$ và biến phụ thuộc $Y = \{y_1, y_2, ..., y_n\}$, kiểm định giả thuyết truyền thống có thể được thực hiện bằng kiểm định $t$ hoặc kiểm định $F$ trong mô hình hồi quy:
+\begin{equation}
+    Y = \beta_0 + \beta_1 X + \varepsilon, \quad \varepsilon \sim N(0, \sigma^2).
+\end{equation}
+
+Thống kê kiểm định $t$ được tính bằng:
+\begin{equation}
+    t = \frac{\hat{\beta_1}}{\text{SE}(\hat{\beta_1})},
+\end{equation}
+trong đó $\text{SE}(\hat{\beta_1})$ là sai số chuẩn của $\hat{\beta_1}$.
+
+\subsection{Machine Learning và kiểm định giả thuyết}
+Machine Learning có thể được sử dụng để kiểm định giả thuyết theo nhiều cách khác nhau, bao gồm:
+\begin{itemize}
+    \item Phương pháp permutation test: Xáo trộn dữ liệu và so sánh phân phối của các hệ số.
+    \item Phương pháp bootstrap: Lấy mẫu lại nhiều lần để ước lượng phân phối tham số.
+    \item Double Machine Learning (DML): Sử dụng ML để kiểm soát biến gây nhiễu trong mô hình nhân quả.
+\end{itemize}
+
+\subsubsection{Permutation Test}
+Xáo trộn ngẫu nhiên biến độc lập $X$ và ước lượng mô hình nhiều lần để xây dựng phân phối giả định của hệ số hồi quy:
+\begin{equation}
+    P = \frac{|\hat{\beta_1} - \hat{\beta_1}^{perm}|}{\sigma_{perm}}.
+\end{equation}
+
+\subsubsection{Bootstrap}
+Với phương pháp bootstrap, ta tạo nhiều tập dữ liệu mới bằng cách lấy mẫu lại với thay thế, sau đó ước lượng lại mô hình trên từng tập dữ liệu:
+\begin{equation}
+    \hat{\beta_1}^{(b)} = \frac{\sum_{i=1}^{n} w_i X_i Y_i}{\sum_{i=1}^{n} w_i X_i^2},
+\end{equation}
+trong đó $w_i$ là trọng số bootstrap.
+
+\subsubsection{Double Machine Learning}
+DML tách quy trình ước lượng thành hai bước:
+\begin{enumerate}
+    \item Dự báo biến độc lập bằng mô hình ML: $\hat{X} = f(Z) + \eta$.
+    \item Hồi quy phần dư để loại bỏ biến nhiễu: $\hat{Y} = \beta_1 \hat{X} + \varepsilon$.
+\end{enumerate}
+
+\subsection{Ứng dụng thực tế}
+Một ví dụ thực tế là đánh giá tác động của chính sách trợ cấp kinh tế. Ta có thể sử dụng mô hình hồi quy tuyến tính thông thường và so sánh kết quả với các phương pháp ML như Random Forest hoặc XGBoost để kiểm tra tính vững chắc của kết quả.
+
+\subsection{Kết luận}
+Kiểm định giả thuyết kết hợp với ML giúp phân tích chính sách trở nên mạnh mẽ hơn, đặc biệt trong các tình huống có nhiều biến gây nhiễu. Các phương pháp như permutation test, bootstrap và DML là những công cụ hữu ích trong lĩnh vực này.

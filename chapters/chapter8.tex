@@ -1,1 +1,56 @@
 \chapter{Mô hình hồi quy đa thức}
+\section{Giới thiệu}
+Mô hình hồi quy đa thức là một mở rộng của mô hình hồi quy tuyến tính, trong đó quan hệ giữa biến phụ thuộc $Y$ và biến độc lập $X$ được mô tả bằng một đa thức bậc $p$ thay vì một đường thẳng.
+
+\section{Mô hình toán học}
+Mô hình hồi quy đa thức bậc $p$ có dạng tổng quát như sau:
+\begin{equation}
+    Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \dots + \beta_p X^p + \varepsilon,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y$: Biến phụ thuộc,
+    \item $X$: Biến độc lập,
+    \item $\beta_0, \beta_1, \dots, \beta_p$: Các tham số hồi quy cần ước lượng,
+    \item $\varepsilon$: Sai số ngẫu nhiên, giả định $\varepsilon \sim N(0, \sigma^2)$.
+\end{itemize}
+
+\section{Ước lượng tham số}
+Các tham số $\beta_0, \beta_1, \dots, \beta_p$ có thể được ước lượng bằng phương pháp bình phương tối thiểu (OLS). Ta xây dựng hàm mất mát:
+\begin{equation}
+    L(\beta_0, \beta_1, \dots, \beta_p) = \sum_{i=1}^{n} \left( Y_i - (\beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \dots + \beta_p X_i^p) \right)^2.
+\end{equation}
+Để tìm nghiệm tối ưu, ta giải hệ phương trình đạo hàm bậc nhất:
+\begin{equation}
+    \frac{\partial L}{\partial \beta_j} = 0, \quad j = 0, 1, \dots, p.
+\end{equation}
+
+\section{Đánh giá mô hình}
+\subsection{Hệ số xác định $R^2$}
+Hệ số xác định $R^2$ được tính như sau:
+\begin{equation}
+    R^2 = 1 - \frac{SSE}{SST},
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $SST = \sum (Y_i - \bar{Y})^2$ là tổng phương sai tổng,
+    \item $SSE = \sum (Y_i - \hat{Y}_i)^2$ là tổng phương sai sai số.
+\end{itemize}
+
+\subsection{Kiểm định ý nghĩa của mô hình}
+Kiểm định tổng thể mô hình sử dụng kiểm định $F$ với giả thuyết:
+\begin{align*}
+    H_0 &: \beta_1 = \beta_2 = \dots = \beta_p = 0, \quad \text{(không có tác động)} \\
+    H_1 &: \text{Ít nhất một } \beta_j \neq 0, \quad \text{(có tác động)}
+\end{align*}
+Thống kê kiểm định $F$ được tính như sau:
+\begin{equation}
+    F = \frac{SST - SSE}{p} \div \frac{SSE}{n - p - 1}.
+\end{equation}
+So sánh với phân phối $F_{p, n - p - 1}$ để quyết định giữ hay bác bỏ $H_0$.
+
+\section{Kiểm tra giả định}
+\begin{itemize}
+    \item Kiểm tra phân phối của sai số: $\varepsilon \sim N(0, \sigma^2)$ (có thể kiểm tra bằng biểu đồ Q-Q plot).
+    \item Kiểm tra phương sai không đổi: $\text{Var}(\varepsilon) = \sigma^2$, có thể kiểm tra bằng Breusch-Pagan test.
+\end{itemize}

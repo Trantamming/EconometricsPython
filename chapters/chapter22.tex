@@ -1,1 +1,36 @@
 \chapter{Mô hình hồi quy hỗn hợp (Frailty Models)}
+\section{Giới thiệu}
+Mô hình hồi quy hỗn hợp (Frailty Models) là một phần mở rộng của mô hình hồi quy sinh tồn truyền thống, chẳng hạn như mô hình Cox, nhằm xử lý sự phụ thuộc giữa các quan sát do có các yếu tố không quan sát được (frailty).
+
+\section{Mô hình toán học}
+Giả sử thời gian sống $T_i$ của cá nhân $i$ tuân theo phân phối nguy cơ $h_i(t)$, mô hình Cox chuẩn được viết như:
+\begin{equation}
+    h_i(t | X_i) = h_0(t) e^{X_i \beta},
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $h_0(t)$ là hàm nguy cơ cơ sở,
+    \item $X_i$ là vector các biến tiên lượng,
+    \item $\beta$ là vector hệ số hồi quy.
+\end{itemize}
+
+Tuy nhiên, mô hình Cox giả định rằng tất cả các cá nhân có cùng một hàm nguy cơ khi đã tính đến các biến tiên lượng. Trong thực tế, có thể có những yếu tố không quan sát được ảnh hưởng đến nguy cơ, được mô hình hóa bằng một biến ngẫu nhiên $Z_i$:
+\begin{equation}
+    h_i(t | X_i, Z_i) = Z_i h_0(t) e^{X_i \beta},
+\end{equation}
+trong đó $Z_i$ là biến frailty, thường được giả định tuân theo phân phối Gamma với kỳ vọng bằng 1 và phương sai $\theta$.
+
+\section{Ước lượng tham số}
+Ước lượng tham số trong mô hình frailty thường dựa trên phương pháp hợp lý tối đa. Hàm hợp lý có dạng:
+\begin{equation}
+    L(\beta, \theta) = \int \prod_{i=1}^{n} h_i(t_i | X_i, Z_i) S_i(t_i | X_i, Z_i) f(Z_i; \theta) dZ_i,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $S_i(t)$ là hàm sống sót của cá nhân $i$,
+    \item $f(Z_i; \theta)$ là hàm mật độ xác suất của biến frailty.
+\end{itemize}
+Việc tích phân theo $Z_i$ thường không có công thức đóng, do đó các phương pháp xấp xỉ như Laplace hoặc Monte Carlo được sử dụng để ước lượng tham số.
+
+\section{Kết luận}
+Mô hình hồi quy hỗn hợp cung cấp một cách tiếp cận linh hoạt để mô hình hóa dữ liệu sinh tồn có sự phụ thuộc do các yếu tố không quan sát được. Việc lựa chọn phân phối frailty phù hợp và sử dụng các phương pháp tính toán hiệu quả là chìa khóa để có được ước lượng chính xác.

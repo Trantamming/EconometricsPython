@@ -1,4 +1,247 @@
-\chapter{Machine Learning trong phân tích dữ liệu bảng (Panel Data)}
-\section{Xử lý dữ liệu bảng lớn với ML}
-\section{So sánh Fixed Effects, Random Effects với ML}
-\section{Ứng dụng ML vào phân tích tác động theo thời gian}
+\chapter{Các phương pháp Machine Learning trong Kinh tế lượng}
+\section{Giới thiệu về Machine Learning trong Kinh tế lượng}
+Machine Learning (ML) ngày càng được ứng dụng rộng rãi trong kinh tế lượng nhằm nâng cao độ chính xác của mô hình dự báo, kiểm định mô hình và xử lý dữ liệu lớn. Sự khác biệt chính giữa ML và các phương pháp kinh tế lượng truyền thống là cách tiếp cận dữ liệu: ML tập trung vào tính linh hoạt và tối ưu hóa dự báo, trong khi kinh tế lượng truyền thống thường dựa trên lý thuyết kinh tế và kiểm định giả thuyết.
+
+Machine Learning (ML) trong kinh tế lượng là một lĩnh vực kết hợp giữa các phương pháp học máy và phân tích kinh tế lượng để khám phá mô hình và dự báo dữ liệu kinh tế. ML cung cấp các công cụ mạnh mẽ để xử lý dữ liệu lớn và phi tuyến tính, mở rộng khả năng phân tích so với các mô hình hồi quy truyền thống.
+
+\subsection{Các Khái Niệm Cơ Bản}
+\subsection{Mô hình hồi quy và Machine Learning}
+Trong kinh tế lượng, mô hình hồi quy tuyến tính thường được sử dụng để ước lượng quan hệ giữa biến phụ thuộc $Y$ và các biến độc lập $X_1, X_2, \dots, X_p$ như sau:
+\begin{equation}
+    Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p + \varepsilon
+\end{equation}
+với $\varepsilon$ là nhiễu trắng.
+
+Machine Learning mở rộng các phương pháp này bằng cách sử dụng các mô hình phi tuyến tính và thuật toán tối ưu hóa.
+
+\subsubsection{Mô hình học có giám sát và không giám sát}
+- Học có giám sát: Bao gồm hồi quy (Regression) và phân loại (Classification).
+- Học không giám sát: Bao gồm phân cụm (Clustering) và giảm chiều dữ liệu (Dimensionality Reduction).
+
+\subsection{Các Phương Pháp Machine Learning Phổ Biến trong Kinh tế lượng}
+\subsubsection{Hồi quy Ridge và Lasso}
+Khi có đa cộng tuyến, ta sử dụng hồi quy Ridge và Lasso để giảm phương sai:
+\begin{equation}
+    \hat{\beta}^{\text{ridge}} = \arg\min_\beta \sum_{i=1}^{n} (Y_i - X_i^T \beta)^2 + \lambda \sum_{j=1}^{p} \beta_j^2
+\end{equation}
+\begin{equation}
+    \hat{\beta}^{\text{lasso}} = \arg\min_\beta \sum_{i=1}^{n} (Y_i - X_i^T \beta)^2 + \lambda \sum_{j=1}^{p} |\beta_j|
+\end{equation}
+
+\subsubsection{Cây quyết định và Rừng ngẫu nhiên}
+Cây quyết định chia không gian dữ liệu thành các vùng nhỏ bằng cách tối ưu một tiêu chí nhất định (như giảm phương sai trong hồi quy hoặc giảm entropy trong phân loại).
+Rừng ngẫu nhiên sử dụng nhiều cây quyết định để cải thiện tính tổng quát.
+
+\subsubsection{Mạng Nơ-ron nhân tạo (Artificial Neural Networks - ANN)}
+ANN mô phỏng cấu trúc của não người để tìm kiếm mô hình trong dữ liệu:
+\begin{equation}
+    y = f(W_2 \cdot \sigma(W_1 X + b_1) + b_2)
+\end{equation}
+trong đó:
+- $W_1, W_2$ là trọng số,
+- $b_1, b_2$ là bias,
+- $\sigma$ là hàm kích hoạt (như ReLU, sigmoid, tanh).
+
+\subsubsection{Học tăng cường (Reinforcement Learning)}
+Học tăng cường tìm cách tối ưu hành động dựa trên phần thưởng:
+\begin{equation}
+    Q(s, a) \leftarrow Q(s, a) + \alpha [r + \gamma \max_{a'} Q(s', a') - Q(s, a)]
+\end{equation}
+
+\subsection{Ứng dụng Machine Learning trong Kinh tế lượng}
+- Dự báo kinh tế vĩ mô (GDP, lạm phát, thất nghiệp)\\
+- Phân tích tài chính (giá cổ phiếu, biến động thị trường)\\
+- Phân loại rủi ro tín dụng\\
+- Phân tích hành vi tiêu dùng
+
+\subsection{Kết luận}
+Machine Learning cung cấp nhiều công cụ mạnh mẽ cho kinh tế lượng, giúp cải thiện độ chính xác dự báo và phát hiện các mô hình ẩn trong dữ liệu. Việc kết hợp ML với các mô hình kinh tế truyền thống có thể mở rộng khả năng phân tích và giải thích dữ liệu kinh tế.
+
+
+
+\section{Hồi quy tuyến tính mở rộng: Ridge, Lasso, Elastic Net}
+\subsection{Giới thiệu}
+Hồi quy tuyến tính mở rộng bao gồm các phương pháp Ridge Regression, Lasso Regression và Elastic Net Regression, được thiết kế để xử lý vấn đề đa cộng tuyến và chọn biến trong mô hình hồi quy.
+
+\subsection{Hồi quy Ridge}
+Hồi quy Ridge mở rộng mô hình hồi quy tuyến tính bằng cách thêm một thành phần phạt $L_2$ vào hàm mất mát:
+\begin{equation}
+    \hat{\beta}^{ridge} = \arg\min_\beta \sum_{i=1}^{n} (y_i - X_i \beta)^2 + \lambda \sum_{j=1}^{p} \beta_j^2,
+\end{equation}
+trong đó $\lambda > 0$ là tham số điều chỉnh mức độ phạt.
+
+\subsection{Hồi quy Lasso}
+Hồi quy Lasso sử dụng chuẩn $L_1$ để tạo ra sự co rút của các hệ số hồi quy về 0:
+\begin{equation}
+    \hat{\beta}^{lasso} = \arg\min_\beta \sum_{i=1}^{n} (y_i - X_i \beta)^2 + \lambda \sum_{j=1}^{p} |\beta_j|.
+\end{equation}
+
+\subsection{Elastic Net Regression}
+Elastic Net kết hợp cả hai phương pháp trên bằng cách sử dụng cả chuẩn $L_1$ và $L_2$:
+\begin{equation}
+    \hat{\beta}^{elastic} = \arg\min_\beta \sum_{i=1}^{n} (y_i - X_i \beta)^2 + \lambda_1 \sum_{j=1}^{p} |\beta_j| + \lambda_2 \sum_{j=1}^{p} \beta_j^2.
+\end{equation}
+Elastic Net có thể giải quyết tốt vấn đề chọn biến khi số lượng biến rất lớn.
+
+\subsection{Kết luận}
+Mô hình Ridge, Lasso và Elastic Net là các phương pháp mở rộng của hồi quy tuyến tính nhằm kiểm soát đa cộng tuyến và cải thiện khả năng tổng quát hóa của mô hình.
+
+
+
+\section{Mô hình cây quyết định và boosting (Random Forest, XGBoost)}
+\subsection{Mô hình Cây Quyết Định}
+
+Cây quyết định là một phương pháp học có giám sát được sử dụng cho các bài toán phân loại và hồi quy. Cấu trúc của cây bao gồm: \\
+- Nút gốc (root node) \\
+- Nút trung gian (internal nodes) \\
+- Lá (leaf nodes)
+
+Quá trình xây dựng cây quyết định dựa trên việc chia nhỏ dữ liệu theo các tiêu chí như Entropy hoặc Gini Index.
+
+\subsubsection{Entropy và Thông tin Thu được}
+Entropy của một tập dữ liệu $S$ được định nghĩa là:
+\begin{equation}
+    H(S) = - \sum_{i=1}^{c} p_i \log_2 p_i
+\end{equation}
+trong đó $p_i$ là xác suất xuất hiện của lớp thứ $i$.
+
+Thông tin thu được khi phân tách theo thuộc tính $A$:
+\begin{equation}
+    IG(S, A) = H(S) - \sum_{v \in \text{values}(A)} \frac{|S_v|}{|S|} H(S_v)
+\end{equation}
+
+\subsubsection{Chỉ số Gini}
+Chỉ số Gini được tính theo công thức:
+\begin{equation}
+    Gini(S) = 1 - \sum_{i=1}^{c} p_i^2
+\end{equation}
+
+\subsection{Random Forest}
+
+Random Forest là một tập hợp của nhiều cây quyết định, mỗi cây được huấn luyện trên một tập con dữ liệu khác nhau bằng phương pháp Bootstrap Aggregating (Bagging).
+
+Dự đoán của Random Forest được tính bằng trung bình hoặc số phiếu từ các cây:
+\begin{equation}
+    \hat{y} = \frac{1}{T} \sum_{t=1}^{T} h_t(x)
+\end{equation}
+trong đó $h_t(x)$ là dự đoán của cây thứ $t$ và $T$ là tổng số cây trong rừng.
+
+\section{XGBoost}
+
+XGBoost (Extreme Gradient Boosting) là một phương pháp boosting sử dụng đạo hàm bậc hai để tối ưu hóa.
+
+Hàm mất mát của XGBoost:
+\begin{equation}
+    L = \sum_{i=1}^{n} l(y_i, \hat{y}_i) + \sum_{t=1}^{T} \Omega(f_t)
+\end{equation}
+trong đó $\Omega(f_t)$ là hàm phạt độ phức tạp của cây.
+
+Cập nhật trọng số bằng đạo hàm bậc hai:
+\begin{equation}
+    g_i = \frac{\partial l(y_i, \hat{y}_i)}{\partial \hat{y}_i}, \quad h_i = \frac{\partial^2 l(y_i, \hat{y}_i)}{\partial \hat{y}_i^2}
+\end{equation}
+
+Mô hình được cập nhật bằng cách tối ưu hóa hàm mục tiêu dựa trên đạo hàm này.
+
+
+
+
+\section{Machine Learning nhân quả: Double ML, Causal Inference}
+Machine Learning nhân quả (Causal Machine Learning) là lĩnh vực kết hợp giữa học máy và suy luận nhân quả để xác định mối quan hệ nguyên nhân - kết quả từ dữ liệu quan sát. Trong đó, Double Machine Learning (Double ML) là một phương pháp quan trọng giúp ước lượng tác động nhân quả trong mô hình có nhiều nhiễu.
+
+\subsection{Suy luận nhân quả (Causal Inference)}
+Suy luận nhân quả dựa trên mô hình \textbf{khung phản thực tế} (Potential Outcome Framework) của Rubin:
+\begin{equation}
+    Y_i = D_i Y_i(1) + (1 - D_i) Y_i(0),
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y_i(1)$, $Y_i(0)$ là kết quả tiềm năng khi cá thể $i$ nhận hoặc không nhận can thiệp $D_i$.
+    \item $D_i \in \{0,1\}$ là biến chỉ định (treatment indicator).
+\end{itemize}
+Tác động nhân quả trung bình (ATE - Average Treatment Effect):
+\begin{equation}
+    \tau = \mathbb{E}[Y(1) - Y(0)].
+\end{equation}
+Do dữ liệu chỉ quan sát một trong hai trạng thái của $Y_i$, cần sử dụng các phương pháp ước lượng nhân quả như:\textbf{Double Machine Learning}.
+
+\subsection{Double Machine Learning (Double ML)}
+Double ML được sử dụng để khử nhiễu từ các biến gây nhiễu (confounders) trong mô hình nhân quả. Giả sử mô hình hồi quy tổng quát:
+\begin{equation}
+    Y = D \theta_0 + g(X) + \epsilon,
+\end{equation}
+\begin{equation}
+    D = m(X) + v.
+\end{equation}
+Bước 1: Dự đoán $D$ bằng mô hình machine learning:
+\begin{equation}
+    \hat{D} = \hat{m}(X).
+\end{equation}
+Bước 2: Dự đoán $Y$ bằng mô hình machine learning:
+\begin{equation}
+    \hat{Y} = \hat{g}(X).
+\end{equation}
+Bước 3: Xây dựng phần dư và ước lượng bằng phương pháp hai bước (orthogonalization):
+\begin{equation}
+    \tilde{Y} = Y - \hat{g}(X), \quad \tilde{D} = D - \hat{m}(X).
+\end{equation}
+Bước 4: Hồi quy phần dư để ước lượng tác động nhân quả:
+\begin{equation}
+    \hat{\theta}_0 = \mathbb{E}[\tilde{D}^T \tilde{D}]^{-1} \mathbb{E}[\tilde{D}^T \tilde{Y}].
+\end{equation}
+Double ML giúp giảm thiên lệch do mô hình hóa sai số trong $X$ và đảm bảo tính vững của ước lượng.
+
+\subsection{Kết luận}
+Double ML là một kỹ thuật mạnh mẽ trong suy luận nhân quả khi kết hợp Machine Learning với phương pháp ước lượng cổ điển. Việc áp dụng Double ML trong các bài toán kinh tế lượng giúp cải thiện độ chính xác và tính tin cậy của các phân tích nhân quả.
+
+
+
+
+\section{Deep Learning trong phân tích kinh tế}
+Deep Learning (Học sâu) là một nhánh của Machine Learning sử dụng mạng neuron nhân tạo nhiều lớp để học các biểu diễn dữ liệu phức tạp. Trong phân tích kinh tế, Deep Learning được áp dụng để dự báo, phân loại, và tối ưu hóa ra quyết định.
+
+\subsection{Mạng Neuron Nhân Tạo (Artificial Neural Network - ANN)}
+Một mạng neuron nhân tạo cơ bản bao gồm các lớp sau:
+\begin{itemize}
+    \item Lớp đầu vào (Input Layer)
+    \item Lớp ẩn (Hidden Layers)
+    \item Lớp đầu ra (Output Layer)
+\end{itemize}
+Mỗi neuron trong một lớp nhận đầu vào từ các neuron của lớp trước và tính toán một hàm kích hoạt:
+\begin{equation}
+    z_i = \sum_{j=1}^{n} w_j x_j + b,
+\end{equation}
+trong đó $w_j$ là trọng số, $x_j$ là đầu vào, và $b$ là hệ số tự do (bias).
+
+Hàm kích hoạt phổ biến:
+\begin{itemize}
+    \item Hàm sigmoid: $\sigma(z) = \frac{1}{1 + e^{-z}}$
+    \item Hàm ReLU: $f(z) = \max(0, z)$
+    \item Hàm tanh: $\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$
+\end{itemize}
+
+\subsection{Lan Truyền Ngược (Backpropagation)}
+Quá trình huấn luyện mạng neuron sử dụng thuật toán lan truyền ngược để tối ưu hóa trọng số dựa trên đạo hàm của hàm mất mát.
+Hàm mất mát phổ biến trong hồi quy:
+\begin{equation}
+    L(\hat{y}, y) = \frac{1}{2} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2.
+\end{equation}
+Đạo hàm của mất mát theo trọng số được tính bằng quy tắc dây chuyền:
+\begin{equation}
+    \frac{\partial L}{\partial w} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \cdot \frac{\partial z}{\partial w}.
+\end{equation}
+
+\subsection{Ứng Dụng trong Kinh Tế}
+\begin{itemize}
+    \item Dự báo kinh tế: Mạng LSTM để phân tích chuỗi thời gian.
+    \item Phân loại rủi ro tài chính: Sử dụng mô hình DNN để đánh giá tín dụng.
+    \item Ra quyết định tối ưu: Deep Reinforcement Learning trong tối ưu hóa danh mục đầu tư.
+\end{itemize}
+
+\subsection{Kết Luận}
+Deep Learning cung cấp các công cụ mạnh mẽ để phân tích dữ liệu kinh tế phức tạp. Việc áp dụng ANN, LSTM, và Reinforcement Learning có thể cải thiện đáng kể hiệu quả dự báo và tối ưu hóa trong kinh tế học.
+
+
+
+
+

@@ -1,1 +1,59 @@
 \chapter{Mô hình hồi quy logarit (Logarithmic Regression)}
+\section{Giới thiệu}
+Mô hình hồi quy logarit được sử dụng khi dữ liệu có xu hướng thay đổi nhanh ban đầu và sau đó chậm dần theo thời gian hoặc theo biến giải thích. Mô hình này phù hợp cho các hiện tượng giảm tốc hoặc có sự bão hòa.
+
+\section{Định nghĩa mô hình}
+Mô hình hồi quy logarit có dạng tổng quát:
+\begin{equation}
+    Y = \beta_0 + \beta_1 \ln(X) + \varepsilon
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y$ là biến phụ thuộc.
+    \item $X$ là biến độc lập.
+    \item $\beta_0, \beta_1$ là các tham số hồi quy.
+    \item $\varepsilon$ là sai số ngẫu nhiên với giả thiết $\varepsilon \sim N(0, \sigma^2)$.
+\end{itemize}
+
+\section{Ước lượng tham số}
+Các tham số $\beta_0$ và $\beta_1$ có thể được ước lượng bằng phương pháp bình phương nhỏ nhất (OLS). Hàm mất mát cần tối thiểu hóa là:
+\begin{equation}
+    L(\beta_0, \beta_1) = \sum_{i=1}^{n} \left(Y_i - \beta_0 - \beta_1 \ln(X_i)\right)^2
+\end{equation}
+
+Điều kiện tối ưu được tìm bằng cách giải hệ phương trình đạo hàm riêng:
+\begin{align}
+    \frac{\partial L}{\partial \beta_0} &= -2 \sum_{i=1}^{n} \left(Y_i - \beta_0 - \beta_1 \ln(X_i)\right) = 0 \\
+    \frac{\partial L}{\partial \beta_1} &= -2 \sum_{i=1}^{n} \ln(X_i) \left(Y_i - \beta_0 - \beta_1 \ln(X_i)\right) = 0
+\end{align}
+
+Giải hệ phương trình này ta có công thức ước lượng:
+\begin{align}
+    \hat{\beta}_1 &= \frac{\sum_{i=1}^{n} \left(\ln(X_i) - \overline{\ln(X)}\right) (Y_i - \bar{Y})}{\sum_{i=1}^{n} \left(\ln(X_i) - \overline{\ln(X)}\right)^2} \\
+    \hat{\beta}_0 &= \bar{Y} - \hat{\beta}_1 \overline{\ln(X)}
+\end{align}
+trong đó:
+\begin{itemize}
+    \item $\bar{Y} = \frac{1}{n} \sum_{i=1}^{n} Y_i$ là trung bình của $Y$.
+    \item $\overline{\ln(X)} = \frac{1}{n} \sum_{i=1}^{n} \ln(X_i)$ là trung bình của $\ln(X)$.
+\end{itemize}
+
+\section{Kiểm định mô hình}
+\subsection{Hệ số xác định ($R^2$)}
+Mức độ phù hợp của mô hình được đánh giá bằng hệ số xác định:
+\begin{equation}
+    R^2 = 1 - \frac{\sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2}{\sum_{i=1}^{n} (Y_i - \bar{Y})^2}
+\end{equation}
+
+\subsection{Kiểm định ý nghĩa hệ số hồi quy}
+Ta kiểm định giả thuyết:
+\begin{align}
+    H_0 &: \beta_1 = 0 \\
+    H_1 &: \beta_1 \neq 0
+\end{align}
+
+Với thống kê kiểm định:
+\begin{equation}
+    t = \frac{\hat{\beta}_1}{SE(\hat{\beta}_1)}
+\end{equation}
+trong đó $SE(\hat{\beta}_1)$ là sai số chuẩn của $\hat{\beta}_1$. Giá trị này được so sánh với phân phối $t$ để quyết định giữ hay bác bỏ $H_0$.

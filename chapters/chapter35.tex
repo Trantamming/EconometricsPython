@@ -1,5 +1,36 @@
-\chapter{Hồi quy và Dự báo với Machine Learning}
-\section{So sánh hồi quy truyền thống với ML}
-\section{Mô hình XGBoost, Random Forest và hồi quy phi tuyến}
-\section{Đánh giá mô hình dự báo (MAPE, RMSE, R-squared)}
-\section{ML và các phương pháp Bayes trong dự báo kinh tế lượng}
+\chapter{Ứng dụng Kinh tế lượng Không gian}
+\section{Phân tích giá bất động sản theo vị trí địa lý}
+Giá bất động sản phụ thuộc nhiều vào vị trí địa lý. Giả sử ta có dữ liệu về giá nhà theo từng quận tại TP. Hồ Chí Minh. Mô hình hồi quy không gian có thể được biểu diễn như sau:
+\begin{equation}
+    P_i = \rho W P_i + X_i \beta + \epsilon_i
+\end{equation}
+với:
+\begin{itemize}
+    \item $P_i$ là giá nhà tại khu vực $i$.
+    \item $W$ là ma trận trọng số không gian phản ánh mối quan hệ giữa các khu vực.
+    \item $X_i$ bao gồm các yếu tố như diện tích, số phòng, tiện ích.
+    \item $\rho$ là hệ số phản ánh tác động không gian.
+    \item $\epsilon_i$ là sai số ngẫu nhiên.
+\end{itemize}
+Mô hình này giúp xác định mức độ ảnh hưởng của vị trí đến giá bất động sản.
+
+\section{Đánh giá tác động chính sách kinh tế vùng}
+Chính sách đầu tư cơ sở hạ tầng có thể ảnh hưởng đến tăng trưởng kinh tế vùng. Mô hình không gian phù hợp là mô hình Durbin không gian (SDM):
+\begin{equation}
+    Y = \rho W Y + X \beta + W X \theta + \epsilon
+\end{equation}
+Ứng dụng thực tế: phân tích tác động của dự án cao tốc Bắc Nam lên GDP các tỉnh miền Trung.
+
+\section{Ứng dụng trong nghiên cứu môi trường}
+Sử dụng dữ liệu ô nhiễm không khí (PM2.5) từ các trạm quan trắc, ta có thể mô hình hóa sự lan truyền của khí thải bằng mô hình sai số không gian (SEM):
+\begin{equation}
+    Y = X\beta + \mu, \quad \mu = \lambda W\mu + \epsilon
+\end{equation}
+Ứng dụng: xác định khu vực có mức độ ô nhiễm cao nhất và tìm giải pháp kiểm soát.
+
+\section{Dự báo mô hình kinh tế vùng với dữ liệu không gian}
+Dự đoán GDP theo tỉnh thành dựa trên mô hình SLM:
+\begin{equation}
+    GDP_i = \rho W GDP_i + X_i \beta + \epsilon_i
+\end{equation}
+Ứng dụng: lập kế hoạch phát triển kinh tế vùng.

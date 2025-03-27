@@ -1,1 +1,66 @@
 \chapter{Mô hình hồi quy Gamma (Gamma Regression Model)}
+\section{Giới thiệu}
+Mô hình hồi quy Gamma là một dạng mô hình hồi quy được sử dụng khi biến phụ thuộc ($Y$) là một biến dương và có độ lệch về phía phải. Mô hình này phù hợp với dữ liệu có phân phối Gamma.
+
+\section{Định nghĩa mô hình}
+Giả sử ta có một tập dữ liệu gồm $n$ quan sát, với biến phụ thuộc $Y_i$ và vector các biến độc lập $\mathbf{X}_i = (X_{i1}, X_{i2}, ..., X_{ip})$. Mô hình hồi quy Gamma được định nghĩa như sau:
+\begin{equation}
+    Y_i \sim \text{Gamma}(\alpha, \theta_i)
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y_i$ là biến phản hồi dương.
+    \item $\alpha$ là tham số hình dạng (shape parameter) của phân phối Gamma.
+    \item $\theta_i$ là tham số tỷ lệ (scale parameter), phụ thuộc vào các biến dự báo $X_i$ thông qua hàm liên kết.
+\end{itemize}
+
+\section{Hàm liên kết}
+Trong mô hình hồi quy Gamma, kỳ vọng có điều kiện của $Y_i$ được biểu diễn dưới dạng:
+\begin{equation}
+    \mathbb{E}[Y_i | \mathbf{X}_i] = \mu_i = g^{-1}(\eta_i)
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $\eta_i = \mathbf{X}_i^T \boldsymbol{\beta}$ là hàm tuyến tính của các biến độc lập.
+    \item $g(\mu_i)$ là một hàm liên kết để đảm bảo tính dương của $\mu_i$.
+\end{itemize}
+
+Một số hàm liên kết phổ biến được sử dụng trong hồi quy Gamma:
+\begin{itemize}
+    \item Hàm log: $g(\mu) = \log(\mu)$, tức là $\mu_i = \exp(\eta_i)$.
+    \item Hàm nghịch đảo: $g(\mu) = 1/\mu$, tức là $\mu_i = 1/\eta_i$.
+    \item Hàm căn bậc hai: $g(\mu) = \sqrt{\mu}$.
+\end{itemize}
+
+\section{Ước lượng tham số}
+Các tham số $\boldsymbol{\beta}$ trong mô hình được ước lượng bằng phương pháp hợp lý tối đa (Maximum Likelihood Estimation - MLE). Hàm mật độ xác suất của một quan sát $Y_i$ theo phân phối Gamma có dạng:
+\begin{equation}
+    f(Y_i | \alpha, \theta_i) = \frac{1}{\Gamma(\alpha) \theta_i^{\alpha}} Y_i^{\alpha - 1} e^{-Y_i / \theta_i}
+\end{equation}
+
+Hàm log-likelihood của mẫu có dạng:
+\begin{equation}
+    \ell(\boldsymbol{\beta}, \alpha) = \sum_{i=1}^{n} \left[ \alpha \log Y_i - \log \Gamma(\alpha) - \alpha \log \theta_i - \frac{Y_i}{\theta_i} \right]
+\end{equation}
+
+Để tìm ước lượng hợp lý tối đa (MLE), ta giải hệ phương trình:
+\begin{equation}
+    \frac{\partial \ell}{\partial \boldsymbol{\beta}} = 0, \quad \frac{\partial \ell}{\partial \alpha} = 0.
+\end{equation}
+
+Do phương trình không có nghiệm tường minh, ta sử dụng các thuật toán tối ưu hóa như phương pháp Newton-Raphson hoặc Fisher Scoring để tìm nghiệm.
+
+\section{Kiểm định mô hình}
+Sau khi ước lượng mô hình, ta cần kiểm tra tính phù hợp của mô hình:
+\begin{itemize}
+    \item Kiểm tra phương sai: Phương sai của $Y$ có dạng:
+    \begin{equation}
+        \text{Var}(Y_i) = \alpha \theta_i^2.
+    \end{equation}
+    Nếu phương sai không tỷ lệ với bình phương trung bình, mô hình có thể không phù hợp.
+    \item Kiểm tra phân phối dư lượng: Vẽ biểu đồ Q-Q plot của dư lượng Pearson để kiểm tra giả định phân phối Gamma.
+    \item Kiểm tra giả thuyết: Dùng kiểm định Wald hoặc kiểm định tỉ số hợp lý để đánh giá ý nghĩa của các tham số.
+\end{itemize}
+
+\section{Kết luận}
+Mô hình hồi quy Gamma là một công cụ hữu ích khi phân tích dữ liệu với biến phản hồi dương. Việc lựa chọn hàm liên kết phù hợp và kiểm định mô hình là rất quan trọng để đảm bảo tính chính xác của kết quả phân tích.

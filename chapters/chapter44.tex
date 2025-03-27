@@ -1,0 +1,270 @@
+\chapter{Ứng dụng mô phỏng trong kinh tế}
+\section{Mô phỏng dữ liệu kinh tế lượng}
+\subsection{Mô hình tổng quát}
+
+Chúng ta xét một mô hình hồi quy tuyến tính bội như sau:
+
+\begin{equation}
+GDP_t = \beta_0 + \beta_1 Investment_t + \beta_2 Consumption_t + \varepsilon_t
+\end{equation}
+
+với:
+\begin{itemize}
+    \item $GDP_t$ là tổng sản phẩm quốc nội tại thời điểm $t$,
+    \item $Investment_t$ là đầu tư tại thời điểm $t$,
+    \item $Consumption_t$ là tiêu dùng tại thời điểm $t$,
+    \item $\varepsilon_t \sim N(0, \sigma^2)$ là nhiễu ngẫu nhiên có phân phối chuẩn với trung bình bằng 0 và phương sai $\sigma^2$,
+    \item $\beta_0, \beta_1, \beta_2$ là các tham số cần ước lượng.
+\end{itemize}
+
+\subsection{Mô phỏng dữ liệu bằng phương pháp Monte Carlo}
+
+\textbf{Bước 1: Xác định số lượng quan sát}  \\
+Chọn số lượng quan sát $T$, ví dụ $T = 1000$, để mô phỏng dữ liệu.
+
+\textbf{Bước 2: Xác định giá trị thực của các tham số}  \\
+Chọn giá trị thực của các tham số:
+\begin{equation}
+\beta_0 = 5, \quad \beta_1 = 2, \quad \beta_2 = 3
+\end{equation}
+
+\textbf{Bước 3: Sinh dữ liệu giả lập cho biến độc lập}  \\
+Sinh các biến $Investment_t$ và $Consumption_t$ từ phân phối chuẩn hoặc phân phối khác phù hợp với thực tế. Ví dụ:
+\begin{equation}
+Investment_t \sim N(10, 5^2), \quad Consumption_t \sim N(20, 10^2)
+\end{equation}
+
+\textbf{Bước 4: Sinh nhiễu ngẫu nhiên $\varepsilon_t$}  \\
+Sinh $\varepsilon_t$ từ phân phối chuẩn:
+\begin{equation}
+\varepsilon_t \sim N(0, 2^2)
+\end{equation}
+
+\textbf{Bước 5: Tính giá trị của $GDP_t$ theo phương trình hồi quy}  \\
+\begin{equation}
+GDP_t = 5 + 2 Investment_t + 3 Consumption_t + \varepsilon_t
+\end{equation}
+
+\textbf{Bước 6: Ước lượng tham số hồi quy}  \\
+Sử dụng phương pháp bình phương nhỏ nhất (OLS - Ordinary Least Squares) để ước lượng các tham số $\beta$. Hệ số ước lượng được tính theo công thức:
+
+\begin{equation}
+\hat{\beta} = (X'X)^{-1}X'Y
+\end{equation}
+
+trong đó:
+\begin{itemize}
+    \item $X$ là ma trận thiết kế:
+    \begin{equation}
+    X = \begin{bmatrix} 1 & Investment_1 & Consumption_1 \\ 1 & Investment_2 & Consumption_2 \\ \vdots & \vdots & \vdots \\ 1 & Investment_T & Consumption_T \end{bmatrix}
+    \end{equation}
+    \item $Y$ là vector kết quả:
+    \begin{equation}
+    Y = \begin{bmatrix} GDP_1 \\ GDP_2 \\ \vdots \\ GDP_T \end{bmatrix}
+    \end{equation}
+    \item $\hat{\beta}$ là vector các ước lượng:
+    \begin{equation}
+    \hat{\beta} = \begin{bmatrix} \hat{\beta}_0 \\ \hat{\beta}_1 \\ \hat{\beta}_2 \end{bmatrix}
+    \end{equation}
+\end{itemize}
+
+\textbf{Bước 7: Lặp lại quy trình}  \\
+Lặp lại các bước trên $N$ lần (ví dụ $N = 1000$) để tạo ra nhiều bộ dữ liệu khác nhau và phân tích sự ổn định của các ước lượng $\hat{\beta}$.
+
+\subsection{Đánh giá tính ổn định của ước lượng}
+
+Sau khi thực hiện mô phỏng Monte Carlo, ta có thể phân tích sự ổn định của các ước lượng bằng cách:
+\begin{itemize}
+    \item Tính \textbf{trung bình của các ước lượng} $\hat{\beta}$ trên toàn bộ các lần lặp. Nếu $E[\hat{\beta}] \approx \beta$, thì ước lượng không chệch.
+    \item Tính \textbf{phương sai của các ước lượng} để đánh giá độ tin cậy của mô hình. Nếu phương sai nhỏ, mô hình có độ tin cậy cao.
+    \item Vẽ \textbf{biểu đồ phân phối của $\hat{\beta}$} để kiểm tra tính chuẩn của ước lượng.
+\end{itemize}
+
+\subsection*{Tóm lại: }
+\begin{itemize}
+    \item Mô phỏng dữ liệu kinh tế lượng giúp kiểm tra tính ổn định của ước lượng bằng phương pháp Monte Carlo.
+    \item Ta có thể sinh ngẫu nhiên các biến đầu vào, sau đó sử dụng OLS để ước lượng tham số.
+    \item Việc lặp lại nhiều lần giúp đánh giá tính ổn định của các ước lượng $\beta$.
+\end{itemize}
+
+
+Dưới đây là mã Python để thực hiện mô phỏng Monte Carlo theo mô hình kinh tế lượng đã đề cập:
+
+\begin{lstlisting}[basicstyle=\ttfamily\large][language=Python, caption=Mô phỏng Monte Carlo]
+  import numpy as np
+  import statsmodels.api as sm
+  import matplotlib.pyplot as plt
+  
+  def monte_carlo_simulation(n_simulations=1000, n_samples=100):
+      beta_0, beta_1, beta_2 = 2, 0.5, 0.3  
+      beta_estimates = []
+      
+      for _ in range(n_simulations):
+          investment = np.random.normal(50, 10, n_samples)
+          consumption = np.random.normal(30, 5, n_samples)
+          epsilon = np.random.normal(0, 5, n_samples)
+          
+          gdp = beta_0 + beta_1 * investment + beta_2 * consumption + epsilon
+          
+          X = np.column_stack((np.ones(n_samples), investment, consumption))
+          y = gdp
+          
+          model = sm.OLS(y, X).fit()
+          beta_estimates.append(model.params)
+      
+      beta_estimates = np.array(beta_estimates)
+      
+      plt.figure(figsize=(10, 5))
+      plt.hist(beta_estimates[:, 1], bins=30, alpha=0.6, label="Beta 1")
+      plt.hist(beta_estimates[:, 2], bins=30, alpha=0.6, label="Beta 2")
+      plt.axvline(beta_1, color='r', linestyle='dashed', linewidth=2, label='True Beta 1')
+      plt.axvline(beta_2, color='g', linestyle='dashed', linewidth=2, label='True Beta 2")
+      plt.xlabel("Gia tri uoc luong")
+      plt.ylabel("Tan suat")
+      plt.title("Phan phoi cua uoc luong Beta")
+      plt.legend()
+      plt.show()
+      
+      return beta_estimates
+  
+  beta_estimates = monte_carlo_simulation()
+  \end{lstlisting}
+  
+
+Mã Python trên thực hiện mô phỏng Monte Carlo với các tham số đã nêu, sử dụng hồi quy OLS để ước lượng hệ số và trực quan hóa phân phối của các ước lượng. 
+
+
+
+\section{Mô hình dự báo tài chính bằng mô phỏng - Minh họa với trường hợp mô phỏng giá cổ phiếu bằng ARIMA + Monte Carlo}
+\subsection{Giới thiệu phương pháp}
+Phương pháp này kết hợp mô hình \textbf{ARIMA} để ước lượng chuỗi thời gian giá cổ phiếu và phương pháp \textbf{Monte Carlo} để mô phỏng nhiều kịch bản giá trong tương lai với các sai số ngẫu nhiên.
+
+\begin{itemize}
+\item \textbf{ARIMA (AutoRegressive Integrated Moving Average)}: Dự báo giá cổ phiếu dựa trên cấu trúc tự hồi quy và trung bình trượt của chuỗi thời gian.
+\item \textbf{Monte Carlo Simulation}: Dự báo bằng cách tạo nhiều đường giá tương lai với nhiễu ngẫu nhiên để đánh giá sự không chắc chắn.
+\end{itemize}
+
+\subsection{Mô hình ARIMA}
+Mô hình ARIMA$(p, d, q)$ được xác định bởi:
+\begin{equation}
+(1 - \sum_{i=1}^{p} \phi_i L^i)(1 - L)^d Y_t = (1 + \sum_{j=1}^{q} \theta_j L^j) \epsilon_t
+\end{equation}
+Trong đó:
+\begin{itemize}
+\item $p$ là số bậc tự hồi quy (AR).
+\item $d$ là số lần lấy sai phân (I).
+\item $q$ là số bậc trung bình trượt (MA).
+\item $\epsilon_t \sim N(0, \sigma^2)$ là nhiễu trắng.
+\end{itemize}
+Sau khi ước lượng mô hình ARIMA từ dữ liệu lịch sử, ta sẽ sử dụng nó để dự báo xu hướng giá tương lai.
+
+\subsection{Mô phỏng Monte Carlo dựa trên ARIMA}
+Sau khi có mô hình ARIMA, ta mô phỏng Monte Carlo bằng cách:
+\begin{enumerate}
+\item Lấy \textbf{giá dự báo từ ARIMA}.
+\item Thêm \textbf{nhiễu ngẫu nhiên} $\epsilon_t \sim N(0, \hat{\sigma}^2)$.
+\item Lặp lại nhiều lần để tạo các kịch bản khác nhau.
+\end{enumerate}
+Công thức dự báo giá cổ phiếu:
+\begin{equation}
+S_{t+1} = \hat{S}_{t+1}^{ARIMA} + \sigma \cdot Z_t
+\end{equation}
+với $Z_t \sim N(0,1)$, mô phỏng nhiều kịch bản giá khác nhau.
+
+Dưới đây là mã Python để thực hiện mô phỏng giá cổ phiếu bằng mô hình ARIMA kết hợp với Monte Carlo.
+
+\subsubsection{Cài đặt thư viện}
+\begin{lstlisting}[basicstyle=\ttfamily\large]
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from statsmodels.tsa.arima.model import ARIMA
+
+
+num_simulations = 1000
+forecast_days = 30
+\end{lstlisting}
+
+\subsubsection{Đọc dữ liệu và ước lượng mô hình ARIMA}
+\begin{lstlisting}[basicstyle=\ttfamily\large]
+
+np.random.seed(42)
+returns = np.random.normal(0, 1, 500)  
+prices = 100 + np.cumsum(returns)  
+
+df = pd.DataFrame({'Price': prices})
+
+
+model = ARIMA(df['Price'], order=(1, 1, 1))
+model_fit = model.fit()
+\end{lstlisting}
+
+\subsubsection{Mô phỏng Monte Carlo}
+\begin{lstlisting}[basicstyle=\ttfamily\large]
+
+simulated_paths = np.zeros((num_simulations, forecast_days))
+
+for i in range(num_simulations):
+forecast = model_fit.forecast(steps=forecast_days)
+noise = np.random.normal(0, np.std(forecast), forecast_days)
+simulated_paths[i, :] = forecast + noise
+\end{lstlisting}
+
+\subsubsection{Hiển thị kết quả}
+\begin{lstlisting}[basicstyle=\ttfamily\large]
+
+plt.figure(figsize=(10, 5))
+plt.plot(simulated_paths.T, color='lightblue', alpha=0.2)
+plt.plot(np.mean(simulated_paths, axis=0), color='red', label='Trung binh du bao')
+plt.legend()
+plt.title('Mo phong gia co phieu bang ARIMA + Monte Carlo')
+plt.xlabel('Ngay')
+plt.ylabel('Gia co phieu')
+plt.show()
+\end{lstlisting}
+
+
+Phương pháp kết hợp ARIMA và mô phỏng Monte Carlo giúp dự báo kịch bản giá cổ phiếu với độ không chắc chắn được mô hình hóa bằng nhiễu ngẫu nhiên.
+
+% \subsection{Mô hình chuyển động Brown hình học (GBM - Geometric Brownian Motion)}
+% Mô hình giá cổ phiếu theo chuyển động Brown hình học được biểu diễn bởi phương trình vi phân ngẫu nhiên:
+% \begin{equation}
+%     dS_t = \mu S_t dt + \sigma S_t dW_t
+% \end{equation}
+% trong đó:
+% \begin{itemize}
+%     \item $S_t$ là giá cổ phiếu tại thời điểm $t$,
+%     \item $\mu$ là tỷ suất sinh lợi trung bình (drift),
+%     \item $\sigma$ là độ biến động (volatility),
+%     \item $W_t$ là quá trình Wiener chuẩn (chuyển động Brown chuẩn) với tính chất:
+%     \begin{equation}
+%         dW_t \sim \mathcal{N}(0, dt)
+%     \end{equation}
+% \end{itemize}
+
+% \subsection{Giải phương trình vi phân ngẫu nhiên}
+% Sử dụng công thức Itô, nghiệm của phương trình trên có thể được biểu diễn dưới dạng tích phân:
+% \begin{equation}
+%     S_{t+1} = S_t \exp \left( \left( \mu - \frac{1}{2} \sigma^2 \right) \Delta t + \sigma \sqrt{\Delta t} Z_t \right)
+% \end{equation}
+% trong đó:
+% \begin{itemize}
+%     \item $\Delta t$ là bước nhảy thời gian nhỏ,
+%     \item $Z_t \sim \mathcal{N}(0,1)$ là biến ngẫu nhiên phân phối chuẩn.
+% \end{itemize}
+
+% \subsection{Mô phỏng Monte Carlo}
+% Để mô phỏng giá cổ phiếu theo thời gian, ta thực hiện:
+% \begin{enumerate}
+%     \item Khởi tạo giá cổ phiếu ban đầu $S_0$.
+%     \item Sinh một tập hợp lớn các số ngẫu nhiên $Z_t$ từ phân phối chuẩn $\mathcal{N}(0,1)$.
+%     \item Áp dụng công thức mô phỏng trên để cập nhật giá $S_t$.
+%     \item Lặp lại quy trình nhiều lần để thu thập các đường giá khác nhau.
+% \end{enumerate}
+
+% \subsection{Ý nghĩa kinh tế}
+% \begin{itemize}
+%     \item Thành phần $\left( \mu - \frac{1}{2} \sigma^2 \right) \Delta t$ thể hiện xu hướng tăng trưởng trung bình có điều chỉnh theo rủi ro.
+%     \item Thành phần $\sigma \sqrt{\Delta t} Z_t$ biểu diễn sự biến động ngẫu nhiên của giá cổ phiếu.
+% \end{itemize}
+% Mô hình GBM là cơ sở của nhiều phương pháp định giá tài sản tài chính, bao gồm mô hình Black-Scholes để định giá quyền chọn.

@@ -1,1 +1,57 @@
 \chapter{Mô hình Weibull (Weibull Regression Model)}
+\section{Giới thiệu}
+Mô hình hồi quy Weibull là một phương pháp thống kê dùng để mô hình hóa thời gian đến một sự kiện (thời gian sống hoặc thời gian hỏng hóc) với phân phối Weibull. Đây là một trong những mô hình phổ biến trong phân tích sống sót và độ tin cậy.
+
+\section{Phân phối Weibull}
+Phân phối Weibull có hàm mật độ xác suất (PDF) được định nghĩa như sau:
+\begin{equation}
+    f(t; \lambda, k) = \frac{k}{\lambda} \left( \frac{t}{\lambda} \right)^{k-1} \exp \left( - \left( \frac{t}{\lambda} \right)^k \right), \quad t > 0,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $t$ là biến ngẫu nhiên thời gian sống,
+    \item $\lambda > 0$ là tham số tỷ lệ (scale parameter),
+    \item $k > 0$ là tham số hình dạng (shape parameter).
+\end{itemize}
+
+Hàm phân phối tích lũy (CDF) của phân phối Weibull là:
+\begin{equation}
+    F(t) = 1 - \exp \left( - \left( \frac{t}{\lambda} \right)^k \right).
+\end{equation}
+
+\section{Mô hình hồi quy Weibull}
+Mô hình hồi quy Weibull mở rộng phân phối Weibull bằng cách đưa vào một tập hợp các biến dự báo $\mathbf{x} = (x_1, x_2, ..., x_p)$. Mô hình được định nghĩa bởi:
+\begin{equation}
+    \lambda_i = \exp(- \mathbf{x}_i^T \beta),
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $\lambda_i$ là tham số tỷ lệ cho quan sát thứ $i$,
+    \item $\mathbf{x}_i$ là vector các biến dự báo,
+    \item $\beta$ là vector hệ số hồi quy.
+\end{itemize}
+
+Hàm mật độ xác suất có dạng:
+\begin{equation}
+    f(t_i | \mathbf{x}_i) = k \exp(- \mathbf{x}_i^T \beta) t_i^{k-1} \exp \left( - t_i^k \exp(- k \mathbf{x}_i^T \beta) \right).
+\end{equation}
+
+Hàm log-likelihood của mô hình Weibull có dạng:
+\begin{equation}
+    \mathcal{L}(\beta, k) = \sum_{i=1}^{n} \left[ d_i \left( \log k + (k-1) \log t_i - \mathbf{x}_i^T \beta \right) - t_i^k \exp(- k \mathbf{x}_i^T \beta) \right],
+\end{equation}
+trong đó $d_i$ là biến chỉ báo (1 nếu sự kiện xảy ra, 0 nếu bị kiểm duyệt).
+
+\section{Ước lượng tham số}
+Các tham số $\beta$ và $k$ có thể được ước lượng bằng cách tối đa hóa hàm log-likelihood bằng phương pháp Newton-Raphson hoặc các thuật toán tối ưu số khác.
+
+\section{Ứng dụng thực tế}
+Mô hình hồi quy Weibull thường được sử dụng trong các lĩnh vực như:
+\begin{itemize}
+    \item Phân tích độ tin cậy trong kỹ thuật,
+    \item Phân tích sống sót trong y học,
+    \item Mô hình hóa thời gian đến sự kiện trong kinh tế và tài chính.
+\end{itemize}
+
+\section{Kết luận}
+Mô hình hồi quy Weibull là một công cụ mạnh mẽ để phân tích thời gian sống sót với phân phối Weibull. Với tính linh hoạt trong điều chỉnh hình dạng phân phối, mô hình này giúp phản ánh tốt hơn bản chất của dữ liệu so với các mô hình hồi quy tuyến tính thông thường.

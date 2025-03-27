@@ -1,1 +1,52 @@
 \chapter{Mô hình hồi quy Tobit (Tobit Regression)}
+\section{Giới thiệu}
+Mô hình hồi quy Tobit được phát triển bởi James Tobin (1958) để xử lý dữ liệu bị kiểm duyệt (censored data). Đây là một mô hình thống kê mở rộng từ hồi quy tuyến tính nhưng có tính đến sự kiểm duyệt của biến phụ thuộc.
+
+\section{Mô hình toán học}
+Giả sử chúng ta có mô hình hồi quy tuyến tính chuẩn:
+\begin{equation}
+    y_i^* = x_i \beta + \varepsilon_i, \quad \varepsilon_i \sim N(0, \sigma^2)
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $y_i^*$ là biến tiềm ẩn (latent variable), có thể nhận giá trị bất kỳ.
+    \item $x_i$ là vector các biến giải thích (các yếu tố ảnh hưởng).
+    \item $\beta$ là vector tham số cần ước lượng.
+    \item $\varepsilon_i$ là sai số ngẫu nhiên, giả sử phân phối chuẩn với trung bình 0 và phương sai $\sigma^2$.
+\end{itemize}
+
+Tuy nhiên, trong thực tế, giá trị quan sát được $y_i$ có thể bị kiểm duyệt như sau:
+\begin{equation}
+    y_i = \begin{cases}
+        y_i^*, & \text{nếu } y_i^* > L, \\
+        L, & \text{nếu } y_i^* \leq L.
+    \end{cases}
+\end{equation}
+Trong đó $L$ là ngưỡng kiểm duyệt (ví dụ như mức thu nhập tối thiểu hoặc mức tiêu dùng tối thiểu).
+
+\section{Ước lượng tham số}
+Do $y_i$ bị kiểm duyệt, phương pháp hồi quy OLS thông thường không thể áp dụng. Thay vào đó, phương pháp hợp lý tối đa (Maximum Likelihood Estimation - MLE) được sử dụng để ước lượng tham số.
+
+Hàm hợp lý của mô hình Tobit được viết dưới dạng:
+\begin{equation}
+    L(\beta, \sigma^2) = \prod_{y_i > L} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y_i - x_i\beta)^2}{2\sigma^2}\right) \prod_{y_i = L} \Phi\left(\frac{L - x_i\beta}{\sigma}\right),
+\end{equation}
+trong đó $\Phi(\cdot)$ là hàm phân phối tích lũy (CDF) của phân phối chuẩn.
+
+Ước lượng hợp lý tối đa (MLE) của $\beta$ và $\sigma^2$ được tính bằng cách cực đại hóa hàm log-hợp lý:
+\begin{equation}
+    \log L(\beta, \sigma^2) = \sum_{y_i > L} \left[-\frac{1}{2} \log(2\pi\sigma^2) - \frac{(y_i - x_i\beta)^2}{2\sigma^2}\right] + \sum_{y_i = L} \log \Phi\left(\frac{L - x_i\beta}{\sigma}\right).
+\end{equation}
+
+Các tham số $\beta$ và $\sigma^2$ thường được ước lượng bằng phương pháp Newton-Raphson hoặc các kỹ thuật tối ưu hóa số học khác.
+
+\section{Ứng dụng của mô hình Tobit}
+Mô hình Tobit thường được sử dụng trong các lĩnh vực:
+\begin{itemize}
+    \item Kinh tế: Phân tích chi tiêu hộ gia đình với giá trị chi tiêu tối thiểu.
+    \item Tài chính: Phân tích mức đầu tư khi có ràng buộc vốn.
+    \item Khoa học xã hội: Đánh giá mức độ hài lòng khi dữ liệu bị giới hạn.
+\end{itemize}
+
+\section{Kết luận}
+Mô hình hồi quy Tobit là một công cụ mạnh mẽ để phân tích dữ liệu bị kiểm duyệt, mở rộng khả năng của mô hình hồi quy tuyến tính truyền thống bằng cách xử lý các giá trị bị giới hạn. Phương pháp MLE được sử dụng để ước lượng tham số trong mô hình này.

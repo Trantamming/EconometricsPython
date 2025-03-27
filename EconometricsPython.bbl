@@ -1,0 +1,20 @@
+\ifx\undefined\BySame
+\newcommand{\BySame}{\leavevmode\rule[.5ex]{3em}{.5pt}\ }
+\fi
+\ifx\undefined\textsc
+\newcommand{\textsc}[1]{{\sc #1}}
+\newcommand{\emph}[1]{{\em #1\/}}
+\let\tmpsmall\small
+\renewcommand{\small}{\tmpsmall\sc}
+\fi
+\begin{thebibliography}{}
+
+\harvarditem[Angrist and Pischke]{Angrist and Pischke}{2009}{angrist2009}
+\textsc{Angrist, J.~D.,  {\small and} J.-S. Pischke}  (2009): ``Mostly Harmless
+  Econometrics: An Empiricist's Companion,'' \emph{Princeton University Press}.
+
+\harvarditem[Wooldridge]{Wooldridge}{2019}{wooldridge2019}
+\textsc{Wooldridge, J.~M.}  (2019): \emph{Introductory Econometrics: A Modern
+  Approach}. Cengage Learning, Boston, MA, 7th edn.
+
+\end{thebibliography}

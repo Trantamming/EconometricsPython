@@ -1,5 +1,51 @@
-\chapter{Xử lý dữ liệu lớn trong Kinh tế lượng}
-\section{Tiền xử lý dữ liệu kinh tế (missing data, outliers, scaling)}
-\section{Chọn biến và giảm chiều dữ liệu (PCA, Feature Selection)}
-\section{Xử lý dữ liệu bảng (panel data) bằng ML}
-\section{Dữ liệu thời gian thực và vấn đề xử lý dữ liệu lớn}
+\chapter{Kiểm định và Phương pháp Ước lượng}
+\section{Kiểm định Moran’s I}
+Moran’s I là một kiểm định thống kê dùng để phát hiện tự tương quan không gian trong dữ liệu. Công thức của Moran’s I được biểu diễn như sau:
+\begin{equation}
+    I = \frac{N}{W} \frac{\sum_{i} \sum_{j} w_{ij} (X_i - \bar{X}) (X_j - \bar{X})}{\sum_{i} (X_i - \bar{X})^2}
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $N$ là số quan sát.
+    \item $X_i$ và $X_j$ là giá trị của biến tại vị trí $i$ và $j$.
+    \item $\bar{X}$ là giá trị trung bình của biến.
+    \item $w_{ij}$ là phần tử của ma trận trọng số không gian.
+    \item $W = \sum_{i} \sum_{j} w_{ij}$ là tổng các phần tử của ma trận trọng số.
+\end{itemize}
+
+\section{Kiểm định Lagrange Multiplier (LM)}
+LM là một kiểm định để xác định mô hình phù hợp giữa Spatial Lag Model (SLM) và Spatial Error Model (SEM). Công thức kiểm định LM cho SLM:
+\begin{equation}
+    LM_{lag} = \frac{(e' W X \hat{\beta})^2}{\sigma^2 \sum_{i} \sum_{j} w_{ij}^2}
+\end{equation}
+Công thức kiểm định LM cho SEM:
+\begin{equation}
+    LM_{error} = \frac{(e' W e)^2}{\sigma^2 tr(W'W)}
+\end{equation}
+
+\section{Ước lượng mô hình không gian}
+\subsection{Phương pháp OLS}
+Phương pháp bình phương nhỏ nhất thông thường (OLS) sử dụng công thức:
+\begin{equation}
+    \hat{\beta} = (X'X)^{-1} X'Y
+\end{equation}
+
+\subsection{Phương pháp MLE}
+Ước lượng hợp lý cực đại (MLE) trong mô hình không gian có dạng:
+\begin{equation}
+    L(\beta, \rho, \sigma^2) = -\frac{N}{2} \log(2\pi \sigma^2) + \log |I - \rho W| - \frac{1}{2 \sigma^2} (Y - \rho W Y - X \beta)' (Y - \rho W Y - X \beta)
+\end{equation}
+
+\subsection{Phương pháp GMM}
+Ước lượng Moment tổng quát (GMM) dựa trên điều kiện moment:
+\begin{equation}
+    E[g(X, \beta)] = 0
+\end{equation}
+Với $g(X, \beta)$ là các moment conditions thu được từ dữ liệu.
+
+\subsection{So sánh các phương pháp ước lượng}
+\begin{itemize}
+    \item OLS đơn giản nhưng không hiệu quả khi có tự tương quan không gian.
+    \item MLE cho kết quả tốt hơn nhưng yêu cầu giả định về phân phối.
+    \item GMM linh hoạt nhưng phụ thuộc vào cách chọn moment conditions.
+\end{itemize}

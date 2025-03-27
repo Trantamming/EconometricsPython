@@ -1,4 +1,70 @@
-\chapter{Machine Learning trong phân tích nhân quả và chính sách}
-\section{Machine Learning nhân quả (Causal Forest, Double ML)}
-\section{Xác định tác động chính sách bằng ML}
-\section{Kiểm định giả thuyết và ML trong phân tích chính sách}
+\chapter{Công cụ và Phần mềm Phân tích Không gian với Python}
+\section{Giới thiệu}
+Python là một trong những ngôn ngữ lập trình được sử dụng rộng rãi trong phân tích dữ liệu không gian nhờ vào hệ sinh thái phong phú và dễ sử dụng. Chương này sẽ giới thiệu những thư viện quan trọng, các kỹ thuật phân tích và ứng dụng thực tế trong phân tích không gian.
+
+\section{Các thư viện Python cho phân tích không gian}
+\subsection{GeoPandas}
+\begin{itemize}
+    \item Hỗ trợ làm việc với dữ liệu không gian trong môi trường pandas.
+    \item Xử lý và thao tác dữ liệu hình học (points, lines, polygons).
+\end{itemize}
+
+\subsection{Shapely}
+\begin{itemize}
+    \item Cung cấp các phép toán hình học như giao cắt, hợp nhất, chéo nhau.
+    \item Hữu ích trong kiểm tra quan hệ giữa các đối tượng không gian.
+\end{itemize}
+
+\subsection{PySAL (Python Spatial Analysis Library)}
+\begin{itemize}
+    \item Chuyên dành cho kinh tế lượng không gian.
+    \item Hỗ trợ phân cố không gian, hồi quy không gian, v.v.
+\end{itemize}
+
+\subsection{Rasterio}
+\begin{itemize}
+    \item Dùng để xử lý dữ liệu raster (GIS, ảnh vệ tinh).
+    \item Hỗ trợ thao tác và phân tích raster hiệu quả.
+\end{itemize}
+
+\section{Phân tích không gian với Python}
+\subsection{Kiểm định Moran's I}
+\begin{itemize}
+    \item Kiểm tra tính tự tương không gian của một biến số.
+    \item Sử dụng PySAL để tính Moran's I và vẽ biểu đồ.
+\end{itemize}
+
+\subsection{Hồi quy không gian (Spatial Regression)}
+\begin{itemize}
+    \item Mô hình SAR (Spatial Autoregressive Model) và SEM (Spatial Error Model).
+    \item Thực hành hồi quy không gian bằng PySAL.
+\end{itemize}
+
+\subsection{Tạo bản đồ nóng (Hotspot Analysis)}
+\begin{itemize}
+    \item Xác định vùng tập trung cao/thấp của một biến kinh tế.
+    \item Sử dụng Getis-Ord Gi* để phân tích.
+\end{itemize}
+
+\section{Trực quan hóa dữ liệu không gian}
+\subsection{Matplotlib và GeoPandas}
+\begin{itemize}
+    \item Vẽ bản đồ không gian với GeoPandas.
+    \item Tuỳ chỉnh màu sắc và kích thước.
+\end{itemize}
+
+\subsection{Folium}
+\begin{itemize}
+    \item Tạo bản đồ tương tác.
+    \item Chồng lớp dữ liệu GIS lên bản đồ Leaflet.
+\end{itemize}
+
+\section{Ứng dụng thực tế}
+\begin{itemize}
+    \item Phân tích thị trường bất động sản.
+    \item Dự báo chính sách kinh tế theo khu vực.
+    \item Mô hình dự đoán ô nhiễm môi trường.
+\end{itemize}
+
+\section{Kết luận}
+Chương này đã giới thiệu những công cụ Python quan trọng trong phân tích dữ liệu không gian, từ các kỹ thuật phân tích cho đến trực quan hóa. Python giúp chúng ta khai thác hiệu quả thông tin không gian, từ đó nâng cao chất lượng quyết định trong kinh tế và quy hoạch.

@@ -1,4 +1,69 @@
-\chapter{Mô hình hồi quy không gian}
-\section{Spatial Autoregressive Model (SAR)}
-\section{Spatial Error Model (SEM)}
-\section{Spatial Durbin Model (SDM)}
+\chapter{Các Khái Niệm Cơ Bản trong Kinh tế lượng Không gian}
+\section{Sự Phụ Thuộc Không Gian (Spatial Dependence)}
+\textbf{Định nghĩa:} Sự phụ thuộc không gian là hiện tượng giá trị của một biến tại một vị trí bị ảnh hưởng bởi giá trị của biến đó tại các vị trí lân cận.
+
+\textbf{Biểu diễn toán học:}
+\begin{equation}
+    y_i = f(y_j), \quad \forall j \in N(i)
+\end{equation}
+Trong đó:
+\begin{itemize}
+    \item $y_i$ là giá trị của biến quan sát tại vị trí $i$.
+    \item $N(i)$ là tập hợp các vị trí lân cận của $i$.
+\end{itemize}
+
+\textbf{Mô hình cơ bản:} Sự phụ thuộc không gian có thể được mô hình hóa bằng một \textbf{ma trận trọng số không gian} $W$, trong đó:
+\begin{equation}
+    Y = W Y + \varepsilon
+\end{equation}
+với $W$ là ma trận trọng số không gian, $\varepsilon$ là nhiễu.
+
+\section{Tự Tương Quan Không Gian (Spatial Autocorrelation)}
+\textbf{Định nghĩa:} Hiện tượng các quan sát không gian có tương quan với nhau theo một mô hình xác định.
+
+\textbf{Chỉ số Moran's I:}
+\begin{equation}
+    I = \frac{n}{\sum_i \sum_j w_{ij}} \times \frac{\sum_i \sum_j w_{ij} (y_i - \bar{y}) (y_j - \bar{y})}{\sum_i (y_i - \bar{y})^2}
+\end{equation}
+
+Trong đó:
+\begin{itemize}
+    \item $w_{ij}$ là phần tử trong ma trận trọng số không gian $W$.
+    \item $y_i, y_j$ là giá trị của biến quan sát tại vị trí $i, j$.
+    \item $\bar{y}$ là giá trị trung bình của biến $y$.
+\end{itemize}
+
+\textbf{Ý nghĩa:} Nếu $I > 0$ thì có tự tương quan dương (các giá trị gần nhau có xu hướng giống nhau). Nếu $I < 0$ thì có tự tương quan âm (các giá trị gần nhau có xu hướng khác nhau).
+
+\section{Ma Trận Trọng Số Không Gian (Spatial Weight Matrix)}
+\subsection{Các phương pháp xây dựng ma trận trọng số không gian}
+Ma trận trọng số không gian $W$ được xây dựng dựa trên mối quan hệ giữa các khu vực theo các phương pháp khác nhau.
+
+\subsection{Ma trận k-nearest neighbors}
+\textbf{Xây dựng dựa trên \textit{k} láng giềng gần nhất của mỗi điểm.}
+Mỗi phần tử $w_{ij}$ của ma trận $W$ được xác định như sau:
+\begin{equation}
+    w_{ij} =
+    \begin{cases}
+        1, & \text{nếu } j \text{ là một trong } k \text{ láng giềng gần nhất của } i \\
+        0, & \text{ngược lại}
+    \end{cases}
+\end{equation}
+
+\subsection{Ma trận khoảng cách nghịch đảo}
+Trọng số giữa hai điểm $i$ và $j$ được xác định theo khoảng cách:
+\begin{equation}
+    w_{ij} = \frac{1}{d_{ij}^\alpha}
+\end{equation}
+
+Với:
+\begin{itemize}
+    \item $d_{ij}$ là khoảng cách giữa điểm $i$ và $j$.
+    \item $\alpha$ là một số mũ (thường lấy $\alpha = 2$).
+\end{itemize}
+
+\subsection{Ma trận Queen và Rook}
+\begin{itemize}
+    \item \textbf{Ma trận Queen:} Hai vùng được coi là láng giềng nếu chúng có \textbf{chung cạnh hoặc chung đỉnh}.
+    \item \textbf{Ma trận Rook:} Hai vùng được coi là láng giềng nếu chúng \textbf{chỉ có chung cạnh}.
+\end{itemize}

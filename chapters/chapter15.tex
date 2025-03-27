@@ -1,1 +1,50 @@
 \chapter{Mô hình hồi quy Probit (Probit Regression)}
+\section{Giới thiệu}
+Mô hình hồi quy Probit là một mô hình hồi quy sử dụng hàm phân phối chuẩn tích lũy để mô tả xác suất của một biến nhị phân phụ thuộc vào một hoặc nhiều biến độc lập.
+
+\section{Mô hình toán học}
+Giả sử rằng ta có một biến phản hồi nhị phân $Y$ với giá trị $Y \in \{0,1\}$, mô hình Probit được định nghĩa như sau:
+\begin{equation}
+    P(Y = 1 | X) = \Phi(X \beta)
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $\Phi(\cdot)$ là hàm phân phối tích lũy (CDF) của phân phối chuẩn chuẩn $N(0,1)$,
+    \item $X$ là vector các biến độc lập,
+    \item $\beta$ là vector hệ số hồi quy.
+\end{itemize}
+
+\section{Mô hình dạng tiềm ẩn}
+Mô hình Probit có thể được xem xét dưới dạng mô hình biến tiềm ẩn:
+\begin{equation}
+    Y^* = X \beta + \varepsilon, \quad \varepsilon \sim N(0,1)
+\end{equation}
+Với:
+\begin{equation}
+    Y = \begin{cases} 
+        1, & \text{nếu } Y^* > 0 \\
+        0, & \text{nếu } Y^* \leq 0
+    \end{cases}
+\end{equation}
+
+\section{Ước lượng tham số}
+Các tham số của mô hình Probit được ước lượng bằng phương pháp hợp lý cực đại (Maximum Likelihood Estimation - MLE). Hàm hợp lý được cho bởi:
+\begin{equation}
+    L(\beta) = \prod_{i=1}^{n} \Phi(X_i \beta)^{Y_i} (1 - \Phi(X_i \beta))^{(1 - Y_i)}
+\end{equation}
+Và log-hàm hợp lý là:
+\begin{equation}
+    \ell(\beta) = \sum_{i=1}^{n} \left[ Y_i \log \Phi(X_i \beta) + (1 - Y_i) \log (1 - \Phi(X_i \beta)) \right]
+\end{equation}
+
+Ước lượng $\beta$ được tìm bằng cách cực đại hóa hàm log-hợp lý này.
+
+\section{Suy diễn thống kê}
+Để kiểm định ý nghĩa thống kê của các hệ số hồi quy $\beta_j$, ta có thể sử dụng kiểm định Wald:
+\begin{equation}
+    z_j = \frac{\hat{\beta}_j}{\text{SE}(\hat{\beta}_j)} \sim N(0,1)
+\end{equation}
+Hoặc kiểm định tỷ số hợp lý (Likelihood Ratio Test, LRT).
+
+\section{Kết luận}
+Mô hình hồi quy Probit phù hợp cho các bài toán phân loại nhị phân và có nhiều ứng dụng trong kinh tế lượng, y học, và khoa học xã hội.

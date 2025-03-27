@@ -1,1 +1,46 @@
 \chapter{Mô hình hồi quy hàm mũ (Exponential Regression)}
+\section{Giới thiệu}
+Mô hình hồi quy hàm mũ được sử dụng để mô tả mối quan hệ giữa biến độc lập $x$ và biến phụ thuộc $y$ trong dạng hàm mũ:
+\begin{equation}
+    y = a e^{b x} + \epsilon,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $y$ là biến phụ thuộc,
+    \item $x$ là biến độc lập,
+    \item $a, b$ là các tham số cần ước lượng,
+    \item $\epsilon$ là sai số ngẫu nhiên.
+\end{itemize}
+
+\section{Biến đổi tuyến tính}
+Để ước lượng tham số $a$ và $b$, ta thực hiện phép biến đổi logarit tự nhiên hai vế:
+\begin{equation}
+    \ln y = \ln a + b x + \epsilon'.
+\end{equation}
+Gọi $Y' = \ln y$ và $A = \ln a$, ta có mô hình hồi quy tuyến tính:
+\begin{equation}
+    Y' = A + b x + \epsilon'.
+\end{equation}
+Khi đó, các tham số $A$ và $b$ có thể được ước lượng bằng phương pháp bình phương tối thiểu (OLS):
+\begin{align}
+    b &= \frac{n \sum x_i \ln y_i - \sum x_i \sum \ln y_i}{n \sum x_i^2 - (\sum x_i)^2}, \\
+    A &= \frac{\sum \ln y_i - b \sum x_i}{n}.
+\end{align}
+Sau khi tìm được $A$, ta suy ra $a$ bằng:
+\begin{equation}
+    a = e^A.
+\end{equation}
+
+\section{Đánh giá mô hình}
+Mô hình có thể được đánh giá bằng hệ số xác định $R^2$:
+\begin{equation}
+    R^2 = 1 - \frac{SSE}{SST},
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $SST = \sum (Y'_i - \bar{Y'})^2$ là tổng phương sai tổng cộng,
+    \item $SSE = \sum (Y'_i - \hat{Y'}_i)^2$ là tổng phương sai sai số.
+\end{itemize}
+
+\section{Kết luận}
+Mô hình hồi quy hàm mũ thích hợp khi dữ liệu thể hiện sự tăng trưởng hoặc suy giảm theo cấp số nhân. Sau khi ước lượng tham số, mô hình có thể được sử dụng để dự báo giá trị tương lai của $y$ dựa trên giá trị của $x$.

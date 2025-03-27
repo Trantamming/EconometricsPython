@@ -1,4 +1,181 @@
-\chapter{Machine Learning trong phân tích dữ liệu chuỗi thời gian}
-\section{Mô hình hóa dữ liệu chuỗi thời gian bằng ML}
-\section{So sánh ARIMA, VAR với ML (XGBoost, LSTM)}
-\section{Phát hiện xu hướng và cú sốc kinh tế bằng ML}
+\chapter{Xử lý dữ liệu lớn trong Kinh tế lượng}
+\section{Tiền xử lý dữ liệu kinh tế (missing data, outliers, scaling)}
+Trong phân tích kinh tế lượng, dữ liệu thường có kích thước lớn và chứa nhiều vấn đề cần xử lý trước khi đưa vào mô hình. Một số bước quan trọng trong tiền xử lý dữ liệu bao gồm:
+
+\subsection{Xử lý dữ liệu bị thiếu (Missing Data)}
+Giả sử ta có một tập dữ liệu $X \in \mathbb{R}^{n \times p}$, trong đó một số giá trị bị thiếu. Một số phương pháp xử lý dữ liệu bị thiếu phổ biến:
+\begin{itemize}
+    \item \textbf{Loại bỏ các hàng hoặc cột có dữ liệu bị thiếu:} Nếu số lượng dữ liệu bị thiếu nhỏ, ta có thể loại bỏ dòng hoặc cột chứa giá trị đó.
+    \item \textbf{Điền giá trị trung bình:} Nếu biến $X_j$ có giá trị bị thiếu, ta có thể điền bằng trung bình:
+    \begin{equation}
+        X_{ij} = \frac{1}{n_j} \sum_{i=1}^{n_j} X_{ij}, \quad \text{với } X_{ij} \neq \text{NA}
+    \end{equation}
+    \item \textbf{Điền bằng phương pháp hồi quy:} Ước lượng giá trị bị thiếu dựa trên hồi quy với các biến khác:
+    \begin{equation}
+        X_{ij} = \beta_0 + \sum_{k \neq j} \beta_k X_{ik} + \varepsilon_i
+    \end{equation}
+\end{itemize}
+
+\subsection{Xử lý ngoại lai (Outliers)}
+Dữ liệu ngoại lai có thể làm sai lệch kết quả phân tích. Một số phương pháp phát hiện và xử lý:
+\begin{itemize}
+    \item \textbf{Sử dụng z-score:} Nếu $X_j$ có phân phối chuẩn, điểm ngoại lai có thể xác định bằng:
+    \begin{equation}
+        z_i = \frac{X_{ij} - \mu_j}{\sigma_j}, \quad |z_i| > \tau \Rightarrow X_{ij} \text{ là ngoại lai}
+    \end{equation}
+    \item \textbf{Sử dụng phương pháp IQR (Interquartile Range):}
+    \begin{equation}
+        IQR = Q_3 - Q_1, \quad X_{ij} \text{ là ngoại lai nếu } X_{ij} < Q_1 - 1.5 IQR \text{ hoặc } X_{ij} > Q_3 + 1.5 IQR
+    \end{equation}
+\end{itemize}
+
+\subsection{Chuẩn hóa và Tỷ lệ hóa (Scaling)}
+Khi các biến có đơn vị đo khác nhau, cần chuẩn hóa dữ liệu để đảm bảo tính ổn định của mô hình:
+\begin{itemize}
+    \item \textbf{Chuẩn hóa Min-Max:} Biến đổi dữ liệu về khoảng $[0,1]$:
+    \begin{equation}
+        X'_{ij} = \frac{X_{ij} - \min(X_j)}{\max(X_j) - \min(X_j)}
+    \end{equation}
+    \item \textbf{Chuẩn hóa Z-score:} Đưa dữ liệu về phân phối chuẩn với trung bình 0 và độ lệch chuẩn 1:
+    \begin{equation}
+        X'_{ij} = \frac{X_{ij} - \mu_j}{\sigma_j}
+    \end{equation}
+\end{itemize}
+
+
+
+\section{Chọn biến và giảm chiều dữ liệu (PCA, Feature Selection)}
+Trong phân tích dữ liệu lớn, việc chọn biến phù hợp và giảm chiều dữ liệu giúp cải thiện hiệu suất mô hình, giảm nhiễu và tăng độ chính xác trong dự đoán. Hai phương pháp chính là \textbf{Phân tích thành phần chính (PCA)} và \textbf{Chọn biến (Feature Selection)}.
+
+\subsection{Phân tích thành phần chính (PCA)}
+PCA là một kỹ thuật giảm chiều dữ liệu dựa trên biến đổi tuyến tính để tìm ra các hướng chính của dữ liệu.
+
+\subsubsection{Mô hình toán học của PCA}
+Cho một tập dữ liệu $X \in \mathbb{R}^{n \times p}$ với $n$ quan sát và $p$ biến số. PCA thực hiện phép biến đổi như sau:
+
+1. Chuẩn hóa dữ liệu: Trung bình bằng 0 và phương sai bằng 1.
+2. Tính ma trận hiệp phương sai:
+   \begin{equation}
+   \Sigma = \frac{1}{n} X^T X
+   \end{equation}
+3. Tính các trị riêng và vector riêng của $\Sigma$:
+   \begin{equation}
+   \Sigma v_i = \lambda_i v_i
+   \end{equation}
+   với $\lambda_i$ là trị riêng, $v_i$ là vector riêng.
+4. Chọn $k$ thành phần chính đầu tiên tương ứng với $k$ trị riêng lớn nhất để tạo không gian mới:
+   \begin{equation}
+   Z = X V_k
+   \end{equation}
+   với $V_k$ là ma trận chứa $k$ vector riêng tương ứng.
+
+\subsection{Chọn biến (Feature Selection)}
+Feature Selection giúp chọn ra tập biến quan trọng nhất để cải thiện hiệu suất mô hình mà không làm mất quá nhiều thông tin.
+
+\subsubsection{Các phương pháp chọn biến}
+
+1. \textbf{Phương pháp lọc (Filter Methods)}:
+   - Sử dụng các tiêu chí thống kê như hệ số tương quan, ANOVA, hoặc test $\chi^2$ để đánh giá tầm quan trọng của từng biến độc lập.
+   - Chỉ số Information Gain (IG):
+     \begin{equation}
+     IG(Y, X) = H(Y) - H(Y | X)
+     \end{equation}
+     với $H(Y)$ là entropy của biến đích $Y$.
+
+2. \textbf{Phương pháp bọc (Wrapper Methods)}:
+   - Sử dụng thuật toán học máy như Recursive Feature Elimination (RFE) để chọn biến tốt nhất.
+
+3. \textbf{Phương pháp nhúng (Embedded Methods)}:
+   - Sử dụng các mô hình như Lasso (L1 regularization):
+     \begin{equation}
+     \min_\beta \sum_{i=1}^{n} (y_i - X_i \beta)^2 + \lambda \sum_{j=1}^{p} |\beta_j|
+     \end{equation}
+     giúp loại bỏ biến không quan trọng.
+
+\subsection{Kết luận}
+Cả PCA và Feature Selection đều đóng vai trò quan trọng trong xử lý dữ liệu lớn. PCA giảm chiều dựa trên biến đổi tuyến tính, trong khi Feature Selection giúp loại bỏ các biến không quan trọng để cải thiện hiệu suất mô hình.
+
+
+
+\section{Xử lý dữ liệu bảng (panel data) bằng ML}
+\subsection{Giới thiệu về Dữ Liệu Bảng}
+Dữ liệu bảng (panel data) là dạng dữ liệu kết hợp giữa dữ liệu chuỗi thời gian (time series) và dữ liệu chéo (cross-sectional). Dữ liệu bảng có dạng:
+\begin{equation}
+Y_{it} = X_{it} \beta + \epsilon_{it}, \quad i = 1, \dots, N; \quad t = 1, \dots, T,
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $Y_{it}$ là biến phụ thuộc của đối tượng $i$ tại thời điểm $t$.
+    \item $X_{it}$ là vector các biến độc lập.
+    \item $\beta$ là vector hệ số hồi quy.
+    \item $\epsilon_{it}$ là sai số.
+\end{itemize}
+
+\subsection{Mô hình Dữ Liệu Bảng trong Machine Learning}
+Các phương pháp Machine Learning có thể được áp dụng để phân tích dữ liệu bảng, bao gồm:
+\subsubsection{Hồi Quy Tuyến Tính Mở Rộng}
+\begin{itemize}
+    \item \textbf{Ridge Regression}: Giảm phương sai bằng cách thêm penalty $\lambda \sum_{j=1}^{p} \beta_j^2$ vào hàm mất mát.
+    \item \textbf{Lasso Regression}: Chọn biến tự động bằng penalty $\lambda \sum_{j=1}^{p} |\beta_j|$.
+    \item \textbf{Elastic Net}: Kết hợp Ridge và Lasso với trọng số $\alpha$.
+\end{itemize}
+
+\subsubsection{Random Forest và Gradient Boosting}
+\begin{itemize}
+    \item Random Forest: Dùng cây quyết định để nắm bắt tính phi tuyến.
+    \item Gradient Boosting (XGBoost, LightGBM): Tối ưu hóa dự đoán thông qua boosting.
+\end{itemize}
+
+\subsection{Mô hình Học Sâu với Dữ Liệu Bảng}
+Mô hình mạng nơ-ron nhân tạo (Neural Networks) có thể được áp dụng với dữ liệu bảng. Hàm mất mát được tối ưu hóa thường là:
+\begin{equation}
+\mathcal{L}(\theta) = \sum_{i=1}^{N} \sum_{t=1}^{T} (Y_{it} - \hat{Y}_{it})^2 + \lambda ||\theta||^2.
+\end{equation}
+
+\subsection{Tổng kết}
+Dữ liệu bảng có thể được xử lý bằng nhiều phương pháp Machine Learning khác nhau. Hồi quy mở rộng, mô hình cây, boosting, và deep learning đều có ứng dụng quan trọng trong phân tích kinh tế.
+
+
+
+
+
+
+\section{Dữ liệu thời gian thực và vấn đề xử lý dữ liệu lớn}
+\subsection{Giới thiệu}
+Dữ liệu thời gian thực (Real-time Data) đóng vai trò quan trọng trong các hệ thống hiện đại như giao dịch tài chính, Internet of Things (IoT), và phân tích kinh tế lượng. Xử lý dữ liệu lớn (Big Data Processing) đòi hỏi các phương pháp tối ưu để đảm bảo tính hiệu quả và chính xác trong thời gian thực.
+
+\subsection{Mô hình toán học trong xử lý dữ liệu thời gian thực}
+\subsubsection{Dòng dữ liệu (Data Stream Processing)}
+Dữ liệu thời gian thực có thể được mô hình hóa như một luồng dữ liệu liên tục $X_t$, với:
+\begin{equation}
+    X_t = \{x_1, x_2, ..., x_t, ...\}, \quad x_t \in \mathbb{R}^d
+\end{equation}
+Mỗi $x_t$ là một vector dữ liệu đến tại thời điểm $t$.
+
+\subsubsection{Cửa sổ trượt (Sliding Window Model)}
+Một cách tiếp cận phổ biến là sử dụng cửa sổ trượt kích thước $w$, chỉ xem xét các điểm dữ liệu gần nhất:
+\begin{equation}
+    W_t = \{x_{t-w+1}, ..., x_t\}
+\end{equation}
+Điều này giúp giảm tải tính toán và lưu trữ.
+
+\subsubsection{Xử lý dữ liệu song song và phân tán}
+Để xử lý dữ liệu lớn trong thời gian thực, các mô hình phân tán như Hadoop, Spark Streaming, Flink được sử dụng. Mô hình MapReduce có thể được biểu diễn dưới dạng toán học như sau:
+\begin{equation}
+    \text{Map}: f_m: \mathbb{R}^d \to \mathbb{R}^{d'}
+\end{equation}
+\begin{equation}
+    \text{Reduce}: f_r: \mathbb{R}^{d'} \times \mathbb{R}^{d'} \to \mathbb{R}^{d'}
+\end{equation}
+\subsubsection{Mô hình dự báo dữ liệu thời gian thực}
+Dữ liệu thời gian thực thường được dự báo bằng các mô hình như ARIMA, LSTM:
+\begin{equation}
+    X_t = \phi_1 X_{t-1} + \phi_2 X_{t-2} + ... + \epsilon_t, \quad \epsilon_t \sim N(0, \sigma^2)
+\end{equation}
+Mô hình LSTM sử dụng cổng nhớ để cập nhật trạng thái ẩn $h_t$:
+\begin{equation}
+    h_t = f(W_h h_{t-1} + W_x X_t + b_h)
+\end{equation}
+
+\subsection{Kết luận}
+Việc xử lý dữ liệu thời gian thực và dữ liệu lớn đòi hỏi các phương pháp tính toán hiệu quả, bao gồm mô hình trượt, xử lý song song và dự báo thời gian thực.

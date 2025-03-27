@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: EconometricsPython.aux
+Reallocating 'name_of_file' (item size: 1) to 26 items.
+A level-1 auxiliary file: frontmatter/titlepage.aux
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: frontmatter/preface.aux
+Reallocating 'name_of_file' (item size: 1) to 25 items.
+A level-1 auxiliary file: appendices/appendixA.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+The style file: econometrica.bst
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+Database file #1: bibliography.bib
+Warning--I didn't find a database entry for "van2020python"
+Warning--I didn't find a database entry for "continuum2018anaconda"
+Warning--I didn't find a database entry for "kluyver2016jupyter"
+Done.
+You've used 2 entries,
+            2327 wiz_defined-function locations,
+            531 strings with 3983 characters,
+and the built_in function-call counts, 819 in all, are:
+= -- 79
+> -- 40
+< -- 0
++ -- 12
+- -- 12
+* -- 61
+:= -- 168
+add.period$ -- 3
+call.type$ -- 2
+change.case$ -- 12
+chr.to.int$ -- 2
+cite$ -- 2
+duplicate$ -- 33
+empty$ -- 50
+format.name$ -- 12
+if$ -- 152
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 3
+newline$ -- 18
+num.names$ -- 12
+pop$ -- 12
+preamble$ -- 1
+purify$ -- 11
+quote$ -- 0
+skip$ -- 31
+stack$ -- 0
+substring$ -- 22
+swap$ -- 5
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 19
+warning$ -- 0
+while$ -- 8
+width$ -- 0
+write$ -- 35
+(There were 3 warnings)

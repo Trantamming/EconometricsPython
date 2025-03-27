@@ -1,1 +1,94 @@
-\chapter{Các ứng dụng thực tế và ví dụ minh họa}
+\chapter{Phương pháp MCMC trong Kinh tế lượng Bayesian}
+\section{Tổng quan về MCMC trong kinh tế lượng Bayesian}
+Trong bối cảnh kinh tế lượng Bayesian, chúng ta quan tâm đến việc ước lượng \textbf{phân phối hậu nghiệm} của tham số $\theta$ dựa trên dữ liệu quan sát $\mathcal{D}$. Theo định lý Bayes:
+\begin{equation}
+    p(\theta | \mathcal{D}) = \frac{p(\mathcal{D} | \theta) p(\theta)}{p(\mathcal{D})}
+\end{equation}
+trong đó:
+\begin{itemize}
+    \item $p(\theta | \mathcal{D})$: Phân phối hậu nghiệm của tham số $\theta$.
+    \item $p(\mathcal{D} | \theta)$: Hàm hợp lý (likelihood).
+    \item $p(\theta)$: Phân phối tiên nghiệm (prior).
+    \item $p(\mathcal{D}) = \int p(\mathcal{D} | \theta) p(\theta) d\theta$: Hệ số chuẩn hóa.
+\end{itemize}
+Vấn đề chính là tích phân trên mẫu không khả thi trong hầu hết các trường hợp, do đó chúng ta cần sử dụng \textbf{MCMC} để lấy mẫu từ phân phối hậu nghiệm.
+
+\section{Phương pháp Markov Chain Monte Carlo (MCMC)}
+MCMC là một tập hợp các thuật toán dùng để lấy mẫu từ phân phối hậu nghiệm bằng cách xây dựng một \textbf{chuỗi Markov} hội tụ đến phân phối đích $p(\theta | \mathcal{D})$. Hai thuật toán phổ biến trong kinh tế lượng Bayesian là:
+\begin{itemize}
+    \item \textbf{Thuật toán Metropolis-Hastings}
+    \item \textbf{Thuật toán Gibbs Sampling}
+\end{itemize}
+
+\section{Thuật toán Metropolis-Hastings (MH)}
+Thuật toán Metropolis-Hastings hoạt động như sau:
+\begin{enumerate}
+    \item Khởi tạo giá trị ban đầu $\theta^{(0)}$.
+    \item \textbf{Lặp lại} cho $t = 1, 2, \dots, T$:
+    \begin{enumerate}
+        \item Sinh \textbf{đề xuất} $\theta^* \sim q(\theta^* | \theta^{(t-1)})$.
+        \item Tính toán \textbf{tỷ số chấp nhận}:
+        \begin{equation}
+            r = \frac{p(\mathcal{D} | \theta^*) p(\theta^*)}{p(\mathcal{D} | \theta^{(t-1)}) p(\theta^{(t-1)})} \times \frac{q(\theta^{(t-1)} | \theta^*)}{q(\theta^* | \theta^{(t-1)})}
+        \end{equation}
+        \item Chấp nhận $\theta^*$ với xác suất $\alpha = \min(1, r)$:
+        \begin{equation}
+            \theta^{(t)} =
+            \begin{cases}
+                \theta^*  & \text{với xác suất } \alpha  \\
+                \theta^{(t-1)} & \text{với xác suất } 1 - \alpha
+            \end{cases}
+        \end{equation}
+    \end{enumerate}
+\end{enumerate}
+
+\section{Thuật toán Gibbs Sampling}
+Gibbs Sampling cập nhật từng tham số $\theta_j$ theo quy tắc:
+\begin{enumerate}
+    \item Khởi tạo giá trị $\theta^{(0)} = (\theta_1^{(0)}, \theta_2^{(0)}, \dots, \theta_d^{(0)})$.
+    \item \textbf{Lặp lại} cho $t = 1, 2, \dots, T$:
+    \begin{enumerate}
+        \item Cập nhật từng thành phần $j = 1, 2, \dots, d$ theo phân phối điều kiện:
+        \begin{equation}
+            \theta_j^{(t)} \sim p(\theta_j | \theta_1^{(t)}, \dots, \theta_{j-1}^{(t)}, \theta_{j+1}^{(t-1)}, \dots, \theta_d^{(t-1)}, \mathcal{D})
+        \end{equation}
+    \end{enumerate}
+\end{enumerate}
+
+\section{Ứng dụng MCMC vào kinh tế lượng Bayesian}
+\subsection{Ví dụ: Mô hình hồi quy Bayesian}
+Xét mô hình hồi quy tuyến tính:
+\begin{equation}
+    y_i = X_i \beta + \epsilon_i, \quad \epsilon_i \sim \mathcal{N}(0, \sigma^2)
+\end{equation}
+Với:
+\begin{itemize}
+    \item $y$: Biến phụ thuộc.
+    \item $X$: Ma trận biến độc lập.
+    \item $\beta$: Vector hệ số hồi quy.
+\end{itemize}
+\textbf{Phân phối tiên nghiệm}: Chọn phân phối tiên nghiệm Gaussian cho $\beta$:
+\begin{equation}
+    \beta \sim \mathcal{N}(\beta_0, \Sigma_0)
+\end{equation}
+\textbf{Phân phối hậu nghiệm}: Không có dạng đóng, cần MCMC để lấy mẫu từ:
+\begin{equation}
+    p(\beta | X, y) \propto p(y | X, \beta) p(\beta)
+\end{equation}
+\subsection{MCMC với Gibbs Sampling}
+Khi giả định $\sigma^2$ có tiên nghiệm inverse-Gamma, ta có:
+\begin{equation}
+    p(\beta | \sigma^2, X, y) \sim \mathcal{N}(\hat{\beta}, V_{\beta})
+\end{equation}
+\begin{equation}
+    p(\sigma^2 | \beta, X, y) \sim \text{Inverse-Gamma}(\alpha, \beta)
+\end{equation}
+\textbf{Gibbs Sampling} thực hiện:
+\begin{enumerate}
+    \item Lấy mẫu $\beta$ từ phân phối Gaussian hậu nghiệm.
+    \item Lấy mẫu $\sigma^2$ từ phân phối inverse-Gamma.
+    \item Lặp lại cho đến khi hội tụ.
+\end{enumerate}
+
+\section{Tổng kết}
+MCMC là phương pháp phổ biến trong kinh tế lượng Bayesian, giúp lấy mẫu từ phân phối hậu nghiệm trong các mô hình phức tạp.
